@@ -1,0 +1,6 @@
+FileObject(id='file-EfxUdDB9EaUsSAYm95GKyU', bytes=183864, created_at=1758656889, filename='core_fine_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
+FileObject(id='file-Dt6E4QHBwJtKUchRwyFFJ2', bytes=279753, created_at=1758656890, filename='core_major_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
+FileObject(id='file-TrFiqFEG415T28t5BYZSag', bytes=213973, created_at=1758656891, filename='distortions_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
+FileObject(id='file-U7e7Ju6kBoUaWrvVCfpnRs', bytes=184984, created_at=1758659478, filename='core_fine_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
+FileObject(id='file-J6AyPaeXKpeaLf2rpoScvv', bytes=281593, created_at=1758659479, filename='core_major_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
+FileObject(id='file-HgMDuvTCBS4S4Rdp6wqVYn', bytes=215433, created_at=1758659480, filename='distortions_test.jsonl', object='file', purpose='evals', status='processed', expires_at=None, status_details=None)
