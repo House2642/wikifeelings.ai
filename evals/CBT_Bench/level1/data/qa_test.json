@@ -1,0 +1,1980 @@
+[
+    {
+        "id": "224",
+        "question": "Which core principle underlies Cognitive Behavioral Therapy?",
+        "a": "Acceptance and Commitment",
+        "b": "Mindfulness",
+        "c": "The influence of desires",
+        "d": "The interconnection between thoughts, feelings, and behaviors",
+        "e": ""
+    },
+    {
+        "id": "61",
+        "question": "Intermediate beliefs flow from?",
+        "a": "Core beliefs",
+        "b": "Automatic thoughts",
+        "c": "Schemas",
+        "d": "Events in the present",
+        "e": ""
+    },
+    {
+        "id": "143",
+        "question": "You're tired of agreeing to go on trips with your friends because you can't afford it. What would a cognitive/behavioral therapist encourage you to do?",
+        "a": "Just tell them \"No, thanks\" next time they ask.",
+        "b": "Give them lots of attention whenever you see them, so they'll stop asking you to go on trips with them.",
+        "c": "Avoid them entirely. They don't seem like people who care about you if they're always picking expensive vacation spots and activities - even though they know how much money you make.",
+        "d": "Learn how to be honest and assertive with them.",
+        "e": ""
+    },
+    {
+        "id": "177",
+        "question": "CBT assumes that which of the following is the \"problem\" that therapy should address?",
+        "a": "conflicts and cognitive processes resolving those conflicts.",
+        "b": "behaviors and the cognitive processes contributing to those behaviors.",
+        "c": "insights and cognitive processes producing those insights.",
+        "d": "motivations and the cognitive processes driving those motivations.",
+        "e": ""
+    },
+    {
+        "id": "235",
+        "question": "What fundamental principle guides social work practice, emphasizing the importance of promoting social justice and challenging oppressive systems?",
+        "a": "The principle of self-determination",
+        "b": "The principle of confidentiality",
+        "c": "The principle of cultural competence",
+        "d": "The principle of advocacy and empowerment",
+        "e": ""
+    },
+    {
+        "id": "105",
+        "question": "Beck's CBT is originally applied to the treatment of:",
+        "a": "Depression",
+        "b": "Trauma",
+        "c": "Family stress",
+        "d": "Career stress",
+        "e": ""
+    },
+    {
+        "id": "251",
+        "question": "How might a social worker, using principles of Cognitive Behavioral Therapy (CBT, approach working with a client who is experiencing suicidal thoughts?",
+        "a": "By encouraging the client to suppress their thoughts and focus on positive affirmations",
+        "b": "By providing temporary shelter and financial assistance to alleviate immediate stressors",
+        "c": "By collaboratively identifying and challenging distorted thought patterns contributing to suicidal thoughts",
+        "d": "No options align with any practices considered to be CBT",
+        "e": ""
+    },
+    {
+        "id": "217",
+        "question": "A primary concern during the final stages of a cognitive behavioral group is which of the following?",
+        "a": "promoting transfer of learning",
+        "b": "developing a therapeutic contract",
+        "c": "role-playing various situations",
+        "d": "establishing baseline data",
+        "e": ""
+    },
+    {
+        "id": "200",
+        "question": "For what disorder(s) would CBT not be the most effective treatment?",
+        "a": "Anxiety, Depression",
+        "b": "Depression, Complex trauma",
+        "c": "Complex trauma, Schizophrenia",
+        "d": "Schizophrenia, Social anxiety disorder"
+    },
+    {
+        "id": "236",
+        "question": "Among the following principles, which one does not align with the core values of social work practice?",
+        "a": "Respect for the inherent dignity and worth of every individual",
+        "b": "Promotion of client self-determination and autonomy",
+        "c": "Maintenance of strict neutrality and avoidance of taking sides",
+        "d": "Commitment to social justice and advocacy for marginalized populations",
+        "e": ""
+    },
+    {
+        "id": "58",
+        "question": "Intermediate beliefs consist of rules, attitudes, and conditional assumptions. Which of the following fits the best as an attitude?",
+        "a": "\u201cFailing is bad\u201d",
+        "b": "\u201cI must not fail\u201d",
+        "c": "\u201cIf I try, I will fail\u201d",
+        "d": "\u201cI am a failure\u201d",
+        "e": ""
+    },
+    {
+        "id": "69",
+        "question": "Early in treatment you advise clients that the way to get better is?",
+        "a": "By making small changes in their thinking and behaviors each day",
+        "b": "By making large changes to their core beliefs",
+        "c": "By gaining insight regarding their developmental history",
+        "d": "By changing their emotions",
+        "e": ""
+    },
+    {
+        "id": "8",
+        "question": "When helping clients evaluate automatic thoughts, therapists should generally help clients evaluate which aspects of those thoughts?",
+        "a": "accuracy and/or intensity",
+        "b": "intensity and/or utility",
+        "c": "accuracy and/or utility",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "79",
+        "question": "Which of the following typically improve depressive symptoms?",
+        "a": "Interpersonal interactions, activities that have the potential for pleasure, and activities that have the potential for a sense of mastery",
+        "b": "Activities that have the potential for pleasure, activities that have the potential for a sense of mastery, and repeatedly thinking about the reasons one is depressed",
+        "c": "Activities that have the potential for a sense of mastery, repeatedly thinking about the reasons one is depressed, and interpersonal interactions",
+        "d": "Repeatedly thinking about the reasons one is depressed, interpersonal interactions, and activities that have the potential for pleasure",
+        "e": ""
+    },
+    {
+        "id": "229",
+        "question": "Which of the following psychologists is known for developing Rational Emotive Behavior Therapy (REBT), which laid the foundation for Cognitive Behavioral Therapy (CBT)?",
+        "a": "Carl Rogers",
+        "b": "Moses",
+        "c": "Albert Williams",
+        "d": "Albert Ellis",
+        "e": ""
+    },
+    {
+        "id": "112",
+        "question": "What is emotional reasoning?",
+        "a": "Focusing only on the negative",
+        "b": "Discounting the positive",
+        "c": "Assuming that the emotions you feel indicate and objective truth",
+        "d": "Black and white thinking",
+        "e": ""
+    },
+    {
+        "id": "154",
+        "question": "Why does Solution-focused Cognitive Behavioral Therapy often have a set number of sessions?",
+        "a": "To limit the financial burden on clients.",
+        "b": "To ensure that clients do not become overly dependent on therapy.",
+        "c": "To maintain a focused and goal-oriented approach.",
+        "d": "To adhere to insurance company regulations.",
+        "e": "All of the above."
+    },
+    {
+        "id": "180",
+        "question": "The stress inoculation technique uses which of the following steps:",
+        "a": "General orientation and education",
+        "b": "Education and coping Self-Statements",
+        "c": "Motivation and release",
+        "d": "Release and coping Self-Statements",
+        "e": "Coping Self-Statements and general orientation"
+    },
+    {
+        "id": "0",
+        "question": "Albert Ellis\u2019 Cognitive Model included which components?",
+        "a": "Activating Events \u2013 Behaviors \u2013 Cognitions",
+        "b": "Antecedents \u2013 Beliefs \u2013 Consequences",
+        "c": "Activating Events \u2013 Beliefs \u2013 Consequences",
+        "d": "Antecedents \u2013 Behaviors \u2013 Consequences",
+        "e": ""
+    },
+    {
+        "id": "10",
+        "question": "The client has identified an automatic thought of \"My partner is going to break up with me\". The therapist asks the client, \"If your thought is accurate and your partner does break up with you, what does that mean about you?\". The therapist is most likely trying to identify:",
+        "a": "The client's intermediate belief",
+        "b": "The client's core belief",
+        "c": "The client's thinking error",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "120",
+        "question": "Which of the following is not common CBT interventions?",
+        "a": "Using problem-solving skills to cope with difficult situations",
+        "b": "Learning to recognize one\u2019s distortions in thinking that are creating problems, and then to reevaluate them in light of reality.",
+        "c": "Exploring and understanding the impact of past traumatic experiences on current self-esteem",
+        "d": "Using role playing to prepare for potentially problematic interactions with others.",
+        "e": ""
+    },
+    {
+        "id": "253",
+        "question": "Cognitive Behavioral Therapy (CBT) is primarily focused on prescribing medication to alleviate symptoms of mental health disorders.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "87",
+        "question": "The clients says \u201cI feel like he doesn\u2019t care about me\u201d. \u201cI feel like he doesn\u2019t care about me\u201d is a?",
+        "a": "Thought",
+        "b": "Emotion",
+        "c": "Physiological reaction/sensation",
+        "d": "Feeling",
+        "e": ""
+    },
+    {
+        "id": "213",
+        "question": "If people want and expect change, a cognitive behavioral group leader would likely contend that it is important they do which of the following?",
+        "a": "Explore the past roots of a particular problem",
+        "b": "Gain insight into the causes of a problem",
+        "c": "Engage in detailed introspection",
+        "d": "Take specific actions to effect change",
+        "e": ""
+    },
+    {
+        "id": "136",
+        "question": "Which of the following scenarios best represents personalization?",
+        "a": "Maria always imagines the worst possible outcome in every situation happening to her.",
+        "b": "John notices his friend is in a bad mood, so he blames himself for causing it.",
+        "c": "Alex thinks he did well on his exam today because he was lucky.",
+        "d": "Fran is confused about how she feels after she's dumped, so she lashes out and blames everyone around her for failing to understand her feelings.",
+        "e": ""
+    },
+    {
+        "id": "98",
+        "question": "The correct components of the A-B-C Model of CBT are:",
+        "a": "Activating event, behavior, consequence",
+        "b": "Activating event, belief, conditioning",
+        "c": "Activating event and behavioral conditioning",
+        "d": "activating event, belief, consequence.",
+        "e": ""
+    },
+    {
+        "id": "147",
+        "question": "Cognitive Behavioral Group Therapy (CBGT) is well-suited to which of the following disorders:",
+        "a": "Anxiety disorders",
+        "b": "Personality disorders",
+        "c": "Psychotic disorders",
+        "d": "None of the above.",
+        "e": ""
+    },
+    {
+        "id": "48",
+        "question": "From which of the following do action plans (homework assignments) flow the most?",
+        "a": "The discussion agenda items in the session",
+        "b": "Agencies\u2019 priorities",
+        "c": "Therapists\u2019 priorities",
+        "d": "Clients\u2019 journal entries",
+        "e": ""
+    },
+    {
+        "id": "111",
+        "question": "What type of cognitive error involves shrinking something to make it seem less important?",
+        "a": "Selective Abstraction",
+        "b": "Mental filtering",
+        "c": "Overgeneralization",
+        "d": "Self-defeated thinking",
+        "e": ""
+    },
+    {
+        "id": "75",
+        "question": "When an action plan item is a client performing an activity they find challenging, which of the following is often a recommended subsequent action plan item?",
+        "a": "Giving themselves credit for performing the challenging task.",
+        "b": "Reminding themselves that they don\u2019t have to perform the task if it\u2019s too stressful.",
+        "c": "Reminding themselves of why it is important that they complete the task.",
+        "d": "Reminding themselves of their positive qualities.",
+        "e": ""
+    },
+    {
+        "id": "133",
+        "question": "A manager tells you (the therapist) that the new employee, who has been doing an excellent job, requested a meeting with him. The manager anticipates that the new employee plans to resign. Which is the best description of the manager's cognitive error?",
+        "a": "Thinking from an all-or-nothing perspective",
+        "b": "Always thinking the worst will occur without considering positive outcomes",
+        "c": "Viewing only selected negative evidence while editing out positive aspects",
+        "d": "Undervaluing the positive significance of an event",
+        "e": ""
+    },
+    {
+        "id": "30",
+        "question": "After using a CBT technique to discover your client\u2019s core belief, your client makes the following statements \u201cI can\u2019t do anything right. I just don\u2019t know what to do, I have no one to turn to, and I feel like I have no options anymore. I\u2019m trapped in this relationship and I will never get anything better.\u201d What is the core belief of the client?",
+        "a": "Helpless core beliefs",
+        "b": "Worthless core beliefs",
+        "c": "Unlovable core beliefs",
+        "d": "Trapped core beliefs",
+        "e": ""
+    },
+    {
+        "id": "162",
+        "question": "What is the main objective of the acceptance component in Acceptance and Commitment Therapy (ACT)?",
+        "a": "Changing your thoughts to align with those who care about you.",
+        "b": "Avoiding commitment and embracing flexibility.",
+        "c": "Accepting and embracing experiences.",
+        "d": "Accepting the thoughts of others, as if they were your own.",
+        "e": ""
+    },
+    {
+        "id": "74",
+        "question": "The client\u2019s mood has been improving since they\u2019ve been attending treatment. They could attribute this improvement to many different things. Which of the below do you want them to attribute it to the most?",
+        "a": "The positive changes they have been making in their thinking and behaviors.",
+        "b": "The support their therapist has given them.",
+        "c": "Events in their environment that have changed.",
+        "d": "The randomness of their mood.",
+        "e": ""
+    },
+    {
+        "id": "81",
+        "question": "Which strategy should you employ the most often when you want a client to come to a new understanding?",
+        "a": "Guided discovery",
+        "b": "Direct advice",
+        "c": "Indirect advice",
+        "d": "Disclosing what strategy works the best for you",
+        "e": ""
+    },
+    {
+        "id": "16",
+        "question": "In the assessment session, you should create a conceptualization/formulation of the client's problem with them. When using CBT, which of the following is themostimportant for a conceptualization/formulation to include?",
+        "a": "How past developmental events impact the problem",
+        "b": "How thoughts and behaviors relate to the problem",
+        "c": "How current supports may limit the client's functioning",
+        "d": "How genetic vulnerabilities result in current problems",
+        "e": ""
+    },
+    {
+        "id": "38",
+        "question": "Ms. T. has a number of long standing negative attitudes such as \" I ' ll\nnever succeed\" and \" I have to be perfect to be accepted.\" No matter how\nhard she tries she always seems to think that she is \"not measuring up.\"\nWhat cognitive therapy procedure do you think cannot help her?",
+        "a": "Listing advantages and disadvantages",
+        "b": "Breaking out",
+        "c": "Listing schemas",
+        "d": "Thought recording",
+        "e": ""
+    },
+    {
+        "id": "159",
+        "question": "Describe the process of setting SMART goals in the context of CBT and how these goals contribute to the therapeutic process.",
+        "a": "SMART goals are designed to be Specific, Measurable, and Achievable but play a minor role in CBT.",
+        "b": "Setting goals in CBT involves making them as broad as possible to allow for flexibility in the therapeutic process.",
+        "c": "In CBT, SMART goals are irrelevant, and the focus is solely on identifying automatic thoughts.",
+        "d": "SMART goals, encompassing Specific, Measurable, Achievable, Relevant, and Time-bound elements, provide a clear roadmap for the therapeutic progress in CBT.",
+        "e": "CBT therapists prefer guiding their clients to set goals that stimulate more open-ended discussions during their sessions."
+    },
+    {
+        "id": "255",
+        "question": "You are a social worker working with a client who has recently experienced a traumatic event. The client is exhibiting symptoms of post-traumatic stress disorder (PTSD), including flashbacks and avoidance behaviors. What should the social worker do next to support the client?",
+        "a": "Encourage the client to suppress their emotions and avoid discussing the traumatic event.",
+        "b": "Refer the client to a psychiatrist for medication management.",
+        "c": "Explore the client's childhood experiences to uncover the root cause of their trauma.",
+        "d": "Provide immediate crisis intervention and stabilization techniques.",
+        "e": "Give psycoeducation to the client on PTSD and general information."
+    },
+    {
+        "id": "156",
+        "question": "What is a common focus of the first session of a Cognitive Behavioral Therapy (CBT) appointment?",
+        "a": "Immediate implementation of therapeutic interventions.",
+        "b": "In-depth exploration of childhood experiences.",
+        "c": "Establishing rapport, setting goals, and discussing the therapeutic process.",
+        "d": "Conducting a detailed assessment of the client's entire life history.",
+        "e": ""
+    },
+    {
+        "id": "210",
+        "question": "Which of the following best describes a characteristic of group Cognitive Behavioral Therapy (CBT)?",
+        "a": "It typically involves one-on-one sessions between the therapist and the client.",
+        "b": "Participants work individually on their own treatment plans without interaction.",
+        "c": "It provides a supportive environment where individuals can share experiences and learn from others.",
+        "d": "The focus is solely on exploring past traumas and unconscious conflicts.",
+        "e": "Group therapy sessions are usually longer in duration compared to individual therapy sessions."
+    },
+    {
+        "id": "196",
+        "question": "The system of counseling developed by Albert Ellis tends to emphasize logical and rational analysis by employing which of the following strategies?",
+        "a": "ABC model of emotions",
+        "b": "Guided imagery",
+        "c": "The empty chair",
+        "d": "Systematic desensitization",
+        "e": "Progressive muscle relaxation"
+    },
+    {
+        "id": "118",
+        "question": "A client says, \"I don't feel like I'm doing a good job at work\" What question can you ask next to start the downward arrow technique to identify their core belief?",
+        "a": "How did your parents give feedback when you were younger?",
+        "b": "That's not true, you're a great worker!",
+        "c": "What are you worried that might mean?",
+        "d": "What is the evidence for and against this thought?",
+        "e": ""
+    },
+    {
+        "id": "262",
+        "question": "What is the primary goal of challenging irrational beliefs and distorted thinking patterns?",
+        "a": "To reinforce the client's existing beliefs.",
+        "b": "To validate the client's emotions.",
+        "c": "To ignore the client's thoughts and focus solely on behaviors.",
+        "d": "To help a client",
+        "e": "To promote more realistic and adaptive thinking."
+    },
+    {
+        "id": "77",
+        "question": "Which of the following thoughts is the best suited to have its accuracy evaluated?",
+        "a": "\u201cDoes my boss like me?\u201d",
+        "b": "\u201cI\u2019m not sure that my boss likes me\u201d",
+        "c": "\u201cMy boss doesn\u2019t like me\u201d",
+        "d": "\u201cI\u2019m worried my boss doesn\u2019t like me\u201d",
+        "e": ""
+    },
+    {
+        "id": "242",
+        "question": "In Cognitive Behavioral Therapy (CBT), therapists typically encourage clients to dwell extensively on past traumas as a way to address present issues.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "65",
+        "question": "It is important that CBT therapists inspire hope in their clients. Which of the following is not a recommended strategy for inspiring hope?",
+        "a": "Providing education to clients on the research demonstrating that CBT is an effective treatment for people with problems like theirs.",
+        "b": "Expressing confidence that you can help clients improve their problems",
+        "c": "Helping clients identify their values and goals",
+        "d": "Empathizing with the client\u2019s experience related to the problem",
+        "e": ""
+    },
+    {
+        "id": "157",
+        "question": "How might a therapist use the ABC model to understand and address a client's emotional response to a specific event?",
+        "a": "Assessing the client's genetic influences on emotional reactions.",
+        "b": "Examining the intricate interplay of emotions within the client.",
+        "c": "Encouraging the client to express emotions freely without analysis.",
+        "d": "Minimizing the impact of emotions to focus on objective observations.",
+        "e": "Uncovering the chronological order of events and emotions."
+    },
+    {
+        "id": "208",
+        "question": "Which of the following characteristics is most essential for a Cognitive Behavioral Therapy (CBT) therapist?",
+        "a": "Extensive knowledge of pharmacological interventions for mental health disorders. Advanced training in psychodynamic psychotherapy techniques.",
+        "b": "Advanced training in psychodynamic psychotherapy techniques. Strong empathetic listening skills and unconditional positive regard for clients.",
+        "c": "Strong empathetic listening skills and unconditional positive regard for clients. Proficiency in conducting neuropsychological assessments and interpreting brain imaging results.",
+        "d": "Proficiency in conducting neuropsychological assessments and interpreting brain imaging results. Expertise in applying cognitive restructuring techniques and behavioral interventions.",
+        "e": "Strong empathetic listening skills and unconditional positive regard for clients. Expertise in applying cognitive restructuring techniques and behavioral interventions."
+    },
+    {
+        "id": "263",
+        "question": "Which of the following best describes the collaborative nature of a client and a therapist in social work practice?",
+        "a": "The therapist provides solutions to the client's problems without considering the client's perspective.",
+        "b": "The therapist and client work together as partners to identify goals and develop strategies for change.",
+        "c": "The therapist imposes their own values and beliefs onto the client without discussion.",
+        "d": "The therapist directs the client's treatment without input or collaboration from the client.",
+        "e": ""
+    },
+    {
+        "id": "260",
+        "question": "What does the term \"reframing\" refer to?",
+        "a": "Encouraging clients to suppress their emotions to avoid discomfort.",
+        "b": "Identifying and challenging irrational thought patterns contributing to distress.",
+        "c": "Shifting perspectives or interpretations of situations to promote more adaptive responses.",
+        "d": "Utilizing mindfulness techniques to increase awareness of present-moment experiences.",
+        "e": ""
+    },
+    {
+        "id": "39",
+        "question": "Mr. G. has been feeling depressed and has withdrawn from most of the\nactivities that he used to enjoy. I t seems like nothing gives h im pleasure\nanymore. What would you recommend that he do?",
+        "a": "Use an activity schedule. Stay away from all stressful situations",
+        "b": "Stay away from all stressful situations. Don't push for change until he starts to feel better",
+        "c": "Don't push for change until he starts to feel better",
+        "d": "Use an activity schedule. Record levels of mastery and pleasure",
+        "e": ""
+    },
+    {
+        "id": "135",
+        "question": "Which statement demonstrates that the therapist is using a cognitive approach when teaching a client about panic disorder?",
+        "a": "Medications such as lorazepam (Ativan) should be taken when symptoms start.\"",
+        "b": "\"You might want to stay in the house when you notice the symptoms beginning.\"",
+        "c": "Keep a journal to record your feelings about panic attacks",
+        "d": "Remind yourself that symptoms of a panic attack are time limited and will end.\"",
+        "e": ""
+    },
+    {
+        "id": "123",
+        "question": "Which of the following best defines the basis of cognitive behavior therapy?",
+        "a": "Cognitive behavior therapy is based on the theory that distorted perceptions, or cognition, are the foundation of many emotional, mental, and behavioral disorders",
+        "b": "Cognitive behavior therapy is based on the concept that higher education can prevent emotional, mental, and behavioral disorders",
+        "c": "Cognitive behavior therapy is based on the concept that a contingency contract can help a client develop adaptive behaviors.",
+        "d": "Cognitive behavior therapy is based on a reward system of positive reinforcement of positive self-statements.",
+        "e": ""
+    },
+    {
+        "id": "234",
+        "question": "In the field of social work, what is the primary goal of intervention?",
+        "a": "Providing financial assistance to individuals in need",
+        "b": "Offering temporary shelter to homeless populations",
+        "c": "Enhancing the well-being and social functioning of individuals, families, and communities",
+        "d": "Administering psychological assessments to diagnose mental health disorders",
+        "e": ""
+    },
+    {
+        "id": "232",
+        "question": "How might a social worker integrate Cognitive Behavioral Therapy (CBT) techniques into their work with clients experiencing anxiety in a mental health setting?",
+        "a": "By primarily focusing on exploring the client's childhood experiences to uncover the root cause of their anxiety.",
+        "b": "By collaborating with clients to identify and challenge irrational thoughts and beliefs contributing to their anxiety.",
+        "c": "By administering medication to alleviate symptoms of anxiety, complementing CBT interventions.",
+        "d": "By encouraging clients to avoid situations that trigger their anxiety, thereby reducing exposure to stressors.",
+        "e": ""
+    },
+    {
+        "id": "59",
+        "question": "Intermediate beliefs consist of rules, attitudes, and conditional assumptions. Which of the following fits the best as a rule?",
+        "a": "\u201cFailing is bad\u201d",
+        "b": "\u201cI must not fail\u201d",
+        "c": "\u201cIf I try, I will fail\u201d",
+        "d": "\u201cI am a failure\u201d",
+        "e": ""
+    },
+    {
+        "id": "34",
+        "question": "Which of the following are examples of emotions?",
+        "a": "Thinking you're not good enough",
+        "b": "Wanting to give up",
+        "c": "Reacting with sadness",
+        "d": "Deciding not to show your fear",
+        "e": ""
+    },
+    {
+        "id": "64",
+        "question": "Ideally, you should begin creating action plans (homework) with the client?",
+        "a": "At the first visit",
+        "b": "After evaluation sessions are complete",
+        "c": "Once the client has described they would like help solving a problem",
+        "d": "Once the client has volunteered that they feel ready to begin addressing the problem",
+        "e": ""
+    },
+    {
+        "id": "15",
+        "question": "Automatic thoughts can be experienced as images. Ture or False?",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "44",
+        "question": "In CBT, anything we want a client to remember, we make sure is written down:",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "2",
+        "question": "Which technique is the best to test the accuracy of clients\u2019 predictions in real time?",
+        "a": "Behavioral activation",
+        "b": "Behavioral experiment",
+        "c": "Exposure",
+        "d": "Reenactment",
+        "e": ""
+    },
+    {
+        "id": "193",
+        "question": "Who was the first to practice Cognitive-behavioral therapy?",
+        "a": "Sigmund Freud",
+        "b": "Aaron Beck",
+        "c": "Carl Jung",
+        "d": "Abraham Maslow",
+        "e": "None of the above"
+    },
+    {
+        "id": "4",
+        "question": "Which of the following techniques is NOT used to elicit automatic thoughts?",
+        "a": "Role-play",
+        "b": "Downward Arrow Technique",
+        "c": "Three-Column Technique",
+        "d": "Imagery",
+        "e": ""
+    },
+    {
+        "id": "86",
+        "question": "Beck uses the terms \u201cfeelings\u201d and \u201cemotions\u201d synonymously. Which of the following is not a feeling/emotion?",
+        "a": "\u201cSadness\u201d",
+        "b": "\u201cAnger\u201d",
+        "c": "\u201cAnxiety\u201d",
+        "d": "\u201cI feel like I can\u2019t trust him\u201d",
+        "e": ""
+    },
+    {
+        "id": "13",
+        "question": "Which of the following is NOT one of the criteria that should be considered in deciding which problem to focus on in a session?",
+        "a": "Is the problem ongoing?",
+        "b": "Is the problem solvable?",
+        "c": "Is the problem a priority to the client?",
+        "d": "Is the problem strongly connected to cognitions?",
+        "e": "Is the problem distressing to the client?"
+    },
+    {
+        "id": "250",
+        "question": "A social worker needs to address the specific needs of oppressed populations, such as marginalzed ricial and ethnic groups. What would be the best approach through a CBT framework?",
+        "a": "Allowing others in the community to take part and take lead. Mainly because as social workers we should allows others to take charge",
+        "b": "By encouraging clients to conform to dominant cultural norms to reduce societal backlash",
+        "c": "By validating that such issues and problems exist, and then seeing if your agency has any funding to help purchase food for families impacted.",
+        "d": "By validating clients' experiences of discrimination and integrating culturally sensitive interventions",
+        "e": ""
+    },
+    {
+        "id": "259",
+        "question": "CBT is not an evidenced base modality?",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "195",
+        "question": "Which of the following is NOT one of the four \"P's\" in Case Formulation?",
+        "a": "Predisposing factors",
+        "b": "Precipitating factors",
+        "c": "Processing factors",
+        "d": "Perpetuating factors",
+        "e": "Protective factors"
+    },
+    {
+        "id": "214",
+        "question": "Which of the following goals would be most characteristic of a cognitive behavioral group?",
+        "a": "to eliminate or acquire a certain behavior",
+        "b": "to integrate polarities within an individual",
+        "c": "to help members acquire insight into causes of problems",
+        "d": "to provide members with an awareness of the ego state in which they are functioning",
+        "e": ""
+    },
+    {
+        "id": "230",
+        "question": "In the context of Cognitive Behavioral Therapy (CBT), how does the role of medication differ from the therapeutic approach?",
+        "a": "Medication assists in developing coping skills and problem-solving techniques.",
+        "b": "Medication aims to address underlying cognitive distortions.",
+        "c": "Medication focuses on changing maladaptive behaviors.",
+        "d": "Medication targets neurotransmitter imbalances affecting mood.",
+        "e": ""
+    },
+    {
+        "id": "268",
+        "question": "CBT is not used at the macro level of social work",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "223",
+        "question": "What is the primary goal of Cognitive Behacioral Therapy?",
+        "a": "Exploring past trauma",
+        "b": "Understanding unconscious thoughts",
+        "c": "Changing thought patterns and behaviors",
+        "d": "Engaging in solution focused work",
+        "e": ""
+    },
+    {
+        "id": "211",
+        "question": "The cognitive behavioral therapy approach to therapy stresses:",
+        "a": "Support, understanding, warmth, empathy",
+        "b": "Awareness and unfinished business",
+        "c": "Thinking, judging, analyzing, and doing",
+        "d": "Subjectivity, existential anxiety, self-actualization, and being",
+        "e": "Transference, dream analysis, uncovering unconscious, and early experience"
+    },
+    {
+        "id": "104",
+        "question": "What type of cognitive error involves categorizing experiences in either/or extremes?",
+        "a": "Extreme thinking",
+        "b": "Polarized thinking (All or nothing thinking)",
+        "c": "Not nuanced thinking",
+        "d": "Rigid thinking",
+        "e": ""
+    },
+    {
+        "id": "19",
+        "question": "Automatic thoughts often need to be articulated in a certain way so that their accuracy can be evaluated. Which of the below thoughts is formulated in a way to best enable testing its accuracy?",
+        "a": "\"I wonder whether my coworker likes me\"",
+        "b": "\"Do you think my coworker likes me?\"",
+        "c": "\"I kept asking myself, does she hate me?\"",
+        "d": "\"My coworker hates me\"",
+        "e": ""
+    },
+    {
+        "id": "178",
+        "question": "If a practitioner of group CBT is deciding whether to use a particular technique, which of the following is the most important consideration?",
+        "a": "whether it is a relatively new technique",
+        "b": "whether it was requested by group members",
+        "c": "whether it has been empirically demonstrated to be effective",
+        "d": "whether it is interesting and enjoyable",
+        "e": ""
+    },
+    {
+        "id": "115",
+        "question": "Which of the following is not the key compnonet of a safety plan?",
+        "a": "individual warning signs/triggers of a crisis",
+        "b": "Include emergency resources/emergency contacts (e.g., hotlines, on-call clinicians, etc.)",
+        "c": "positive affirmations about self",
+        "d": "Include means restriction (e.g., limiting access to firearms, pills, etc.)",
+        "e": ""
+    },
+    {
+        "id": "46",
+        "question": "In which of the following scenarios is the client unlikely to be experiencing maladaptive automatic thoughts?",
+        "a": "a. When their mood has changed or intensified in a negative direction",
+        "b": "b. When they are experiencing bodily sensations associated with negative emotion",
+        "c": "c. When they are behaving in an adaptive manner",
+        "d": "d. When they are behaving in a maladaptive manner",
+        "e": ""
+    },
+    {
+        "id": "199",
+        "question": "Elizabeth , a 25 year old woman, has been struggling with depression for the past year. She often feels sad, hopeless, and experiences a loss of interest in activities she once enjoyed. Elizabeth's depression has led to difficulties in her relationships and work performance. Seeking relief, Elizabeth decides to pursue therapy. Which Cognitive Behavioral Therapy (CBT) techniques would be most appropriate to address Elizabeth's symptoms of depression?",
+        "a": "DBT and Dialectical behavior therapy",
+        "b": "Dialectical behavior therapy and Eye movement desensitization reprocessing (EMDR)",
+        "c": "Eye movement desensitization reprocessing (EMDR) and Psychodynamic therapy",
+        "d": "Psychodynamic therapy and DBT",
+        "e": "DBT and Behavioral activation"
+    },
+    {
+        "id": "186",
+        "question": "CBT helps clients identify links between:",
+        "a": "Health, thoughts",
+        "b": "Emotions, thoughts, decision-making",
+        "c": "Thoughts, emotions, behavior",
+        "d": "Antecedent, behavior, consequence",
+        "e": ""
+    },
+    {
+        "id": "192",
+        "question": "An effective strategy for identifying core beliefs is:",
+        "a": "The free association technique",
+        "b": "Empty chair technique",
+        "c": "Dream analysis",
+        "d": "Downward Arrow Technique",
+        "e": ""
+    },
+    {
+        "id": "71",
+        "question": "Which of the following is an example of a behavioral experiment for a client who has the belief that if she stands on a 7th floor balcony, she will have a panic attack?",
+        "a": "She considering the evidence that this belief is correct and the evidence that it is incorrect.",
+        "b": "She considering the positive and negative impacts that this belief has on her life.",
+        "c": "She stands on a 7th floor balcony and observes whether she has a panic attack.",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "141",
+        "question": "Which of the following are examples of collaborative empiricism?",
+        "a": "Collaborating with researchers in an evidence-based study. Collaborating with your therapist in therapy",
+        "b": "Collaborating with researchers in an evidence-based study. Taking note of your assumptions and beliefs as a therapy client",
+        "c": "Taking note of your assumptions and beliefs as a therapy client. Collaborating with your therapist in therapy",
+        "d": "Working with people you don't like, so you can understand their motivations. Collaborating with researchers in an evidence-based study",
+        "e": ""
+    },
+    {
+        "id": "55",
+        "question": "Negative core beliefs about the self tend to fall into three categories. Which of the following is not one of these categories?",
+        "a": "Helpless core beliefs",
+        "b": "Unlovable core beliefs",
+        "c": "Worthless core beliefs",
+        "d": "Unlucky core beliefs",
+        "e": ""
+    },
+    {
+        "id": "137",
+        "question": "Imagine a person who consistently views challenges as exciting opportunities rather than daunting obstacles. In CBT, this is called:",
+        "a": "Filtering",
+        "b": "Positivism",
+        "c": "Re-framing",
+        "d": "Selective abstraction",
+        "e": ""
+    },
+    {
+        "id": "256",
+        "question": "You are a social worker working with a client who is struggling with persistent negative thought patterns and low self-esteem. What is the best option for the social worker to assist the client?",
+        "a": "Collaboratively identify and challenge the client's negative thought patterns using Cognitive Behavioral Therapy (CBT) techniques.",
+        "b": "Provide the client with medication to alleviate their symptoms of low self-esteem.",
+        "c": "Share with the client about the capstone project on CBT interventions you completed on similar issues, and that you have exactly what they need.",
+        "d": "Encourage the client to avoid challenging their negative thoughts to prevent discomfort.",
+        "e": ""
+    },
+    {
+        "id": "257",
+        "question": "Tammy expresses overwhelming anxiety about an upcoming job interview, constantly worrying about failure and rejection. What is the first step a social worker using Cognitive Behavioral Therapy (CBT) might take to assist the client?",
+        "a": "Refer the client to a support group for individuals struggling with job-related stress.",
+        "b": "Encourage the client to suppress their anxious thoughts to prevent discomfort.",
+        "c": "Consider going to the job interview with your client to help facilitate.",
+        "d": "Suggest the client seek medication evaluation due to the level of anxiety reported.",
+        "e": "Collaboratively identify and challenge the client's irrational thoughts about the job interview."
+    },
+    {
+        "id": "233",
+        "question": "In a mental health context, how might a social worker utilize Cognitive Behavioral Therapy (CBT) techniques to address anxiety symptoms in a client with comorbid conditions such as autism spectrum disorder (ASD) and attention deficit hyperactivity disorder (ADHD)?",
+        "a": "By implementing exposure therapy to gradually desensitize the client to anxiety-provoking stimuli.",
+        "b": "By encouraging mindfulness meditation practices to promote relaxation and reduce anxiety.",
+        "c": "By incorporating visual aids and structured routines to enhance understanding and adherence to CBT principles.",
+        "d": "By facilitating group therapy sessions to foster social skills and peer support among clients with similar conditions.",
+        "e": ""
+    },
+    {
+        "id": "221",
+        "question": "Joshua begins therapy for the first time. After being evaluated, it was determined that he would strongly benefit from a CBT frame work. Which of the following interventions do you think that he could possibly not expect?",
+        "a": "Exposure Therapy and Relaxation Techniques",
+        "b": "Relaxation Techniques and Role-play",
+        "c": "Exposure Therapy and Role-play",
+        "d": "Assertiveness training and Medication Management",
+        "e": ""
+    },
+    {
+        "id": "50",
+        "question": "In the cognitive model, which of the following are not theorized to be the result of automatic thoughts?",
+        "a": "Schemas",
+        "b": "Emotions",
+        "c": "Behaviors",
+        "d": "Physiological sensations",
+        "e": ""
+    },
+    {
+        "id": "144",
+        "question": "Which of the following is an example of emotional regulation?",
+        "a": "Noticing you're angry with someone during an argument, so to balance it out, you start laughing uncontrollably.",
+        "b": "Feeling sad and disappointed after your friends cancel plans with you, so you listen to some music and then go for a walk.",
+        "c": "Believing that worrying about your upcoming presentation is pointless, so to regulate how you feel, you cancel the presentation to prevent anxiety.",
+        "d": "Convincing yourself that feeling overwhelmed by stress makes you more productive, so you avoid taking a break so you can keep up the momentum."
+    },
+    {
+        "id": "54",
+        "question": "People with which of the following disorders are the most likely to have maladaptively positive beliefs?",
+        "a": "Major depression",
+        "b": "Anxiety Disorders",
+        "c": "Bipolar disorder",
+        "d": "Eating disorders",
+        "e": ""
+    },
+    {
+        "id": "172",
+        "question": "Why was CBT developed?",
+        "a": "To challenge the dominance of psychoanalytic therapy in the field of psychology.",
+        "b": "To explore the subconscious mind and its impact on behavior.",
+        "c": "To provide a more holistic approach to treating mental health disorders.",
+        "d": "To address specific maladaptive thought patterns and behaviors associated with mental health conditions.",
+        "e": ""
+    },
+    {
+        "id": "188",
+        "question": "Which cognitive distortion is the most relevant to the following case:\nJesse did not get a promotion at work. He feels that he works so hard, but doesn't get anywhere. He states, that in his work, he is \"either successful or a complete failure.\"",
+        "a": "Personalization",
+        "b": "Dichotomous thinking",
+        "c": "Selective abstraction",
+        "d": "Overgeneralization",
+        "e": "Magnification and minimization"
+    },
+    {
+        "id": "18",
+        "question": "Across anxiety disorders, avoidance is theorized to maintain the disorder. How does avoidance most often occur in obsessive compulsive disorder?",
+        "a": "Through compulsions",
+        "b": "Through rumination",
+        "c": "Through obsessions",
+        "d": "Through worrying about the future",
+        "e": ""
+    },
+    {
+        "id": "225",
+        "question": "In CBT, what term refers to the process of gradually exposing an individual to feared situations in controlled manner to reduce anxiety?",
+        "a": "Flooding",
+        "b": "Desensitization",
+        "c": "Exposure Therapy",
+        "d": "Systematic desensitization",
+        "e": ""
+    },
+    {
+        "id": "28",
+        "question": "Exaggerated or irrational thought pattern involved in the onset and perpetuation of psychopathological states is referred to as",
+        "a": "Hot thoughts",
+        "b": "Core beliefs",
+        "c": "Cognitive distortions",
+        "d": "Intermediate assumptions",
+        "e": ""
+    },
+    {
+        "id": "126",
+        "question": "You recommend CBT to a client during the intake. The client asks, what is that and how can it help me? What is the best response:",
+        "a": "It is a system of techniques in which you use positive thinking to improve your mood.",
+        "b": "It is a long-term interpersonal approach that emphasizes the role of early childhood experiences.",
+        "c": "It is an interpersonal treatment approach that specifically targets magical thinking.",
+        "d": "It is a focused treatment for the modification of distorted thinking and maladaptive behaviors.",
+        "e": ""
+    },
+    {
+        "id": "106",
+        "question": "What type of cognitive error involves making assumptions without supporting evidence?",
+        "a": "Skipping a Step",
+        "b": "Arbitrary Inference",
+        "c": "Beck's Error",
+        "d": "Black and white thinking",
+        "e": ""
+    },
+    {
+        "id": "246",
+        "question": "How is the Diagnostic and Statistical Manual of Mental Disorders, Fifth Edition (DSM-5), utilized in clincial therapy?",
+        "a": "To assess the severity of clients' symptoms and determine treatment goals",
+        "b": "To show clients exactly what is wrong with them from an evidence based manual",
+        "c": "To justify treatment and get paid by insurance",
+        "d": "The DSM 5 does not exist",
+        "e": ""
+    },
+    {
+        "id": "254",
+        "question": "While working with a client,it is discovered the they have an eating disorder. You do not have much experience, training, or insight into such a disorder. However, you watched a Ted Talk on eating disorders. What is the best way to proceed?",
+        "a": "Excuse the client for a brief time while you research effective CBT strategies for eating disorders",
+        "b": "Seek Supervision/Consultation",
+        "c": "Let them know that you are not sure how to handle this",
+        "d": "Continue session and worry about this later",
+        "e": ""
+    },
+    {
+        "id": "12",
+        "question": "When you want a client to evaluate how logical their intermediate beliefs are, which is usually the best to focus on?",
+        "a": "Rules",
+        "b": "Attitudes",
+        "c": "Conditional assumptions",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "173",
+        "question": "What is the basic triangle in CBT used to represent?",
+        "a": "The interplay between thoughts, feelings, and behaviors.",
+        "b": "The relationship between therapist, client, and therapeutic techniques.",
+        "c": "The hierarchy of cognitive distortions.",
+        "d": "The progression from problem identification to solution implementation.",
+        "e": "The relationship between 3 family members."
+    },
+    {
+        "id": "222",
+        "question": "Sarah is experiencing overwhelming anxiety whenever she has to speak in public. She notices that she experiences negative thoughts about herself and fears that she will make a mistake and say something dumb. She seeks help from a therapist who specializes in CBT. Which technique is most likely to be recommended to help Sarah overcome unwanted thoughts during public speaking?",
+        "a": "Cognitive Restructuring",
+        "b": "Positive visualization",
+        "c": "Cognitive muscle relaxation",
+        "d": "Cognitive distortions",
+        "e": ""
+    },
+    {
+        "id": "205",
+        "question": "Which of the following best defines automatic thoughts in Cognitive Behavioral Therapy (CBT)?",
+        "a": "Thoughts that require conscious effort and deliberate analysis.",
+        "b": "Thoughts that occur without conscious awareness and often influence emotions and behaviors.",
+        "c": "Thoughts that are based on rational and logical reasoning.",
+        "d": "Thoughts that are typically shared and discussed openly in social settings.",
+        "e": "Thoughts that are always accurate and reflective of objective reality."
+    },
+    {
+        "id": "164",
+        "question": "Which region or part of the brain is often targeted by Cognitive Behavioral therapists to improve the regulation of emotions?",
+        "a": "The frontal lobe",
+        "b": "The left side of the brain",
+        "c": "The spot right behind the frontal lobe",
+        "d": "The cerebellum",
+        "e": "The amygdala and hippocampus"
+    },
+    {
+        "id": "167",
+        "question": "Your client tells you they believe in karma. As a cognitive behavioral therapist, which of the following is not appropriate for you to say next?",
+        "a": "\"Do you find that your belief in karma affects how you interpret challenges or setbacks in your life?\"",
+        "b": "\"Karma is a superstition; and, in cognitive behavioral therapy, we don't really talk about that.\"",
+        "c": "\"Let's explore how your belief in karma influences your thoughts and behaviors.\"",
+        "d": "\"It sounds like your belief in karma provides you with a sense of meaning or explanation for certain events.\"",
+        "e": ""
+    },
+    {
+        "id": "202",
+        "question": "Which of the following best describes the cognitive distortion known as \"catastrophizing\"?",
+        "a": "Minimizing or dismissing positive events and focusing solely on negative aspects.",
+        "b": "Exaggerating the importance of negative events and assuming the worst possible outcome.",
+        "c": "Assuming that one's emotions accurately reflect objective reality.",
+        "d": "Believing that past experiences will inevitably repeat themselves in the future.",
+        "e": "Overgeneralizing from a single negative experience and applying it to unrelated situations."
+    },
+    {
+        "id": "45",
+        "question": "If a client is hesitant to enact something you recommend, which of the following does Beck recommend you do?",
+        "a": "Apologize for making an incorrect assumption and explain the rationale for why you make such assumptions.",
+        "b": "Encourage the client to try making the change as an \u201cexperiment\u201d rather than a commitment. Explain the rationale for why you think making the change may be helpful to the client.",
+        "c": "Don\u2019t further encourage the client to make the change.",
+        "d": "Apologize for making an incorrect assumption and try to recommend something else.",
+        "e": ""
+    },
+    {
+        "id": "92",
+        "question": "A therapist is conducting an intake interview with Athena, a 48-year-old woman. Athena has experienced episodes of depression throughout her life. When she was 6 year old her older brother died in a car accident. According to her, this event completely pulled her family apart and she was lost between her mother\u2019s grief and her father\u2019s depression. At the end of the session she asks, \u201cHow would I know when therapy is over?\u201d How would a Cognitive Behavioral Therapist respond to this inquiry?",
+        "a": "You will tell me what your goals for therapy are, and when you reach those goals we will terminate.",
+        "b": "We will collaborate on formulating our treatment goals, and I will tell you when it is time to terminate.",
+        "c": "I will determine what the treatment goals are based on what you told me, and once you feel that you have reached them we will terminate.",
+        "d": "We will collaborate on formulating the treatment goals and once we\u2019ve determined you are close to reaching your goals we will discuss maintaining progress and begin termination.",
+        "e": ""
+    },
+    {
+        "id": "11",
+        "question": "Which cognitive distortion is the most relevant to the following case:\nMike carefully prepared a work presentation. Many attendees praised him on the presentation; however, one of the attendees made a minor criticism of his presentation. Mike completely lost the feeling of triumph, and left thinking that all his effort was worthless.",
+        "a": "Magnification/minimization",
+        "b": "Emotional reasoning",
+        "c": "Labeling",
+        "d": "Mind reading",
+        "e": ""
+    },
+    {
+        "id": "91",
+        "question": "You have helped the client evaluate their automatic thought and they have come to the conclusion that the thought isn\u2019t entirely accurate and/or helpful. Which of the below is NOT recommended for you to ask the client to help them create a more adaptive thought?",
+        "a": "\u201cCan you summarize what we\u2019ve just been talking about?\u201d",
+        "b": "\u201cWhat do you think would be important for you to remember?\u201d",
+        "c": "\u201cIf this situation comes up again, what do you want to tell yourself?\u201d",
+        "d": "\u201cIf those thoughts were all true, what does it mean?\u201d",
+        "e": ""
+    },
+    {
+        "id": "189",
+        "question": "When people think ________, they feel better.",
+        "a": "Negatively",
+        "b": "Realistically",
+        "c": "Emotionally",
+        "d": "Logically",
+        "e": ""
+    },
+    {
+        "id": "134",
+        "question": "A client states, \"I keep having horrible nightmares about the car accident that killed my child. I shouldn't have taken her with me to the store.\" Using a cognitive approach, which reply is most therapeutic?",
+        "a": "Are other issues from your past affecting your ability to move on?\"",
+        "b": "\"Describe your current feelings about your loss.\"",
+        "c": "\"Let's talk about something that will help you move on.\"",
+        "d": "Can anyone predict when a car accident will happen?\"",
+        "e": ""
+    },
+    {
+        "id": "90",
+        "question": "When you help clients evaluate their thoughts, you generally help them evaluate either how accurate the thought is or how helpful it is. Which of the following is true regarding the thought \u201cWill things work out with my partner\u201d?",
+        "a": "This thought is best suited to have its helpfulness evaluated",
+        "b": "This thought is best suited to have its accuracy evaluated",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "216",
+        "question": "After a behavior has been modeled, group members in a cognitive behavioral group are typically asked to do which of the following?",
+        "a": "discuss it",
+        "b": "rehearse it",
+        "c": "critique it",
+        "d": "interpret it",
+        "e": ""
+    },
+    {
+        "id": "60",
+        "question": "Intermediate beliefs consist of rules, attitudes, and conditional assumptions. Which of the following fits the best as a conditional assumption?",
+        "a": "\u201cFailing is bad\u201d",
+        "b": "\u201cI must not fail\u201d",
+        "c": "\u201cIf I try, I will fail\u201d",
+        "d": "\u201cI am a failure\u201d",
+        "e": ""
+    },
+    {
+        "id": "204",
+        "question": "Which cognitive distortion involves attributing personal responsibility for external events or outcomes, without considering other possible causes?",
+        "a": "Personalization",
+        "b": "Catastrophizing",
+        "c": "Overgeneralization",
+        "d": "Mind reading",
+        "e": "Emotional reasoning"
+    },
+    {
+        "id": "37",
+        "question": "Mr. R., a salesman, was performing about ten percent below his sales\ntarget for the year. The problem was largely due to an economic downturn\nin his region of the country. Although his job wasn't really threatened and his family relationships were in good shape, Mr. R. began to think\n\"Everything is falling apart\u2014I'll lose it all.\" Mr. R. decided to\nstart cognitive therapy. Which of these techniques do you think might help\nhim?",
+        "a": "Emotional reasoning",
+        "b": "Programming",
+        "c": "Denying automatic thoughts",
+        "d": "Labeling cognitive errors or distortions",
+        "e": ""
+    },
+    {
+        "id": "99",
+        "question": "Beck's cognitive therapy involves:",
+        "a": "prompting the client to talk to an empty chair",
+        "b": "making a family genogram",
+        "c": "asking the miracle question",
+        "d": "identifying common distorted thought patterns.",
+        "e": ""
+    },
+    {
+        "id": "158",
+        "question": "What are some common cognitive distortions, and how does a therapist work with a client to challenge and modify these distortions?",
+        "a": "Encouraging the client to embrace \"all-or-nothing thinking\" for decisiveness.",
+        "b": "Suggesting the client practice \"mind reading\" to enhance empathy.",
+        "c": "Guiding the client to challenge \"catastrophizing\" by exploring more realistic outcomes.",
+        "d": "Supporting the client's adoption of \"emotional reasoning\" for authentic expression.",
+        "e": ""
+    },
+    {
+        "id": "128",
+        "question": "A student comes in to the session and reports that they wish to drop out of school due to the overwhelming work. The therapist advises the student to write assignments and due dates on a calendar to help break down what needs to be done and when. What technique is the therapist using?",
+        "a": "Activity scheduling",
+        "b": "Distraction",
+        "c": "Graded task assignments (partialization)",
+        "d": "Behavioral rehearsal",
+        "e": ""
+    },
+    {
+        "id": "227",
+        "question": "Emily has been struggling with chronic insomnia for several months. She often finds herself lying awake in bed for hours, feeling frustrated and exhausted. She decides to seek help from a therapist who specializes in Cognitive Behavioral Therapy (CBT) for insomnia. The therapist suggests a technique where Emily learns to associate her bed only with sleep and relaxation, rather than with wakefulness and frustration. What specific CBT technique is the therapist most likely recommending?",
+        "a": "Sleep hygiene education",
+        "b": "Stimulus control therapy",
+        "c": "Relaxation training",
+        "d": "Sleep restriction therapy",
+        "e": ""
+    },
+    {
+        "id": "36",
+        "question": "Mr. R., a salesman, was performing about ten percent below his sales target for the year. The problem was largely due to an economic downturn in his region of the country. Although his job wasn't really threatened and his family relationships were in good shape, Mr. R. began to think Everything is falling apart\u2014I'll lose it all. What kind of mistakes in thinking might he be having?",
+        "a": "Overgeneralization",
+        "b": "Mind reading",
+        "c": "Untracking",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "145",
+        "question": "Which of the following clients would a cognitive behavioral therapist unlikely to use graded exposure?",
+        "a": "Amanda, a 20-year-old college student, is volunteering at her local hospital. She reports enjoying helping others, but she feels dizzy and disoriented every time she sees blood. When asked why she works at a hospital, she says, \"I want to be a doctor.\"",
+        "b": "Sal, a 39-year-old father of two children reports he sometimes gets anxious when he has to leave the house to run errands and doesn't have a to-do list with him. However, he denies feeling anxious when he leaves the house to go to work because his wife usually helps him get ready.",
+        "c": "Olga, a 13-year-old aspiring ballerina has extreme stage fright. She wants to perform on stage as a ballerina one day, but reports feeling sad every time she thinks about it.",
+        "d": "Tora, a 47-year-old professional singer reports having no problem with singing on stage; however, she finds she is unable to speak to people she doesn't know well. She reports, \"My voice just doesn't come out. I try and try, but nothing works.\"",
+        "e": ""
+    },
+    {
+        "id": "247",
+        "question": "A therapist who primarily uses CBT tends to focus on delving into a clients unconscious conflicts and desires to address their presenting issues?",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "212",
+        "question": "Which of the following most accurately describes the application of cognitive behavioral techniques in a group?",
+        "a": "These techniques remain under continual evaluation.",
+        "b": "They are experiential in nature.",
+        "c": "They are designed to produce insight.",
+        "d": "They are usually aimed at catharsis.",
+        "e": ""
+    },
+    {
+        "id": "181",
+        "question": "Utilizing the 5-step problem solving model can be particularly useful in that it:",
+        "a": "can enhance the client's coping ability when obstacles arise",
+        "b": "allows the therapist to determine how long it will take for the client to reach their goals",
+        "c": "reduces the occurrence of problems in the client's day-to-day life",
+        "d": "serves as a written contract that holds the client responsible for their actions",
+        "e": "can guarantee a solution to the problem"
+    },
+    {
+        "id": "100",
+        "question": "Sonia, a recovering alcoholic, is going through relapse prevention from a CBT lens. During this process, it is likely that she will:",
+        "a": "be taught to view any lapses that occur as \"learning opportunities\" rather than failures. Learn relaxation techniques to manage triggers for the urge to drink",
+        "b": "identify the traumatic source of her alcoholism. build self-confidence because of the therapist's confidence in her",
+        "c": "build self-confidence because of the therapist's confidence in her. Learn relaxation techniques to manage triggers for the urge to drink",
+        "d": "Learn relaxation techniques to manage triggers for the urge to drink. identify the traumatic source of her alcoholism.",
+        "e": ""
+    },
+    {
+        "id": "63",
+        "question": "When possible, it is helpful to evaluate automatic thoughts as they occur in the session in real time. Which of the following is the best situation in which to do this?",
+        "a": "When you recognize in session that the client is experiencing increased distress.",
+        "b": "When a client is discussing a problem they had in the past week",
+        "c": "When you are creating a cognitive formulation",
+        "d": "When you remember to do so",
+        "e": ""
+    },
+    {
+        "id": "97",
+        "question": "The cognitive-behavioral approach to therapy stresses:",
+        "a": "The relational dynamic between therapist and client",
+        "b": "Building client insight and understanding",
+        "c": "The relationship between thoughts, feelings, and behaviors.",
+        "d": "Finding the best way to solve the presenting problem",
+        "e": ""
+    },
+    {
+        "id": "53",
+        "question": "According to Beck, mentally healthy people typically have core beliefs that are?",
+        "a": "Realistically positive",
+        "b": "Overwhelmingly positive",
+        "c": "Slightly negative",
+        "d": "Overwhelmingly negative",
+        "e": ""
+    },
+    {
+        "id": "116",
+        "question": "Which cognitive distortion is most relevant to a client who says the following: \"Today at work Rachel said hi, then I had lunch with Daisy and Maria. When I went over to talk to Katie she said she wasy 'busy' and didn't want to catch up. It seems like no one likes me at work and I'm feeling really unlovable and rejected. What's wrong with me?\"",
+        "a": "Mental filtering",
+        "b": "Mind Reading",
+        "c": "Personalization",
+        "d": "Fortune telling",
+        "e": ""
+    },
+    {
+        "id": "182",
+        "question": "Sara, a high school junior, failed a math test. She goes to see her counselor and states \"Now, I'll never get into college.\" Which of the following techniques can the counselor employ?",
+        "a": "Acknowledge that she will now struggle to get into college. encourage Sara to consider other post-secondary options.",
+        "b": "Acknolwedge Sara's feelings and concerns empathetically while gently challenging the accuracy of her belief. encourage Sara to explore a range of possibilities and consider multiple pathways to achieve her goals.",
+        "c": "Acknowledge that she will now struggle to get into college. encourage Sara to explore a range of possibilities and consider multiple pathways to achieve her goals",
+        "d": "Acknolwedge Sara's feelings and concerns empathetically. tell Sara to consider other post-secondary options",
+        "e": ""
+    },
+    {
+        "id": "240",
+        "question": "Cognitive Behavioral Therapy (CBT) has been found to be an effective treatment for depression, helping individuals to identify and challenge negative thought patterns and behaviors.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "228",
+        "question": "Which of the following cognitive distortions involves predicting the worst possible outcome of a situation, often without considering more likely or positive outcomes?",
+        "a": "Labeling",
+        "b": "Mentalfiltering",
+        "c": "Catastrophizing",
+        "d": "Invalid cognition",
+        "e": ""
+    },
+    {
+        "id": "62",
+        "question": "Conditional assumptions are often closely connected to compensatory behaviors/dysfunctional coping strategies. If a client has the conditional assumption of \u201cIf I try something difficult, I\u2019ll fail\u201d, which of the below would they most likely have as a compensatory behavior/dysfunctional coping strategy?",
+        "a": "Avoidance of trying difficult tasks",
+        "b": "Only trying difficult tasks with adequate supports",
+        "c": "Avoidance of trying any tasks",
+        "d": "Talking with friends about how they could be successful with difficult tasks",
+        "e": ""
+    },
+    {
+        "id": "267",
+        "question": "Which of the following disorders is commonly treated with Cognitive Behavioral Therapy (CBT)?",
+        "a": "Autism Spectrum Disorder",
+        "b": "Generalized Anxiety Disorder",
+        "c": "Alzheimers Disease",
+        "d": "Any and all medical diagnosis",
+        "e": ""
+    },
+    {
+        "id": "131",
+        "question": "A high-school basketball player sustains a serious knee injury and states to the therapist, \"I will never get into college if I don't receive a basketball scholarship.\" Which reply would assist the student to see a broader range of possibilities?",
+        "a": "\"I know you are feeling helpless now, but you are looking at this from only one perspective.\"",
+        "b": "Let's look at the alternatives for funding your college education.\"",
+        "c": "\"Can your family afford knee surgery?\"",
+        "d": "\"You now need to prioritize your academics and not focus on basketball.\"",
+        "e": ""
+    },
+    {
+        "id": "32",
+        "question": "Helpful techniques that are taught in cognitive therapy include:",
+        "a": "Directional change, Examining the evidence",
+        "b": "Examining the evidence, Activity scheduling",
+        "c": "Activity scheduling, Emotional reasoning",
+        "d": "Emotional reasoning, Directional change",
+        "e": ""
+    },
+    {
+        "id": "22",
+        "question": "What is the most generic question that is asked to identify automatic thoughts?",
+        "a": "What would be the worst things that could happen if that were true?",
+        "b": "What was going through your mind?",
+        "c": "What would be so bad about that?",
+        "d": "What does it mean to you?",
+        "e": ""
+    },
+    {
+        "id": "80",
+        "question": "Which of the following behaviors does not typically contribute to depressive symptoms?",
+        "a": "Isolation",
+        "b": "Inactivity",
+        "c": "Avoidance",
+        "d": "Activity",
+        "e": ""
+    },
+    {
+        "id": "17",
+        "question": "A client says \"If I get the promotion at work, I'll finally be someone\". What did they just voice?",
+        "a": "An attitude",
+        "b": "A conditional assumption",
+        "c": "A core belief",
+        "d": "A rule",
+        "e": ""
+    },
+    {
+        "id": "139",
+        "question": "Stress ________ was designed to help people deal with stress by increasing their coping skills.",
+        "a": "Pumping",
+        "b": "Improvement",
+        "c": "Tool-boxing",
+        "d": "Inoculation",
+        "e": ""
+    },
+    {
+        "id": "88",
+        "question": "There are many situations in which it is helpful to increase the intensity of a client\u2019s negative emotion. Which of the following is not a recommended strategy to increase the intensity of negative emotions?",
+        "a": "Imagery",
+        "b": "Exposure",
+        "c": "Focusing on somatic sensations",
+        "d": "Extensively discussing the past",
+        "e": ""
+    },
+    {
+        "id": "42",
+        "question": "A cognitive formulation should NOT be based on which of the following?",
+        "a": "Maladaptive beliefs, behavioral strategies, and maintaining factors that generally correspond with a disorder",
+        "b": "Maldapative beliefs, behavioral strategies, and maintaining factors that correspond with the disorder for your specific client",
+        "c": "Maldapative thoughts, emotions, and medications that correspond with the disorder for your specific client",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "94",
+        "question": "What is an important component of an intake assessment, from a CBT perspective?",
+        "a": "Exploring a client's early recollections",
+        "b": "Exploring thoughts and behaviors associated with clients presenting problem",
+        "c": "Exploring the origins of a client's problematic beliefs",
+        "d": "All of the above",
+        "e": ""
+    },
+    {
+        "id": "76",
+        "question": "Which of the following is the most accurate description of the Cognitive Model?",
+        "a": "People\u2019s emotions, behaviors, and physiological sensations are the result of situations/events.",
+        "b": "People\u2019s emotions, behaviors, and physiological sensations are the result of their thoughts about situations/events.",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "231",
+        "question": "How does Cognitive Behavioral Therapy (CBT) differ from psychodynamic theory regarding the treatment approach?",
+        "a": "CBT emphasizes uncovering unconscious conflicts, while psychodynamic theory focuses on changing maladaptive thoughts and behaviors.",
+        "b": "CBT relies on exploring past experiences, while psychodynamic theory emphasizes present-focused interventions.",
+        "c": "CBT utilizes structured techniques to challenge distorted thinking, while psychodynamic theory focuses on insight-oriented exploration.",
+        "d": "CBT prioritizes building a strong therapeutic relationship, while psychodynamic theory emphasizes behavioral experiments.",
+        "e": ""
+    },
+    {
+        "id": "138",
+        "question": "Which of the following is an example of an automatic thought?",
+        "a": "\"I should have known better; this is all my fault.\"",
+        "b": "\"I thought about it, and I know what I should've said instead.\"",
+        "c": "\"I'm not going to dwell on things anymore.\"",
+        "d": "\"I've been thinking about this for a while, and I think I'm a good cook.\"",
+        "e": ""
+    },
+    {
+        "id": "31",
+        "question": "Which of the following are examples of cognitions?",
+        "a": "Anxious or depressed feelings",
+        "b": "Automatic thoughts and Negative behaviors",
+        "c": "Negative behaviors and Schemas",
+        "d": "Automatic thoughts and Schemas",
+        "e": ""
+    },
+    {
+        "id": "35",
+        "question": "Thought recording exercises do not involve writing down which type of information?",
+        "a": "Outcomes",
+        "b": "Emotions",
+        "c": "Unconscious thoughts",
+        "d": "Events",
+        "e": ""
+    },
+    {
+        "id": "66",
+        "question": "In depression, maladaptive automatic thoughts often contribute to which of the following?",
+        "a": "When clients are engaging in adaptive activities and are getting positive feedbacks",
+        "b": "When clients are engaging in adaptive activities but aren\u2019t deriving a sense of pleasure or mastery from them",
+        "c": "Clients\u2019 negative core beliefs",
+        "d": "Clients\u2019 schemas",
+        "e": ""
+    },
+    {
+        "id": "151",
+        "question": "Which of the following is an example of the CBT technique called \"Flooding?\"",
+        "a": "Flooding isn't a CBT technique.",
+        "b": "Pouring water onto your consenting client's hands to help relax them.",
+        "c": "Waiting until something anxiety provoking happens and collaborating with your therapist to figure out ways to avoid it.",
+        "d": "Going skydiving to get over your fear of heights and planes.",
+        "e": "Writing down all your fears on a piece of paper and then pouring water on it until it's no longer readable."
+    },
+    {
+        "id": "113",
+        "question": "What is the focus of CBT",
+        "a": "past",
+        "b": "present",
+        "c": "future",
+        "d": "all of the above",
+        "e": ""
+    },
+    {
+        "id": "103",
+        "question": "CBT techniques are NOT designed to:",
+        "a": "Challenge self-defeating thoughts",
+        "b": "Learn how to challenge and reframe thoughts",
+        "c": "change negative unhealthy beliefs.",
+        "d": "Express feelings about trauma so that the distress can be reduced",
+        "e": ""
+    },
+    {
+        "id": "163",
+        "question": "How does neuroplasticity play a role in the context of Cognitive Behavioral Therapy (CBT)?",
+        "a": "By promoting the formation of maladaptive habits.",
+        "b": "By inhibiting the modification of negative cognitive patterns.",
+        "c": "By facilitating the restructuring of neural pathways.",
+        "d": "By suppressing the over-expression of emotional responses.",
+        "e": "By \"hardening\" ideas, like plastic does as it cools."
+    },
+    {
+        "id": "142",
+        "question": "Which of the following term(s) describe(s) the process of breaking down overwhelming problems into smaller, more manageable parts?",
+        "a": "Behavioral fragmentation",
+        "b": "Cognitive restructuring",
+        "c": "Graded exposure",
+        "d": "Socratic thinking",
+        "e": "Problem decomposition"
+    },
+    {
+        "id": "110",
+        "question": "What type of cognitive error involves unreasonably focusing on the negatives?",
+        "a": "Mental filtering",
+        "b": "Overgeneralization",
+        "c": "Self-defeated thinking",
+        "d": "Selective Abstraction",
+        "e": ""
+    },
+    {
+        "id": "132",
+        "question": "A hospital social worker listens to a new mother relate thoughts regarding her healthy, 8-lb baby. Which statement by the mother indicates to the social worker the use of the cognitive error of selective abstraction?",
+        "a": "My baby is refusing to nurse, and I know it's because she already hates me.\"",
+        "b": "My baby needs to be under the 'bilirubin lights,' but I resent her time away from me.\"",
+        "c": "My baby is wonderful, but I'm depressed because I had my heart set on having twins.\"",
+        "d": "My baby has an elevated bilirubin; I know it will get worse, and she will die.\"",
+        "e": ""
+    },
+    {
+        "id": "130",
+        "question": "Beck's original concept for cognitive behavior therapy has been expanded by many theorists, but the foundation remains. Which of the following best describes the historical foundation of cognitive behavior therapy?",
+        "a": "Rejection of passive listening used in psychoanalysis in favor of active, direct dialogues with clients.",
+        "b": "Utilization of the psychoanalytic view of seeing depression as \"anger turned inward.",
+        "c": "Recognition that cognitive behavior therapy works for depression but not for other emotional disorders.",
+        "d": ". Cognitive behavior therapy has been the forefront of the Freudian framework of psychoanalysis.",
+        "e": ""
+    },
+    {
+        "id": "237",
+        "question": "Which of the following principles does not correspond to the foundational concepts of Cognitive Behavioral Therapy (CBT)?",
+        "a": "Collaboration between therapist and client",
+        "b": "Exploration of unconscious motives and desires",
+        "c": "Focus on identifying and challenging distorted thoughts and behaviors",
+        "d": "Utilization of mindfulness and meditation techniques",
+        "e": ""
+    },
+    {
+        "id": "248",
+        "question": "Timothy, who has been struggling with social anxiety, attends Cognitive Behavioral Therapy (CBT) sessions. In therapy, he learns relaxation techniques and cognitive restructuring methods to manage her anxiety symptoms.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "89",
+        "question": "When you help clients evaluate their thoughts, you generally help them evaluate either how accurate the thought is or how helpful it is. Which of the following is true regarding the thought \u201cWhat if I don\u2019t get the job?\u201d?",
+        "a": "This thought is best suited to have its helpfulness evaluated",
+        "b": "This thought is best suited to have its accuracy evaluated",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "95",
+        "question": "Which of the following is NOT an appropriate CBT intervention for a client who wants to improve stress management?",
+        "a": "Teach the client relaxation techniques",
+        "b": "Assign a thought log to identify cognitive distortions",
+        "c": "Help the client identify the origins of her cognitive distortions",
+        "d": "Provide psychoeducation about different types of cognitive distortions",
+        "e": ""
+    },
+    {
+        "id": "207",
+        "question": "In a case study examining the effectiveness of Cognitive Behavioral Therapy (CBT) for social anxiety disorder, researchers found significant improvements in participants' symptom severity. Which of the following does NOT describe a potential mechanism underlying these positive outcomes?",
+        "a": "Enhanced production of neurotransmitters such as serotonin and dopamine.",
+        "b": "Reduction of amygdala hyperactivity in response to social stimuli.",
+        "c": "Strengthening of the brain's executive functioning in decision-making tasks.",
+        "d": "Promotion of neuroplasticity through engagement in mindfulness meditation.",
+        "e": ""
+    },
+    {
+        "id": "169",
+        "question": "Which component of cognitive behavioral therapy involves offering information and education to enhance clients' comprehension of mental health conditions, cognitive behavioral principles, and the reasons behind therapeutic interventions?",
+        "a": "The first part/component",
+        "b": "Psychoeducation",
+        "c": "Somewhere in the middle",
+        "d": "There's no specified timing to give this information.",
+        "e": ""
+    },
+    {
+        "id": "121",
+        "question": "What words best describe CBT treatment?",
+        "a": "Collaborative and Unconditional positive regard",
+        "b": "Unconditional positive regard and Goal-oriented",
+        "c": "Goal-oriented and Collaborative",
+        "d": "Goal-oriented and Attachment based",
+        "e": ""
+    },
+    {
+        "id": "51",
+        "question": "Which of the following is not true about automatic thoughts?",
+        "a": "They are often the result of reasoning",
+        "b": "They usually occur quickly",
+        "c": "They are often brief",
+        "d": "People often believe they are true",
+        "e": ""
+    },
+    {
+        "id": "25",
+        "question": "Suicide risk assessment should include questions except:",
+        "a": "assessing depression",
+        "b": "active suicidal ideation",
+        "c": "lifetime suicide attempt",
+        "d": "medication history",
+        "e": ""
+    },
+    {
+        "id": "245",
+        "question": "Which of the following concepts is commonly utilized in Cognitive Behavioral Therapy (CBT) to help individuals identify connections between thoughts, feelings, and behaviors?",
+        "a": "Empty Chair",
+        "b": "Externalization of voices",
+        "c": "Socratic questioning",
+        "d": "Humor",
+        "e": "Shaming"
+    },
+    {
+        "id": "40",
+        "question": "Which of the following statements is NOT accurately describing schemas?",
+        "a": "Are upsetting emotions",
+        "b": "Often stimulate automatic thoughts",
+        "c": "Act as underlying rules",
+        "d": "Can be very helpful",
+        "e": ""
+    },
+    {
+        "id": "6",
+        "question": "Which of the following is NOT one of the three main categories problematic core beliefs are grouped into (according to Beck text)?",
+        "a": "Helpless core beliefs",
+        "b": "Worthless core beliefs",
+        "c": "Unlovable core beliefs",
+        "d": "Inadequate core beliefs",
+        "e": ""
+    },
+    {
+        "id": "266",
+        "question": "Cognitive-based therapy does not focus on:",
+        "a": "Identifying and challenging irrational beliefs.",
+        "b": "Promoting realistic and adaptive thinking.",
+        "c": "Exploring unconscious conflicts.",
+        "d": "Developing coping strategies for current challenges.",
+        "e": ""
+    },
+    {
+        "id": "70",
+        "question": "The more depressed clients are feeling in the beginning of treatment, the more their action plans should initially focus directly on?",
+        "a": "Changing behaviors",
+        "b": "Changing cognitions",
+        "c": "Monitoring automatic thoughts",
+        "d": "Identifying negative core beliefs",
+        "e": ""
+    },
+    {
+        "id": "140",
+        "question": "Which of the following best describes the technique that focuses on altering an individual's perceptions of the causes of their problematic behavior(s)?",
+        "a": "Re-framing",
+        "b": "Re-naming",
+        "c": "Attribution Retraining",
+        "d": "Storming",
+        "e": ""
+    },
+    {
+        "id": "117",
+        "question": "Which cognitive distortion is most relevant to the following client: \"When I walked into the coffee shop, this group by the door started laughing. I know they were laughing at me and my outfit.\"",
+        "a": "Disqualiifying the positive",
+        "b": "Mind Reading",
+        "c": "Emotional Reasoning",
+        "d": "Fortune telling",
+        "e": ""
+    },
+    {
+        "id": "161",
+        "question": "Which branch of Cognitive Behavioral Therapy (CBT) focuses on accepting and embracing experiences, using mindfulness and behavioral activation to enhance psychological flexibility?",
+        "a": "Dialectical Behavior Therapy (DBT)",
+        "b": "Acceptance and Commitment Therapy (ACT)",
+        "c": "Mindfulness-Based Cognitive Therapy (MBCT)",
+        "d": "Trauma-Focused Cognitive Behavioral Therapy (TF-CBT)",
+        "e": "Internet-Based Cognitive Behavioral Therapy (iCBT)"
+    },
+    {
+        "id": "249",
+        "question": "How might therapists incorporate LGBTQ-affirmative approaches to address the unique challenges faced by LGBTQ individuals?",
+        "a": "By avoiding discussions about clients' LGBTQ identities to focus solely on symptom management",
+        "b": "By validating the identities of LGBTQ-identified indivduals through demonstrating acceptance and affirming their experiences.",
+        "c": "By challenging clients' LGBTQ identity as a potential cause of their mental health struggles",
+        "d": "By encouraging clients to suppress their LGBTQ identity to avoid social stigma",
+        "e": ""
+    },
+    {
+        "id": "170",
+        "question": "What components of CBT are similar to Motivational Interviewing?",
+        "a": "Exposure therapy and relaxation techniques",
+        "b": "Cognitive restructuring and psychoeducation",
+        "c": "Problem-solving and behavioral activation",
+        "d": "Collaborative alliance and evoking intrinsic motivation",
+        "e": ""
+    },
+    {
+        "id": "197",
+        "question": "Which of the following is NOT an irrational belief according to REBT?",
+        "a": "\"That was aggravating, but that's okay.\"",
+        "b": "\"My feelings are hurt - I can't stand it!\"",
+        "c": "\"I lost my job again; life just isn't fair.\"",
+        "d": "\"I lost my favorite necklace; my whole life is ruined.\"",
+        "e": ""
+    },
+    {
+        "id": "78",
+        "question": "Which of the following thoughts is the best suited to have its accuracy evaluated?",
+        "a": "\u201cWill I do well on the test?\u201d",
+        "b": "\u201cI\u2019m not sure that I\u2019ll do well on the test\u201d",
+        "c": "\u201cI won\u2019t do well on the test\u201d",
+        "d": "\u201cWhat if I don\u2019t do well on the test?\u201d",
+        "e": ""
+    },
+    {
+        "id": "265",
+        "question": "A therapist has a focus of identifying and challenging distorted thinking patterns. Which of the following modalities is the therapist working from?",
+        "a": "Cognitive behavioral therapy",
+        "b": "Cognition reaction therapy",
+        "c": "Individual therapy",
+        "d": "Attachment therapy",
+        "e": "Emotion focused therapy"
+    },
+    {
+        "id": "166",
+        "question": "What is a key distinction between Rational Emotive Behavior Therapy (REBT) and Cognitive Behavioral Therapy (CBT):",
+        "a": "REBT emphasizes changing maladaptive behaviors, while CBT focuses on disputing irrational beliefs.",
+        "b": "REBT considers irrational beliefs as the root of emotional distress, whereas CBT focuses on the cognitive model of psychopathology.",
+        "c": "REBT is rooted in the ABC model (Activating event, Beliefs, Consequences), while CBT uses the DABC model (Distortions, Activating event, Beliefs, Consequences).",
+        "d": "CBT employs the ABC model to illustrate the role of beliefs in emotional reactions, whereas REBT utilizes cognitive restructuring techniques.",
+        "e": ""
+    },
+    {
+        "id": "160",
+        "question": "How many sessions are typically included in a standard Mindfulness-Based Cognitive Therapy (MBCT) program?",
+        "a": "8 sessions with 2 - 2.5 hours each",
+        "b": "16 one-hour sessions",
+        "c": "8 one-hour sessions",
+        "d": "4 one-hour and 4 two-hour sessions",
+        "e": ""
+    },
+    {
+        "id": "239",
+        "question": "Cognitive Behavioral Therapy (CBT) was developed in the mid-20th century by psychologists Aaron T. Beck and Albert Ellis as a response to the limitations of traditional psychoanalysis and behaviorism.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "152",
+        "question": "What are schemas?",
+        "a": "Patterns of behavior that reveal problematic coping skills.",
+        "b": "Core beliefs about the self, others, and the world.",
+        "c": "Mindfulness practices to enhance self-awareness.",
+        "d": "Plans to expose feared stimuli to clients for anxiety reduction purposes.",
+        "e": "Automatic thoughts that arise in specific situations."
+    },
+    {
+        "id": "148",
+        "question": "In the context of CBT, what does the \"A\" stand for in the ABC model?",
+        "a": "Affect",
+        "b": "Activation",
+        "c": "Action",
+        "d": "Appraisal",
+        "e": "Automatic"
+    },
+    {
+        "id": "26",
+        "question": "One way to help clients evaluate their automatic thoughts is distancing. What is a good example Socratic question that therapist can ask to encourage distancing?",
+        "a": "What it the effect of believing these automatic thoughts?",
+        "b": "What should you do now?",
+        "c": "What is the worst that could happen?",
+        "d": "What would I tell my friends if they were in the situation?",
+        "e": ""
+    },
+    {
+        "id": "5",
+        "question": "What level of cognition is expressed through attitudes, rules, and conditional assumptions?",
+        "a": "Intermediate beliefs",
+        "b": "Core beliefs",
+        "c": "Automatic thoughts",
+        "d": "Cognitive distortions",
+        "e": ""
+    },
+    {
+        "id": "85",
+        "question": "When clients describe a problem they are experiencing, it is helpful to organize the material into the 5 categories of the cognitive model. Which of the following is not one of these 5 categories?",
+        "a": "Emotions",
+        "b": "Behaviors",
+        "c": "Relationships",
+        "d": "Thoughts",
+        "e": "Situations/events"
+    },
+    {
+        "id": "149",
+        "question": "What's the primary goal of Behavioral Activation in CBT?",
+        "a": "Increase engagement in positive activities.",
+        "b": "Identify behaviors that inhibit social activity.",
+        "c": "Challenge automatic thoughts about behaviors.",
+        "d": "Increase behavioral practice of mindfulness practices.",
+        "e": ""
+    },
+    {
+        "id": "269",
+        "question": "In macro social work, which of the following best exemplifies the application of Cognitive Behavioral Therapy (CBT) principles?",
+        "a": "Leading psychoeducational workshops on CBT techniques for community members.",
+        "b": "Engaging in advocacy efforts to increase access to mental health services in underserved areas.",
+        "c": "Conducting individual therapy sessions to address clients' maladaptive thought patterns.",
+        "d": "Developing policies to promote the integration of CBT interventions within healthcare systems.",
+        "e": ""
+    },
+    {
+        "id": "185",
+        "question": "Which of the following is NOT a good way that CBT therapists can engage in therapy from a multicultural perspective?",
+        "a": "Try not take clients from a different culture than their own, and remind the client that the culture gap may not be considered during therapy.",
+        "b": "Ask clients about the strengths and challenges of their cultural, racial, and ethnic identity during intake",
+        "c": "Being aware of their own cultural values and biases",
+        "d": "Work together with the client to incorporate the client's core values",
+        "e": ""
+    },
+    {
+        "id": "241",
+        "question": "Social workers primarily focus on providing financial assistance to individuals in need as their main intervention strategy.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "183",
+        "question": "Clients can acquire more effective strategies in dealing with stressful situations by learning how to modify their core beliefs. Which of these procedures are designed to teach these coping skills?",
+        "a": "Expose clients to anxiety-provoking situations through role-play and imagery",
+        "b": "Require clients to evaluate their anxiety level",
+        "c": "Teach clients to become aware of anxiety-provoking cognitions",
+        "d": "Help clients examine thoughts by reevaluating self-statements",
+        "e": "All of the above"
+    },
+    {
+        "id": "43",
+        "question": "Carl is told by his boss that he is responsible for leading a new project. Carl quickly has the cognition \u201cI won\u2019t be successful in leading the project.\u201d This cognition is most likely a(n):",
+        "a": "Automatic thought",
+        "b": "Intermediate belief",
+        "c": "Core belief",
+        "d": "Schema",
+        "e": ""
+    },
+    {
+        "id": "72",
+        "question": "What is the biggest benefit of changing beliefs through behavioral experiments compared to cognitively evaluating their accuracy?",
+        "a": "Behavioral experiments usually impact beliefs and emotions more strongly than cognitively evaluating the accuracy of beliefs.",
+        "b": "Behavioral experiments usually require less time than cognitively evaluating the accuracy of beliefs.",
+        "c": "Clients are usually more comfortable doing behavioral experiments than cognitively evaluating the accuracy of beliefs.",
+        "d": "Performing behavioral experiments usually costs less financially than cognitively evaluating the accuracy of beliefs.",
+        "e": ""
+    },
+    {
+        "id": "264",
+        "question": "True or false: CBT and DBT treatment approaches are the same.",
+        "a": "TRUE",
+        "b": "FALSE",
+        "c": "",
+        "d": "",
+        "e": ""
+    },
+    {
+        "id": "47",
+        "question": "Which of the following are you recommended to not use as part of cognitive restructuring?",
+        "a": "Socratic questioning",
+        "b": "Guided discovery",
+        "c": "Collaborative empiricism",
+        "d": "Challenging thoughts wherein you inform clients that you do not consider their beliefs to be accurate",
+        "e": ""
+    },
+    {
+        "id": "252",
+        "question": "In a scenario where a family is experiencing conflict and tension, how might a social worker, employing Cognitive Behavioral Therapy (CBT) principles, approach helping the family navigate and resolve their issues?",
+        "a": "By facilitating open communication, identifying maladaptive thought patterns, and teaching conflict resolution skills",
+        "b": "By giving a brief overview of how conflict and tension can be harmful for little kids",
+        "c": "By suggesting the family members to suppress their emotions to maintain peace within the household",
+        "d": "By encouraging the family to avoid discussing the conflict to prevent further tension",
+        "e": ""
+    },
+    {
+        "id": "1",
+        "question": "The negative triad is often present in depression. It includes negative views about which three areas?",
+        "a": "the past, present, and future",
+        "b": "the self, family, and community",
+        "c": "the self, world, and future",
+        "d": "automatic thoughts, behaviors, emotions",
+        "e": ""
+    },
+    {
+        "id": "258",
+        "question": "A client presents with symptoms of depression, including feelings of hopelessness and lack of motivation. What is a key intervention strategy a social worker might employ from a CBT framework?",
+        "a": "Encourage the client to avoid engaging in activities that trigger their depressive symptoms.",
+        "b": "Contact a near by mobile crisis outreach team (MCOT).",
+        "c": "Collaboratively identify and challenge the client's negative thought patterns contributing to their feelings of hopelessness.",
+        "d": "Provide psychoeducation on depression from the DSM 5",
+        "e": ""
+    },
+    {
+        "id": "57",
+        "question": "Which of the following is the least true about core beliefs?",
+        "a": "They are rigid",
+        "b": "They are global",
+        "c": "They are situation specific",
+        "d": "They can be changed",
+        "e": ""
+    },
+    {
+        "id": "56",
+        "question": "Cognitions that are \u201csituation specific\u201d are most likely?",
+        "a": "Core beliefs",
+        "b": "Intermediate beliefs",
+        "c": "Automatic thoughts",
+        "d": "Schemas",
+        "e": ""
+    },
+    {
+        "id": "124",
+        "question": "A therapist is counseling a client who has thought patterns consisting of rapid responses to a situation without rational analysis. Which assessment data will the therapist document?",
+        "a": "\"Thought patterns are triggered by specific stressful stimuli",
+        "b": "Thought patterns contain the client's fundamental beliefs and assumptions.\"",
+        "c": "\"Thought patterns are flexible and based on personal experience.\"",
+        "d": "Thought patterns include a predominance of automatic and unfiltered thoughts.\"",
+        "e": ""
+    },
+    {
+        "id": "203",
+        "question": "Which of the following cognitive distortions involves viewing situations in terms of black-and-white categories, with no middle ground or shades of gray?",
+        "a": "Catastrophizing",
+        "b": "Overgeneralization",
+        "c": "All-or-nothing thinking",
+        "d": "Emotional reasoning",
+        "e": "Personalization"
+    },
+    {
+        "id": "155",
+        "question": "What is the typical path of a client's symptoms and overall well-being during the course of therapy?",
+        "a": "A consistent linear improvement from the beginning to the end of therapy.",
+        "b": "Fluctuations with periods of improvement and occasional setbacks.",
+        "c": "A gradual decline in symptoms until complete resolution.",
+        "d": "A rapid improvement within the first few sessions followed by stabilization.",
+        "e": ""
+    },
+    {
+        "id": "206",
+        "question": "Which of the following are NOT among the benefits of CBT?",
+        "a": "Brief and time-limited",
+        "b": "Easily adaptable",
+        "c": "Long-term",
+        "d": "Allows for cultural diversity",
+        "e": "Can be used in individual and group settings"
+    },
+    {
+        "id": "101",
+        "question": "Strengths-Based Cognitive Therapy Involves",
+        "a": "the use of constructive questions",
+        "b": "identifying client metaphors and imagery for change",
+        "c": "emphasis on client innovations and strengths",
+        "d": "all of the above",
+        "e": ""
+    },
+    {
+        "id": "127",
+        "question": "A welder has been selected as employee of the year. The welder wants to ask for a promotion but is hampered by poor self-esteem. Which is the best technique for the therapist to use to help the employee request the promotion?",
+        "a": "Socratic questioning",
+        "b": "Activity scheduling",
+        "c": "Cognitive rehearsal",
+        "d": "Distraction",
+        "e": ""
+    },
+    {
+        "id": "107",
+        "question": "What type of cognitive error involves forming conclusions based on an isolated detail of an event?",
+        "a": "Black and White Thinking",
+        "b": "Arbitrary Inference",
+        "c": "Self-defeated thinking",
+        "d": "Selective Abstraction",
+        "e": ""
+    },
+    {
+        "id": "125",
+        "question": "A successful business executive continually thinks her job accomplishments are not adequate. The therapist recognizes the client's thinking reflects which cognitive error?",
+        "a": "Mental filtering",
+        "b": "Dichotomous thinking",
+        "c": "Arbitrary inference",
+        "d": "Personalization",
+        "e": ""
+    },
+    {
+        "id": "108",
+        "question": "What type of cognitive error involves making assumptions on the basis of a single incident and applying them inapproriately to dissimailr events or settings?",
+        "a": "Black and White Thinking",
+        "b": "Selective Abstraction",
+        "c": "Overgeneralization",
+        "d": "Arbitrary Inference",
+        "e": ""
+    },
+    {
+        "id": "114",
+        "question": "What are some underlying sources of mental health problems, according to CBT?",
+        "a": "Faulty or maladaptive ways of thinking. Poor attachment with caregivers at a young age.",
+        "b": "Poor attachment with caregivers at a young age. Learned patterns of unhelpful behavior.",
+        "c": "Faulty or maladaptive ways of thinking. Learned patterns of unhelpful behavior.",
+        "d": "Birth Trauma. Poor attachment with caregivers at a young age.",
+        "e": ""
+    },
+    {
+        "id": "226",
+        "question": "Which cognitive distortion involves attributing personal responsibilities for events or outcomes that are outisde of ones control?",
+        "a": "Catastrophizing",
+        "b": "Personalization",
+        "c": "Blaming",
+        "d": "Cognitive dissonance",
+        "e": ""
+    },
+    {
+        "id": "52",
+        "question": "Which of the following is not one of the three main areas in which people have core beliefs:",
+        "a": "Themselves",
+        "b": "Others",
+        "c": "The word",
+        "d": "The future",
+        "e": ""
+    },
+    {
+        "id": "14",
+        "question": "Which of the following is NOT a recommended strategy for improving homework adherence?",
+        "a": "Help set up systems for helping the client remember to do the assignment",
+        "b": "Provide a rationale as to how and why the assignment might help",
+        "c": "Begin the homework in session",
+        "d": "Tailor the homework assignments to the specific client",
+        "e": "Inform clients that homework is a required component of CBT"
+    },
+    {
+        "id": "21",
+        "question": "What technique is used to discuss the validity of clients\u2019 thoughts and test out clients\u2019 predictions in real time?",
+        "a": "Reenactment",
+        "b": "Behavioral Activation",
+        "c": "Behavioral Experiment",
+        "d": "Exposure",
+        "e": ""
+    }
+]

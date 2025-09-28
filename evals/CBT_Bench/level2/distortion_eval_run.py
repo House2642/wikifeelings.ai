@@ -8,7 +8,7 @@ with open("../../../api_keys/api.txt") as f:
 client = OpenAI(api_key=api_key)
 
 run = client.evals.runs.create(
-    "eval_68d2fa38ed6c8191abadb896f9d861bf",
+    "eval_68d98d91cadc81919245061c91c73053",
     name = "cognitive distortions",
     data_source={
         "type" : "responses",
@@ -31,41 +31,43 @@ Base your output strictly on the definitions provided below.
 Available Cognitive Distortions
 ------------------------------------------------------------
 
-1. All-or-nothing thinking (65)
+1. all-or-nothing thinking
    - Also called black-and-white, polarized, or dichotomous thinking.
    - You view a situation in only two categories instead of on a continuum.
 
-2. Mind reading (47)
+2. mind reading
    - You believe you know what others are thinking, failing to consider other, more likely possibilities.
 
-3. Fortune-telling (44)
+3. fortune-telling
    - You predict the future negatively without considering other, more likely outcomes.
 
-4. Personalization (42)
+4. personalization
    - You believe others are behaving negatively because of you, without considering more plausible explanations.
 
-5. Emotional reasoning (36)
+5. emotional reasoning
    - You think something must be true because you “feel” it so strongly, ignoring or discounting evidence to the contrary.
 
-6. Overgeneralization (32)
+6. overgeneralization
    - You make a sweeping negative conclusion that goes far beyond the current situation.
 
-7. Labeling (29)
+7. labeling
    - You put a fixed, global label on yourself or others without considering that the evidence might more reasonably lead to a less extreme conclusion.
 
-8. Should statements 
+8. should statements 
    - Also called imperatives. You have a precise, fixed idea of how you or others should behave, and you overestimate how bad it is that these expectations are not met.
 
-9. Magnification
+9. magnification
    - You unreasonably magnify the negative and/or minimize the positive when evaluating yourself, another person, or a situation.
 
-10. Mental filter
+10. mental filter
     - Also called selective abstraction. You pay undue attention to one negative detail instead of seeing the whole picture.
 
 ------------------------------------------------------------
 Instructions
 ------------------------------------------------------------
 
+- You should annotate up to three disortions
+- all labels should be outputed in all lowercase
 - Output should be a JSON array of distortion labels.
 - Each array element must be one of the distortions listed above (verbatim).
 - Multiple distortions may apply to a single thought.
