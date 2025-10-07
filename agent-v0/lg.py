@@ -18,6 +18,8 @@ with open("../api_keys/openai_agent0.txt", "r") as f:
 
 llm = init_chat_model("openai:gpt-4.1")
 
+categorize_distortion = init_chat_model("openai:gpt-4.1"
+                                        )
 def chatbot(state: State):
     return {"messages": [llm.invoke(state["messages"])]}
 
