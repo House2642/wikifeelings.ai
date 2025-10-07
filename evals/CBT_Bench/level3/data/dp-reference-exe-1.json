@@ -1,0 +1,86 @@
+[
+    {
+        "id": "1_b_1",
+        "level": "beginner",
+        "client_statement": "[Curious] Is this approach helpful for people like me?",
+        "response": "Yes, this approach is generally quite helpful for people like you. This is a well-researched\napproach with substantial support for its effectiveness across a broad range of clients and\nproblems. Of course, each person is unique and experiences things differently. So, we\u2019ll\ntailor what we do to best fit your needs and preferences, and make sure that we prioritize\nchecking in to see what seems to be working or not working for you."
+    },
+    {
+        "id": "1_b_2",
+        "level": "beginner",
+        "client_statement": "[Curious] How does therapy work?",
+        "response": "That\u2019s a great question! In cognitive behavioral therapy, we\u2019ll be looking at your\ncognitions\u2014that is, your thoughts and your behaviors\u2014to identify whether I can teach you\nsome skills for managing them that will help you address some of the problems you are\nwanting help with. Does that help answer your question?"
+    },
+    {
+        "id": "1_b_3",
+        "level": "beginner",
+        "client_statement": "[Nervous] I\u2019ve never been in therapy before. What do we talk about here?",
+        "response": "We\u2019ll likely talk about a variety of things. Ultimately, we want to focus on what\u2019s most\nimportant to you. We\u2019ll set goals for treatment; I\u2019ll teach you skills for noticing and\nmodifying thoughts and behaviors; you\u2019ll do homework to practice; we\u2019ll set an agenda\nat the beginning of each session and take up concrete, specific things you want help\nwith; and we\u2019ll monitor progress as we proceed, making adjustments if we do not get the\nprogress we want."
+    },
+    {
+        "id": "1_b_4",
+        "level": "beginner",
+        "client_statement": "[Nervous] I\u2019ve never been in therapy before. Do we just talk about my past or upbringing?",
+        "response": "I can appreciate that therapy may be a bit of a mystery to you. I am interested in your\nhistory. In general, CBT emphasizes current and future experiences, though we may need\nto discuss your past experiences to help us contextualize the present."
+    },
+    {
+        "id": "1_m_1",
+        "level": "intermediate",
+        "client_statement": "[Confused] I\u2019m not sure I understand how talking about my feelings will help.",
+        "response": "This is very common concern, and I appreciate you sharing it. Our intention won\u2019t be to\ntalk about your feelings simply for the sake of talking about your feelings. Rather, we want\nto help you experience your feelings in new ways. This will help you reflect on them more\nobjectively and respond to them in a more adaptive way to get your needs met and live\nthe type of life that you want to live."
+    },
+    {
+        "id": "1_m_2",
+        "level": "intermediate",
+        "client_statement": "[Nervous] I have a hard time with organization, so I\u2019m worried about doing all of the\nhomework correctly.",
+        "response": "I understand your concern and would like, first, to clarify the exact nature of it. In general,\nbefore we send you out the door with an assignment, we\u2019ll spend some time thinking\nabout what might make it hard for you to do and figure out a strategy or two to help with\nthat. How does that sound?"
+    },
+    {
+        "id": "1_m_3",
+        "level": "intermediate",
+        "client_statement": "[Dismissive] I\u2019m not sure this is the right thing for me.",
+        "response": "I think that\u2019s really important to acknowledge. I\u2019d like to better understand what\u2019s behind\nyour concerns. I can say it\u2019s pretty common for people to be uncertain about whether\ntherapy is the right option for them, whether therapy in general or of a particular type.\nBased on what I\u2019ve heard thus far, I believe that therapy could help you, but I want to help\nyou make an informed choice that is going to best meet your needs at this time."
+    },
+    {
+        "id": "1_m_4",
+        "level": "intermediate",
+        "client_statement": "[Nervous] The things that you\u2019re saying make sense. I can see how this way of working\nwould be helpful to other people, but I\u2019m not sure it is a good fit for me.",
+        "response": "I appreciate that you\u2019re sharing your uncertainty. If it\u2019s OK with you, I\u2019d like to spend some\ntime exploring what, in particular, seems like less of a fit. It seems like it would be good for\nus to lay out or talk about a range of types of therapies so you can make a decision about\nwhich might be the best fit. I suggest we put that on our agenda for our session today.\nHow does that sound?"
+    },
+    {
+        "id": "1_m_5",
+        "level": "intermediate",
+        "client_statement": "[Afraid] I\u2019ve had bad experiences in therapy before, and I\u2019m unsure if it\u2019s really helpful. How\nis this going to be different?",
+        "response": "Given your bad experiences, I can see why you might be skeptical. Frankly, I think every\ncourse of therapy is different, and there\u2019s a lot of potential for this to be different for you.\nI think it would be important to discuss your previous experiences with therapy, in\nparticular what was unhelpful, and what, if anything, was at least somewhat helpful. How\ndoes that sound?"
+    },
+    {
+        "id": "1_m_6",
+        "level": "intermediate",
+        "client_statement": "[Impatient] How long will it take for this to work? I don\u2019t have a lot of time or money.",
+        "response": "That\u2019s an important question that\u2019s somewhat difficult to answer. I realize this might be\nfrustrating to hear, but it depends. This approach to therapy is generally built on a shorter\nterm model that has a track record of effectiveness, but each person is unique. We\u2019ll be\nmonitoring progress at every session and would expect to see improvement by six or eight\nsessions. If we don\u2019t, we\u2019ll want to discuss whether any changes are needed."
+    },
+    {
+        "id": "1_a_1",
+        "level": "advanced",
+        "client_statement": "[Afraid] I\u2019ve had bad experiences in therapy before. My last therapist tried to make me talk\nabout and visualize my past traumas. I ended up in the hospital! How can I know that I can\ntrust you?",
+        "response": "I\u2019m sorry to hear that you\u2019ve had negative experiences. That sounds really difficult, and I\nthink it\u2019s understandable for you to ask that question. First, I think it\u2019s important to be clear\nthat you\u2019ll never be \u201cforced\u201d to do anything in our work together. Without necessarily\ngoing into the content of your past traumatic experiences, it would be helpful to hear a\nbit more about the nature of the work that you were doing with your previous therapist\nand the circumstances around your hospitalization. I also suggest that we prioritize today\ndiscussing how to develop and maintain trust in our work. How does that sound?"
+    },
+    {
+        "id": "1_a_2",
+        "level": "advanced",
+        "client_statement": "[Helpless] I was abused when I was a child, and recently I can\u2019t stop thinking about it.\nMy boyfriend tries to help me be positive, but I can\u2019t stop feeling depressed. Sometimes\nI think it would be easier for everyone if I was dead.",
+        "response": "I imagine that feels pretty overwhelming. Sometimes you think it would be easier for\neveryone if you were dead. I don\u2019t want to put words in your mouth, but it sounds like\nthere may be other times when there is still some hope\u2014for example, the part that\nbrought you here today. Can we examine the thought that it might be easier for everyone\nif you were dead?"
+    },
+    {
+        "id": "1_a_3",
+        "level": "advanced",
+        "client_statement": "[Angry] My doctor said I have to come see you about my \u201canger problem.\u201d Sometimes\nwhen I get really angry, I lose control and hit people. I just get so angry when people say\nstupid things! Are you sure that you will be able to help me with this?",
+        "response": "It sounds like you\u2019re angry now. Let\u2019s talk about your concerns about whether you are\ngoing to get the help you want. We can put that on our agenda for today. I\u2019d also like to\ntalk with you about how we can make a plan for if or when you feel angry in here. Could\nwe talk about that today too? First, though, I\u2019d like to get a better sense for the degree to\nwhich you think you have an anger problem?"
+    },
+    {
+        "id": "1_a_4",
+        "level": "advanced",
+        "client_statement": "[Concerned] I really need to know why I am the way I am now. I think understanding my\npast and childhood is really important, but it sounds like this approach doesn\u2019t get into\nany of that?",
+        "response": "This is an important point of clarification. I actually agree that the past is important, and\npast experience is still relevant to this approach. Although we tend to focus on the present\nand what is going on now, your past is by no means \u201coff limits.\u201d In fact, we will probably\nneed to discuss your past experiences to better understand your present life. If and when\nthat seems most relevant, we will go there, while making sure that we connect things to\nwhat is most helpful for you now. Does that seem like a good fit for your interests?"
+    }
+]

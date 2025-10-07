@@ -1,0 +1,98 @@
+[
+    {
+        "id": "2_b_1",
+        "level": "beginner",
+        "client_statement": "[Calm] I just want to be happier.",
+        "response": "Being happier sounds like a reasonable goal to me. I wonder, though, if we can break it\ndown a bit into something more concrete. For example, what would it look like to be\nhappier? How, precisely, might your life be different?"
+    },
+    {
+        "id": "2_b_2",
+        "level": "beginner",
+        "client_statement": "[Curious] Geez. I don\u2019t even know where to start in picturing my happiness.",
+        "response": "I can appreciate that. Perhaps we can start by narrowing the focus a bit. How will we know\nif you\u2019re happier, say, one month from now? What would be a good indication of that?"
+    },
+    {
+        "id": "2_b_3",
+        "level": "beginner",
+        "client_statement": "[Nervous] I just don\u2019t want to feel anxious anymore. I\u2019m tired of it.",
+        "response": "I know it\u2019s exhausting, and no one can blame you for having that goal. In cases like yours,\nwe want to get the anxiety to more manageable levels. Is it more accurate to say that\nyou have a goal of reducing anxiety? Or do you want to eliminate it altogether\u2014never\nfeel anxious?"
+    },
+    {
+        "id": "2_b_4",
+        "level": "beginner",
+        "client_statement": "[Curious] How long will this take?",
+        "response": "That\u2019s an important question, and the answer is, it depends, in part based on your goals and\npreferences. I can say that this therapy will not be indefinite because we\u2019ll work to give you\nthe skills to become your own therapist and carry forward the work independently. Tell me\nmore about your question. Are you worried about being here forever?"
+    },
+    {
+        "id": "2_b_5",
+        "level": "beginner",
+        "client_statement": "[Nervous] You\u2019re the expert, so I\u2019ll defer to what you think is best.",
+        "response": "I suppose in some ways I\u2019m an expert, but I want to avoid unilaterally dictating your goals\nand how we go about achieving them. Further, you\u2019re the expert on you, including what\nyou need and your preferences for our work together. I have some ideas about this but\nthink it would be best to discuss and plan together. Sound OK to you?"
+    },
+    {
+        "id": "2_m_1",
+        "level": "intermediate",
+        "client_statement": "[Nervous] I guess I was expecting that we\u2019d just talk about whatever came to my mind on\na given week.",
+        "response": "We do want to prioritize what\u2019s most important for you. In fact, we\u2019ll work together today\nto develop a general road map for your therapy, while collaboratively establishing an\nagenda each session. We might find that some recurring themes emerge and drive our\nwork (more so than just what comes to mind). Does that make sense?"
+    },
+    {
+        "id": "2_m_2",
+        "level": "intermediate",
+        "client_statement": "[Confused] I\u2019m not sure I want to do homework or exercises in here.",
+        "response": "As we\u2019ve discussed, the CBT approach tends to emphasize learning by doing\u2014in particular,\ntrying things out in between sessions, in your daily life. Although each person is different,\nit can be difficult to translate or generalize the work we do in here to your day-to-day life\nwithout trying out new things and applying them outside of here. Now, that can look a\nlot of different ways, depending on your preferences and the given week. Perhaps we can\ndiscuss some of your concerns and expectations regarding homework?"
+    },
+    {
+        "id": "2_m_3",
+        "level": "intermediate",
+        "client_statement": "[Weeping] I just can\u2019t imagine anything changing. I feel so hopeless.",
+        "response": "I can see how it\u2019s hard to picture how things might be different, and at this point, there\nmight be a part of you that\u2019s overwhelmed by the work that\u2019s ahead. And there is another\npart that brought you here today, and that reality is not trivial and gives me hope for you.\nPerhaps this feeling of hopelessness is itself a problem worth working on (i.e., to reduce or\novercome) as a goal in here. Do you have thoughts on that?"
+    },
+    {
+        "id": "2_m_4",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I don\u2019t think I want to do any exposure.",
+        "response": "I hear that. If it\u2019s OK with you, we can spend some time talking about what exposure work\nwould look like and discuss your concerns. We also have other options to discuss."
+    },
+    {
+        "id": "2_m_5",
+        "level": "intermediate",
+        "client_statement": "[Agitated] Honestly, my main problem is my partner.",
+        "response": "I\u2019d like to hear more details about that. If relationship issues are most concerning to you,\nwe can focus our work on that area. In our individual work together, we\u2019ll need to focus on\nthings that you can change. Part of our session today can be brainstorming what some of\nthose things might be."
+    },
+    {
+        "id": "2_m_6",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I want to get a job, find a new partner, lose weight, be happier and less anxious,\nbe more outgoing, and work on some my grief issues.",
+        "response": "Those all sound like worthwhile goals to me. Is there a way to identify some common\nthreads and/or prioritize one or two of these to start? I wonder if some overlap or relate to\neach other?"
+    },
+    {
+        "id": "2_a_1",
+        "level": "advanced",
+        "client_statement": "[Impatient] I think there\u2019s a problem with my brain and I might just need medication.",
+        "response": "Some people with similar problems do benefit from medication, or a combination of CBT\nand medication. Although biology is important, I\u2019m not sure I\u2019d frame this as a problem\nwith your brain. Even if we did stipulate this, CBT can also change your brain. Shall we\nspend a few minutes discussing your options?"
+    },
+    {
+        "id": "2_a_2",
+        "level": "advanced",
+        "client_statement": "[Irritated] I can\u2019t commit to coming in here each week. My schedule is unpredictable,\nand I don\u2019t have a car.",
+        "response": "That\u2019s important to know. The evidence seems to show that more consistent, weekly\nsessions is best, on average. Can we discuss your concerns in more detail and brainstorm a\nplan to support your ability to make it to sessions, as well as how we\u2019ll communicate about\nthis as things come up?"
+    },
+    {
+        "id": "2_a_3",
+        "level": "advanced",
+        "client_statement": "[Irritated] I don\u2019t think this is going to work, so I\u2019m not sure setting goals matters.",
+        "response": "I think we should explore your valid concerns about therapy, and what it might mean for\ntherapy to \u201cwork\u201d or \u201cnot work.\u201d Are you open to discussing this further?"
+    },
+    {
+        "id": "2_a_4",
+        "level": "advanced",
+        "client_statement": "[Angry] You just need goals to write down for the insurance companies so you get paid\nfor this.",
+        "response": "OK, so if I\u2019m understanding you, you\u2019re suggesting that I\u2019m asking to set goals for reasons\nother than that they\u2019ll be helpful to you. Is that right? It seems like you\u2019re concerned about\nme being really committed to you. You deserve to feel confident your therapist is really\nconcerned about you, not just getting paid, so let\u2019s put this on the agenda and talk about\nit. Would that be OK?"
+    },
+    {
+        "id": "2_a_5",
+        "level": "advanced",
+        "client_statement": "[Angry] It\u2019s hard to come up with goals because I\u2019m not really sure what we\u2019re doing in\nhere.",
+        "response": "That\u2019s important to hear, and I can see how that might make it hard to come up with goals!\nJust to clarify, is the uncertainty about therapy in general or the CBT model that we\u2019ve\nstarted to introduce? It might seem a bit backward, but identifying potential goals can also\ninform what we do in here."
+    }
+]

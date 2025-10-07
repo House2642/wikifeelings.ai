@@ -1,0 +1,92 @@
+[
+    {
+        "id": "9_b_1",
+        "level": "beginner",
+        "client_statement": "[Frustrated] Well, I\u2019m not really sure about it, but I guess I\u2019ll give the thought record\nanother shot if you think that\u2019s best.",
+        "response": "Well, we certainly can do one together. However, I get the feeling that maybe you\u2019re just\nagreeing to do it because I suggested it. Like you\u2019re going along with it but maybe aren\u2019t\nso sure it makes sense right now? Is that on- or off base?"
+    },
+    {
+        "id": "9_b_2",
+        "level": "beginner",
+        "client_statement": "[Withdrawn] I\u2019m not sure where to start, or what to prioritize on today\u2019s agenda. Sorry.",
+        "response": "Oh, I see. Putting agendas aside for a moment, I\u2019m having a sense that you are somewhat\ndistant me from today . . . less engaged than typical. Is that your sense too?"
+    },
+    {
+        "id": "9_b_3",
+        "level": "beginner",
+        "client_statement": "[Sad, withdrawn] I just don\u2019t know what to say or do anymore . . . to you\u2014or anyone.",
+        "response": "That sounds really hard, like being at your wit\u2019s end. Can you help me understand what it\nfeels like for you? I\u2019m really invested in understanding your experience so that we can get\non the same page of how to use our time effectively."
+    },
+    {
+        "id": "9_b_4",
+        "level": "beginner",
+        "client_statement": "[Exasperated] I feel like you\u2019ve been hearing me wrong since we started. You don\u2019t seem\nto understand what I mean. Are you even listening?",
+        "response": "I can hear your frustration with me, which makes complete sense given that it feels like I\u2019ve\nnot been listening to you. I fear that I\u2019ve probably been too focused on how to solve the\nproblem, that I neglected to hear the problem accurately. That\u2019s on me, and I will try to do\nbetter. Can you say more about what I\u2019ve gotten wrong?"
+    },
+    {
+        "id": "9_b_5",
+        "level": "beginner",
+        "client_statement": "[Surprised] That was a really abrupt ending last session. I know we only have an hour,\nbut I was kind of in the middle of something. That\u2019s been on my mind ever since. I even\nconsidered not coming today . . . I guess I\u2019ve been a little pissed off about it.",
+        "response": "I really appreciate you coming today and bringing this up. I bet it wasn\u2019t easy, but it\nsounds like I really hurt you. You\u2019re absolutely right that in holding us to our time, I missed\nthe boat on what you needed. If you\u2019re willing, I\u2019d like to discuss this now, as it seems like\na really important relationship issue for us."
+    },
+    {
+        "id": "9_m_1",
+        "level": "intermediate",
+        "client_statement": "[Challenging] Are you all here today? No offense, doc, but your mind seems elsewhere.",
+        "response": "I was definitely not aware of having that effect on you, but I\u2019m really glad you pointed it\nout. I\u2019d like to take a moment to notice my experience; it\u2019s certainly possible that I\u2019ve been\nless attentive today. Have there been other times you\u2019ve noticed this?"
+    },
+    {
+        "id": "9_m_2",
+        "level": "intermediate",
+        "client_statement": "[Frustrated] Whelp, the homework was another big swing and miss. Made no sense.\nCan we not do that one again?",
+        "response": "I can see that the homework is adding more stress. In fact, I realize that I did not explain\nits rationale clearly. It may also be that this assignment was less relevant to your most\npressing needs. I apologize, and I\u2019d like to discuss what does seem more relevant and\npersonally suitable."
+    },
+    {
+        "id": "9_m_3",
+        "level": "intermediate",
+        "client_statement": "[Frustrated] I just don\u2019t think you\u2019re equipped to help me. The whole \u201ccognitive triad\u201d\nthing, or whatever you called it, seems bogus.",
+        "response": "It must be troubling to have such doubts, especially a few sessions into our work. Let\u2019s put\nour CBT frame aside for now. What\u2019s it like to see me as incapable of helping?"
+    },
+    {
+        "id": "9_m_4",
+        "level": "intermediate",
+        "client_statement": "[Angry] Now you just seem to be playing a psychologist . . . like the clich\u00e9 ones on TV.\nBut I guess you\u2019re the expert, so tell me what\u2019s next please.",
+        "response": "That cannot feel good. Maybe it even feels like I\u2019m being disingenuous. As for expertise,\nI know that you know yourself better than anyone, so if I\u2019m falling short in your eyes, that\u2019s\nthe most important perspective. Can we discuss that?"
+    },
+    {
+        "id": "9_m_5",
+        "level": "intermediate",
+        "client_statement": "[Irritated] My mother was trying to remind me to \u201ccheck in\u201d on my thoughts and breathing\nyesterday. So annoying. People are always trying to solve my problems without possibly\nbeing able to understand what I\u2019m going through.",
+        "response": "That stinks. Actually, it\u2019s occurring to me that maybe it feels like I do that sometimes too?\nMaybe when suggesting an agenda or homework assignment? Or when we explore your\nthoughts together in session? Does that happen with us?"
+    },
+    {
+        "id": "9_a_1",
+        "level": "advanced",
+        "client_statement": "[Angry] My partner cheated on me. And, no, there is no alternative explanation, so stop\nasking that! He cheated, so our relationship was a lie!",
+        "response": "I can feel that you\u2019re very angry at me right now. My words must have hurt you; can you tell\nme more about this?"
+    },
+    {
+        "id": "9_a_2",
+        "level": "advanced",
+        "client_statement": "[Anxious] I did the measure you asked me to fill out. Honestly, I think I might have rated\nyou lower than usual, but I\u2019m not sure I want to talk about it.",
+        "response": "I was just noticing that your trust in me has gone down some. I wonder if you could help\nme appreciate what that\u2019s like for you? I\u2019d far prefer that to just persisting with our agenda\nwhen you may have diminishing faith in it or me."
+    },
+    {
+        "id": "9_a_3",
+        "level": "advanced",
+        "client_statement": "[Angry] You\u2019re the worst. You keep asking me to interpret the situation in different ways,\nlike my perspective is always wrong. It\u2019s like you\u2019re calling me a liar. My last therapist would\nnot have called me a liar.",
+        "response": "It seems that in suggesting different ways to interpret your situation, it felt like I was calling\nyou a liar. That must have hurt you terribly. I apologize for being insensitive with my words."
+    },
+    {
+        "id": "9_a_4",
+        "level": "advanced",
+        "client_statement": "[Defeated] To be honest, I wouldn\u2019t expect you to ever really get me.",
+        "response": "I imagine that creates a real bind for you. I know you come here to get help, but then the\nperson who is trying to help is limited. What does that feel like?"
+    },
+    {
+        "id": "9_a_5",
+        "level": "advanced",
+        "client_statement": "[Irritated] Well, I guess the homework you\u2019re suggesting makes some sense, but I\u2019m\nalso easily irritated lately . . . especially when things are unclear for me and when they\u2019re\noverwhelming.",
+        "response": "It seems that what\u2019s frustrating to you is not only that the homework is unclear, but\nperhaps that I\u2019ve asked you to do too much. This is definitely a misstep on my part, and I\u2019d\nreally like to work together to find activities that are clear and not overwhelming. Can we\ndiscuss that together today?"
+    }
+]

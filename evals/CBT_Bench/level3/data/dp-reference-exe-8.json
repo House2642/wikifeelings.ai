@@ -1,0 +1,98 @@
+[
+    {
+        "id": "8_b_1",
+        "level": "beginner",
+        "client_statement": "[Anxious] I\u2019m not ready to try the next item on my exposure hierarchy.",
+        "response": "OK. As we discussed, the plan is not completely encased in stone. Before we consider an\nadjustment, can we explore what might be concerning you about this?"
+    },
+    {
+        "id": "8_b_2",
+        "level": "beginner",
+        "client_statement": "[Anxious] I don\u2019t think I\u2019m ready to do all of what you\u2019re asking me to do before the\nnext session.",
+        "response": "Thanks for letting me know. Let\u2019s figure out something that will be more manageable and\nhelpful for you."
+    },
+    {
+        "id": "8_b_3",
+        "level": "beginner",
+        "client_statement": "[Frustrated] I don\u2019t like this breathing stuff. The experience monitoring was more helpful.",
+        "response": "OK. Each person is different, and some things are experienced as more helpful than others.\nI\u2019d like to hear more about what you don\u2019t like about the breathing work. We can certainly\nadjust to focus more on the experience monitoring if that is more helpful."
+    },
+    {
+        "id": "8_b_4",
+        "level": "beginner",
+        "client_statement": "[Excited] You won\u2019t believe what happened this week!",
+        "response": "It sounds like you\u2019ve been going through a lot recently. I wonder if we can find a way to\ndiscuss what\u2019s going on, and also have time to keep working on the things we\u2019ve identified\nto work on so you can get better in the long run. In terms of an agenda, how about if we\ntake some of our time today to review the recent events and some of our time to keep\nworking on the skills we\u2019ve been discussing?"
+    },
+    {
+        "id": "8_b_5",
+        "level": "beginner",
+        "client_statement": "[Frustrated] I know I said I would go to the event and start a conversation with new\npeople, but I only managed to say \u201chello\u201d to one person.",
+        "response": "It seems like you might be a bit disappointed by this, but I see this as significant progress.\nIt was a big accomplishment to show up to the event in the first place and then say hello\nto someone you don\u2019t know. Let\u2019s talk about what that was like."
+    },
+    {
+        "id": "8_m_1",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I know the plan was to review my monitoring, but I learned yesterday that I might\nlose my job.",
+        "response": "I\u2019m very sorry to hear that. I want to be sure that we give you space to talk about that in\nhere. We can table some or most of what we planned for today, and we might actually find\na way to incorporate aspects in our discussion."
+    },
+    {
+        "id": "8_m_2",
+        "level": "intermediate",
+        "client_statement": "[Agitated] I\u2019d go into what happened back then, but I know that we focus on the present\nin this therapy.",
+        "response": "You\u2019re right that we focus more on the present in this approach, but that doesn\u2019t mean\nthat your past experience is irrelevant. If it seems important to you, I\u2019d like to hear more\nabout what happened, and we can tie that back to what is going on now."
+    },
+    {
+        "id": "8_m_3",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I guess I haven\u2019t brought up religion in here yet; I\u2019ve been unsure about\ndoing that.",
+        "response": "Do you have any spiritual or religious beliefs that are important to tell me about? I\u2019d like to\nclarify that this is not off-limits in here. We can be sure to attend to that area as part of the\nwork that we\u2019re doing if that is meaningful to you."
+    },
+    {
+        "id": "8_m_4",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I\u2019m uneasy about doing the homework, living with my extended family in such\na small place. It makes me uncomfortable.",
+        "response": "That\u2019s important to know, thanks. Let\u2019s brainstorm some adjustments that are likely to be\nmore workable."
+    },
+    {
+        "id": "8_m_5",
+        "level": "intermediate",
+        "client_statement": "[Hopeless, after completing a progress monitoring measure] I think the scores on the\nmeasure you asked me to complete are consistent with my experience so far. It feels like\nthings might actually be getting worse.",
+        "response": "That\u2019s important to acknowledge, even more so because it\u2019s being communicated in\nmultiple ways. I also understand that this might feel discouraging. Let\u2019s revisit our plan\nand talk about what, specifically, isn\u2019t working and what, if anything, might be working."
+    },
+    {
+        "id": "8_m_6",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I\u2019ve learned some new things. But I still feel tense all the time. I can\u2019t have a\nconversation with anyone without lashing out. I feel on edge and still can\u2019t really relax.",
+        "response": "I\u2019m glad we\u2019re having this conversation. My sense is that it will be useful to continue\nfollowing our general plan, but there are some other options that clients find helpful that\ncould help reduce some of your tension and are worth considering. If you\u2019re OK with\nthis, I\u2019d like us to spend the rest of today\u2019s session on some more targeted relaxation\nstrategies."
+    },
+    {
+        "id": "8_a_1",
+        "level": "advanced",
+        "client_statement": "[Matter of fact] I think my problems partly stem from the racism and disrespect that\nI experience at work.",
+        "response": "First, I\u2019m sorry to hear that you\u2019ve experienced that. Rather than compartmentalize or treat\nthat as something outside of the scope of therapy, we need to recognize the impact and\nintegrate that reality into the work we\u2019re doing."
+    },
+    {
+        "id": "8_a_2",
+        "level": "advanced",
+        "client_statement": "[Frustrated] I don\u2019t think I can commit to coming here every week.",
+        "response": "OK. Let\u2019s consider our options, and the potential costs and benefits for your treatment.\nWe might be able to come up with a plan that facilitates continuing to meet weekly."
+    },
+    {
+        "id": "8_a_3",
+        "level": "advanced",
+        "client_statement": "[Depressed] I wasn\u2019t able to do the trauma homework. I\u2019ve been feeling more depressed\nand sleeping a lot. I\u2019ve been late to work a few days this week.",
+        "response": "Being late for work is pretty unusual for you. It seems important to prioritize discussing\nyour mood today, and we can circle back to discussing the homework if that seems\nmost useful."
+    },
+    {
+        "id": "8_a_4",
+        "level": "advanced",
+        "client_statement": "[Excited] I found this article about a breakthrough medication for anxiety, and it seems like\nsomething I could try.",
+        "response": "It sounds like the article was of great interest, and part of you is curious if this option might\nwork for you. In general, it seems like it might be important to discuss the option of a\nmedication consultation and how that might fit with the work that we are doing in here."
+    },
+    {
+        "id": "8_a_5",
+        "level": "advanced",
+        "client_statement": "[Hopeless] To be honest, things haven\u2019t improved as much as I expected.",
+        "response": "I hear and appreciate that. Let\u2019s revisit our plan. Although we don\u2019t want to just keep\ndoing more of the same if it feels less helpful, we might simply need to adjust the initial\nexpectations regarding the number of sessions."
+    }
+]

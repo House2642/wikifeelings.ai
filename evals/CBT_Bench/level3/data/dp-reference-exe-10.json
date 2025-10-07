@@ -1,0 +1,92 @@
+[
+    {
+        "id": "10_b_1",
+        "level": "beginner",
+        "client_statement": "[Anxious] I really want to try testing some of my assumptions about what people think of\nme, but I\u2019m just not sure I\u2019m ready.",
+        "response": "And that\u2019s fine. Readiness is key. What if today we simply start by discussing what being\n\u201cready\u201d would look or feel like to you?"
+    },
+    {
+        "id": "10_b_2",
+        "level": "beginner",
+        "client_statement": "[Pessimistic] I know I agreed to this approach, and I understand what we\u2019re trying to do\nhere, but I\u2019m starting to doubt it\u2019s a good fit.",
+        "response": "I\u2019m so glad you told me this, as your outlook on therapy is central to it working. Let\u2019s shift\ngears for a moment, put aside our agenda, and just discuss what has or has not felt like a fit\nfor you. How does that sound?"
+    },
+    {
+        "id": "10_b_3",
+        "level": "beginner",
+        "client_statement": "[Reluctant] I have to admit to not doing the homework. I don\u2019t think I \u201cdistort\u201d my\nthoughts any more than the next person, so the assignment seemed a bit, well, silly\u2014\npardon my bluntness.",
+        "response": "No pardon needed. I truly see where you\u2019re coming from. The idea that thinking in\nextremes might contribute to your concerns doesn\u2019t really fit your experience. It makes\nsense, then, that the homework was off base. I wonder how it feels for me to have\nassigned it?"
+    },
+    {
+        "id": "10_b_4",
+        "level": "beginner",
+        "client_statement": "[Ambivalent] I apologize for missing sessions, but I just wasn\u2019t sure about coming back.\nI\u2019m not convinced I need to change all that much\u2014if anything.",
+        "response": "I see. I imagine it would be hard to come to session, especially if the goals no longer, or\nmaybe never, fit what you want or need. And it sounds like maybe you\u2019re still sorting that\nout. Putting what we\u2019ve done to date off to the side, can you say more about how your\nfeeling?"
+    },
+    {
+        "id": "10_b_5",
+        "level": "beginner",
+        "client_statement": "[Ambivalent] Well, I went to do the homework, but then it occurred to me that I shouldn\u2019t\ntry to reduce my worry too much. I mean it\u2019s stressful, but there are times it actually helps\nme stay on top of things . . . to be accountable.",
+        "response": "First, I appreciate you sharing this, as I imagine it wasn\u2019t easy. Second, it must be difficult\nto hold such competing feelings simultaneously. On the one hand, a lot of worrying stinks,\nbut, on the other, it can also serve a purpose. That seems to put you in a bind, and maybe\nwe\u2019ve been ignoring the side of you that sort of values your worrying. Does that fit your\nexperience?"
+    },
+    {
+        "id": "10_m_1",
+        "level": "intermediate",
+        "client_statement": "[Assertive] I do feel bad for missing sessions. I need to be in therapy. I need to get this\nstress under control. I just don\u2019t think we\u2019ve attacked it the right way.",
+        "response": "I can absolutely appreciate that. In fact, perhaps I pushed my CBT agenda too forcefully.\nSo, let\u2019s pause, or even stop, my direction. Instead, I wonder if you can help me understand\ndirections that you\u2019d be more optimistic about, whether it\u2019s something we\u2019ve discussed\nbefore or a new focus altogether?"
+    },
+    {
+        "id": "10_m_2",
+        "level": "intermediate",
+        "client_statement": "[Sad] I guess I\u2019m feeling hopeless. A part of me wants to change, but another part is afraid\nof who I\u2019ll be if I change too much.",
+        "response": "It must be so hard to carry around such internal tension. I don\u2019t think I fully appreciated\nboth sides of that coin. For anything we do in here to be useful, we need to honor all parts\nof yourself. If it\u2019s okay with you, maybe we can just discuss your experiences for a while,\nwithout any agenda or direction. Your feelings are very important to me."
+    },
+    {
+        "id": "10_m_3",
+        "level": "intermediate",
+        "client_statement": "[Frustrated] I don\u2019t like it when you ask me if I have \u201ccatastrophic thoughts.\u201d Aren\u2019t\ncatastrophes reserved for wars and natural disasters? So, no, I don\u2019t think I catastrophize.\nPlease don\u2019t ask again.",
+        "response": "It seems like my words upset you, and I totally get it. Here I am using a CBT term that\nI assumed would be relevant you, when in fact it\u2019s not. I really should not have made that\nassumption, and I\u2019ll do better to check in. In fact, I wonder if you find any part of focusing\non your cognitions to be useful?"
+    },
+    {
+        "id": "10_m_4",
+        "level": "intermediate",
+        "client_statement": "[Angry] I mean, of course, relaxation would be nice, but who can shut off their mind like\nthat? I\u2019m not even sure I\u2019d want to . . . I might just end up lazy and complacent! I don\u2019t\nknow . . . it\u2019s so frustrating.",
+        "response": "If I\u2019m hearing you, it sounds like the idea of practicing relaxation is a frustrating one. Do\nI have that right? To me, it\u2019s most important that you value the types of things we do in\ntherapy, so maybe we can discuss whether this task has any value to you right now."
+    },
+    {
+        "id": "10_m_5",
+        "level": "intermediate",
+        "client_statement": "[Relieved] I\u2019m glad you could see my reluctance about cognitive behavioral therapy! I think\nit started to feel more like a class than a treatment, which was unhelpful. I do want to work\non feeling better\u2014and thinking better [laughs]\u2014but sometimes I don\u2019t have a clear agenda\nor direction. In those times, just taking some space to talk freely helps me a lot.",
+        "response": "I\u2019m glad I asked too. I just sensed that we were not well aligned, and I\u2019m so glad\nI understand why. We can absolutely balance the structured and unstructured activities,\nas I too would prefer not to fall into a \u201clesson\u201d mode. So, how would you like to proceed\nnow, in this moment? I want to meet you where it\u2019s most useful, and please let me know\nwhenever that\u2019s not occurring, in case I miss it."
+    },
+    {
+        "id": "10_a_1",
+        "level": "advanced",
+        "client_statement": "[Withdrawn] Honestly, I don\u2019t know about CBT . . . almost seems a bit condescending.",
+        "response": "I can understand that. It must be upsetting to feel like I am talking down to you, and I can\nsee how some of the things we do might feel like that. I apologize, and I hope we can work\ntogether to think about next steps that meet your needs in a way that feels useful and not\ncondescending. I\u2019m really committed to that."
+    },
+    {
+        "id": "10_a_2",
+        "level": "advanced",
+        "client_statement": "[Angry] You seem so concerned with just finishing what\u2019s on your list before time runs out.\nI feel like I\u2019m just a plug-and-play client!",
+        "response": "I really appreciate your courage in pointing out this really important feeling. I imagine it has\nbeen painful to feel like I\u2019ve lost you in some of the details of the work. Very importantly,\nI\u2019d really like to change that."
+    },
+    {
+        "id": "10_a_3",
+        "level": "advanced",
+        "client_statement": "[Angry] Honestly, I just don\u2019t see how you can help me. I mean, sure, if I had your life\nmaybe I could sit around and relax at the end of everyday too, but I don\u2019t! In my life, I don\u2019t\nget to relax. So, I just don\u2019t see how you\u2019re going to be able to fix that for me.",
+        "response": "I\u2019m so glad that you told me how you\u2019ve been feeling. It sounds like I\u2019m not understanding\nwhat it\u2019s like to be you and that some of the suggestions that I\u2019ve made have been off\nthe mark for the demands that exist in your life. I can definitely see how that would be\nincredibly frustrating. I\u2019d really like to understand your perspective better. I think that doing\nso will help us work together to come up with some things that will be more personally\nhelpful for you. How does that sound?"
+    },
+    {
+        "id": "10_a_4",
+        "level": "advanced",
+        "client_statement": "[Defeated] You know, I\u2019ve felt a lot better these past few weeks, and I honestly wonder if\nit\u2019s because I stopped doing those exercises you gave me. I mean, maybe writing down\nmy thoughts and trying to relax is making me worse . . . maybe this is just who I am, and\nthis is the best that I can feel, and I just need to learn to live with that.",
+        "response": "I can hear in your voice how painful it is to feel like this might be the best you can ever feel.\nAnd, it sounds like one of the major reasons you\u2019re feeling this way is that the exercises I\u2019ve\ngiven you may be making things worse instead of better. So, I want to say that different\nstrategies work for different people, and there are all kinds of strategies that we can try to\nhelp you get to where you would like to be. Can we discuss what that might look for you?"
+    },
+    {
+        "id": "10_a_5",
+        "level": "advanced",
+        "client_statement": "[Angry] Actually, no, I don\u2019t want to set an agenda. I don\u2019t think that I want to keep doing\nthis stuff. I just don\u2019t see the point!",
+        "response": "Okay, let\u2019s pause the agenda, then. This is your therapy, and you are the best judge of what\ndoes and doesn\u2019t make sense for you. With that in mind, why don\u2019t we pause the stuff\nwe\u2019ve been working on and maybe you can tell me how you\u2019ve been feeling . . . about the\ntreatment and me."
+    }
+]

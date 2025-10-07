@@ -1,0 +1,98 @@
+[
+    {
+        "id": "5_b_1",
+        "level": "beginner",
+        "client_statement": "[Curious] I\u2019m still trying to get the hang of identifying my thoughts. What should I plan for\nnext week?",
+        "response": "Do keep in mind that this is something few of us do naturally. How about practicing\nthought records a bit more on your own, as I think this would be a good challenge?\nShall we develop a practice plan?"
+    },
+    {
+        "id": "5_b_2",
+        "level": "beginner",
+        "client_statement": "[Sad] I know I\u2019m a terrible mother.",
+        "response": "What do you mean when you say \u201cterrible mother\u201d? What information leads to that\nconclusion?"
+    },
+    {
+        "id": "5_b_3",
+        "level": "beginner",
+        "client_statement": "[Sad] I\u2019m a total failure.",
+        "response": "Let\u2019s focus on that thought. I wonder what you might say to a friend who told you\nsomething similar?"
+    },
+    {
+        "id": "5_b_4",
+        "level": "beginner",
+        "client_statement": "[Anxious] I know the job interview is going to go poorly; they always do.",
+        "response": "How do you typically determine whether or not an interview has gone poorly? Can you\nthink of an instance when, perhaps to your surprise, an interview didn\u2019t go as poorly as\nyou expected?"
+    },
+    {
+        "id": "5_b_5",
+        "level": "beginner",
+        "client_statement": "[Anxious] I don\u2019t really know anyone who will be at this party. I know I\u2019ll be miserable.",
+        "response": "It seems like you\u2019re certain of this. Setting aside the likelihood that you would, in fact, be\nmiserable, what would that be like, concretely, for you? What would be some signs that\nyou might actually be enjoying yourself, at least a little?"
+    },
+    {
+        "id": "5_m_1",
+        "level": "intermediate",
+        "client_statement": "[Impatient] You talk about the importance of thoughts . . . I\u2019m already very aware of my\nnegative thoughts.",
+        "response": "You\u2019re absolutely right that you live this every day and these thoughts are in your\nawareness. I was thinking that was actually a good thing, as it will help us as we work to\nfind new ways of responding to them. But you sound unhappy about being so aware of\nyour thoughts, so there is something else important here. Tell me more."
+    },
+    {
+        "id": "5_m_2",
+        "level": "intermediate",
+        "client_statement": "[Irritated] When we work through these thought records, it\u2019s not hard to come up with\nalternative evidence and thoughts, but it feels artificial and doesn\u2019t really make me\nfeel better.",
+        "response": "This is helpful, what you\u2019re telling me. I suggest we take a look at this thought record we\njust worked through and see if we can understand more about why it\u2019s not helping you.\nIt sounds like the practice of identifying alternatives feels disingenuous compared to your\ntypical automatic thoughts. We could start by asking for each of the alternative thoughts,\n\u201cHow much do you actually believe this thought?\u201d We can also take a look to see if there\nare any action plans you can make for things you can do that might help you feel better\nabout this situation. Or maybe we just need to bail out of thought records. Maybe they are\nnot the right tool for you."
+    },
+    {
+        "id": "5_m_3",
+        "level": "intermediate",
+        "client_statement": "[Sad] I was feeling hopeless and didn\u2019t want to come in today.",
+        "response": "What was going through your mind when you noticed feeling hopeless? What ultimately\nled to your coming?"
+    },
+    {
+        "id": "5_m_4",
+        "level": "intermediate",
+        "client_statement": "[Annoyed] How will focusing more on these negative thoughts and feelings make me feel\nbetter rather than just feel worse?",
+        "response": "We want to help you focus on your thoughts in a new way, almost like a detective building\na case for how true or untrue they are. We don\u2019t want you to just spend more time\nfeeling bad or focusing on painful thoughts; rather, there are different ways to monitor\nyour thoughts that can provide helpful information that you may typically overlook. Such\nreflection might help you see things more complexly, or from different angles, which can\nalso help you experience things differently. Does that make sense?"
+    },
+    {
+        "id": "5_m_5",
+        "level": "intermediate",
+        "client_statement": "[Frustrated] I don\u2019t know... when things get intense, I just act. I don\u2019t have any thoughts; I just act or react.",
+        "response": "I see. It happens so quickly that you just react. It\u2019s true that the thoughts connected to our\nemotions and behaviors aren\u2019t always so clear or explicit. Yet if we train ourselves to step\nback for a moment and work backward from your reaction, I wonder if we might notice\nyour thinking. In doing so, we might get a better sense of why you feel the way you do in\nthese moments."
+    },
+    {
+        "id": "5_a_1",
+        "level": "advanced",
+        "client_statement": "[Frustrated] My boss\u2019s evaluation of me was devastating. I\u2019m at a loss. There is no other\nperspective on this.",
+        "response": "It sounds like you might be feeling helpless. If I was convinced that my boss\u2019s evaluation\nof me was devastating, I might feel helpless too. Maybe we can see if there is or is not\nanother perspective on this? Let\u2019s explore what happened in more detail."
+    },
+    {
+        "id": "5_a_2",
+        "level": "advanced",
+        "client_statement": "[Angry] You\u2019re telling me that if my partner died, I should be fine with it?!",
+        "response": "Oh, my goodness; no. I\u2019m so sorry I was unclear. Let me try again. If we\u2019re tracking your\nexperience, we can identify the situation \u201cmy partner died\u201d; thoughts such as \u201cThis is\nhorrible. My life is over, I\u2019ll never be happy again. I\u2019ll be alone forever\u201d; and emotions of\npain, grief, loss, hopelessness, helplessness. . . . OK, so now here is the question I have for\nyou. Let\u2019s focus on these emotions. What is causing you to have them? Is it the situation?\nOr is it the thoughts?"
+    },
+    {
+        "id": "5_a_3",
+        "level": "advanced",
+        "client_statement": "[Frustrated] Why do you just keep asking questions, over and over again? It\u2019s really\nfrustrating not to get anything more direct from you.",
+        "response": "I think I understand your frustration, and some people can have this reaction to this type\nof work. I could have been more sensitive to this. The cognitive technique we\u2019re using is\ncalled guided Socratic discovery, and I can explain a bit more about how it works and why\nI\u2019m asking all of these questions."
+    },
+    {
+        "id": "5_a_4",
+        "level": "advanced",
+        "client_statement": "[Happy] I did what you suggested about my thoughts, and it really helped in the moment.\nEvery time I had a negative thought, I just told myself the opposite.",
+        "response": "It sounds like continued practice with identifying thoughts and coming up with alternative\nappraisals felt helpful, and I\u2019m glad to hear that. I might reframe this work slightly, however.\nConsidering the opposite can be a useful place to start, and we can also expand this to\nconsidering a number of alternative appraisals or interpretations that could enhance the\nflexibility of our thinking. Let\u2019s actually take an example from this past week, shall we?"
+    },
+    {
+        "id": "5_a_5",
+        "level": "advanced",
+        "client_statement": "[Angry] I don\u2019t like this or find it helpful. My thoughts aren\u2019t irrational or baseless,\nso I actually find it kind of invalidating and insulting.",
+        "response": "I appreciate you sharing this understandable feeling. It would be invalidating to have\nsomeone (including me) label your thoughts as irrational and baseless. To be sure, I\u2019d like\nus both to assume that there is a way to understand the genuine bases of your thinking\npatterns, and how these are connected with other parts of your experience. Would you\nbe open to exploring in more detail an example of when it felt like I was implying that\nyour thoughts are invalid or baseless and work to find out what was contributing to\nthat experience?"
+    },
+    {
+        "id": "5_a_6",
+        "level": "advanced",
+        "client_statement": "[Anxious] I know I sometimes think in extremes, but what if the worst thing actually did\nhappen? It could.",
+        "response": "I hear you. Sometimes our biggest fears or concerns do rear their ugly head. Can you give\nme an example of a \u201cworst thing\u201d? Let\u2019s say it did occur, what\u2019s the absolute worst effect\non you? Any sense of how you might cope?"
+    }
+]

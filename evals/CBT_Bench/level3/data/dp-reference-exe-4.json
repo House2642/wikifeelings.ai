@@ -1,0 +1,104 @@
+[
+    {
+        "id": "4_b_1",
+        "level": "beginner",
+        "client_statement": "[Pleased] I feel like I\u2019m getting the hang of objective monitoring.",
+        "response": "That\u2019s great. It\u2019s important to keep in mind that this is a skill, and something that few of us\ndo naturally. Now that we\u2019ve spent some time on this together, what do you think about\npracticing this a bit more on your own, between now and our next session? As we\u2019ve\ndiscussed, this is common practice in CBT, and people often find it very useful, even if\nsometimes challenging. Shall we come up with a plan for that?"
+    },
+    {
+        "id": "4_b_2",
+        "level": "beginner",
+        "client_statement": "[Curious] I\u2019m still trying to get the hang of identifying my thoughts. Should I plan for\nanything next week?",
+        "response": "Sure, I hear you are still learning to identify your thoughts. Here\u2019s an idea: If I give you a\nthought record, would you be able to focus on an upsetting situation and write down the\nemotions and thoughts you have in that situation, just like we\u2019ve done in here together?"
+    },
+    {
+        "id": "4_b_3",
+        "level": "beginner",
+        "client_statement": "[Curious] OK, what do we do now that we\u2019ve created an exposure hierarchy?",
+        "response": "The next step is to actually start working on the items on the hierarchy. I think you\u2019re ready\nto try this on your own over the next week. Let\u2019s start with the first item. Does that seem\nlike something you could try next week?"
+    },
+    {
+        "id": "4_b_4",
+        "level": "beginner",
+        "client_statement": "[Nervous] What do we do next with this exposure thing?",
+        "response": "We\u2019ve talked about how we want to translate or extend what we do in here to your life\noutside of here. If it works for you, I suggest we spend our remaining minutes thinking\nabout and planning for the next week. Let\u2019s find something on your hierarchy that you can\naim for between today and our next session. It can be useful to have a few related options\nthat slightly vary in expected difficulty. You might surprise yourself! Sound good?"
+    },
+    {
+        "id": "4_b_5",
+        "level": "beginner",
+        "client_statement": "[Curious, after emotion monitoring homework was assigned at the end of the previous\nsession] Where should we start today?",
+        "response": "Toward the end of our last session, we made a plan for you to practice monitoring your\nemotions over the past week. I suggest we take some time to talk about how that went\nand what you noticed. How does that sound?"
+    },
+    {
+        "id": "4_m_1",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I\u2019m not sure I\u2019m ready to do this on my own.",
+        "response": "I totally get it. This is new and far from easy, so I\u2019m not surprised that you\u2019re unsure. If\nthis was a \u201cslam dunk,\u201d we probably wouldn\u2019t spend too much of your time on it. On the\none hand, we want to push beyond your comfort zone a bit, but on the other hand, we\nalso don\u2019t want to blow right past it if that isn\u2019t going to be helpful. Let\u2019s take a moment\nto discuss some of your concerns and come up with a plan that seems workable. I would\nespecially like to discuss what you would most like to work on before next session."
+    },
+    {
+        "id": "4_m_2",
+        "level": "intermediate",
+        "client_statement": "[Anxious] I have a hard time with organization, so I\u2019m worried about doing all of the\nhomework correctly",
+        "response": "That\u2019s a pretty common concern. Let\u2019s come up with ways to help support your work this\nweek. Regarding doing all of the homework correctly, although we want to be on the same\npage, honest mistakes invariably create useful learning opportunities. It might sound weird,\nbut part of me actually wants you to make some mistakes because we often learn best\nfrom them."
+    },
+    {
+        "id": "4_m_3",
+        "level": "intermediate",
+        "client_statement": "[Flustered] I actually need to be out the door right now. Is there anything that I should do\nbefore our next session?",
+        "response": "OK. I apologize for not preserving enough time to discuss. I can work on that! For now, I\nwould suggest either continuing to reflect on what we discussed today or repeating the\nwork that you did for today\u2019s session. Repetition is a good thing. It\u2019s up to you\u2014one or\nboth of these would work. How does that sound?"
+    },
+    {
+        "id": "4_m_4",
+        "level": "intermediate",
+        "client_statement": "[Ashamed] I did some of what we talked about last week but forgot the forms.",
+        "response": "That\u2019s great that you did some of what we talked about. We can go over it even without\nthe forms. Also, I\u2019m listening to your tone and wondering if you\u2019re beating yourself up\nabout forgetting the forms. Is that happening?"
+    },
+    {
+        "id": "4_m_5",
+        "level": "intermediate",
+        "client_statement": "[Ashamed] I was only able to do part of what we talked about last week.",
+        "response": "We can work with part! I suggest we start with the part that you were able to do, and then\nwe can discuss what was more difficult to get to. As always, we can adjust, and possibly\naddress some or most of it in here today. Does that plan work for you?"
+    },
+    {
+        "id": "4_m_6",
+        "level": "intermediate",
+        "client_statement": "[Frustrated] I don\u2019t expect this assignment to help.",
+        "response": "It sounds like it isn\u2019t clear how doing this over the next week is going to be useful. There\nmay be different versions of this that could be more or less helpful at this time. I\u2019d like us to\nconsider what is potentially most useful, as well as think about what it means for this to be\nhelpful or not, if that is itself worth testing out."
+    },
+    {
+        "id": "4_m_7",
+        "level": "intermediate",
+        "client_statement": "[Agitated] I\u2019m too swamped; I don\u2019t think I\u2019ll have the time to do any homework.",
+        "response": "OK, I appreciate that. We can be flexible and figure out a way to make this work over\nthe next week, if possible. What about brainstorming what part or parts of this might be\nmore feasible over the next week? I would suggest that we not abandon this completely\nbecause doing at least some homework has been shown to relate to improvement. But you\ncan only do what you can fit in. So, again, let\u2019s think in terms of part or parts. Thoughts?"
+    },
+    {
+        "id": "4_a_1",
+        "level": "advanced",
+        "client_statement": "[Frustrated] I\u2019m just not getting it. I don\u2019t understand what you\u2019re asking me to do for the\nhomework.",
+        "response": "I\u2019m glad you said that. It sounds like you\u2019re frustrated and possibly discouraged, and I was\nunclear about the homework, and you don\u2019t know what to do. It\u2019s important to be on the\nsame page, and I certainly could have been clearer. Let\u2019s walk back a bit rather than rush\nahead prematurely."
+    },
+    {
+        "id": "4_a_2",
+        "level": "advanced",
+        "client_statement": "[Weeping] I just don\u2019t think I can do this homework on my own.",
+        "response": "It sounds like you\u2019re concerned about trying this on your own. We can take a few minutes\nto clear up anything that might be confusing logistically. Let\u2019s go into the details of the\nassignment to see how we can set something up that is more doable for you. It\u2019s also\nimportant to emphasize that this isn\u2019t something that you\u2019re either going to \u201cpass\u201d or \u201cfail.\u201d\nThe process is just as, or even more, important than the outcome."
+    },
+    {
+        "id": "4_a_3",
+        "level": "advanced",
+        "client_statement": "[Apprehensive] I successfully did the homework! However, it made me very nervous, so I\nhad a few drinks beforehand. This is OK, right? I hope you don\u2019t judge my drinking, like my\nwife and boss do.",
+        "response": "I appreciate that you shared this with me. It sounds like others have expressed concern\nabout your drinking, and you\u2019re wondering if I might share that concern. Rather than\nlabeling what happened as \u201cOK\u201d or \u201cnot OK,\u201d I\u2019d rather discuss your experience of\ncompleting the homework and how drinking beforehand does or does not fit in with the\nspirit of the work you\u2019re during between our sessions. I\u2019d also like to hear more about your\nimpression that others, perhaps even me, are judging you for your drinking and the impact\nthat seems to have on you."
+    },
+    {
+        "id": "4_a_4",
+        "level": "advanced",
+        "client_statement": "[Anxious] Whenever I have trouble motivating to do the homework, I think of how happy\nI will feel telling you that I did it. Your approval means everything to me. I honestly think\nyou\u2019re the best therapist I\u2019ve ever met.",
+        "response": "I\u2019m glad to hear how much you\u2019re invested in this work and that you can find ways to stay\nmotivated to continue the work between sessions, which can be difficult. I wonder if there\nare other potential sources of motivation. If we take me out of the equation, what would be\nmost useful and meaningful to you?"
+    },
+    {
+        "id": "4_a_5",
+        "level": "advanced",
+        "client_statement": "[Dismissive] I didn\u2019t do the homework. It didn\u2019t seem like it was that important, to be\nhonest.",
+        "response": "OK, well that seems important to me. Can we talk about that? Were you having doubts\nwhen we discussed this last session, or only after you thought about it more? In the end,\nwe need to value the goals and tasks we are doing for them to bear fruit."
+    }
+]

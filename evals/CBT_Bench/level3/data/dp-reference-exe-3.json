@@ -1,0 +1,92 @@
+[
+    {
+        "id": "3_b_1",
+        "level": "beginner",
+        "client_statement": "[Calm] I\u2019m not sure what to talk about today.",
+        "response": "OK. I have a tentative agenda for today\u2019s session based on how we have initially framed\nyour concerns. What if we start by reviewing that and getting your input? We might also\nstart by reviewing the homework, seeing if that suggests any other agenda items. How\ndoes that sound?"
+    },
+    {
+        "id": "3_b_2",
+        "level": "beginner",
+        "client_statement": "[Curious] So, what\u2019s our agenda for today?",
+        "response": "Let\u2019s start by figuring that out together, OK? I was thinking that we would begin by\nreviewing your experience with the homework over the past week, including any questions\nthat came up for you. That should then be a nice segue to something I\u2019d like to introduce\nand practice a bit in here today. We can spend most of the session on that and then save\nsome time to make a plan for the next week. Of course, I also want to make sure that we\nbudget time for anything else that you\u2019d like to discuss today. Is there anything you\u2019d like\nto add?"
+    },
+    {
+        "id": "3_b_3",
+        "level": "beginner",
+        "client_statement": "[Nervous] I don\u2019t think I\u2019m ready for working on this today.",
+        "response": "OK. We can revisit and possibly modify our plan for today. How about we first take a step\nback and explore your thinking about this? What thoughts are you noticing as we discuss\nthe agenda?"
+    },
+    {
+        "id": "3_b_4",
+        "level": "beginner",
+        "client_statement": "[Flustered] Sorry I\u2019m so late. I had the wrong time in my calendar.",
+        "response": "Mistakes happen, and we can adjust. What do you think about the following plan? We can\nspend a few minutes reviewing what you\u2019ve worked on since the last session, and then we\ncan discuss what is going to be most helpful between today and our next appointment\u2014\nfor example, continuing on with a similar plan or making some adjustments."
+    },
+    {
+        "id": "3_b_5",
+        "level": "beginner",
+        "client_statement": "[Curious] I\u2019m not sure about an agenda. With my other therapist, I just kind of talked about\nwhatever was on my mind.",
+        "response": "Yes, some therapies are less structured than others. The approach that we\u2019re taking is more\non the structured side. Regardless, I want to make sure that we focus on the things that\nare most important to you. In my experience, it can be helpful to do this in the context of\na general plan connected to your goals to keep things on track and continue to move our\nwork forward. If it\u2019s OK with you, I\u2019d like to hear more about your thoughts about being\nmore structured in here."
+    },
+    {
+        "id": "3_m_1",
+        "level": "intermediate",
+        "client_statement": "[Nervous] You\u2019re the expert, so just tell me what to do today",
+        "response": "I suppose in some ways I\u2019m the expert, but I want to avoid unilaterally dictating how we\nspend our time today. Further, you\u2019re the expert on you. I have some ideas for our agenda\nbut think it would be best to discuss and plan it together. I\u2019m very interested in hearing\nyour thoughts and preferences. Does this make sense?"
+    },
+    {
+        "id": "3_m_2",
+        "level": "intermediate",
+        "client_statement": "[Nervous] I know that the plan was to talk about exposure today, but something\u2019s come up\nthat I\u2019d like to talk about first.",
+        "response": "So, here\u2019s my thought. My experience is that exposure can be scary and challenging, and\nI\u2019ve found if we get started on the road of putting it off because something else came\nup, then it becomes easier and easier to keep putting off. Then we find ourselves off our\nagreed-on path. So, my suggestion would be let\u2019s do some exposure first and aim to save\nsome time for the other topic. Does that plan work for you?"
+    },
+    {
+        "id": "3_m_3",
+        "level": "intermediate",
+        "client_statement": "[Nervous] My partner wants us to talk about something today.",
+        "response": "OK. I\u2019d like to hear more about that, and, most important, if this is something that you want\nus to put on the agenda today. Perhaps we can visit that after we review what you\u2019ve been\nworking on over the past week?"
+    },
+    {
+        "id": "3_m_4",
+        "level": "intermediate",
+        "client_statement": "[Dismissive] I\u2019m not sure this is the best use of my time today.",
+        "response": "I think that\u2019s important to acknowledge, and I\u2019m glad that you\u2019re sharing that concern with\nme. We want to make sure that we\u2019re making the best use of your time. I\u2019d like to better\nunderstand what\u2019s behind your concerns and discuss our options for today."
+    },
+    {
+        "id": "3_m_5",
+        "level": "intermediate",
+        "client_statement": "[Agitated] Wow. You won\u2019t believe what happened this week. It\u2019s a really long story . . .",
+        "response": "It sounds like there\u2019s a lot on your mind, and I\u2019d like to hear about it. Would it be OK to take\na second to discuss our agenda for the day first, including where discussing this past week\nmight fit in, as well as anything else you want to take up here today? I want to make sure\nthat we budget our time accordingly. Shall we start with a homework check-in and then\ntackle the story?"
+    },
+    {
+        "id": "3_a_1",
+        "level": "advanced",
+        "client_statement": "[Irritated] This week has been terrible, and I don\u2019t feel like talking today.",
+        "response": "Wow. It sounds like you\u2019ve had a really hard week. I\u2019d like to get a better sense of what has\nbeen terrible. I was thinking that we would start with a brief homework review, and that\nmight lead naturally into continuing to practice what we introduced last week. But first, it\nmight help to clarify if you don\u2019t feel like talking at all, or talking specifically about what has\nbeen terrible about this week?"
+    },
+    {
+        "id": "3_a_2",
+        "level": "advanced",
+        "client_statement": "[Sad] I think our sessions have been very helpful. However, my depression is getting worse.\nOn my drive to this session today. I pictured myself driving off a bridge. It honestly felt like\na relief to imagine not having to work so hard to feel better anymore.",
+        "response": "It sounds like you\u2019re still feeling pretty overwhelmed. The fantasy of driving off a bridge\nand the impact that it apparently had seem pretty powerful and important. I suggest we\nput this at the top of our agenda today. I\u2019d like to understand that feeling of relief when\nimagining this scenario, including what you were experiencing before this."
+    },
+    {
+        "id": "3_a_3",
+        "level": "advanced",
+        "client_statement": "[Irritated] The agenda sounds fine, I suppose. I don\u2019t know. I don\u2019t think this is working,\nso I\u2019m not sure it matters.",
+        "response": "That\u2019s really important, and I\u2019m glad you\u2019re sharing these concerns with me. I suggest we\nput that issue on our agenda today\u2014explore your concerns about therapy and what is\ncontributing to this sense that it isn\u2019t \u201cworking.\u201d Is that OK with you?"
+    },
+    {
+        "id": "3_a_4",
+        "level": "advanced",
+        "client_statement": "[Frustrated] To be honest, the last couple of sessions I\u2019ve been confused by our focus on\nmy challenges. My family says I should just stay positive, smile more, and not think about\nanything negative. Do we have to discuss my challenges?",
+        "response": "I see. You\u2019re bringing up an important point. I agree that it\u2019s important to also focus on\nstrengths and be mindful of and build on what is positive, so this is helpful feedback. I also\nwonder about your perspective on this. How about we put this issue on our agenda today?"
+    },
+    {
+        "id": "3_a_5",
+        "level": "advanced",
+        "client_statement": "[Curious] I read an article on the internet that a new energy-healing technique can help\npeople 10 times faster than CBT and is easy for therapists to learn. I brought a printout of\nthe article with instructions. Can we talk about possibly trying that today?",
+        "response": "Sure, we can add this discussion to the agenda today. Thanks, for sharing this with me;\nI\u2019m not familiar with this technique and would need a bit more time to understand it. First,\nthough, I\u2019m curious about what\u2019s drawn you to it. The possibility of feeling better faster\nseems generally appealing. I wonder if you have concerns about our pace in here because\nthat seems like an important piece of this discussion. Would you prefer to begin there or\ncome back to this?"
+    }
+]

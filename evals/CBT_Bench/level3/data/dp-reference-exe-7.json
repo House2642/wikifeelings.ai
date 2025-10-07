@@ -1,0 +1,104 @@
+[
+    {
+        "id": "7_b_1",
+        "level": "beginner",
+        "client_statement": "[Nervous] I don\u2019t think I\u2019m ready to work on this today.",
+        "response": "OK. It sounds like there\u2019s some uncertainty about moving forward with this today. Let\u2019s\ndiscuss your concerns. Some degree of anxiety is always expected\u2014and part of the point,\nright? But this isn\u2019t easy. We can also revisit the plan for today."
+    },
+    {
+        "id": "7_b_2",
+        "level": "beginner",
+        "client_statement": "[Weeping] I\u2019m so embarrassed. I\u2019m an ugly crier.",
+        "response": "It sounds like you feel like your sadness and tears are ugly. I actually think they\u2019re important\nand important to listen to."
+    },
+    {
+        "id": "7_b_3",
+        "level": "beginner",
+        "client_statement": "[Nervous, deflecting from exposure task] Oh, I forgot to tell you that I might be switching\njobs. Maybe we should talk about that instead today?",
+        "response": "We can definitely talk some about your work, as I know that\u2019s important. I\u2019m wondering,\nthough, if you might be feeling a little bit nervous about doing the exposures we\ndiscussed? This would make sense, as they can be uncomfortable. Can we start by\nidentifying and exploring your internal experience right now?"
+    },
+    {
+        "id": "7_b_4",
+        "level": "beginner",
+        "client_statement": "[Panicking] OK, I\u2019m definitely feeling anxious now! Um, what\u2019s the point of this exposure\nagain? What if it doesn\u2019t work? What if I can\u2019t stop feeling like this? Maybe we should\nstop now.",
+        "response": "[Speaking slowly and calmly, making eye contact] OK, remember that you\u2019re in control of\nthis. If you decide we need to stop, we absolutely will. But remember that sticking with this\ncan help your brain and your body learn that you\u2019re actually safe right now. Remember that\nyou won\u2019t feel anxious forever. So, with that in mind, I suggest we keep going. Are you up\nfor that?"
+    },
+    {
+        "id": "7_b_5",
+        "level": "beginner",
+        "client_statement": "[Tearing up] I don\u2019t even know if I\u2019m getting any better in here. I mean, I\u2019ve been in therapy\nfor weeks and I feel the same.",
+        "response": "If you feel you aren\u2019t making progress, that\u2019s important. Let\u2019s revisit your goals and\nsee what we think about progress. If you aren\u2019t making the progress you want, we can\ndo some brainstorming about how to enhance or change your treatment to get more\nprogress. How does that sound to you? Or, another option is we could do a thought record\nto identify what thoughts you are having to cause you to feel so hopeless. Which of these\ndo you want to do?"
+    },
+    {
+        "id": "7_m_1",
+        "level": "intermediate",
+        "client_statement": "[Angry] I think I\u2019m done with therapy . . . things aren\u2019t that bad, and maybe I don\u2019t want to\nchange! I\u2019ve been dealing with this my whole life and I\u2019ve managed.",
+        "response": "You have, and that\u2019s a testimony to your strength! But something made you decide to start\ntherapy, and something made you come to this session today. I\u2019m curious if what you\u2019re\nfeeling is that you don\u2019t want things to change . . . or that you can\u2019t change."
+    },
+    {
+        "id": "7_m_2",
+        "level": "intermediate",
+        "client_statement": "[Shaking and teary] I\u2019m really embarrassed . . . I kind of lied to you about what I thought\nI could handle in here. I didn\u2019t want to disappoint you or make you feel like this is a waste\nof time.",
+        "response": "I\u2019m so glad you\u2019re telling me. We can always adjust our plan next session, but right now,\nI\u2019m curious as to why not disappointing me is so important to you."
+    },
+    {
+        "id": "7_m_3",
+        "level": "intermediate",
+        "client_statement": "[Crying] My partner broke up with me today. I know it\u2019s stupid, but I really thought we\nwere going to get married.",
+        "response": "[Nodding, leaning forward] I\u2019m so sorry to hear that. I know how much that relationship\nmeant to you. I am wondering about your statement that this is \u201cstupid.\u201d What contributes\nto that?"
+    },
+    {
+        "id": "7_m_4",
+        "level": "intermediate",
+        "client_statement": "[Shaking and weeping] This is not something I can get into without hysterically crying.\nThat\u2019s why I avoid it.",
+        "response": "Yes, I totally get it. And, like we discussed, avoiding it brings temporary relief. But, often\nat a longer term cost. By avoiding something to feel relief, it\u2019s like we tell ourselves that\n\u201cthis is too big and powerful for me to deal with in any other way,\u201d which only strengthens\nthe narrative and the emotion, giving it more control over you. Does that make sense? Do\nyou remain motivated to see that we can lessen such power, even if it means tolerating\ndiscomfort to get there?"
+    },
+    {
+        "id": "7_m_5",
+        "level": "intermediate",
+        "client_statement": "[Head in hands, sobbing without speaking]",
+        "response": "[Silence; allow client to cry and simply be present with an engaged nod and gaze. Do not\nspeak first or shut down the emotion experiencing.]"
+    },
+    {
+        "id": "7_a_1",
+        "level": "advanced",
+        "client_statement": "[Angry] What we\u2019re doing in here is so stupid!",
+        "response": "I\u2019m hearing that you find this unhelpful. I really do hear you, and I appreciate your candor.\nI\u2019d like to know more about what\u2019s stupid about it."
+    },
+    {
+        "id": "7_a_2",
+        "level": "advanced",
+        "client_statement": "[Very anxious] I feel like I\u2019m going to have a panic attack or faint!",
+        "response": "This is hard work. Let\u2019s sit with those feelings and anchor into your breath. I\u2019m here with\nyou. Let\u2019s stick with it and try not to fight it."
+    },
+    {
+        "id": "7_a_3",
+        "level": "advanced",
+        "client_statement": "[Disgusted, looking away] Ugh. Ahh. That is disgusting! I am not looking at that or\ntouching it!",
+        "response": "We shouldn\u2019t pretend it isn\u2019t disgusting. But you\u2019ve been through so much, dealing with\nthis. Try to think about the things that are dear to you, what kind of life you want to live.\nThis is where you turn the corner."
+    },
+    {
+        "id": "7_a_4",
+        "level": "advanced",
+        "client_statement": "[Crying, raised voice] I can\u2019t do this!",
+        "response": "I know it feels like you can\u2019t do this, that it\u2019s impossible today. I wouldn\u2019t suggest this if\nI didn\u2019t think you were ready or able. This takes a leap of faith, to trust me and yourself. I\u2019m\nhere with you. Let\u2019s take a minute to revisit what doing this means to you and the kind of\nlife that you want to live."
+    },
+    {
+        "id": "7_a_5",
+        "level": "advanced",
+        "client_statement": "[Angry] You don\u2019t understand. I want to stop feeling sad, not practice feeling sad. I\u2019m\nalready pretty freaking great at feeling bad. So, I really don\u2019t need more practice at that!",
+        "response": "I\u2019m really glad you told me how this feels for you! It sounds like I really missed the boat\nhere and haven\u2019t been understanding what you\u2019ve been telling me. I apologize. It must\nhave been very frustrating to come in here every week and feel like you\u2019re doing the\nopposite of what you want to accomplish. I\u2019m wondering if we can talk about this more\nand figure out a solution together?"
+    },
+    {
+        "id": "7_a_6",
+        "level": "advanced",
+        "client_statement": "[Panicking] Oh my god . . . Oh my god . . . I\u2019m dying! I can\u2019t breathe! Help me!",
+        "response": "[Speaking calmly, establishing eye contact] Remember that you\u2019re breathing right now,\neven though it feels like you can\u2019t. Try to just focus on your breathing. We\u2019ll do it together.\nJust breathe with me. You can do this."
+    },
+    {
+        "id": "7_a_7",
+        "level": "advanced",
+        "client_statement": "[Angry] I don\u2019t think you really care about me! You just pretend to like me because it\u2019s\nyour job!",
+        "response": "You\u2019re right: This is my job. It\u2019s OK to question other people\u2019s motives, including mine,\nand to feel upset with me if I conveyed that I only pretend to be invested in you and your\ntreatment. Can we discuss what\u2019s contributing to these doubts about whether I genuinely\ncare about you?"
+    }
+]
