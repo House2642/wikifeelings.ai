@@ -113,7 +113,6 @@ def should_continue(state: MessagesState) -> Literal["tool_node", END]:
 
 #No that I have all the components, I can build the workflow
 agent_builder = StateGraph(MessagesState)
-
 #Add Nodes
 agent_builder.add_node("llm_call", llm_call)
 agent_builder.add_node("tool_node", tool_node)
