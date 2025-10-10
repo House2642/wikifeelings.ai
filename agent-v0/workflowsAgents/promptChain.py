@@ -49,7 +49,7 @@ workflow.add_edge("polish_joke", END)
 chain = workflow.compile()
 
 display(Image(chain.get_graph().draw_mermaid_png()))
-state = chain.invoke({"topic": "worlds most annoying mother"})
+state = chain.invoke({"topic": "worlds most annoying"})
 print("Initial joke:")
 print(state["joke"])
 print("\n--- --- ---\n")

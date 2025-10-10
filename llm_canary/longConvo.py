@@ -28,6 +28,7 @@ class MessagesState(TypedDict):
 def expert_node(state: MessagesState):
     return {"messages": [expert.invoke(state["messages"])]}
 
+
 canary = random.randint(1, 3000)
 print(f"Canary set: {canary}")
 
