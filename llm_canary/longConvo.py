@@ -7,14 +7,11 @@ from typing_extensions import TypedDict, Annotated
 import operator
 import random
 import os
-from dotenv import load_dotenv
-load_dotenv()
-
 #with open("../api_keys/openai_agent0.txt", "r") as f:
-   # api_key = f.read().strip()
+    #pi_key = f.read().strip()
 
-expert = init_chat_model("gpt-4o")
-client = init_chat_model("gpt-4o")
+expert = init_chat_model("gpt-4o", api_key = api_key)
+client = init_chat_model("gpt-4o", api_key = api_key)
 
 from pydantic import BaseModel, Field
 
