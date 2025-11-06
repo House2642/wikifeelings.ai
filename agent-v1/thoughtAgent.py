@@ -6,6 +6,8 @@ from dotenv import load_dotenv
 from datetime import datetime, timezone
 from enum import Enum
 
+load_dotenv()
+
 model = init_chat_model("gpt-4o")
 
 
