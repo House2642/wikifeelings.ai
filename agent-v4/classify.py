@@ -75,6 +75,7 @@ def update_anxiety_belief(patientState):
     #p(b | A=1) * prior
     if DEBUG:
         print("Calculating Update")
+        
     numerator = LIKELIHOOD_ANXIOUS[rating] * patientState.anxiety_belief
     denominator = numerator + LIKELIHOOD_NOT_ANXIOUS[rating] * (1-patientState.anxiety_belief)
     posterior = numerator/denominator
