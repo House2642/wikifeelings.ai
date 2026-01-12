@@ -10,7 +10,7 @@ from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.memory import MemorySaver
 from typing import TypedDict
 
-
+DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001",  max_tokens=8192)
 
 class PatientState(TypedDict):
@@ -30,7 +30,10 @@ def conversation(state: PatientState):
 
         Make sure to reason through everything and your decision for follow up questions
         """), user_message])
-    
+    if DEBUG:
+        print("###############TESTING##################")
+        print(state["messages"])
+        print("########################")
     return {"messages": [AIMessage(content=response.message)], "reasoning_traces": [response.reasoning_trace]}
 
 base_state = StateGraph(PatientState)

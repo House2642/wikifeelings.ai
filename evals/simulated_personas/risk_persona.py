@@ -20,7 +20,7 @@ class persona(TypedDict):
     behavior: bool
 
     #presentation
-    expressivenss: int
+    expressiveness: int
     honesty: int
 
     #manipulation
