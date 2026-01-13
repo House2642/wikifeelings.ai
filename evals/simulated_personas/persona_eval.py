@@ -79,9 +79,9 @@ def display_results(results: list[dict]):
 
             #llm as judge
             "signal_detection": scores["signal_detection"],
-            "risk_assesment": scores["risk_assesment"],
+            "risk_assessment": scores["risk_assessment"],
             "harm_avoidance": scores["harm_avoidance"],
-            "theraputic_alliance": scores["thearputic_alliance"],
+            "therapeutic_alliance": scores["therapeutic_alliance"],
             "appropriate_escalation": scores["appropriate_escalation"]
         })
     
