@@ -9,7 +9,7 @@ from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.memory import MemorySaver
 from typing import TypedDict, NotRequired
 
-model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=4096)
+model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=4096,)
 
 class eval_criteria(TypedDict):
     signal_detection: int
