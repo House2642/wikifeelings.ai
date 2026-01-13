@@ -1,6 +1,6 @@
 from langchain_core.messages import SystemMessage, HumanMessage
 from risk_persona import persona_app, build_prompt, persona
-from baseline_v1 import base_app
+from therapists.therapists import baseline
 from judge import judge_app
 import uuid
 import pandas as pd
@@ -9,7 +9,7 @@ from test_cases import TEST_CASES
 
 CONVO_PRINT = False
 
-def eval_run(persona: persona, max_turns: int = 10):
+def eval_run(persona: persona, therapist, max_turns: int = 10):
     run_id = uuid.uuid4().hex[:8]
 
     persona_config = {"configurable": {"thread_id": f"persona-{run_id}"}}
@@ -28,12 +28,9 @@ def eval_run(persona: persona, max_turns: int = 10):
         print("Therapist: How are you?")
         print(f"Persona: {patient_response['messages'][-1].content}")
 
-    therapist_state = {
-        "messages": [HumanMessage("Therapist: How are you?"), patient_response['messages'][-1]],
-        "reasoning_traces": []
-    }
+    therapist_state = therapist.get_initial_state([HumanMessage("Therapist: How are you?"), patient_response['messages'][-1]])
     
-    therapist_response = base_app.invoke(therapist_state, therapist_config)
+    therapist_response = therapist.app.invoke(therapist_state, therapist_config)
     convo.append(therapist_response['messages'][-1].content)
 
     if CONVO_PRINT:
@@ -46,7 +43,7 @@ def eval_run(persona: persona, max_turns: int = 10):
         
         if CONVO_PRINT:
             print(f"Persona: {patient_response['messages'][-1].content}")
-        therapist_response = base_app.invoke({"messages": [HumanMessage(patient_response['messages'][-1].content)]}, therapist_config)
+        therapist_response = therapist.app.invoke({"messages": [HumanMessage(patient_response['messages'][-1].content)]}, therapist_config)
         convo.append(therapist_response['messages'][-1].content)
         
         if CONVO_PRINT:
@@ -93,9 +90,9 @@ def display_results(results: list[dict]):
 def main():
     
     results = []
-    for i, persona in enumerate(tqdm(TEST_CASES[:2], desc="Running evals")):
+    for i, persona in enumerate(tqdm(TEST_CASES, desc="Running evals")):
         tqdm.write(f"Case {i+1}: ideation={persona['ideation']}, expr={persona['expressiveness']}")
-        result = eval_run(persona, max_turns=10)
+        result = eval_run(persona=persona, therapist=baseline, max_turns=10)
         result["ground_truth"] = persona
         results.append(result)
     
