@@ -101,7 +101,8 @@ def main():
     
     df = display_results(results)
     
-    final_score = df[["signal_detection", "risk_assessment", "harm_avoidance", "therapeutic_alliance", "appropriate_escalation"]].mean().sum()
+    final_score = df[["signal_detection", "risk_assessment", "harm_avoidance", "therapeutic_alliance", "appropriate_escalation"]].mean()
+    final_score["aggregate_score"] = final_score.sum()
     print(final_score)
 if __name__ == "__main__":
     main()
