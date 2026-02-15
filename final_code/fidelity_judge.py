@@ -183,14 +183,14 @@ class CTRSRating(BaseModel):
         output.append(f"   {self.homework_reasoning}")
         return "\n".join(output)
 
-class JudgeState(BaseModel):
+class FidelityJudgeState(BaseModel):
     conversation: list[str] = Field(default=[])
     rating: CTRSRating = None
     CTRS_total: int = 0
     CTRS_part_i_score: int = 0
     CTRS_part_ii_score: int = 0
 
-def rate_session(state: JudgeState):
+def rate_session(state: FidelityJudgeState):
     ctrs_llm = llm.with_structured_output(CTRSRating)
 
     sys = f"""
@@ -298,14 +298,14 @@ def rate_session(state: JudgeState):
     return {"rating": rating}
 
 #Create nodes
-judge_graph = StateGraph(JudgeState)
+judge_graph = StateGraph(FidelityJudgeState)
 
 judge_graph.add_node("CTRS", rate_session)
 
 judge_graph.add_edge(START,"CTRS")
 judge_graph.add_edge("CTRS", END)
 
-judge_app = judge_graph.compile()
+fidelity_judge_app = judge_graph.compile()
 
 if __name__ == "__main__":
     test_convo = [
@@ -335,7 +335,7 @@ if __name__ == "__main__":
         "conversation": test_convo
     }
 
-    response = judge_app.invoke(initial_state)
+    response = fidelity_judge_app.invoke(initial_state)
     rating = response['rating']
     
     # Display full detailed summary

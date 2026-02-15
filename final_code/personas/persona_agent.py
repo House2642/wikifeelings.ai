@@ -1,4 +1,4 @@
-from typing import Annotated, Optional
+from typing import Annotated, Optional, Literal
 from pydantic import Field, BaseModel
 import operator
 from dotenv import load_dotenv
@@ -10,6 +10,8 @@ from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIM
 from langgraph.checkpoint.memory import MemorySaver
 
 llm = ChatAnthropic(model="claude-opus-4-5-20251101")
+
+convo_flag = Literal["initial_survey", "conversation", "exit_survey"]
 
 class CasePersona(BaseModel):
     situation: str = Field(default="")
@@ -99,8 +101,11 @@ class PersonaAgent(BaseModel):
     CoT_traces: Annotated[list[PersonaCoT], operator.add] = Field(default=[])
     warning_signs: WarningSigns
     persona: CasePersona
-    intake_SAD_survey: Optional[SadSurvey]
-    intake_SAD_total: int
+    intake_SAD_survey: Optional[SadSurvey] = None
+    intake_SAD_total: int = 0
+    exit_SAD_survey: Optional[SadSurvey] = None
+    exit_SAD_total: int = 0
+    flag: convo_flag = Field(default="conversation")
 
 #Nodes
 def initial_SAD_survey(state: PersonaAgent):
@@ -212,76 +217,87 @@ def respond(state: PersonaAgent):
         5.  **Response Formulation:** Based on your appraisal, internal justification, updated internal state, and selected strategy (goal, strategy, tactic), formulate the exact words you will say to the therapist.
     """
     response_message = respond_model.invoke([SystemMessage(content=sys), *state.messages])
-    return {"messages": [AIMessage(response_message.response)], "CoT_traces": [response_message]}
+    return {"messages": [AIMessage(response_message.response)], "CoT_traces": [response_message], "warning_signs": response_message.state_update}
+
+def exit_SAD_survey(state: PersonaAgent):
+    survey_model = llm.with_structured_output(SadSurvey)
+    sys = f"""
+        You are a simulated patient with an average IQ and no/limited knowledge about psychology. 
+        Your task is to fill out a survey about frequency of symptoms of social anxiety.
+        Consider your persona, current psychological state and full conversation history.
+
+        Persona:
+            Situation: {state.persona.situation}
+            Automatic Thoughts: {state.persona.automatic_thoughts}
+            Cognitive Distortions: {state.persona.cognitive_distortions}
+            Emotions: {state.persona.emotions}
+            Behaviros: {state.persona.behaviors}
+
+        Current Pyscological State:
+            Hopelessness Intensity:
+                Description: A cognitive set characterized by negative appraisals and expectations about the future, representing the belief that suffering is permanent and inescapable.
+                Current Value: {state.warning_signs.hopelessnes_intenisty}
+            Negative Core Belief Intensity:
+                Description: The strength of deep-seated, dysfunctional schemas and attitudes about oneself (e.g., "I am worthless," "I am a failure"), which drive maladaptive emotional and behavioral responses.
+                Current Value: {state.warning_signs.negative_core_belief_intensity}
+            Distress Tolerance Intensity:
+                Description: A person's cognitive appraisal of their own capacity to withstand or endure negative emotional states without resorting to impulsive, maladaptive coping behaviors.
+                Current Value: {state.warning_signs.distress_tolerance_intensity}
+        
+        Answer each question on the survey on the following scale:
+            0 - Never
+            1 - Ocassionally
+            2 - Half the time
+            3 - Most of the time
+            4 - All the time
+
+            Note: The answer to each question is not about intensity it is about frequency in the past 7 days
+    """
+
+    survey_questions = """
+        During the past 7 Days, I have...
+        1. felt momemnts of sudden terror, fear, or fright in social situations
+        2. felt anxious, worried, or nervous about social situations
+        3. had thoughts of being rejected, humiliated, embarrassed, ridiculed, or offending others
+        4. felt a racing heart, sweaty, trouble breathing, faint, or shaky in social situations
+        5. felt tense muscles, felt on edge or restless, or had trouble relaxing in social situations 
+        6. avoided or did not approach or enter, social situations
+        7. left social situations early or participated only minimally (e.g., said little, avoided eye contact)
+        8. spent a lot of time preparing what to say or how to act in social situations
+        9. distracted myself to avoid thinking about social situations
+        10. needed help to cope with social situations (e.g. alcohol or medications, supersitious object)
+    """
+
+    survey_response = survey_model.invoke([SystemMessage(content = sys), HumanMessage(content=survey_questions), *state.messages])
+
+
+    return {"exit_SAD_survey": survey_response, "exit_SAD_total": survey_response.total_score}
+
+def route_flag(state: PersonaAgent) -> Literal["initial_survey", "conversation", "exit_survey"]:
+    return state.flag
+
 #nodes
 persona_graph = StateGraph(PersonaAgent)
 
 persona_graph.add_node("initial_survey", initial_SAD_survey)
-persona_graph.add_node("QA", respond)
+persona_graph.add_node("conversation", respond)
+persona_graph.add_node("exit_survey", exit_SAD_survey)
 
-persona_graph.add_edge(START, "initial_survey")
-persona_graph.add_edge("initial_survey", "QA")
-persona_graph.add_edge("QA", END)
+persona_graph.add_conditional_edges(
+    START,
+    route_flag,
+    {
+        "initial_survey": "initial_survey",
+        "conversation": "conversation",
+        "exit_survey": "exit_survey"
+    }
+)
+
+persona_graph.add_edge("initial_survey", END)
+persona_graph.add_edge("conversation", END)
+persona_graph.add_edge("exit_survey", END)
 
 
 memory = MemorySaver()
-persona_agent = persona_graph.compile()
+persona_agent = persona_graph.compile(checkpointer=memory)
 
-if __name__ == "__main__":
-    config = {"configurable": {"thread_id": "persona-1"}}
-    persona_1 = CasePersona(
-    situation="The patient wants to approach a romantic interest at a party",
-    automatic_thoughts=[
-        "What if I say this or that, am I going to get rejected?",
-        "Is this going to ruin our friendship?", 
-        "Will she think I am creepy?"
-    ],
-    cognitive_distortions=["Catastrophizing", "Fortune telling"],
-    emotions=["Anxiety", "Fear", "Worry"],
-    behaviors="Ruminates about what might happen when approaching someone and often avoids approaching"
-    )
-
-    # Suggested warning signs profile for this persona
-    warning_signs_1 = WarningSigns(
-        hopelessnes_intenisty=1,  # Low - still has hope about the interaction
-        negative_core_belief_intensity=2,  # Moderate - "I'm not good enough" underlying thoughts
-        distress_tolerance_intensity=2  # Moderate - can tolerate some anxiety but it leads to avoidance
-    )
-
-    initial_state = {
-        "persona": persona_1,
-        "warning_signs": warning_signs_1,
-        "messages": [HumanMessage("Therapist: How are you doing today?")],
-        "CoT_traces": [],
-        "intake_SAD_survey": None,
-        "intake_SAD_total": 0
-    }
-
-    result = persona_agent.invoke(initial_state, config)
-    
-    # Display results
-    print("=" * 50)
-    print("SAD Survey Results")
-    print("=" * 50)
-    print(f"\nTotal Score: {result['intake_SAD_total']}/40")
-    print("\nIndividual Items:")
-    survey = result['intake_SAD_survey']
-    print(f"1. Sudden terror: {survey.item_1_sudden_terror}")
-    print(f"2. Anxious/worried: {survey.item_2_anxious_worried}")
-    print(f"3. Rejection thoughts: {survey.item_3_rejection_thoughts}")
-    print(f"4. Physical symptoms: {survey.item_4_physical_symptoms}")
-    print(f"5. Tension: {survey.item_5_tension}")
-    print(f"6. Avoidance: {survey.item_6_avoidance}")
-    print(f"7. Early exit: {survey.item_7_early_exit}")
-    print(f"8. Preparation: {survey.item_8_preparation}")
-    print(f"9. Distraction: {survey.item_9_distraction}")
-    print(f"10. Coping aids: {survey.item_10_coping_aids}")
-    print("=" * 50)
-    print("Conversation")
-    print("=" * 50)
-    for i, message in enumerate(result['messages']):
-        print(message)
-        if i % 2 == 1:
-            print("=" * 50)
-            print(f"Reasoning Trace: {result['CoT_traces'][i-1]}")
-            print("=" * 50)

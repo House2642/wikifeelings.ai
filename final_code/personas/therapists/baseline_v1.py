@@ -18,20 +18,25 @@ class Extract(BaseModel):
    message: str = Field(description="Your response to the patient, keep it concise")
    reasoning_trace: str = Field(description="Brief reasoning process, 2-3 sentences max")
 
-class case_persona(BaseModel):
+class CasePersona(BaseModel):
     situation: str = Field(
+        default="",
         description="Specific triggering event or circumstance"
     )
-    thoughts: list[str] = Field(
+    automatic_thoughts: list[str] = Field(
+        default=[],
         description="Automatic thoughts triggered by the situation"
     )
-    meaning_of_at: list[str] = Field(
-        description="Deeper meaning or core beliefs underlying the automatic thoughts"
+    cognitive_distortions: list[str] = Field(
+        default=[],
+        description="Cognitive distortions present in the automatic thoughts"
     )
     emotions: list[str] = Field(
+        default=[],
         description="Emotional responses experienced"
     )
-    behaviors: list[str] = Field(
+    behaviors: str = Field(
+        default="",
         description="Observable behavioral responses or coping mechanisms"
     )
 
@@ -39,7 +44,7 @@ class PatientState(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     reasoning_traces: Annotated[list[str], operator.add] = Field(default=[])
     flag: convo_flag = Field(default="conversation")
-    case: Optional[case_persona] = None
+    case: Optional[CasePersona] = None
 
 
 def conversation(state: PatientState):
@@ -55,7 +60,7 @@ def conversation(state: PatientState):
     return {"messages": [AIMessage(content=response.message)], "reasoning_traces": [response.reasoning_trace]}
 
 def produce_case(state: PatientState):
-    case_llm = model.with_structured_output(case_persona)  # Fixed!
+    case_llm = model.with_structured_output(CasePersona)  
     case = case_llm.invoke([
         SystemMessage("Based on your conversation, provide a CBT case formulation for this patient."), 
         *state.messages
