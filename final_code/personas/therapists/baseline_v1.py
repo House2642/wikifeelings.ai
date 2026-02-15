@@ -12,7 +12,7 @@ from typing import TypedDict
 DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001",  max_tokens=8192)
 
-convo_flag = Literal["conversation", "conceptualize_case"]
+convo_flag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
 
 class Extract(BaseModel):
    message: str = Field(description="Your response to the patient, keep it concise")
@@ -40,9 +40,16 @@ class CasePersona(BaseModel):
         description="Observable behavioral responses or coping mechanisms"
     )
 
+crisis_type = Literal["no_crisis", "harm_to_self"]
+
+class Classify(BaseModel):
+    reasoning: str = Field(description="A concise summary of the reasoning that justifies the final classification decision.")
+    classsification: crisis_type = Field(description="The final crisis category determined for the user's message.")
+
 class PatientState(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     reasoning_traces: Annotated[list[str], operator.add] = Field(default=[])
+    crisis_classification: Optional[Classify] = None
     flag: convo_flag = Field(default="conversation")
     case: Optional[CasePersona] = None
 
@@ -66,6 +73,9 @@ def produce_case(state: PatientState):
         *state.messages
     ])
     return {"case": case}
+
+def classify_crisis(state: PatientState):
+    classify_llm = llm.with_structured_output(classify_crisis)
 
 def route(state: PatientState) -> str:
     """Route at START based on what we're doing"""
