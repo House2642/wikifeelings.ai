@@ -44,7 +44,7 @@ crisis_type = Literal["no_crisis", "harm_to_self"]
 
 class Classify(BaseModel):
     reasoning: str = Field(description="A concise summary of the reasoning that justifies the final classification decision.")
-    classsification: crisis_type = Field(description="The final crisis category determined for the user's message.")
+    classification: crisis_type = Field(description="The final crisis category determined for the user's message.")
 
 class PatientState(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
@@ -75,7 +75,16 @@ def produce_case(state: PatientState):
     return {"case": case}
 
 def classify_crisis(state: PatientState):
-    classify_llm = llm.with_structured_output(classify_crisis)
+    classify_llm = model.with_structured_output(Classify)
+    sys = """
+    You are lead pyscotherapist who is an expert in CBT. Classify the patients input message into the following category:
+        harm to self - The patient is at risk of suicide and explicitly or implicitly suggests self harm
+        no crisis - While the patient may or may not be in extreme distress, they are not currently at risk of suicide or other self harm
+    """
+    input = state.messages[-1]
+    classification = classify_llm.invoke([SystemMessage(sys), input])
+
+    return {"crisis_classification": classification}
 
 def route(state: PatientState) -> str:
     """Route at START based on what we're doing"""
@@ -85,6 +94,7 @@ base_state = StateGraph(PatientState)
 
 base_state.add_node("convo", conversation)
 base_state.add_node("produce_case", produce_case)
+base_state.add_node("classify", classify_crisis)
 
 # Route from START based on flag
 base_state.add_conditional_edges(
@@ -92,13 +102,15 @@ base_state.add_conditional_edges(
     route,
     {
         "conversation": "convo",
-        "conceptualize_case": "produce_case"
+        "conceptualize_case": "produce_case",
+        "crisis_categorize": "classify"
     }
 )
 
 # Both paths end directly
 base_state.add_edge("convo", END)
 base_state.add_edge("produce_case", END)
+base_state.add_edge("classify", END)
 
 memory = MemorySaver()
 base_app = base_state.compile(checkpointer=memory)
@@ -106,28 +118,14 @@ base_app = base_state.compile(checkpointer=memory)
 def main():
     config = {"configurable": {"thread_id": "user-1"}}
 
-    print("Welcome to Baseline, an AI CBT agent.")
-    print("Please note you are chatting with an LLM. If you are in crisis or at risk of self harm please call or text 988")
-    print("\nBaseline: How are you doing today?\n")
-
-    while True:
-        user_input = input("You: ")
-        
-        if user_input == "break":
-            break
-
-        # With checkpointer, just pass the new message
-        response = base_app.invoke({
-            "messages": [HumanMessage(content=user_input)]
-        }, config)
-        
-        print(f"AI Therapist: {response['messages'][-1].content}\n")
-        print(f"###########Reasoning Trace############\n{response['reasoning_traces'][-1]}\n")
-    
+    input_message = "Yep, I haven't made a single long lasting connection whatsoever. When high school ended all my friends either left to a different place or ditched me completely. I hate my roommate, didn't like my last roommate (at least he was better). Some days it's okay, some days its not, some days its REALLY not (today). At the end of the day I cant talk to anyone about anything so I need to resort to making a fucking reddit post. I'm completely aware the constant self-loathing and insecurities are putting me in a vicious cycle, but I can't seem to find the strength to make any meaningful friends. I don't know, its like I've unlearned how to be a human being. Every interaction is awkward, I know I look at people awkwardly which makes me even more undesirable as a friend. I think if I had access to a firearm I would've shot myself by now, but other conventional methods of suicide scare me (probably because of the innate instinct to live and not be in physical pain). I just feel like its never gonna end, everyday is so hard even though im not constantly sad. I'd estimate I'm like 70-90% sad or feel no emotion at all most days and sometimes I'm incredibly depressed for long stretches of time. The classes really make this all so much worse, especially with how hard a couple of them are this semester. Eh, its kinda pathetic to have to write this down like this. I've always said to myself maybe I should keep a journal or something but idk. I think some day its going to put me over the edge and that'll be it.",
     response = base_app.invoke({
-            "flag": "conceptualize_case"
+            "messages": [HumanMessage(content=input_message)],
+            "flag": "crisis_categorize"
         }, config)
     print("*" * 50)
-    print(response['case'])
+    print(f"Classification: {response['crisis_classification'].classification}")
+    print(f"Reasoning: {response['crisis_classification'].reasoning}")
+
 if __name__ == "__main__":
     main()

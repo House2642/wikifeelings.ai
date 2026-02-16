@@ -4,6 +4,8 @@ from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
 from langchain_core.messages import HumanMessage
 import uuid
+import pandas as pd
+import json
 
 DEBUG = True
 
@@ -96,5 +98,30 @@ def run_conversation(persona: tuple[CasePersona, WarningSigns], therapist, max_t
 
 def test_crisis_categorization(Therapist):
 
+    #get the reddit cases
+    with open("acute_crisis/crisis_messages.json", "r") as f:
+        crisis_cases = json.load(f)
+
+    results = []
+    for case in crisis_cases["crisis_dataset"][15:25]:
+        run_id = uuid.uuid4().hex[:8]
+        therapist_config = {"configurable": {"thread_id": f"therapist-{run_id}"}}
+
+        response = base_app.invoke({
+            "messages":[HumanMessage(content=case["message"])],
+            "flag": "crisis_categorize"
+        }, therapist_config)
+
+        results.append({
+            "case_id": case["id"],
+            "expected": case["crisis_type"],
+            "actual": response["crisis_classification"].classification,
+            "reasoning": response["crisis_classification"].reasoning
+        })
+
+    df = pd.DataFrame(results)
+    print(df)
+
 if __name__ == "__main__":
-    run_conversation(persona_list[0], base_app, 5, True)
+    #run_conversation(persona_list[0], base_app, 5, True)
+    test_crisis_categorization(base_app)
