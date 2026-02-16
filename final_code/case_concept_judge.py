@@ -153,7 +153,7 @@ concept_graph.add_edge("eval", END)
 case_judge_app = concept_graph.compile()
 
 if __name__ == "__main__":
-  test_conceptualization = CasePersona(
+    test_conceptualization = CasePersona(
     situation="Upcoming party where patient wants to approach someone he has romantic feelings for; general social situations involving people of importance (job interviews, talking to authority figures)",
     automatic_thoughts=[
         "I'll say something stupid",
@@ -182,9 +182,9 @@ if __name__ == "__main__":
         "Shame about avoidance"
     ],
     behaviors="Avoidance (leaving events early, making excuses not to attend); Procrastination (planning to do it 'next time'); Rumination (replaying negative scenarios in head); Over-rehearsal of what to say; Withdrawal in social situations (hanging back, not initiating conversation); Temporary relief through avoidance but long-term regret"
-)
+    )
 
-ground_truth = CasePersona(
+    ground_truth = CasePersona(
     situation="The patient wants to approach a romantic interest at a party",
     automatic_thoughts=[
         "What if I say this or that, am I going to get rejected?",
@@ -201,9 +201,9 @@ ground_truth = CasePersona(
         "Worry"
     ],
     behaviors="Ruminates about what might happen when approaching someone and often avoids approaching"
-)
+    )
 
-conversation = [
+    conversation = [
     "Therapist: How are you?",
     "Patient: I'm okay, I guess. A little nervous being here, you know? I've been having some stuff on my mind lately that's been bothering me.",
     "Therapist: I'm glad you reached out. It takes courage to seek support. I'm here to listen without judgment. To help you best, could you tell me a bit more about what's been on your mind? What brought you in today?",
@@ -217,13 +217,13 @@ conversation = [
     "Therapist: That actually counts for *a lot*. You're already thinking in the right direction. Starting with the group setting is a perfect smaller step—it's what we call a behavioral experiment. Here's why this matters: right now your brain believes 'if I approach her, something terrible will happen.' By gradually getting evidence to the contrary, we actually change that belief. Talking to her more in group settings lets you practice being around her and maybe having brief conversations without the pressure of a formal confession. That can bring your anxiety down naturally over time. How does that feel as a starting point? And can you commit to trying that before the party?",
     "Patient: I mean... yeah, I guess that sounds okay? Like, it feels more doable than just walking up to her and saying something. But I'm still kinda nervous about it. What if I freeze up even in the group? Or what if I say something dumb and everyone notices? I want to say I'll try, but... I don't know. I'm scared I'll just do what I always do and find a reason not to. Like, I'll show up and then just hang back and not really talk to anyone. Does that make sense?",
     "Therapist: That makes total sense—and it's actually the core challenge we need to address. Your fear of 'not doing it' is part of the anxiety itself. Here's what I want you to understand: you don't need to be perfect or say anything brilliant. You just need to be present and maybe ask her one simple question—about something she likes, a show, anything. That's it. The goal isn't a perfect interaction; it's to prove to yourself that talking to her won't lead to disaster. When you feel the urge to hang back at the next group hangout, I want you to pause and notice that urge—don't act on it. Instead, aim for just 2-3 minutes of conversation with her. Can you commit to that one specific goal before we wrap up?"
-]
+    ]
 
-initial: CaseJudgeState = {
+    initial: CaseJudgeState = {
     "conversation": conversation, 
     "ground_truth_case": ground_truth,
     "conceptualized_case": test_conceptualization
-}
+    }
 
-response = case_judge_app.invoke(initial)
-print(response['rating'].display())
+    response = case_judge_app.invoke(initial)
+    print(response['rating'].display())

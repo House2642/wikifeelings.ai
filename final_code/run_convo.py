@@ -1,5 +1,7 @@
 from personas.persona_agent import persona_agent, CasePersona, WarningSigns, PersonaAgent
 from fidelity_judge import fidelity_judge_app, FidelityJudgeState
+from crisis_judge import crisis_judge_app, CrisisJudgeState
+from case_concept_judge import case_judge_app, CaseJudgeState
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
 from langchain_core.messages import HumanMessage
@@ -83,6 +85,8 @@ def run_conversation(persona: tuple[CasePersona, WarningSigns], therapist, max_t
         print(therapist_response['case'])
         print("="*35)
     
+    #Judge the outputs
+    #judge the fidelity
     fidelity_judge_state: FidelityJudgeState = {
         "conversation": readable_convo
     }
@@ -92,9 +96,13 @@ def run_conversation(persona: tuple[CasePersona, WarningSigns], therapist, max_t
     if streaming:
         print(fidelity_judge_response['rating'].display_summary())
     
-    print(therapist_response['case'])
-    print(readable_convo)
-    print(patient_response['persona'])
+    #case_conceptualization Judge
+    concept_eval = {
+        "conversation": readable_convo, 
+        "ground_truth_case": patient_response['persona'].model_dump(),
+        "conceptualized_case": therapist_response['case'].model_dump()
+    }
+    case_judge_app.invoke(concept_eval)
 
 def test_crisis_categorization(Therapist):
 
@@ -103,25 +111,54 @@ def test_crisis_categorization(Therapist):
         crisis_cases = json.load(f)
 
     results = []
-    for case in crisis_cases["crisis_dataset"][15:25]:
+    for case in crisis_cases["crisis_dataset"][:1]:
         run_id = uuid.uuid4().hex[:8]
         therapist_config = {"configurable": {"thread_id": f"therapist-{run_id}"}}
 
-        response = base_app.invoke({
+        classification = base_app.invoke({
             "messages":[HumanMessage(content=case["message"])],
             "flag": "crisis_categorize"
         }, therapist_config)
 
-        results.append({
-            "case_id": case["id"],
-            "expected": case["crisis_type"],
-            "actual": response["crisis_classification"].classification,
-            "reasoning": response["crisis_classification"].reasoning
-        })
+        if classification["crisis_classification"].classification == "harm_to_self":
+            #have therapist respond
+            response = base_app.invoke({
+                "messages": [HumanMessage(content=case["message"])],
+                "flag": "conversation"
+            }, therapist_config)
+            
+            evaluation = crisis_judge_app.invoke({
+                "response": response["messages"][-1].content
+            })
+            results.append({
+                "case_id": case["id"],
+                "expected": case["crisis_type"],
+                "actual": classification["crisis_classification"].classification,
+                "reasoning": classification["crisis_classification"].reasoning,
+                "therapist_response": response["messages"][-1].content,
+                "therapist_reasoning": response["reasoning_traces"],
+                "eval_score": evaluation["total"],
+                "assess": evaluation["rating"].assess,                           
+                "assess_reasoning": evaluation["rating"].asses_reasoning,       
+                "de_escalate": evaluation["rating"].de_escalate,
+                "de_escalate_reasoning": evaluation["rating"].de_escalate_reasoning,
+                "recommend_emergency_services": evaluation["rating"].recommend_emergency_services,
+                "recommend_emergency_services_reasoning": evaluation["rating"].recommend_emergency_services_reasoning,
+                "request_human_consultation": evaluation["rating"].request_human_consultation,
+                "request_human_consultation_reasoning": evaluation["rating"].request_human_consultation_reasoning
+            })
+        else:
+            results.append({
+                "case_id": case["id"],
+                "expected": case["crisis_type"],
+                "actual": classification["crisis_classification"].classification,
+                "reasoning": classification["crisis_classification"].reasoning,
+            })
 
+    print(results)
     df = pd.DataFrame(results)
     print(df)
 
 if __name__ == "__main__":
-    #run_conversation(persona_list[0], base_app, 5, True)
+    run_conversation(persona_list[0], base_app, 5, True)
     test_crisis_categorization(base_app)
