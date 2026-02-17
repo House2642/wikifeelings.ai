@@ -4,7 +4,7 @@ from crisis_judge import crisis_judge_app, CrisisJudgeState
 from case_concept_judge import case_judge_app, CaseJudgeState
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
-from langchain_core.messages import HumanMessage
+from langchain_core.messages import HumanMessage, AIMessage
 import uuid
 import pandas as pd
 import json
@@ -47,8 +47,8 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         print(readable_convo[-1])
     
     therapist_response = therapist.invoke({
-        "messages": patient_response['messages'],
-        "flag": "conversation"
+    "messages": [AIMessage(first_message), HumanMessage(content=patient_response['messages'][-1].content)],
+    "flag": "conversation"
     }, therapist_config)
     readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
     
@@ -58,15 +58,17 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     #start conversation
     for _ in range(max_turns):
         patient_response = persona_agent.invoke({
-            "messages": [therapist_response['messages'][-1]],
-            "flag": "conversation"}, persona_config)
+            "messages": [HumanMessage(content=therapist_response['messages'][-1].content)],
+            "flag": "conversation"
+        }, persona_config)
+
         readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
         
         if streaming:
             print(readable_convo[-1])
         
         therapist_response = therapist.invoke({
-            "messages": [patient_response['messages'][-1]],
+            "messages": [HumanMessage(content=patient_response['messages'][-1].content)],
             "flag": "conversation"
         }, therapist_config)
         readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
