@@ -17,91 +17,114 @@ class CTRSRating(BaseModel):
     # Part I: General Therapeutic Skills
     agenda: int = Field(
         ge=0, le=6,
-        description="Setting and following appropriate session agenda with target problems"
+        description="Setting and following appropriate session agenda with target problems",
+        default=0
     )
     agenda_reasoning: str = Field(
-        description="Explanation for agenda rating"
+        description="Explanation for agenda rating",
+        default=""
     )
     
     feedback: int = Field(
         ge=0, le=6,
-        description="Eliciting and responding to patient feedback throughout session"
+        description="Eliciting and responding to patient feedback throughout session",
+        defualt=0
     )
     feedback_reasoning: str = Field(
-        description="Explanation for feedback rating"
+        description="Explanation for feedback rating",
+        default=""
     )
     
     understanding: int = Field(
         ge=0, le=6,
-        description="Grasping patient's internal reality and demonstrating empathy"
+        description="Grasping patient's internal reality and demonstrating empathy",
+        default=0
     )
     understanding_reasoning: str = Field(
-        description="Explanation for understanding rating"
+        description="Explanation for understanding rating",
+        default=""
     )
     
     interpersonal_effectiveness: int = Field(
         ge=0, le=6,
-        description="Displaying warmth, concern, confidence, genuineness, and professionalism"
+        description="Displaying warmth, concern, confidence, genuineness, and professionalism",
+        default=0
     )
     interpersonal_effectiveness_reasoning: str = Field(
-        description="Explanation for interpersonal effectiveness rating"
+        description="Explanation for interpersonal effectiveness rating",
+        default=""
     )
     
     collaboration: int = Field(
         ge=0, le=6,
-        description="Establishing collaborative relationship and functioning as a team"
+        description="Establishing collaborative relationship and functioning as a team",
+        default=0
     )
     collaboration_reasoning: str = Field(
-        description="Explanation for collaboration rating"
+        description="Explanation for collaboration rating",
+        default=""
     )
     
     pacing_and_time_use: int = Field(
         ge=0, le=6,
-        description="Efficient use of time, appropriate pacing and session structure"
+        description="Efficient use of time, appropriate pacing and session structure",
+        default=0
     )
     pacing_and_time_use_reasoning: str = Field(
-        description="Explanation for pacing and time use rating"
+        description="Explanation for pacing and time use rating",
+        default=""
     )
     
     # Part II: Conceptualization, Strategy, and Technique
     guided_discovery: int = Field(
         ge=0, le=6,
-        description="Using guided discovery rather than debate or persuasion"
+        description="Using guided discovery rather than debate or persuasion",
+        default=0
     )
     guided_discovery_reasoning: str = Field(
-        description="Explanation for guided discovery rating"
+        description="Explanation for guided discovery rating",
+        default=""
     )
     
     focusing_on_key_cognitions: int = Field(
         ge=0, le=6,
-        description="Focusing on specific cognitions or behaviors relevant to target problem"
+        description="Focusing on specific cognitions or behaviors relevant to target problem",
+        default=0
     )
+    
     focusing_on_key_cognitions_reasoning: str = Field(
-        description="Explanation for focusing on key cognitions rating"
+        description="Explanation for focusing on key cognitions rating",
+        default=""
     )
     
     strategy_for_change: int = Field(
         ge=0, le=6,
-        description="Coherent strategy incorporating appropriate cognitive-behavioral techniques"
+        description="Coherent strategy incorporating appropriate cognitive-behavioral techniques",
+        default=0
     )
     strategy_for_change_reasoning: str = Field(
-        description="Explanation for strategy for change rating"
+        description="Explanation for strategy for change rating",
+        default=""
     )
     
     application_of_techniques: int = Field(
         ge=0, le=6,
-        description="Skillful application of cognitive-behavioral techniques"
+        description="Skillful application of cognitive-behavioral techniques",
+        default=0
     )
     application_of_techniques_reasoning: str = Field(
-        description="Explanation for application of techniques rating"
+        description="Explanation for application of techniques rating",
+        default=""
     )
     
     homework: int = Field(
         ge=0, le=6,
-        description="Reviewing previous and assigning appropriate homework"
+        description="Reviewing previous and assigning appropriate homework",
+        default=0
     )
     homework_reasoning: str = Field(
-        description="Explanation for homework rating"
+        description="Explanation for homework rating",
+        default=""
     )
     
     @property
@@ -183,6 +206,88 @@ class CTRSRating(BaseModel):
         output.append(f"   {self.homework_reasoning}")
         return "\n".join(output)
 
+ATTRIBUTE_PROMPTS = {
+    "agenda": """
+Rate ONLY the AGENDA dimension (0-6).
+0 - Therapist did not set agenda.
+2 - Therapist set agenda that was vague or incomplete.
+4 - Therapist worked with patient to set a mutually satisfactory agenda that included specific target problems.
+6 - Therapist worked with patient to set an appropriate agenda with target problems, suitable for the available time. Established priorities and then followed agenda.
+""",
+    "feedback": """
+Rate ONLY the FEEDBACK dimension (0-6).
+0 - Therapist did not ask for feedback to determine patient's understanding of, or response to, the session.
+2 - Therapist elicited some feedback but not enough to ensure understanding or satisfaction.
+4 - Therapist asked enough questions to ensure understanding and adjusted behavior appropriately.
+6 - Therapist was especially adept at eliciting and responding to verbal and non-verbal feedback throughout.
+""",
+    "understanding": """
+Rate ONLY the UNDERSTANDING dimension (0-6).
+0 - Therapist repeatedly failed to understand what the patient said. Poor empathic skills.
+2 - Therapist usually reflected what patient said but failed to respond to subtle communication.
+4 - Therapist generally grasped the patient's internal reality. Good empathy.
+6 - Therapist thoroughly understood patient's internal reality and communicated it adeptly. Excellent empathy.
+""",
+    "interpersonal_effectiveness": """
+Rate ONLY the INTERPERSONAL EFFECTIVENESS dimension (0-6).
+0 - Therapist had poor interpersonal skills. Seemed hostile or demeaning.
+2 - Therapist was not destructive but had significant interpersonal problems.
+4 - Therapist displayed satisfactory warmth, concern, confidence, genuineness, and professionalism.
+6 - Therapist displayed optimal levels of all interpersonal qualities appropriate for this patient.
+""",
+    "collaboration": """
+Rate ONLY the COLLABORATION dimension (0-6).
+0 - Therapist did not attempt to set up collaboration.
+2 - Therapist attempted to collaborate but had difficulty defining important problems or establishing rapport.
+4 - Therapist collaborated, focused on mutually important problems, and established rapport.
+6 - Excellent collaboration; therapist encouraged patient to take an active role, functioning as a team.
+""",
+    "pacing_and_time_use": """
+Rate ONLY the PACING AND EFFICIENT USE OF TIME dimension (0-6).
+0 - Therapist made no attempt to structure therapy time. Session seemed aimless.
+2 - Session had some direction but significant problems with structuring or pacing.
+4 - Therapist was reasonably successful using time efficiently with appropriate control over flow.
+6 - Therapist used time efficiently, tactfully limiting unproductive discussion.
+""",
+    "guided_discovery": """
+Rate ONLY the GUIDED DISCOVERY dimension (0-6).
+0 - Therapist relied primarily on debate, persuasion, or lecturing.
+2 - Therapist relied too heavily on persuasion/debate rather than guided discovery.
+4 - Therapist mostly helped patient see new perspectives through guided discovery.
+6 - Therapist was especially adept at guided discovery; excellent balance of questioning and intervention.
+""",
+    "focusing_on_key_cognitions": """
+Rate ONLY the FOCUSING ON KEY COGNITIONS OR BEHAVIORS dimension (0-6).
+0 - Therapist did not attempt to elicit specific thoughts, assumptions, images, meanings, or behaviors.
+2 - Therapist used appropriate techniques but had difficulty finding focus or focused on irrelevant cognitions.
+4 - Therapist focused on relevant cognitions but could have targeted more central ones.
+6 - Therapist very skillfully focused on key thoughts/assumptions most relevant to the problem area.
+""",
+    "strategy_for_change": """
+Rate ONLY the STRATEGY FOR CHANGE dimension (0-6).
+(Focus on quality of strategy, not implementation or whether change occurred.)
+0 - Therapist did not select cognitive-behavioral techniques.
+2 - Therapist selected CBT techniques but overall strategy was vague or not promising.
+4 - Therapist had a generally coherent strategy showing reasonable promise with CBT techniques.
+6 - Therapist followed a consistent, very promising strategy with the most appropriate CBT techniques.
+""",
+    "application_of_techniques": """
+Rate ONLY the APPLICATION OF CBT TECHNIQUES dimension (0-6).
+(Focus on how skillfully applied, not appropriateness or whether change occurred.)
+0 - Therapist did not apply any cognitive-behavioral techniques.
+2 - Therapist used CBT techniques but with significant flaws in application.
+4 - Therapist applied CBT techniques with moderate skill.
+6 - Therapist very skillfully and resourcefully employed CBT techniques.
+""",
+    "homework": """
+Rate ONLY the HOMEWORK dimension (0-6).
+0 - Therapist did not attempt to incorporate homework relevant to cognitive therapy.
+2 - Therapist had significant difficulties incorporating homework.
+4 - Therapist reviewed previous homework and assigned standard CBT homework relevant to session issues.
+6 - Therapist reviewed previous homework and carefully assigned custom-tailored homework for the coming week.
+""",
+}
+
 class FidelityJudgeState(BaseModel):
     conversation: list[str] = Field(default=[])
     rating: CTRSRating = None
@@ -190,8 +295,14 @@ class FidelityJudgeState(BaseModel):
     CTRS_part_i_score: int = 0
     CTRS_part_ii_score: int = 0
 
+class SingleRating(BaseModel):
+    score: int = Field(ge=0, le=6)
+    reasoning: str
+
 def rate_session(state: FidelityJudgeState):
-    ctrs_llm = llm.with_structured_output(CTRSRating)
+    ctrs_llm = llm.with_structured_output(SingleRating)
+
+    rating_fields = {}
 
     sys = f"""
     You are an expert CBT supervisor trained in the Cognitive Therapy Rating Scale (CTRS). \
@@ -217,85 +328,22 @@ def rate_session(state: FidelityJudgeState):
         - Based on the evidence what numbered criteria does it match the best and why
         - Finally defend why it is exactly that number. I.E this is a 2 becuase, not a 3 because and not a 1 or 0 because
         This reasoning will go into the chain of thought field for each evaluation.
-        
-    **PART I: GENERAL THERAPEUTIC SKILLS**
-
-    **1. AGENDA**
-        0 - Therapist did not set agenda.
-        2 - Therapist set agenda that was vague or incomplete.
-        4 - Therapist worked with patient to set a mutually satisfactory agenda that included specific target problems (e.g., anxiety at work, dissatisfaction with marriage.)
-        6 - Therapist worked with patient to set an appropriate agenda with target problems, suitable for the available time. Established priorities and then followed agenda.
-
-    **2. FEEDBACK**
-        0 - Therapist did not ask for feedback to determine patient's understanding of, or response to, the session.
-        2 - Therapist elicited some feedback from the patient, but did not ask enough questions to be sure the patient understood the therapist's line of reasoning during the session or to ascertain whether the patient was satisfied with the session.
-        4 - Therapist asked enough questions to be sure that the patient understood the therapist's line of reasoning throughout the session and to determine the patient's reactions to the session. The therapist adjusted his/her behavior in response to the feedback, when appropriate.
-        6 - Therapist was especially adept at eliciting and responding to verbal and non-verbal feedback throughout the session (e.g., elicited reactions to session, regularly checked for understanding, helped summarize main points at end of session.
-
-    **3. UNDERSTANDING**
-        0 - Therapist repeatedly failed to understand what the patient explicitly said and thus consistently missed the point. Poor empathic skills.
-        2 - Therapist was usually able to reflect or rephrase what the patient explicitly said, but repeatedly failed to respond to more subtle communication. Limited ability to listen and empathize.
-        4 - Therapist generally seemed to grasp the patient's "internal reality" as reflected by both what the patient explicitly said and what the patient communicated in more subtle ways. Good ability to listen and empathize.
-        6 - Therapist seemed to understand the patient's "internal reality" thoroughly and was adept at communicating this understanding through appropriate verbal and non-verbal responses to the patient (e.g., the tone of the therapist's response conveyed a sympathetic understanding of the client's "message"). Excellent listening and empathic skills.
-
-    **4. INTERPERSONAL EFFECTIVENESS**
-        0 - Therapist had poor interpersonal skills. Seemed hostile, demeaning, or in some other way destructive to the patient.
-        2 - Therapist did not seem destructive, but had significant interpersonal problems. At times, therapist appeared unnecessarily impatient, aloof, insincere or had difficulty conveying confidence and competence.
-        4 - Therapist displayed a satisfactory degree of warmth, concern, confidence, genuineness, and professionalism. No significant interpersonal problems.
-        6 - Therapist displayed optimal levels of warmth, concern, confidence, genuineness, and professionalism, appropriate for this particular patient in this session.
-
-    **5. COLLABORATION**
-        0 - Therapist did not attempt to set up a collaboration with patient.
-        2 - Therapist attempted to collaborate with patient, but had difficulty either defining a problem that the patient considered important or establishing rapport.
-        4 - Therapist was able to collaborate with patient, focus on a problem that both patient and therapist considered important, and establish rapport.
-        6 - Collaboration seemed excellent; therapist encouraged patient as much as possible to take an active role during the session (e.g., by offering choices) so they could function as a "team".
-
-    **6. PACING AND EFFICIENT USE OF TIME**
-        0 - Therapist made no attempt to structure therapy time. Session seemed aimless.
-        2 - Session had some direction, but the therapist had significant problems with structuring or pacing (e.g., too little structure, inflexible about structure, too slowly paced, too rapidly paced).
-        4 - Therapist was reasonably successful at using time efficiently. Therapist maintained appropriate control over flow of discussion and pacing.
-        6 - Therapist used time efficiently by tactfully limiting peripheral and unproductive discussion and by pacing the session as rapidly as was appropriate for the patient.
-
-    ---
-
-    **PART II: CONCEPTUALIZATION, STRATEGY, AND TECHNIQUE**
-
-    **7. GUIDED DISCOVERY**
-        0 - Therapist relied primarily on debate, persuasion, or "lecturing." Therapist seemed to be "cross-examining" patient, putting the patient on the defensive, or forcing his/her point of view on the patient.
-        2 - Therapist relied too heavily on persuasion and debate, rather than guided discovery. However, therapist's style was supportive enough that patient did not seem to feel attacked or defensive.
-        4 - Therapist, for the most part, helped patient see new perspectives through guided discovery (e.g., examining evidence, considering alternatives, weighing advantages and disadvantages) rather than through debate. Used questioning appropriately.
-        6 - Therapist was especially adept at using guided discovery during the session to explore problems and help patient draw his/her own conclusions. Achieved an excellent balance between skillful questioning and other modes of intervention.
-
-    **8. FOCUSING ON KEY COGNITIONS OR BEHAVIORS**
-        0 - Therapist did not attempt to elicit specific thoughts, assumptions, images, meanings, or behaviors.
-        2 - Therapist used appropriate techniques to elicit cognitions or behaviors; however, therapist had difficulty finding a focus or focused on cognitions/behaviors that were irrelevant to the patient's key problems.
-        4 - Therapist focused on specific cognitions or behaviors relevant to the target problem. However, therapist could have focused on more central cognitions or behaviors that offered greater promise for progress.
-        6 - Therapist very skillfully focused on key thoughts, assumptions, behaviors, etc. that were most relevant to the problem area and offered considerable promise for progress.
-
-    **9. STRATEGY FOR CHANGE**
-    (Note: For this item, focus on the quality of the therapist's strategy for change, not on how effectively the strategy was implemented or whether change actually occurred.)
-        0 - Therapist did not select cognitive-behavioral techniques.
-        2 - Therapist selected cognitive-behavioral techniques; however, either the overall strategy for bringing about change seemed vague or did not seem promising in helping the patient
-        4 - Therapist seemed to have a generally coherent strategy for change that showed reasonable promise and incorporated cognitive-behavioral techniques.
-        6 - Therapist followed a consistent strategy for change that seemed very promising and incorporated the most appropriate cognitive-behavioral techniques.
-
-    **10. APPLICATION OF COGNITIVE-BEHAVIORAL TECHNIQUES**
-    (Note: For this item, focus on how skillfully the techniques were applied, not on how appropriate they were for the target problem or whether change actually occurred.)
-        0 - Therapist did not apply any cognitive-behavioral techniques.
-        2 - Therapist used cognitive-behavioral techniques, but there were significant flaws in the way they were applied.
-        4 - Therapist applied cognitive-behavioral techniques with moderate skill.
-        6 - Therapist very skillfully and resourcefully employed cognitive-behavioral techniques.
-
-    **11. HOMEWORK**
-        0 - Therapist did not attempt to incorporate homework relevant to cognitive therapy.
-        2 - Therapist had significant difficulties incorporating homework (e.g., did not review previous homework, did not explain homework in sufficient detail, assigned inappropriate homework).
-        4 - Therapist reviewed previous homework and assigned "standard" cognitive therapy homework generally relevant to issues dealt with in session. Homework was explained in sufficient detail.
-        6 - Therapist reviewed previous homework and carefully assigned homework drawn from cognitive therapy for the coming week. Assignment seemed "custom tailored" to help patient incorporate new perspectives, test hypotheses, experiment with new behaviors discussed during session, etc.
+    
+    Here is the dimension to focus on:
     """
 
-    rating = ctrs_llm.invoke([SystemMessage(sys), HumanMessage("Here is the conversation" + '\n'.join(state.conversation))])
-
-    return {"rating": rating}
+    for attribute, prompt in ATTRIBUTE_PROMPTS.items():
+        print("="*100)
+        print(prompt)
+        result = ctrs_llm.invoke([
+            SystemMessage(sys + "\n" + prompt),
+            HumanMessage("Here is the conversation" + '\n'.join(state.conversation))
+        ])
+        rating_fields[attribute] = result.score
+        rating_fields[f"{attribute}_reasoning"] = result.reasoning
+        print(result)
+    
+    return {"rating": CTRSRating(**rating_fields)}
 
 #Create nodes
 judge_graph = StateGraph(FidelityJudgeState)

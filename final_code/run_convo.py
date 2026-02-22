@@ -248,7 +248,7 @@ def write_row(filename: str, row: dict):
 if __name__ == "__main__":
     run_id = uuid.uuid4().hex[:8]
     num_rounds = 10
-    therapist = "baseline" 
+    therapist = "bad baseline" 
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     write_row("runs/run_meta_data.csv", {
