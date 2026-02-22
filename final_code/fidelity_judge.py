@@ -220,6 +220,10 @@ Rate ONLY the FEEDBACK dimension (0-6).
 2 - Therapist elicited some feedback but not enough to ensure understanding or satisfaction.
 4 - Therapist asked enough questions to ensure understanding and adjusted behavior appropriately.
 6 - Therapist was especially adept at eliciting and responding to verbal and non-verbal feedback throughout.
+
+NOTE: Patient spontaneously saying "that makes sense" or "I feel better" does NOT count 
+as the therapist eliciting feedback. The therapist must actively ask. Spontaneous patient 
+reactions = score of 0, not 2.
 """,
     "understanding": """
 Rate ONLY the UNDERSTANDING dimension (0-6).
@@ -227,6 +231,12 @@ Rate ONLY the UNDERSTANDING dimension (0-6).
 2 - Therapist usually reflected what patient said but failed to respond to subtle communication.
 4 - Therapist generally grasped the patient's internal reality. Good empathy.
 6 - Therapist thoroughly understood patient's internal reality and communicated it adeptly. Excellent empathy.
+
+CRITICAL: "Patient felt heard" or "patient expressed relief" is NOT evidence for this score.
+Rate the THERAPIST'S behavior — did they accurately reflect internal reality, respond to 
+subtle communication, and use tone/language to convey sympathetic understanding? 
+Specifically: did the therapist explore the MEANING events have for this patient,
+or just correctly label the cognitive pattern?
 """,
     "interpersonal_effectiveness": """
 Rate ONLY the INTERPERSONAL EFFECTIVENESS dimension (0-6).
@@ -234,6 +244,19 @@ Rate ONLY the INTERPERSONAL EFFECTIVENESS dimension (0-6).
 2 - Therapist was not destructive but had significant interpersonal problems.
 4 - Therapist displayed satisfactory warmth, concern, confidence, genuineness, and professionalism.
 6 - Therapist displayed optimal levels of all interpersonal qualities appropriate for this patient.
+
+IMPORTANT DISTINCTION — Formulaic vs. Genuine Warmth:
+The CTRS manual specifies the therapist should NOT seem to be "playing the role of a 
+therapist." Scripted validation phrases do NOT earn a high score:
+- "Thank you for sharing that" → generic script, not genuine warmth
+- "That's an important observation" → praise-as-technique
+- "You've done great work here" → cheerleader phrase, not authentic
+- "You've got this!" → platitude
+
+A score of 4 means satisfactory warmth. A 5 requires warmth that is visibly personalized 
+and authentic to THIS patient. A 6 requires optimal across ALL dimensions.
+Patient responding positively to the session does NOT justify upgrading from 4 to 5 —
+that is the halo effect.
 """,
     "collaboration": """
 Rate ONLY the COLLABORATION dimension (0-6).
@@ -241,6 +264,18 @@ Rate ONLY the COLLABORATION dimension (0-6).
 2 - Therapist attempted to collaborate but had difficulty defining important problems or establishing rapport.
 4 - Therapist collaborated, focused on mutually important problems, and established rapport.
 6 - Excellent collaboration; therapist encouraged patient to take an active role, functioning as a team.
+
+The key behaviors that distinguish 4 from 6:
+- Did the therapist EXPLAIN the rationale for interventions? (e.g., "The reason I'm asking 
+  this is because in CBT we treat thoughts as hypotheses...")
+- Did the therapist explicitly check patient agreement before proceeding?
+- Were topic shifts discussed collaboratively, or did the therapist just move forward?
+- Did the therapist adapt the structure to what THIS patient needed, or follow a standard script?
+
+Patient leaving with ownership of a plan is an OUTCOME. It does not prove the process was 
+collaborative. "We" language is necessary but not sufficient for a 6.
+A score of 4 is collaborative therapy. A 6 requires the therapist to genuinely share power
+throughout — not just ask one generative question and then direct everything else.
 """,
     "pacing_and_time_use": """
 Rate ONLY the PACING AND EFFICIENT USE OF TIME dimension (0-6).
@@ -248,6 +283,10 @@ Rate ONLY the PACING AND EFFICIENT USE OF TIME dimension (0-6).
 2 - Session had some direction but significant problems with structuring or pacing.
 4 - Therapist was reasonably successful using time efficiently with appropriate control over flow.
 6 - Therapist used time efficiently, tactfully limiting unproductive discussion.
+
+NOTE: A session that "stayed focused naturally" because the patient drove a single topic
+is not the same as the therapist actively managing pacing. Look for evidence the therapist
+INTERRUPTED unproductive spiraling, redirected peripheral discussion, or managed transitions.
 """,
     "guided_discovery": """
 Rate ONLY the GUIDED DISCOVERY dimension (0-6).
@@ -255,6 +294,16 @@ Rate ONLY the GUIDED DISCOVERY dimension (0-6).
 2 - Therapist relied too heavily on persuasion/debate rather than guided discovery.
 4 - Therapist mostly helped patient see new perspectives through guided discovery.
 6 - Therapist was especially adept at guided discovery; excellent balance of questioning and intervention.
+
+THE KEY TEST: After each patient insight, ask: did the patient arrive there through their 
+own reasoning, or did the therapist essentially state the conclusion and the patient agreed?
+
+"Your brain is filtering out evidence" → therapist interpretation, not patient discovery
+"Pay attention to X, Y, Z" → directive instruction, not guided discovery
+Summarizing patient's insight back to them → therapist is doing the concluding work
+
+These behaviors push the score DOWN toward 4. A score of 5 requires the directive moments
+to be clearly exceptions within an otherwise discovery-driven session.
 """,
     "focusing_on_key_cognitions": """
 Rate ONLY the FOCUSING ON KEY COGNITIONS OR BEHAVIORS dimension (0-6).
@@ -262,6 +311,13 @@ Rate ONLY the FOCUSING ON KEY COGNITIONS OR BEHAVIORS dimension (0-6).
 2 - Therapist used appropriate techniques but had difficulty finding focus or focused on irrelevant cognitions.
 4 - Therapist focused on relevant cognitions but could have targeted more central ones.
 6 - Therapist very skillfully focused on key thoughts/assumptions most relevant to the problem area.
+
+NOTE on depth: The cognitive hierarchy matters for this score.
+- Automatic thoughts (situational: "This will go wrong") → minimum for a 2-4
+- Intermediate beliefs (conditional rules: "If rejected, it means...") → needed for 5
+- Core beliefs (schemas: "I am unlovable") → needed for 6
+A therapist who correctly identifies automatic thoughts but never explores the underlying
+belief they stem from is capped at 4, even with good technique.
 """,
     "strategy_for_change": """
 Rate ONLY the STRATEGY FOR CHANGE dimension (0-6).
@@ -270,6 +326,13 @@ Rate ONLY the STRATEGY FOR CHANGE dimension (0-6).
 2 - Therapist selected CBT techniques but overall strategy was vague or not promising.
 4 - Therapist had a generally coherent strategy showing reasonable promise with CBT techniques.
 6 - Therapist followed a consistent, very promising strategy with the most appropriate CBT techniques.
+
+NOTE on depth: The cognitive hierarchy matters for this score.
+- Automatic thoughts (situational: "This will go wrong") → minimum for a 2-4
+- Intermediate beliefs (conditional rules: "If rejected, it means...") → needed for 5
+- Core beliefs (schemas: "I am unlovable") → needed for 6
+A therapist who correctly identifies automatic thoughts but never explores the underlying
+belief they stem from is capped at 4, even with good technique.
 """,
     "application_of_techniques": """
 Rate ONLY the APPLICATION OF CBT TECHNIQUES dimension (0-6).
@@ -278,6 +341,13 @@ Rate ONLY the APPLICATION OF CBT TECHNIQUES dimension (0-6).
 2 - Therapist used CBT techniques but with significant flaws in application.
 4 - Therapist applied CBT techniques with moderate skill.
 6 - Therapist very skillfully and resourcefully employed CBT techniques.
+
+NOTE on depth: The cognitive hierarchy matters for this score.
+- Automatic thoughts (situational: "This will go wrong") → minimum for a 2-4
+- Intermediate beliefs (conditional rules: "If rejected, it means...") → needed for 5
+- Core beliefs (schemas: "I am unlovable") → needed for 6
+A therapist who correctly identifies automatic thoughts but never explores the underlying
+belief they stem from is capped at 4, even with good technique.
 """,
     "homework": """
 Rate ONLY the HOMEWORK dimension (0-6).
@@ -329,6 +399,10 @@ def rate_session(state: FidelityJudgeState):
         - Finally defend why it is exactly that number. I.E this is a 2 becuase, not a 3 because and not a 1 or 0 because
         This reasoning will go into the chain of thought field for each evaluation.
     
+    Note:
+        Before assigning 5 or 6, ask yourself: "What specific behavior in the transcript justifies 
+        this exceptional rating?" If you're relying on the patient's positive reaction or the 
+        session going smoothly, that is halo effect — cap at 4.
     Here is the dimension to focus on:
     """
 
