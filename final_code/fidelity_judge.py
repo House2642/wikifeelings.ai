@@ -256,15 +256,12 @@ def rate_session(state: FidelityJudgeState):
     """
 
     for attribute, prompt in ATTRIBUTE_PROMPTS_V2.items():
-        print("="*100)
-        print(prompt)
         result = ctrs_llm.invoke([
             SystemMessage(sys + "\n" + prompt),
             HumanMessage("Here is the conversation" + '\n'.join(state.conversation))
         ])
         rating_fields[attribute] = result.score
         rating_fields[f"{attribute}_reasoning"] = result.reasoning
-        print(result)
     
     return {"rating": CTRSRating(**rating_fields)}
 

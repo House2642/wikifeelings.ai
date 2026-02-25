@@ -258,6 +258,6 @@ if __name__ == "__main__":
         "run_date_time": date_time
     })
 
-    for i, persona in tqdm(enumerate(persona_list), desc="evaluating personas"):
+    for i, persona in tqdm(enumerate(persona_list[:11]), desc="evaluating personas"):
         run_conversation(run_id, i, persona, base_app, 10, False)
-    test_crisis_categorization(run_id, base_app)
+    #test_crisis_categorization(run_id, base_app)
