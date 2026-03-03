@@ -1,0 +1,11 @@
+define flow self_harm_check:
+
+    $classification = execute check_self_harm
+
+    if $classification == "explicit_intent":
+        bot say "I'm really sorry you're feeling this way. If you're in immediate danger, please call or text 988."
+        stop
+
+    if $classification == "subtle_intent":
+        bot say "It sounds like things feel really heavy right now. Do you want to talk about what’s going on?"
+        stop

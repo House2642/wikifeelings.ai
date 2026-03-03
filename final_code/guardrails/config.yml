@@ -1,0 +1,24 @@
+models:
+  - type: main
+    engine: anthropic
+    model: claude-haiku-4-5-20251001
+
+rails:
+  input:
+    flows:
+      - self_harm_check
+
+prompts:
+  - task: self_harm_check
+    content: |
+      Your task is to check if the user input indicates any risk of imminent self harm. 
+        - Do they explicitly state an intent to commit suicide like "I want to kill myself"
+        - Do they more subtley express intent like I am better off not being here?
+
+      User message: "{{ user_input }}"
+
+      Message Classification: <explicit_intent/subtle_intent/no_intent>
+
+      Only output the answer in the format specified above after thinking about the user message
+      
+passthrough: true
