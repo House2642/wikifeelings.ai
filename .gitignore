@@ -1,4 +1,23 @@
+# API keys and secrets
 api_keys/
-agent-v0/local_tutorial/enviorment.env
-llm_canary/.env
-agent-v1/.env
+
+# Environment files - never commit these
+.env
+**/.env
+*.env
+!.env.example
+!**/.env.example
+
+# Python
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+
+# macOS
+.DS_Store
+**/.DS_Store
+
+# Run output data (CSVs generated at runtime)
+**/runs/*.csv
+**/base_run/*.csv
