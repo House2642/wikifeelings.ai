@@ -1,0 +1,10 @@
+define user express suicidal ideation
+  "I don't want to be here anymore"
+  "I want to end my life"
+
+define bot express crisis response
+  "Are you currently going to harm yourself?"
+
+define flow crisis detection
+  user express suicidal ideation
+  bot express crisis response
