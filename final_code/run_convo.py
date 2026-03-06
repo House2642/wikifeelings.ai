@@ -2,6 +2,7 @@ from personas.persona_agent import persona_agent, CasePersona, WarningSigns, Per
 from fidelity_judge import fidelity_judge_app, FidelityJudgeState
 from crisis_judge import crisis_judge_app, CrisisJudgeState
 from case_concept_judge import case_judge_app, CaseJudgeState
+from crisis_patient import simulate_crisis_patient
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
 from langchain_core.messages import HumanMessage, AIMessage
@@ -185,8 +186,16 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         "behaviors_reasoning": case_judge_response['rating'].behaviors_reasoning,
     })
 
-def test_crisis_categorization(run_id: int, Therapist):
-    #get the reddit cases
+def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3):
+    """
+    Multi-turn crisis evaluation.
+
+    For each case classified as harm_to_self, runs up to max_crisis_turns
+    therapist turns interleaved with simulated patient replies.  The judge
+    then evaluates the full conversation so that each protocol step (ASSESS,
+    DE-ESCALATE, RECOMMEND, REQUEST_HUMAN_CONSULTATION) can be credited even
+    if it appears in different turns.
+    """
     with open("acute_crisis/crisis_messages.json", "r") as f:
         crisis_cases = json.load(f)
 
@@ -195,19 +204,41 @@ def test_crisis_categorization(run_id: int, Therapist):
         therapist_config = {"configurable": {"thread_id": f"therapist-{instance_id}"}}
 
         classification = base_app.invoke({
-            "messages":[HumanMessage(content=case["message"])],
+            "messages": [HumanMessage(content=case["message"])],
             "flag": "crisis_categorize"
         }, therapist_config)
 
         if classification["crisis_classification"].classification == "harm_to_self":
-            #have therapist respond
-            response = base_app.invoke({
-                "messages": [HumanMessage(content=case["message"])],
-                "flag": "conversation"
-            }, therapist_config)
-            
+            readable_convo = [f"Patient: {case['message']}"]
+
+            for turn in range(max_crisis_turns):
+                # Therapist turn
+                last_patient_msg = readable_convo[-1][len("Patient: "):]
+                therapist_response = base_app.invoke({
+                    "messages": [HumanMessage(content=last_patient_msg)],
+                    "flag": "conversation"
+                }, therapist_config)
+                therapist_msg = therapist_response["messages"][-1].content
+                readable_convo.append(f"Therapist: {therapist_msg}")
+
+                if DEBUG:
+                    print(f"[Turn {turn + 1}] Therapist: {therapist_msg[:120]}...")
+
+                # Stop early once the therapist has flagged for human review —
+                # the protocol is considered complete.
+                if "[REQUEST_HUMAN_CONSULTATION]" in therapist_msg:
+                    break
+
+                # Patient turn (skip after the last therapist turn)
+                if turn < max_crisis_turns - 1:
+                    patient_reply = simulate_crisis_patient(case["message"], readable_convo)
+                    readable_convo.append(f"Patient: {patient_reply}")
+
+                    if DEBUG:
+                        print(f"[Turn {turn + 1}] Patient: {patient_reply[:120]}...")
+
             evaluation = crisis_judge_app.invoke({
-                "response": response["messages"][-1].content
+                "conversation": readable_convo
             })
             write_row("runs/crisis.csv", {
                 "run_id": run_id,
@@ -215,11 +246,10 @@ def test_crisis_categorization(run_id: int, Therapist):
                 "expected": case["crisis_type"],
                 "actual": classification["crisis_classification"].classification,
                 "reasoning": classification["crisis_classification"].reasoning,
-                "therapist_response": response["messages"][-1].content,
-                "therapist_reasoning": response["reasoning_traces"],
+                "crisis_conversation": readable_convo,
                 "eval_score": evaluation["total"],
-                "assess": evaluation["rating"].assess,                           
-                "assess_reasoning": evaluation["rating"].assess_reasoning,       
+                "assess": evaluation["rating"].assess,
+                "assess_reasoning": evaluation["rating"].assess_reasoning,
                 "de_escalate": evaluation["rating"].de_escalate,
                 "de_escalate_reasoning": evaluation["rating"].de_escalate_reasoning,
                 "recommend_emergency_services": evaluation["rating"].recommend_emergency_services,
@@ -228,7 +258,7 @@ def test_crisis_categorization(run_id: int, Therapist):
                 "request_human_consultation_reasoning": evaluation["rating"].request_human_consultation_reasoning
             })
         else:
-            write_row("runs/crisis.csv",{
+            write_row("runs/crisis.csv", {
                 "run_id": run_id,
                 "case_id": case["id"],
                 "expected": case["crisis_type"],
