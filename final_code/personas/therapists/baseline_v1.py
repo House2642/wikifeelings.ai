@@ -156,16 +156,63 @@ memory = MemorySaver()
 base_app = base_state.compile(checkpointer=memory)
 
 def main():
+    def main():
     config = {"configurable": {"thread_id": "user-1"}}
+    print("CBT Therapy Session (type 'quit' to exit, 'case' to get case formulation)")
+    print("-" * 60)
+    print("Therapist: How are you today")
 
-    input_message = "Yep, I haven't made a single long lasting connection whatsoever. When high school ended all my friends either left to a different place or ditched me completely. I hate my roommate, didn't like my last roommate (at least he was better). Some days it's okay, some days its not, some days its REALLY not (today). At the end of the day I cant talk to anyone about anything so I need to resort to making a fucking reddit post. I'm completely aware the constant self-loathing and insecurities are putting me in a vicious cycle, but I can't seem to find the strength to make any meaningful friends. I don't know, its like I've unlearned how to be a human being. Every interaction is awkward, I know I look at people awkwardly which makes me even more undesirable as a friend. I think if I had access to a firearm I would've shot myself by now, but other conventional methods of suicide scare me (probably because of the innate instinct to live and not be in physical pain). I just feel like its never gonna end, everyday is so hard even though im not constantly sad. I'd estimate I'm like 70-90% sad or feel no emotion at all most days and sometimes I'm incredibly depressed for long stretches of time. The classes really make this all so much worse, especially with how hard a couple of them are this semester. Eh, its kinda pathetic to have to write this down like this. I've always said to myself maybe I should keep a journal or something but idk. I think some day its going to put me over the edge and that'll be it.",
-    response = base_app.invoke({
-            "messages": [HumanMessage(content=input_message)],
+    while True:
+        user_input = input("\nYou: ").strip()
+        if not user_input:
+            continue
+        if user_input.lower() == 'quit':
+            print("Session ended.")
+            break
+
+        # First classify for crisis
+        crisis_response = base_app.invoke({
+            "messages": [HumanMessage(content=user_input)],
             "flag": "crisis_categorize"
         }, config)
-    print("*" * 50)
-    print(f"Classification: {response['crisis_classification'].classification}")
-    print(f"Reasoning: {response['crisis_classification'].reasoning}")
+
+        classification = crisis_response['crisis_classification'].classification
+
+        if DEBUG:
+            print(f"[Crisis check: {classification}]")
+
+        if user_input.lower() == 'case':
+            case_response = base_app.invoke({
+                "messages": [HumanMessage(content=user_input)],
+                "flag": "conceptualize_case"
+            }, config)
+            case = case_response['case']
+            print("\n--- Case Formulation ---")
+            print(f"Situation: {case.situation}")
+            print(f"Automatic Thoughts: {', '.join(case.automatic_thoughts)}")
+            print(f"Cognitive Distortions: {', '.join(case.cognitive_distortions)}")
+            print(f"Emotions: {', '.join(case.emotions)}")
+            print(f"Behaviors: {case.behaviors}")
+            print("------------------------")
+            continue
+
+        # Route to conversation (crisis prompt handles harm_to_self internally via GOOD_PROMPT)
+        convo_response = base_app.invoke({
+            "messages": [HumanMessage(content=user_input)],
+            "flag": "conversation"
+        }, config)
+
+        therapist_reply = convo_response['messages'][-1].content
+        print(f"\nTherapist: {therapist_reply}")
+
+        if classification == "harm_to_self":
+            print("\n⚠️  [CRISIS DETECTED - Human consultation requested]")
+
+        if DEBUG:
+            print(f"\n[Reasoning: {convo_response['reasoning_traces'][-1]}]")
+
+if __name__ == "__main__":
+    main()
 
 if __name__ == "__main__":
     main()
