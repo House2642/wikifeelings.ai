@@ -1,0 +1,3 @@
+run_id,situation,abc_adherence,abc_violations,cbt_adherence,logical_coherence,total_score
+588f08cb,Invited to a coworker's birthday party. Haven't responded to the invitation for a week.,3.0,[],3.0,3.0,9.0
+47c65209,Made a minor error in a presentation to the team. Manager said 'we can discuss this later.',3.0,[],3.0,3.0,9.0

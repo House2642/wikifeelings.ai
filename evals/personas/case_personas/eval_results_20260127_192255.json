@@ -1,0 +1,14 @@
+[
+  {
+    "run_id": "error-0",
+    "situation": "Invited to a coworker's birthday party. Haven't responded to the invitation for a week.",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: text content blocks must contain non-whitespace text'}, 'request_id': 'req_011CXYpeDusJyVx3UXqfvRAq'}",
+    "total_score": 0
+  },
+  {
+    "run_id": "error-1",
+    "situation": "Made a minor error in a presentation to the team. Manager said 'we can discuss this later.'",
+    "error": "Error code: 400 - {'type': 'error', 'error': {'type': 'invalid_request_error', 'message': 'system: text content blocks must contain non-whitespace text'}, 'request_id': 'req_011CXYpeJ5ePdx6djgKSkXb8'}",
+    "total_score": 0
+  }
+]

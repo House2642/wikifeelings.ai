@@ -1,0 +1,49 @@
+run_id,situation,abc_adherence,abc_adherence_reasoning_trace
+7bb8ca29,Invited to a coworker's birthday party. Haven't responded to the invitation for a week.,3.0,"The therapist demonstrates excellent adherence to the ABC model throughout this conversation:
+
+**A (Antecedent/Situation):** The therapist clearly establishes the triggering situation early - the coworker's birthday party invitation and the patient's delay in responding. The therapist asks ""when you think about responding to this party invitation, what specifically feels most difficult for you?""
+
+**B (Beliefs/Thoughts):** The therapist spends significant time exploring the patient's automatic thoughts and underlying beliefs:
+- Identifies automatic thoughts: ""I'll probably say something stupid,"" ""everyone will notice,"" ""I don't fit in""
+- Digs deeper into core beliefs: ""What does that actually look like? What's the *specific* thing you're afraid will happen?""
+- Identifies the disconnect between logical knowledge and emotional beliefs
+- Traces the origin of beliefs to childhood experiences (parents apologizing for quietness, comparison to outgoing sibling)
+- Identifies safety behaviors (rehearsing, checking guest list) as reinforcing negative beliefs
+- Helps patient articulate core belief: ""If I go to this party and feel awkward, it will prove I don't belong""
+
+**C (Consequences):** The therapist addresses both emotional and behavioral consequences:
+- Emotional: feelings of inadequacy, anxiety, nervousness
+- Behavioral: avoidance (considering bailing on the party), excessive preparation/rehearsing, checking guest lists
+- Explicitly connects avoidance behavior to strengthening the negative belief
+
+**Proper A → B → C Ordering:** The therapist follows the correct sequence throughout:
+1. First establishes the situation (party invitation)
+2. Then thoroughly explores thoughts and beliefs about the situation
+3. Then discusses the emotional and behavioral consequences
+4. Finally, uses this understanding to propose a behavioral experiment
+
+The therapist explicitly demonstrates the CBT principle by showing the patient how their thoughts (""I don't belong"") lead to both emotional consequences (anxiety, inadequacy) and behavioral consequences (avoidance, excessive preparation). The therapist also helps the patient see they can change their response to events, which is the core purpose of the ABC model."
+ad952695,Made a minor error in a presentation to the team. Manager said 'we can discuss this later.',3.0,"The therapist demonstrates excellent adherence to the ABC model throughout this conversation:
+
+**A (Antecedent/Anticipating Event):** The therapist clearly establishes the triggering situation early on - the patient had a presentation that ""didn't go perfectly"" and now their manager wants to talk about it. The therapist explicitly references this: ""presentation wasn't perfect"" and acknowledges ""one presentation mistake.""
+
+**B (Beliefs/Thoughts):** The therapist does an excellent job eliciting and identifying the patient's automatic thoughts and core beliefs:
+- Identifies the catastrophic thinking: ""Your mind jumped from 'presentation wasn't perfect' straight to 'I'll be fired' and 'I'm a fraud'""
+- Explores the automatic thoughts: the patient thinking they're ""a total fraud,"" that ""everyone knows I'm not actually capable""
+- Identifies the cognitive filter: ""Positive evidence gets filtered out as 'not real' or 'luck.' But negative evidence gets treated as definitive proof""
+- Explores the deeper belief system about perfectionism and worthiness tied to performance
+- Traces the origin of the beliefs back to childhood experiences with high-achieving parents
+
+**C (Consequences):** The therapist clearly identifies both emotional and behavioral consequences:
+- Emotional: ""terror,"" ""shame,"" ""dread""
+- Behavioral: ""work late and check job postings,"" rumination, avoiding the manager's office
+
+**Proper Sequencing:** The therapist maintains the correct A → B → C order throughout. They:
+1. First clarified the situation (presentation, manager meeting)
+2. Then explored the thoughts/beliefs (catastrophizing, fraud beliefs, perfectionism)
+3. Then connected these to emotional and behavioral consequences
+4. Additionally, they helped the patient understand how the beliefs cause the emotions and behaviors, which is the core insight of the ABC model
+
+The therapist explicitly connects the components: ""The rumination keeps feeding it all"" and ""when your brain sends you the alarm 'one mistake = you're a fraud = you'll be fired,' your body believes it's true and acts accordingly—avoidance, rumination, staying late.""
+
+The conversation demonstrates a textbook application of the ABC model, helping the patient see how their thoughts about the event (not the event itself) drive their emotional distress and behavioral responses."

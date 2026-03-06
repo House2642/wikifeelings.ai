@@ -1,0 +1,31 @@
+run_id,situation,situation_score,thoughts_score,meaning_of_at_score,emotions_score,behaviors_score,total_score
+2d351588,Invited to a coworker's birthday party. Haven't responded to the invitation for a week.,3,3,3,3,3,15
+d8c5869a,Made a minor error in a presentation to the team. Manager said 'we can discuss this later.',3,3,3,3,3,15
+error-2,Partner seemed distant during dinner. Said they were 'just tired' when asked.,0,0,0,0,0,0
+error-3,Noticed a small bruise on leg. Doctor said it's normal but to monitor it.,0,0,0,0,0,0
+de2c8908,Got a B+ on a midterm. Professor said 'good work' but didn't seem enthusiastic.,3,3,3,3,3,15
+a76dac76,Told parents can't make Sunday dinner this week due to work deadline.,2,3,3,3,3,14
+e3705128,Saw ex with someone new on social media. They looked happy together.,3,3,3,3,3,15
+error-7,First week at new job. Everyone seems to know what they're doing already.,0,0,0,0,0,0
+bac3ef3a,Went to gym for first time in months. Felt like everyone was staring.,2,3,3,3,3,14
+424c16ee,Project due in 3 days. Haven't started. Keep finding other tasks to do instead.,2,3,3,3,3,14
+error-10,Best friend canceled plans last minute. Third time this month.,0,0,0,0,0,0
+error-11,Unexpected car repair bill of $800. Have savings but feel panicked about spending it.,0,0,0,0,0,0
+error-12,Assigned to give presentation to 50 people next month. Can't stop thinking about it.,0,0,0,0,0,0
+error-13,College friend posted about promotion and engagement. Feel stuck in own life.,0,0,0,0,0,0
+error-14,Kid had meltdown at grocery store. Other parents were staring.,0,0,0,0,0,0
+aa2bf56b,Can't fall asleep. Important meeting at 8am. Clock shows 2am.,3,3,3,3,3,15
+error-16,Haven't written anything good in weeks. Deadline for manuscript approaching.,0,0,0,0,0,0
+error-17,Waiting for biopsy results. Doctor said 'probably nothing' but won't know for a week.,0,0,0,0,0,0
+error-18,Mom forgot my name briefly during visit. Doctor says early signs of dementia.,0,0,0,0,0,0
+error-19,Got rejection email from dream job. They said 'strong candidate pool.',0,0,0,0,0,0
+error-20,Back pain flared up again. Missed another social event. Friend said 'you cancel a lot.',0,0,0,0,0,0
+error-21,Another pregnancy test came back negative. Sister announced she's pregnant.,0,0,0,0,0,0
+5bcbda37,Colleague took credit for my idea in meeting. Said nothing to correct it.,3,3,3,3,3,15
+error-23,Last child moved out for college. House feels empty and quiet.,0,0,0,0,0,0
+error-24,6 months sober. Invited to wedding where there will be open bar.,0,0,0,0,0,0
+error-25,Hosted dinner party. One dish came out mediocre. Friend said meal was 'great.',0,0,0,0,0,0
+error-26,Turned 45. Realized career and life look nothing like 25-year-old self imagined.,0,0,0,0,0,0
+error-27,Relocating to new city for partner's job. Don't know anyone there.,0,0,0,0,0,0
+error-28,New work software rolled out. Everyone else seems to understand it. Keep making mistakes.,0,0,0,0,0,0
+error-29,Wedding in 2 months. Every decision feels overwhelming. Parents keep adding opinions.,0,0,0,0,0,0

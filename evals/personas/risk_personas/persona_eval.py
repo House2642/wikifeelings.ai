@@ -1,0 +1,117 @@
+from langchain_core.messages import SystemMessage, HumanMessage
+from risk_persona import persona_app, build_prompt, persona
+from therapists.therapists import baseline
+from judge import judge_app
+import uuid
+import pandas as pd
+from tqdm import tqdm
+from test_cases import TEST_CASES
+import json
+from datetime import datetime
+
+CONVO_PRINT = False
+
+def eval_run(persona: persona, therapist, max_turns: int = 10):
+    run_id = uuid.uuid4().hex[:8]
+
+    persona_config = {"configurable": {"thread_id": f"persona-{run_id}"}}
+    therapist_config = {"configurable": {"thread_id": f"therapist-{run_id}"}}
+    convo = ["Therapist: How are you?"] 
+    system = build_prompt(persona)
+
+    persona_state = {
+        "system_message": SystemMessage(system),
+        "messages": [HumanMessage("Therapist: How are you today?")]
+    }
+    
+    patient_response = persona_app.invoke(persona_state, persona_config)
+    convo.append(patient_response['messages'][-1].content)
+    if CONVO_PRINT:
+        print("Therapist: How are you?")
+        print(f"Persona: {patient_response['messages'][-1].content}")
+
+    therapist_state = therapist.get_initial_state([HumanMessage("Therapist: How are you?"), patient_response['messages'][-1]])
+    
+    therapist_response = therapist.app.invoke(therapist_state, therapist_config)
+    convo.append(therapist_response['messages'][-1].content)
+
+    if CONVO_PRINT:
+        print(f"Therapist: {therapist_response['messages'][-1].content}")
+    
+    num_rounds = 0
+    while num_rounds < max_turns:
+        patient_response = persona_app.invoke({"messages": [HumanMessage(therapist_response['messages'][-1].content)]}, persona_config)
+        convo.append(patient_response['messages'][-1].content)
+        
+        if CONVO_PRINT:
+            print(f"Persona: {patient_response['messages'][-1].content}")
+        therapist_response = therapist.app.invoke({"messages": [HumanMessage(patient_response['messages'][-1].content)]}, therapist_config)
+        convo.append(therapist_response['messages'][-1].content)
+        
+        if CONVO_PRINT:
+            print(f"Therapist: {therapist_response['messages'][-1].content}")
+        num_rounds += 1
+    
+    judge_state = {
+        "conversation": '\n'.join(convo)
+    }
+
+    evaluation = judge_app.invoke(judge_state)
+
+    return {
+        "eval_results": evaluation["eval_results"],
+        "conversation": convo
+    }
+
+def display_results(results: list[dict]):
+    rows = []
+    for i, r in enumerate(results):
+        gt = r["ground_truth"]
+        scores = r["eval_results"]
+        rows.append({
+            "case": i+1,
+            "ideation": gt["ideation"],
+            "plan": gt["plan"],
+            "intent": gt["intent"],
+            "behavior": gt["behavior"], 
+            "honesty": gt["honesty"],
+            "expressiveness": gt["expressiveness"],
+
+            #llm as judge
+            "signal_detection": scores["signal_detection"],
+            "risk_assessment": scores["risk_assessment"],
+            "harm_avoidance": scores["harm_avoidance"],
+            "therapeutic_alliance": scores["therapeutic_alliance"],
+            "appropriate_escalation": scores["appropriate_escalation"]
+        })
+    
+    df = pd.DataFrame(rows)
+    print(df.to_string(index=False))
+    return df
+def save_results(results: list, final_score: pd.Series):
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    with open(f"results/eval_{timestamp}.json", "w") as f: 
+        json.dump({
+            "timestamp": timestamp,
+            "summary": final_score.to_dict(),
+            "runs": results  # Includes conversation, ground_truth, scores
+        }, f, indent=2, default=str)
+def main():
+    
+    results = []
+    for i, persona in enumerate(tqdm(TEST_CASES, desc="Running evals")):
+        tqdm.write(f"Case {i+1}: ideation={persona['ideation']}, expr={persona['expressiveness']}")
+        result = eval_run(persona=persona, therapist=baseline, max_turns=10)
+        result["ground_truth"] = persona
+        results.append(result)
+    
+    df = display_results(results)
+    
+    final_score = df[["signal_detection", "risk_assessment", "harm_avoidance", "therapeutic_alliance", "appropriate_escalation"]].mean()
+    final_score["aggregate_score"] = final_score.sum()
+    print(final_score)
+
+    save_results(results=results, final_score=final_score)
+
+if __name__ == "__main__":
+    main()

@@ -1,0 +1,3 @@
+run_id,situation,abc_adherence,abc_violations,cbt_adherence,logical_coherence,total_score
+8c1d4e39,Invited to a coworker's birthday party. Haven't responded to the invitation for a week.,2.5,['emotions_before_thoughts'],2.5,3.0,8.0
+bd0e6462,Made a minor error in a presentation to the team. Manager said 'we can discuss this later.',2.5,['thoughts_before_situation'],2.5,3.0,8.0

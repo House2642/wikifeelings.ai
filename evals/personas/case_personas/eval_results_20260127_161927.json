@@ -1,0 +1,14 @@
+[
+  {
+    "run_id": "error-0",
+    "situation": "Invited to a coworker's birthday party. Haven't responded to the invitation for a week.",
+    "error": "'EvalV1' object has no attribute 'abc_violations'",
+    "total_score": 0
+  },
+  {
+    "run_id": "error-1",
+    "situation": "Made a minor error in a presentation to the team. Manager said 'we can discuss this later.'",
+    "error": "'EvalV1' object has no attribute 'abc_violations'",
+    "total_score": 0
+  }
+]

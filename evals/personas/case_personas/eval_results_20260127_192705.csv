@@ -1,0 +1,53 @@
+run_id,situation,abc_adherence,abc_adherence_reasoning_trace,total_score
+6a8af8fb,Invited to a coworker's birthday party. Haven't responded to the invitation for a week.,1.0,"Let me analyze this conversation for ABC model adherence:
+
+**A (Antecedent/Anticipating event):**
+The patient brings up the triggering event early - being invited to a coworker's birthday party and not responding for a week. However, the therapist doesn't adequately clarify or explore this situation before jumping ahead. The therapist acknowledges ""something's bothering you at work"" but immediately jumps to ""you're probably just catastrophizing"" and asks about ""negative thought patterns.""
+
+**B (Beliefs/Thoughts):**
+The patient actually does a lot of the work here, sharing their automatic thoughts like ""everyone's gonna notice how awkward I am,"" ""I'll say something weird,"" and the deeper belief ""I don't belong"" / ""I'm just not good at the whole social thing."" The therapist does eventually identify these as thoughts/beliefs (""that feeling of being 'different'—that IS a thought""), but this comes reactively rather than through systematic elicitation.
+
+**C (Consequences):**
+The therapist jumps to consequences very early, identifying ""avoidance behaviors"" (rehearsing conversations, planning exit strategies, checking guest lists) before properly establishing the thought sequence. The emotional consequence of anxiety is mentioned but not thoroughly explored in relation to specific thoughts.
+
+**Sequence Problems:**
+1. The therapist immediately jumps to labeling distortions (""catastrophizing,"" ""cognitive distortions"") and consequences (""avoidance behaviors"") in the second response without first adequately exploring the situation or eliciting the patient's beliefs systematically.
+2. The therapist pushes interventions (thought records, exposure, ""just RSVP yes"") before completing the ABC assessment.
+3. The therapist jumps around asking about depression, age, sleep, and other symptoms mid-conversation, further disrupting any ABC flow.
+4. The patient actually calls this out: ""this conversation is feeling a little... like you're kind of pushing me in a direction without really understanding where I'm actually at.""
+
+**Positive Elements:**
+- Later in the conversation, the therapist does better at exploring the deeper beliefs (""when did this feeling first start?"" ""what does belonging mean to you?"")
+- The therapist eventually identifies the ""observer"" pattern and explores what's underneath
+- The therapist does eventually connect situation → thoughts → consequences when discussing the fear of being seen
+
+**Overall Assessment:**
+The therapist shows partial awareness of ABC components but frequently jumps to interventions and consequences before adequately establishing the thought/belief portion. The sequence is often disrupted, and the therapist relies heavily on the patient to provide the structure. There's some ABC work happening but it's inconsistent and out of order, particularly early in the session when the therapist immediately jumps to labeling distortions and prescribing interventions.",1.0
+94ba1144,Made a minor error in a presentation to the team. Manager said 'we can discuss this later.',1.0,"Let me analyze this conversation for ABC model adherence:
+
+**A (Antecedent/Situation):**
+The patient clearly identifies the triggering event early on: made a small mistake in a presentation at work, manager said ""we'll talk later."" The therapist does acknowledge this situation but never really dwells on clarifying it properly.
+
+**B (Beliefs/Thoughts):**
+The patient shares several automatic thoughts:
+- ""Everything's falling apart""
+- ""I need to prove something""
+- Fear of being fired
+- Belief that everyone thinks they're incompetent
+- ""I don't belong here""
+
+The therapist touches on these but in a labeling/diagnostic way rather than properly eliciting and exploring them (""catastrophizing tendencies,"" ""perfectionism issue,"" ""avoidance-reassurance seeking cycle""). The therapist jumps to labels without properly helping the patient articulate their thoughts first.
+
+**C (Consequences):**
+The patient describes emotional consequences (anxiety, spiraling, stress) and potential behavioral consequences (wanting to work late, wanting to talk to manager immediately). The therapist identifies these but doesn't connect them properly to the thoughts.
+
+**Problems with ABC adherence:**
+1. The therapist jumps immediately to labeling and diagnosing (""catastrophizing,"" ""thought distortion"") before properly clarifying the situation or eliciting thoughts
+2. The therapist asks about family history and childhood relationships with authority figures very early - completely jumping past the ABC model
+3. The order is chaotic - the therapist bounces between asking for worst-case fears (B), behavioral patterns (C), and situation details without a clear progression
+4. The therapist focuses heavily on emotions and behavioral patterns without properly establishing the A→B→C connection
+5. When the patient shares thoughts like ""I need to prove something,"" the therapist labels it as ""behavioral compensation pattern"" rather than exploring the thought itself
+6. The therapist introduces CBT techniques (thought challenging, rating thoughts 1-10) without properly establishing the ABC framework first
+7. The conversation never shows the patient HOW their thoughts about the event lead to their emotional/behavioral consequences - the core educational purpose of ABC is missed
+
+The therapist does reference components of ABC (situation, some thoughts, emotions/behaviors) but they are scattered throughout without proper sequencing and without helping the patient understand the A→B→C connection. The therapist is more focused on labeling, diagnosing, and suggesting deeper issues rather than methodically working through the ABC model.",1.0

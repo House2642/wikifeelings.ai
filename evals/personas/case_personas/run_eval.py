@@ -25,7 +25,7 @@ def eval_run(persona: case_persona, therapist, max_turns: int = 10):
     }
     
     patient_response = persona_app.invoke(persona_state, persona_config)
-    convo.append(patient_response['messages'][-1].content)
+    convo.append(f"Patient: {patient_response['messages'][-1].content}")
     if CONVO_PRINT:
         print("Therapist: How are you?")
         print(f"Persona: {patient_response['messages'][-1].content}")
@@ -33,7 +33,7 @@ def eval_run(persona: case_persona, therapist, max_turns: int = 10):
     therapist_state = therapist.get_initial_state([HumanMessage("Therapist: How are you?"), patient_response['messages'][-1]])
     
     therapist_response = therapist.app.invoke(therapist_state, therapist_config)
-    convo.append(therapist_response['messages'][-1].content)
+    convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
 
     if CONVO_PRINT:
         print(f"Therapist: {therapist_response['messages'][-1].content}")
@@ -41,68 +41,52 @@ def eval_run(persona: case_persona, therapist, max_turns: int = 10):
     num_rounds = 0
     while num_rounds < max_turns:
         patient_response = persona_app.invoke({"messages": [HumanMessage(therapist_response['messages'][-1].content)]}, persona_config)
-        convo.append(patient_response['messages'][-1].content)
+        convo.append(f"Patient: {patient_response['messages'][-1].content}")
         
         if CONVO_PRINT:
             print(f"Persona: {patient_response['messages'][-1].content}")
         therapist_response = therapist.app.invoke({"messages": [HumanMessage(patient_response['messages'][-1].content)]}, therapist_config)
-        convo.append(therapist_response['messages'][-1].content)
+        convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
         
         if CONVO_PRINT:
             print(f"Therapist: {therapist_response['messages'][-1].content}")
         num_rounds += 1
 
-    hum_mes = """Based on your conversation fill out the following typed dict base on how you have thought about the patient.
-                You can have things be empty if not detected, but give you best estimate
-                class case_persona(TypedDict):
-                    situation: str
-                    thoughts: list[str]
-                    meaning_of_at: list[str]
-                    emotions: list[str]
-                    behaviors: list[str]
-                output as only a json
-    """
-    therapist_response = therapist.app.invoke({"messages":[HumanMessage(content = hum_mes)]}, therapist_config)
+    
+    therapist_response = therapist.app.invoke({"produce_case": True}, therapist_config)
     if DEBUG:
         print("#######conceptualization############")
-        model_conceptualization = json.loads(therapist_response['messages'][-1].content)
+        # Access directly from state, convert Pydantic model to dict
+        model_conceptualization = therapist_response['case'].model_dump()
         print(model_conceptualization)
         print("##########EVALUATING#################")
+        
         judge_state = {
-            "ground_truth": persona,
+            "conversation": ('\n\n').join(convo),
+            "ground_truth": persona.model_dump() if hasattr(persona, 'model_dump') else persona,
             "estimated": model_conceptualization,
         }
-        eval = eval_app.invoke(judge_state)
-        score = eval["score"]
-
-        print(f"Situation: {score.situation_score}/3")
-        print(f"Thoughts: {score.thoughts_score}/3")
-        print(f"Core Beliefs: {score.meaning_of_at_score}/3")
-        print(f"Emotions: {score.emotions_score}/3")
-        print(f"Behaviors: {score.behaviors_score}/3")
-        print(f"\nReasoning: {score.overall_reasoning}")
-
-        # Calculate total
-        total = (score.situation_score + score.thoughts_score + 
-                score.meaning_of_at_score + score.emotions_score + 
-                score.behaviors_score)
-        print(f"Total: {total}/15")
+        eval_result = eval_app.invoke(judge_state)
+        score = eval_result["score"]
+        
+        print(f"ABC Adherence: {score.abc_adherence_score}/3")
+        print(f"ABC Reasoning: {score.abc_adherence_reasoning_trace}")
+        
+        total = (score.abc_adherence_score)
+        print(f"\n{'='*50}")
+        print(f"TOTAL: {total}/3")
+        print(f"{'='*50}")
 
     return {
         "run_id": run_id,
         "situation": persona["situation"],
-        "situation_score": score.situation_score,
-        "thoughts_score": score.thoughts_score,
-        "meaning_of_at_score": score.meaning_of_at_score,
-        "emotions_score": score.emotions_score,
-        "behaviors_score": score.behaviors_score,
-        "total_score": (score.situation_score + score.thoughts_score + 
-                       score.meaning_of_at_score + score.emotions_score + 
-                       score.behaviors_score),
-        "reasoning": score.overall_reasoning,
+        "abc_adherence_score": score.abc_adherence_score,
+        "abc_adherence_reasoning_trace": score.abc_adherence_reasoning_trace,
+        "total_score": total,
         "conceptualization": model_conceptualization,
         "conversation": convo
     }
+
 def main():
     print(f"Running evaluation on {len(personas)} personas...")
     print(f"Started at: {datetime.now()}")
@@ -110,7 +94,7 @@ def main():
     results = []
     
     # Iterate through all personas with progress bar
-    for idx, persona in enumerate(tqdm(personas, desc="Evaluating personas")):
+    for idx, persona in enumerate(tqdm(personas[:2], desc="Evaluating personas")):
         try:
             print(f"\n{'='*50}")
             print(f"Persona {idx+1}/{len(personas)}: {persona['situation'][:50]}...")
@@ -119,7 +103,7 @@ def main():
             result = eval_run(persona=persona, therapist=baseline, max_turns=10)
             results.append(result)
             
-            print(f"✓ Completed - Total Score: {result['total_score']}/15")
+            print(f"✓ Completed - Total Score: {result['total_score']}/9")
             
         except Exception as e:
             print(f"✗ Error with persona {idx+1}: {str(e)}")
@@ -143,16 +127,12 @@ def main():
         {
             "run_id": r["run_id"],
             "situation": r["situation"][:100],
-            "situation_score": r.get("situation_score", 0),
-            "thoughts_score": r.get("thoughts_score", 0),
-            "meaning_of_at_score": r.get("meaning_of_at_score", 0),
-            "emotions_score": r.get("emotions_score", 0),
-            "behaviors_score": r.get("behaviors_score", 0),
-            "total_score": r.get("total_score", 0)
+            "abc_adherence": r.get("abc_adherence_score", 0),
+            "abc_adherence_reasoning_trace": r.get("abc_adherence_reasoning_trace", ""),
+            "total_score": r.get("total_score", 0),  # ← Add this line
         }
         for r in results
-    ])
-    
+    ])    
     # Save as CSV
     df.to_csv(f"eval_results_{timestamp}.csv", index=False)
     
@@ -162,16 +142,11 @@ def main():
     print('='*50)
     print(f"\nTotal personas evaluated: {len(results)}")
     print(f"\nScore Statistics:")
-    print(df[["situation_score", "thoughts_score", "meaning_of_at_score", 
-              "emotions_score", "behaviors_score", "total_score"]].describe())
+    print(df[["abc_adherence", "abc_adherence_reasoning_trace"]].describe())
     
     print(f"\nAverage scores:")
-    print(f"  Situation: {df['situation_score'].mean():.2f}/3")
-    print(f"  Thoughts: {df['thoughts_score'].mean():.2f}/3")
-    print(f"  Core Beliefs: {df['meaning_of_at_score'].mean():.2f}/3")
-    print(f"  Emotions: {df['emotions_score'].mean():.2f}/3")
-    print(f"  Behaviors: {df['behaviors_score'].mean():.2f}/3")
-    print(f"  Total: {df['total_score'].mean():.2f}/15")
+    print(f"  ABC Adherence: {df['abc_adherence'].mean():.2f}/3")
+    print(f"  Total: {df['total_score'].mean():.2f}/9")
     
     print(f"\nResults saved:")
     print(f"  - eval_results_{timestamp}.json")

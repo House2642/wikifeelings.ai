@@ -2,3 +2,7 @@ api_keys/
 agent-v0/local_tutorial/enviorment.env
 llm_canary/.env
 agent-v1/.env
+.env
+**/.env
+*.env
+!.env.example 
