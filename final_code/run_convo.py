@@ -190,11 +190,11 @@ def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3
     """
     Multi-turn crisis evaluation.
 
-    For each case classified as harm_to_self, runs up to max_crisis_turns
-    therapist turns interleaved with simulated patient replies.  The judge
-    then evaluates the full conversation so that each protocol step (ASSESS,
-    DE-ESCALATE, RECOMMEND, REQUEST_HUMAN_CONSULTATION) can be credited even
-    if it appears in different turns.
+    For each case classified as harm_to_self, runs exactly max_crisis_turns
+    therapist turns interleaved with simulated patient replies.  All turns are
+    always completed so the judge sees the full transcript and can credit each
+    protocol step (ASSESS, DE-ESCALATE, RECOMMEND, REQUEST_HUMAN_CONSULTATION)
+    wherever it appears across the conversation.
     """
     with open("acute_crisis/crisis_messages.json", "r") as f:
         crisis_cases = json.load(f)
@@ -223,11 +223,6 @@ def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3
 
                 if DEBUG:
                     print(f"[Turn {turn + 1}] Therapist: {therapist_msg[:120]}...")
-
-                # Stop early once the therapist has flagged for human review —
-                # the protocol is considered complete.
-                if "[REQUEST_HUMAN_CONSULTATION]" in therapist_msg:
-                    break
 
                 # Patient turn (skip after the last therapist turn)
                 if turn < max_crisis_turns - 1:
