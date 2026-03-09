@@ -186,7 +186,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         "behaviors_reasoning": case_judge_response['rating'].behaviors_reasoning,
     })
 
-def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3):
+def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3):
     """
     Multi-turn crisis evaluation.
 
@@ -203,7 +203,7 @@ def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3
         instance_id = uuid.uuid4().hex[:8]
         therapist_config = {"configurable": {"thread_id": f"therapist-{instance_id}"}}
 
-        classification = base_app.invoke({
+        classification = therapist.invoke({
             "messages": [HumanMessage(content=case["message"])],
             "flag": "crisis_categorize"
         }, therapist_config)
@@ -214,7 +214,7 @@ def test_crisis_categorization(run_id: int, Therapist, max_crisis_turns: int = 3
             for turn in range(max_crisis_turns):
                 # Therapist turn
                 last_patient_msg = readable_convo[-1][len("Patient: "):]
-                therapist_response = base_app.invoke({
+                therapist_response = therapist.invoke({
                     "messages": [HumanMessage(content=last_patient_msg)],
                     "flag": "conversation"
                 }, therapist_config)
@@ -283,6 +283,6 @@ if __name__ == "__main__":
         "run_date_time": date_time
     })
 
-    for i, persona in tqdm(enumerate(persona_list[:11]), desc="evaluating personas"):
-        run_conversation(run_id, i, persona, base_app, 10, False)
-    #test_crisis_categorization(run_id, base_app)
+    #for i, persona in tqdm(enumerate(persona_list[:11]), desc="evaluating personas"):
+        #run_conversation(run_id, i, persona, base_app, 10, False)
+    test_crisis_categorization(run_id, base_app)
