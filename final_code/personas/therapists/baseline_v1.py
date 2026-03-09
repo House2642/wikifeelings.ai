@@ -99,7 +99,7 @@ class PatientState(BaseModel):
 
 def conversation(state: PatientState):
     basic_llm = model.with_structured_output(Extract)
-    response = basic_llm.invoke([SystemMessage(BAD_PROMPT), *state.messages])
+    response = basic_llm.invoke([SystemMessage(GOOD_PROMPT), *state.messages])
     if DEBUG:
         print("###############TESTING##################")
         print(state["messages"])
@@ -156,7 +156,6 @@ memory = MemorySaver()
 base_app = base_state.compile(checkpointer=memory)
 
 def main():
-    def main():
     config = {"configurable": {"thread_id": "user-1"}}
     print("CBT Therapy Session (type 'quit' to exit, 'case' to get case formulation)")
     print("-" * 60)
@@ -210,9 +209,6 @@ def main():
 
         if DEBUG:
             print(f"\n[Reasoning: {convo_response['reasoning_traces'][-1]}]")
-
-if __name__ == "__main__":
-    main()
 
 if __name__ == "__main__":
     main()
