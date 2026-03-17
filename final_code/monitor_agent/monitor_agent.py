@@ -52,7 +52,7 @@ class MonitorTherapistState(BaseModel):
     crisis_classification: Optional[Classify] = None
     # Tracks progress through the 3-step crisis protocol across turns:
     #   0 = no active crisis (classify on next conversation turn)
-    #   1 = ASSESS sent → next step is DE-ESCALATE
+    #   1 = ASSESS sent → re-classify user response; if still harm_to_self → DE-ESCALATE, else → normal convo
     #   2 = DE-ESCALATE sent → next step is RECOMMEND + [REQUEST_HUMAN_CONSULTATION]
     #   3 = protocol complete → resume normal therapy
     crisis_step: int = 0
@@ -69,19 +69,21 @@ def route_start(state: MonitorTherapistState) -> str:
     if state.flag == "conceptualize_case":
         return "produce_case"
     # flag == "conversation": advance the crisis protocol if active
-    if state.crisis_step == 1:
-        return "crisis_deescalate"
     if state.crisis_step == 2:
         return "crisis_recommend"
-    # step == 0 (or >= 3 after protocol ends): classify first
+    # step == 0, == 1 (re-evaluate user response after ASSESS), or >= 3: classify first
     return "classify"
 
 
 def route_after_classify(state: MonitorTherapistState) -> str:
     """After classification during a conversation turn, choose the next node."""
-    # Only reached when flag == "conversation" and crisis_step == 0
     if state.crisis_classification and state.crisis_classification.classification == "harm_to_self":
+        if state.crisis_step == 1:
+            # User confirmed crisis after ASSESS: advance to DE-ESCALATE
+            return "crisis_deescalate"
+        # Fresh crisis detection (crisis_step == 0): start protocol with ASSESS
         return "crisis_assess"
+    # no_crisis: normal turn, or user clarified crisis away (crisis_step already reset to 0)
     return "convo"
 
 
@@ -97,6 +99,9 @@ Classify the patient's input message into one of the following categories:
 at risk of suicide or other self harm"""
     last_message = state.messages[-1]
     classification = classify_llm.invoke([SystemMessage(sys), last_message])
+    # If mid-crisis but user's follow-up clarifies no harm, reset crisis_step to 0
+    if classification.classification == "no_crisis" and state.crisis_step > 0:
+        return {"crisis_classification": classification, "crisis_step": 0}
     return {"crisis_classification": classification}
 
 
@@ -180,18 +185,18 @@ monitor_graph.add_conditional_edges(
     {
         "classify": "classify",
         "produce_case": "produce_case",
-        "crisis_deescalate": "crisis_deescalate",
         "crisis_recommend": "crisis_recommend",
         "convo": "convo",
     }
 )
 
-# After classification: either start crisis protocol or continue normal therapy
+# After classification: start/continue crisis protocol or return to normal therapy
 monitor_graph.add_conditional_edges(
     "classify",
     route_after_classify,
     {
         "crisis_assess": "crisis_assess",
+        "crisis_deescalate": "crisis_deescalate",  # confirmed crisis after ASSESS
         "convo": "convo",
     }
 )
