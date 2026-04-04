@@ -203,7 +203,8 @@ def _stage_messages(state: MonitorTherapistState) -> list[AnyMessage]:
 def mood_check(state: MonitorTherapistState):
     """Auto-fires at session start. Generates the opening question without user input."""
     llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(MOOD_CHECK_PROMPT)])
+    # Anthropic requires at least one human message — use a silent session-start cue
+    response = llm.invoke([SystemMessage(MOOD_CHECK_PROMPT), HumanMessage("Begin session.")])
     if DEBUG:
         print(f"[Reasoning: {response.reasoning_trace}]")
     return {
@@ -246,14 +247,18 @@ def abc_situation(state: MonitorTherapistState):
 
     # Completeness check scoped to only the messages in this stage
     check_llm = model.with_structured_output(SituationComplete)
-    check = check_llm.invoke([
-        SystemMessage(
-            "Has the patient described a single specific concrete moment? "
-            "We need: what happened, who was involved, and what made it significant. "
-            "A general pattern or recurring complaint is NOT enough."
-        ),
-        *_stage_messages(state),
-    ])
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = SituationComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient described a single specific concrete moment? "
+                "We need: what happened, who was involved, and what made it significant. "
+                "A general pattern or recurring complaint is NOT enough."
+            ),
+            *stage_msgs,
+        ])
     if DEBUG:
         print(f"[Situation check: complete={check.is_complete} — {check.reasoning}]")
 
@@ -279,14 +284,18 @@ def abc_thought(state: MonitorTherapistState):
         print(f"[Reasoning: {response.reasoning_trace}]")
 
     check_llm = model.with_structured_output(ThoughtComplete)
-    check = check_llm.invoke([
-        SystemMessage(
-            "Has the patient expressed a specific first-person automatic thought clearly connected to the situation? "
-            "It must be a thought (e.g. 'I thought everyone thinks I'm incompetent'), not just an emotion label. "
-            "Vague statements like 'things felt bad' are NOT enough."
-        ),
-        *_stage_messages(state),
-    ])
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = ThoughtComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient expressed a specific first-person automatic thought clearly connected to the situation? "
+                "It must be a thought (e.g. 'I thought everyone thinks I'm incompetent'), not just an emotion label. "
+                "Vague statements like 'things felt bad' are NOT enough."
+            ),
+            *stage_msgs,
+        ])
     if DEBUG:
         print(f"[Thought check: complete={check.is_complete} — {check.reasoning}]")
 
@@ -315,13 +324,17 @@ def abc_consequence(state: MonitorTherapistState):
         print(f"[Reasoning: {response.reasoning_trace}]")
 
     check_llm = model.with_structured_output(ConsequenceComplete)
-    check = check_llm.invoke([
-        SystemMessage(
-            "Has the patient described both an emotional consequence AND a behavioral response or feared action? "
-            "We need both to complete the ABC chain."
-        ),
-        *_stage_messages(state),
-    ])
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = ConsequenceComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient described both an emotional consequence AND a behavioral response or feared action? "
+                "We need both to complete the ABC chain."
+            ),
+            *stage_msgs,
+        ])
     if DEBUG:
         print(f"[Consequence check: complete={check.is_complete} — {check.reasoning}]")
 
