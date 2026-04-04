@@ -11,8 +11,8 @@ from langgraph.checkpoint.memory import MemorySaver
 DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
 
-convo_flag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
-therapy_stage = Literal[
+ConvoFlag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
+TherapyStage = Literal[
     "mood_check",       # Auto-fires: opens the session
     "agenda_setting",   # What would you like to work on today?
     "abc_situation",    # A: get the specific activating event
@@ -148,10 +148,10 @@ class MonitorTherapistState(BaseModel):
     #   2 = DE-ESCALATE sent → next step is RECOMMEND + [REQUEST_HUMAN_CONSULTATION]
     #   3 = protocol complete → resume normal therapy
     crisis_step: int = 0
-    flag: convo_flag = Field(default="conversation")
+    flag: ConvoFlag = Field(default="conversation")
     case: Optional[CasePersona] = None
     # Progressive disclosure
-    therapy_stage: therapy_stage = Field(default="mood_check")
+    therapy_stage: TherapyStage = Field(default="mood_check")
     stage_start_index: int = Field(default=0)  # index into messages where the current stage began
     abc_situation: str = Field(default="")
     abc_thought: str = Field(default="")
