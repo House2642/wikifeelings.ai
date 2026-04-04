@@ -211,7 +211,9 @@ def mood_check(state: MonitorTherapistState):
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
         "therapy_stage": "agenda_setting",
-        # stage_start_index stays 0 — agenda_setting can see the opening message
+        # Start agenda_setting's stage window AFTER the mood check AI message (index 1)
+        # so the mood reply isn't mistaken for an agenda response
+        "stage_start_index": 1,
     }
 
 
@@ -222,10 +224,16 @@ def agenda_setting(state: MonitorTherapistState):
     if DEBUG:
         print(f"[Reasoning: {response.reasoning_trace}]")
 
-    # Advance after one substantive user exchange in this stage.
-    # The opening AIMessage is at index 0; user's first reply is index 1.
-    user_msgs_in_stage = [m for m in _stage_messages(state) if isinstance(m, HumanMessage)]
-    advance = len(user_msgs_in_stage) >= 1
+    # Only advance if the user has responded to OUR agenda question — not just any message.
+    # Check: is there a HumanMessage after the last AIMessage in the stage window?
+    stage_msgs = _stage_messages(state)
+    ai_indices = [i for i, m in enumerate(stage_msgs) if isinstance(m, AIMessage)]
+    if ai_indices:
+        last_ai = ai_indices[-1]
+        user_after_agenda = [m for m in stage_msgs[last_ai + 1:] if isinstance(m, HumanMessage)]
+        advance = len(user_after_agenda) >= 1
+    else:
+        advance = False  # we haven't asked the agenda question yet
 
     updates = {
         "messages": [AIMessage(content=response.message)],
@@ -233,7 +241,6 @@ def agenda_setting(state: MonitorTherapistState):
     }
     if advance:
         updates["therapy_stage"] = "abc_situation"
-        # +1 accounts for the AIMessage we are about to add
         updates["stage_start_index"] = len(state.messages) + 1
     return updates
 
