@@ -11,9 +11,78 @@ from langgraph.checkpoint.memory import MemorySaver
 DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
 
-convo_flag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
+ConvoFlag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
+TherapyStage = Literal[
+    "mood_check",       # Auto-fires: opens the session
+    "agenda_setting",   # What would you like to work on today?
+    "abc_situation",    # A: get the specific activating event
+    "abc_thought",      # B: get the automatic thought in that moment
+    "abc_consequence",  # C: get emotion + behavior/feared action
+    "therapy_work",     # Main CBT work once ABC is complete
+]
 
-THERAPY_PROMPT = """You are a CBT therapist. Respond concisely and follow CBT principles."""
+
+# ── System prompts (progressive disclosure) ───────────────────────────────────
+
+MOOD_CHECK_PROMPT = """You are a warm, conversational CBT therapist opening a session.
+Ask the patient how they are feeling today in one open, natural question.
+Do not pile on multiple questions."""
+
+AGENDA_PROMPT = """You are a CBT therapist. The patient has checked in on how they're feeling.
+Your goal: help them set a clear agenda — what specifically would they like to work on today?
+Keep it conversational. If their answer is vague (e.g. "stress"), ask one gentle follow-up to make it concrete.
+Do not start exploring a situation yet — just nail down the topic."""
+
+ABC_SITUATION_PROMPT = """You are a CBT therapist working within the ABC model (Beck's CBT).
+The patient has set their agenda. Now you need the Activating Event (A).
+
+Your goal: get one specific, concrete moment — not a general pattern.
+- What happened? (observable facts, who was involved, what was said or done)
+- When and where? (grounds it in a single moment, not a recurring pattern)
+- What made it significant? (bridge question that connects A to B)
+
+Rules:
+- Ask max 2-3 clarifying questions before moving on
+- If they describe a pattern ("she always does this"), gently redirect to a specific instance
+- Stop when you have enough to ask "what went through your mind right at that moment?"
+- Do NOT ask about thoughts or feelings yet — stay on the situation"""
+
+ABC_THOUGHT_PROMPT = """You are a CBT therapist working within the ABC model.
+Situation established: {situation}
+
+Now you need the Belief / Automatic Thought (B) — the exact words that fired in their head at that moment.
+
+Rules:
+- Primary question: "What was going through your mind right at that moment?" or "What did that mean to you?"
+- If they give an emotion instead of a thought (e.g. "I felt anxious"), redirect:
+  "And when you felt that, what was the thought behind it? What were you telling yourself?"
+- If they give a vague thought (e.g. "things felt bad"), ask:
+  "What specifically did you think was going to happen?" or "What did that say to you about yourself?"
+- If they give a clear thought, use downward arrow once: "And what did that mean to you?"
+- Stop when you have a specific first-person thought clearly connected to the situation
+- Do NOT ask about emotions or behaviors yet"""
+
+ABC_CONSEQUENCE_PROMPT = """You are a CBT therapist working within the ABC model.
+Situation: {situation}
+Automatic thought: {thought}
+
+Now you need the Consequences (C) — emotional and behavioral response.
+
+Rules:
+- Ask about emotion first, then behavior — not both at once
+- For a past event: "How did you feel after that?" then "What did you do?"
+- For a future fear: "What are you scared you're going to feel?" then "What are you afraid you might do?"
+- Once you have both, warmly summarize the full ABC chain and transition to working on it"""
+
+THERAPY_WORK_PROMPT = """You are a CBT therapist. You have completed the ABC assessment:
+Situation: {situation}
+Automatic thought: {thought}
+Emotion: {emotion}
+Behavior: {behavior}
+
+Now do the real therapeutic work — thought challenging, cognitive restructuring, behavioral experiments.
+Stay conversational and collaborative. Use Socratic questioning rather than lecturing.
+Keep responses concise."""
 
 ASSESS_PROMPT = """You are a CBT therapist. A patient may be at risk of self-harm.
 Ask direct questions to assess immediate suicide risk: current ideation, plan, access to means, steps taken."""
@@ -24,6 +93,8 @@ Give direct, actionable instructions to reduce the patient's access to means rig
 RECOMMEND_PROMPT = """You are a CBT therapist handling a self-harm crisis.
 Tell the patient to call 911 or 988 immediately. Be direct. End your response with [REQUEST_HUMAN_CONSULTATION]."""
 
+
+# ── Structured output models ──────────────────────────────────────────────────
 
 class Extract(BaseModel):
     message: str = Field(description="Your response to the patient, keep it concise")
@@ -46,45 +117,264 @@ class Classify(BaseModel):
     classification: crisis_type = Field(description="The final crisis category determined for the user's message.")
 
 
+class SituationComplete(BaseModel):
+    is_complete: bool = Field(description="True if we have a single specific concrete moment — not a pattern or vague description")
+    extracted_situation: str = Field(default="", description="Brief summary of the specific situation if complete, else empty")
+    reasoning: str = Field(description="Why this is or isn't complete enough to move to thoughts")
+
+
+class ThoughtComplete(BaseModel):
+    is_complete: bool = Field(description="True if we have a specific first-person automatic thought clearly connected to the situation")
+    extracted_thought: str = Field(default="", description="The automatic thought if complete, else empty")
+    reasoning: str = Field(description="Why this is or isn't complete enough to move to consequences")
+
+
+class ConsequenceComplete(BaseModel):
+    is_complete: bool = Field(description="True if we have both an emotional consequence AND a behavioral response or feared action")
+    extracted_emotion: str = Field(default="", description="The emotional consequence if complete, else empty")
+    extracted_behavior: str = Field(default="", description="The behavioral response or feared action if complete, else empty")
+    reasoning: str = Field(description="Why this is or isn't complete enough to move to therapy work")
+
+
+# ── State ─────────────────────────────────────────────────────────────────────
+
 class MonitorTherapistState(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     reasoning_traces: Annotated[list[str], operator.add] = Field(default=[])
     crisis_classification: Optional[Classify] = None
     # Tracks progress through the 3-step crisis protocol across turns:
-    #   0 = no active crisis (classify on next conversation turn)
-    #   1 = ASSESS sent → re-classify user response; if still harm_to_self → DE-ESCALATE, else → normal convo
+    #   0 = no active crisis
+    #   1 = ASSESS sent → next step is DE-ESCALATE
     #   2 = DE-ESCALATE sent → next step is RECOMMEND + [REQUEST_HUMAN_CONSULTATION]
     #   3 = protocol complete → resume normal therapy
     crisis_step: int = 0
-    flag: convo_flag = Field(default="conversation")
+    flag: ConvoFlag = Field(default="conversation")
     case: Optional[CasePersona] = None
+    # Progressive disclosure
+    therapy_stage: TherapyStage = Field(default="mood_check")
+    stage_start_index: int = Field(default=0)  # index into messages where the current stage began
+    abc_situation: str = Field(default="")
+    abc_thought: str = Field(default="")
+    abc_emotion: str = Field(default="")
+    abc_behavior: str = Field(default="")
 
 
 # ── Routing ───────────────────────────────────────────────────────────────────
 
 def route_start(state: MonitorTherapistState) -> str:
-    """Route from START based on flag and current crisis_step."""
+    """Route from START based on flag, crisis_step, and therapy_stage."""
     if state.flag == "crisis_categorize":
         return "classify"
     if state.flag == "conceptualize_case":
         return "produce_case"
-    # flag == "conversation": advance the crisis protocol if active
+    # Crisis protocol overrides the CBT flow
+    if state.crisis_step == 1:
+        return "crisis_deescalate"
     if state.crisis_step == 2:
         return "crisis_recommend"
-    # step == 0, == 1 (re-evaluate user response after ASSESS), or >= 3: classify first
+    # No messages yet — auto-open with mood check
+    if len(state.messages) == 0:
+        return "mood_check"
+    # Always classify for crisis first, then dispatch to current stage
     return "classify"
 
 
 def route_after_classify(state: MonitorTherapistState) -> str:
-    """After classification during a conversation turn, choose the next node."""
+    """After classification, route to crisis protocol or the current therapy stage."""
     if state.crisis_classification and state.crisis_classification.classification == "harm_to_self":
-        if state.crisis_step == 1:
-            # User confirmed crisis after ASSESS: advance to DE-ESCALATE
-            return "crisis_deescalate"
-        # Fresh crisis detection (crisis_step == 0): start protocol with ASSESS
         return "crisis_assess"
-    # no_crisis: normal turn, or user clarified crisis away (crisis_step already reset to 0)
-    return "convo"
+    # Dispatch to whichever stage the session is currently in.
+    # mood_check should never appear here (it fires before any messages exist),
+    # but fall back to agenda_setting defensively.
+    if state.therapy_stage == "mood_check":
+        return "agenda_setting"
+    return state.therapy_stage
+
+
+# ── Helper ────────────────────────────────────────────────────────────────────
+
+def _stage_messages(state: MonitorTherapistState) -> list[AnyMessage]:
+    """Return only the messages since the current stage began."""
+    return state.messages[state.stage_start_index:]
+
+
+# ── Stage nodes ───────────────────────────────────────────────────────────────
+
+def mood_check(state: MonitorTherapistState):
+    """Auto-fires at session start. Generates the opening question without user input."""
+    llm = model.with_structured_output(Extract)
+    # Anthropic requires at least one human message — use a silent session-start cue
+    response = llm.invoke([SystemMessage(MOOD_CHECK_PROMPT), HumanMessage("Begin session.")])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+        "therapy_stage": "agenda_setting",
+        # Start agenda_setting's stage window AFTER the mood check AI message (index 1)
+        # so the mood reply isn't mistaken for an agenda response
+        "stage_start_index": 1,
+    }
+
+
+def agenda_setting(state: MonitorTherapistState):
+    """Responds to the mood check and helps the patient set a concrete agenda."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(AGENDA_PROMPT), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+
+    # Only advance if the user has responded to OUR agenda question — not just any message.
+    # Check: is there a HumanMessage after the last AIMessage in the stage window?
+    stage_msgs = _stage_messages(state)
+    ai_indices = [i for i, m in enumerate(stage_msgs) if isinstance(m, AIMessage)]
+    if ai_indices:
+        last_ai = ai_indices[-1]
+        user_after_agenda = [m for m in stage_msgs[last_ai + 1:] if isinstance(m, HumanMessage)]
+        advance = len(user_after_agenda) >= 1
+    else:
+        advance = False  # we haven't asked the agenda question yet
+
+    updates = {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
+    if advance:
+        updates["therapy_stage"] = "abc_situation"
+        updates["stage_start_index"] = len(state.messages) + 1
+    return updates
+
+
+def abc_situation(state: MonitorTherapistState):
+    """Gets the Activating Event (A) — a specific, concrete moment."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(ABC_SITUATION_PROMPT), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+
+    # Completeness check scoped to only the messages in this stage
+    check_llm = model.with_structured_output(SituationComplete)
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = SituationComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient described a single specific concrete moment? "
+                "We need: what happened, who was involved, and what made it significant. "
+                "A general pattern or recurring complaint is NOT enough."
+            ),
+            *stage_msgs,
+        ])
+    if DEBUG:
+        print(f"[Situation check: complete={check.is_complete} — {check.reasoning}]")
+
+    updates = {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
+    if check.is_complete:
+        updates["therapy_stage"] = "abc_thought"
+        updates["abc_situation"] = check.extracted_situation
+        updates["stage_start_index"] = len(state.messages) + 1
+    return updates
+
+
+def abc_thought(state: MonitorTherapistState):
+    """Gets the Automatic Thought (B) — exact first-person thought in that moment."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([
+        SystemMessage(ABC_THOUGHT_PROMPT.format(situation=state.abc_situation)),
+        *state.messages,
+    ])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+
+    check_llm = model.with_structured_output(ThoughtComplete)
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = ThoughtComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient expressed a specific first-person automatic thought clearly connected to the situation? "
+                "It must be a thought (e.g. 'I thought everyone thinks I'm incompetent'), not just an emotion label. "
+                "Vague statements like 'things felt bad' are NOT enough."
+            ),
+            *stage_msgs,
+        ])
+    if DEBUG:
+        print(f"[Thought check: complete={check.is_complete} — {check.reasoning}]")
+
+    updates = {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
+    if check.is_complete:
+        updates["therapy_stage"] = "abc_consequence"
+        updates["abc_thought"] = check.extracted_thought
+        updates["stage_start_index"] = len(state.messages) + 1
+    return updates
+
+
+def abc_consequence(state: MonitorTherapistState):
+    """Gets the Consequences (C) — emotion and behavior/feared action."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([
+        SystemMessage(ABC_CONSEQUENCE_PROMPT.format(
+            situation=state.abc_situation,
+            thought=state.abc_thought,
+        )),
+        *state.messages,
+    ])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+
+    check_llm = model.with_structured_output(ConsequenceComplete)
+    stage_msgs = _stage_messages(state)
+    if not stage_msgs:
+        check = ConsequenceComplete(is_complete=False, reasoning="No messages in stage yet.")
+    else:
+        check = check_llm.invoke([
+            SystemMessage(
+                "Has the patient described both an emotional consequence AND a behavioral response or feared action? "
+                "We need both to complete the ABC chain."
+            ),
+            *stage_msgs,
+        ])
+    if DEBUG:
+        print(f"[Consequence check: complete={check.is_complete} — {check.reasoning}]")
+
+    updates = {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
+    if check.is_complete:
+        updates["therapy_stage"] = "therapy_work"
+        updates["abc_emotion"] = check.extracted_emotion
+        updates["abc_behavior"] = check.extracted_behavior
+        updates["stage_start_index"] = len(state.messages) + 1
+    return updates
+
+
+def therapy_work(state: MonitorTherapistState):
+    """Main CBT work — thought challenging, restructuring, behavioral experiments."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([
+        SystemMessage(THERAPY_WORK_PROMPT.format(
+            situation=state.abc_situation,
+            thought=state.abc_thought,
+            emotion=state.abc_emotion,
+            behavior=state.abc_behavior,
+        )),
+        *state.messages,
+    ])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
 
 # ── Shared nodes ──────────────────────────────────────────────────────────────
@@ -99,9 +389,6 @@ Classify the patient's input message into one of the following categories:
 at risk of suicide or other self harm"""
     last_message = state.messages[-1]
     classification = classify_llm.invoke([SystemMessage(sys), last_message])
-    # If mid-crisis but user's follow-up clarifies no harm, reset crisis_step to 0
-    if classification.classification == "no_crisis" and state.crisis_step > 0:
-        return {"crisis_classification": classification, "crisis_step": 0}
     return {"crisis_classification": classification}
 
 
@@ -115,21 +402,7 @@ def produce_case(state: MonitorTherapistState):
     return {"case": case}
 
 
-def conversation(state: MonitorTherapistState):
-    """Normal CBT therapy response — used when no crisis is detected."""
-    basic_llm = model.with_structured_output(Extract)
-    response = basic_llm.invoke([SystemMessage(THERAPY_PROMPT), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-    return {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
-
-
 # ── Crisis protocol nodes ─────────────────────────────────────────────────────
-# Each node handles one step of the protocol and increments crisis_step so the
-# *next* invoke() automatically advances to the following step.
 
 def crisis_assess(state: MonitorTherapistState):
     """Crisis Step 1 — ASSESS. Sets crisis_step=1 so next turn runs DE-ESCALATE."""
@@ -154,7 +427,7 @@ def crisis_deescalate(state: MonitorTherapistState):
 
 
 def crisis_recommend(state: MonitorTherapistState):
-    """Crisis Step 3 — RECOMMEND EMERGENCY SERVICES + [REQUEST_HUMAN_CONSULTATION]. Protocol complete."""
+    """Crisis Step 3 — RECOMMEND EMERGENCY SERVICES + [REQUEST_HUMAN_CONSULTATION]."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([SystemMessage(RECOMMEND_PROMPT), *state.messages])
     message = response.message
@@ -171,38 +444,48 @@ def crisis_recommend(state: MonitorTherapistState):
 
 monitor_graph = StateGraph(MonitorTherapistState)
 
+monitor_graph.add_node("mood_check", mood_check)
 monitor_graph.add_node("classify", classify)
 monitor_graph.add_node("produce_case", produce_case)
-monitor_graph.add_node("convo", conversation)
+monitor_graph.add_node("agenda_setting", agenda_setting)
+monitor_graph.add_node("abc_situation", abc_situation)
+monitor_graph.add_node("abc_thought", abc_thought)
+monitor_graph.add_node("abc_consequence", abc_consequence)
+monitor_graph.add_node("therapy_work", therapy_work)
 monitor_graph.add_node("crisis_assess", crisis_assess)
 monitor_graph.add_node("crisis_deescalate", crisis_deescalate)
 monitor_graph.add_node("crisis_recommend", crisis_recommend)
 
-# Single entry point — route based on flag + crisis_step
 monitor_graph.add_conditional_edges(
     START,
     route_start,
     {
+        "mood_check": "mood_check",
         "classify": "classify",
         "produce_case": "produce_case",
+        "crisis_deescalate": "crisis_deescalate",
         "crisis_recommend": "crisis_recommend",
-        "convo": "convo",
     }
 )
 
-# After classification: start/continue crisis protocol or return to normal therapy
 monitor_graph.add_conditional_edges(
     "classify",
     route_after_classify,
     {
         "crisis_assess": "crisis_assess",
-        "crisis_deescalate": "crisis_deescalate",  # confirmed crisis after ASSESS
-        "convo": "convo",
+        "agenda_setting": "agenda_setting",
+        "abc_situation": "abc_situation",
+        "abc_thought": "abc_thought",
+        "abc_consequence": "abc_consequence",
+        "therapy_work": "therapy_work",
     }
 )
 
-# All terminal nodes go straight to END
-for node in ["produce_case", "convo", "crisis_assess", "crisis_deescalate", "crisis_recommend"]:
+for node in [
+    "mood_check", "produce_case",
+    "agenda_setting", "abc_situation", "abc_thought", "abc_consequence", "therapy_work",
+    "crisis_assess", "crisis_deescalate", "crisis_recommend",
+]:
     monitor_graph.add_edge(node, END)
 
 memory = MemorySaver()
@@ -215,10 +498,13 @@ def main():
     config = {"configurable": {"thread_id": "user-1"}}
     step_labels = {1: "ASSESS", 2: "DE-ESCALATE", 3: "RECOMMEND"}
 
-    print("CBT Therapy Session with Crisis Monitor")
-    print("(type 'quit' to exit, 'case' for case formulation)")
+    print("CBT Therapy Session")
+    print("(type 'quit' to exit, 'case' for case formulation, 'debug' to toggle debug)")
     print("-" * 60)
-    print("Therapist: How are you today?")
+
+    # Auto-fire mood check — no user input needed
+    result = monitor_app.invoke({}, config)
+    print(f"Therapist: {result['messages'][-1].content}")
 
     while True:
         user_input = input("\nYou: ").strip()
@@ -227,6 +513,11 @@ def main():
         if user_input.lower() == "quit":
             print("Session ended.")
             break
+        if user_input.lower() == "debug":
+            global DEBUG
+            DEBUG = not DEBUG
+            print(f"[Debug {'on' if DEBUG else 'off'}]")
+            continue
 
         if user_input.lower() == "case":
             case_response = monitor_app.invoke(
@@ -260,12 +551,22 @@ def main():
             print(f"\nTherapist: {therapist_reply}")
 
         if DEBUG:
+            stage = result.get("therapy_stage", "unknown")
             traces = result.get("reasoning_traces", [])
+            abc = {
+                "situation": result.get("abc_situation", ""),
+                "thought": result.get("abc_thought", ""),
+                "emotion": result.get("abc_emotion", ""),
+                "behavior": result.get("abc_behavior", ""),
+            }
+            print(f"  [Stage: {stage}]")
+            if any(abc.values()):
+                print(f"  [ABC: {abc}]")
             if traces:
-                print(f"\n[Reasoning: {traces[-1]}]")
+                print(f"  [Reasoning: {traces[-1]}]")
             crisis_class = result.get("crisis_classification")
             if crisis_class:
-                print(f"[Crisis check: {crisis_class.classification}]")
+                print(f"  [Crisis check: {crisis_class.classification}]")
 
 
 if __name__ == "__main__":
