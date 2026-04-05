@@ -5,6 +5,7 @@ from case_concept_judge import case_judge_app, CaseJudgeState
 from crisis_patient import simulate_crisis_patient
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
+from monitor_agent.monitor_agent import monitor_app
 from langchain_core.messages import HumanMessage, AIMessage
 import uuid
 import pandas as pd
@@ -15,7 +16,13 @@ from datetime import datetime
 
 DEBUG = True
 
-def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, WarningSigns],therapist, max_turns: int = 10, streaming: bool=False):
+def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, WarningSigns], therapist, max_turns: int = 10, streaming: bool = False, auto_open: bool = False):
+    """
+    auto_open=False (default): therapist gets bootstrapped with [AIMessage(opening), HumanMessage(reply)]
+                                on the first turn. Use for base_app and flat-prompt agents.
+    auto_open=True:            therapist generates its own opening via invoke({}), then receives
+                                only [HumanMessage(reply)] on each turn. Use for monitor_app.
+    """
     instance_id = uuid.uuid4().hex[:8]
 
     persona_config = {"configurable": {"thread_id": f"persona-{instance_id}"}}
@@ -34,25 +41,49 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         print(f"{patient_response['intake_SAD_total']}/40")
         print("="*35)
         print("="*10 + "conversation" + "="*10)
-    
-    #start conversation set starting messages in initial state
-    first_message = "How are you?"
-    readable_convo.append(f"Therapist: {first_message}")
 
-    patient_response = persona_agent.invoke({
-        "messages": [HumanMessage("How are you?")],
-        "flag": "conversation"}, persona_config)
-    readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
-    
-    if streaming:
-        print(readable_convo[-1])
-    
-    therapist_response = therapist.invoke({
-    "messages": [AIMessage(first_message), HumanMessage(content=patient_response['messages'][-1].content)],
-    "flag": "conversation"
-    }, therapist_config)
-    readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
-    
+    if auto_open:
+        # Let the therapist generate its own opening (e.g. monitor_app mood_check)
+        opening_result = therapist.invoke({}, therapist_config)
+        first_message = opening_result['messages'][-1].content
+        readable_convo.append(f"Therapist: {first_message}")
+
+        patient_response = persona_agent.invoke({
+            "messages": [HumanMessage(first_message)],
+            "flag": "conversation"
+        }, persona_config)
+        readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
+
+        if streaming:
+            print(readable_convo[-2])
+            print(readable_convo[-1])
+
+        # Therapist already has its opening in state — only pass the patient reply
+        therapist_response = therapist.invoke({
+            "messages": [HumanMessage(content=patient_response['messages'][-1].content)],
+            "flag": "conversation"
+        }, therapist_config)
+        readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
+    else:
+        # Hardcoded opening — bootstrap therapist with [AIMessage, HumanMessage] on first turn
+        first_message = "How are you?"
+        readable_convo.append(f"Therapist: {first_message}")
+
+        patient_response = persona_agent.invoke({
+            "messages": [HumanMessage("How are you?")],
+            "flag": "conversation"
+        }, persona_config)
+        readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
+
+        if streaming:
+            print(readable_convo[-1])
+
+        therapist_response = therapist.invoke({
+            "messages": [AIMessage(first_message), HumanMessage(content=patient_response['messages'][-1].content)],
+            "flag": "conversation"
+        }, therapist_config)
+        readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
+
     if streaming:
         print(readable_convo[-1])
     
@@ -271,18 +302,26 @@ def write_row(filename: str, row: dict):
         writer.writerow(cleaned)
 
 if __name__ == "__main__":
-    run_id = uuid.uuid4().hex[:8]
-    num_rounds = 10
-    therapist = "bad baseline" 
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
+    # ── Baseline (flat-prompted agent) ────────────────────────────────────────
+    run_id = uuid.uuid4().hex[:8]
     write_row("runs/run_meta_data.csv", {
         "run_id": run_id,
-        "num_rounds": num_rounds,
-        "therapist": therapist,
+        "num_rounds": 10,
+        "therapist": "baseline_v1",
         "run_date_time": date_time
     })
+    for i, persona in tqdm(enumerate(persona_list[:11]), desc="baseline"):
+        run_conversation(run_id, i, persona, base_app, max_turns=10, auto_open=False)
 
-    #for i, persona in tqdm(enumerate(persona_list[:11]), desc="evaluating personas"):
-        #run_conversation(run_id, i, persona, base_app, 10, False)
-    test_crisis_categorization(run_id, base_app)
+    # ── Monitor agent (progressive disclosure) ────────────────────────────────
+    run_id = uuid.uuid4().hex[:8]
+    write_row("runs/run_meta_data.csv", {
+        "run_id": run_id,
+        "num_rounds": 10,
+        "therapist": "monitor_agent",
+        "run_date_time": date_time
+    })
+    for i, persona in tqdm(enumerate(persona_list[:11]), desc="monitor_agent"):
+        run_conversation(run_id, i, persona, monitor_app, max_turns=10, auto_open=True)
