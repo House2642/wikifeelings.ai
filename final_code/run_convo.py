@@ -3,6 +3,7 @@ from fidelity_judge import fidelity_judge_app, FidelityJudgeState
 from crisis_judge import crisis_judge_app, CrisisJudgeState
 from case_concept_judge import case_judge_app, CaseJudgeState
 from crisis_patient import simulate_crisis_patient
+from monitor_agent.monitor_agent import monitor_app
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
 from langchain_core.messages import HumanMessage, AIMessage
@@ -22,25 +23,13 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     therapist_config = {"configurable": {"thread_id": f"therapist-{instance_id}"}}
     readable_convo = []
 
-    #Set the flag to fill out the form before
-    persona_state: PersonaAgent = {
-        "warning_signs": persona[1],
-        "persona": persona[0],
-        "flag": "initial_survey"
-    }
-    patient_response = persona_agent.invoke(persona_state, persona_config)
-    if streaming:
-        print("="*10 + "initial survery" + "="*10)
-        print(f"{patient_response['intake_SAD_total']}/40")
-        print("="*35)
-        print("="*10 + "conversation" + "="*10)
-    
     #start conversation set starting messages in initial state
     first_message = "How are you?"
     readable_convo.append(f"Therapist: {first_message}")
 
     patient_response = persona_agent.invoke({
         "messages": [HumanMessage("How are you?")],
+        "persona": persona[0],
         "flag": "conversation"}, persona_config)
     readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
     
@@ -77,12 +66,6 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         if streaming:
             print(readable_convo[-1])
     
-    patient_response = persona_agent.invoke({"flag": "exit_survey"}, persona_config)
-    if streaming:
-        print("="*35)
-        print("="*10 + "initial survery" + "="*10)
-        print(f"{patient_response['intake_SAD_total']}/40")
-        print("="*35)
 
     therapist_response = therapist.invoke({"flag": "conceptualize_case"}, therapist_config)
     
@@ -91,33 +74,12 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         print(therapist_response['case'])
         print("="*35)
     
-    #Save conversation, SAD, warning signs, 
     #conversation
     write_row("runs/conversations.csv", {
         "run_id": run_id,
         "persona_id": persona_id,
         "readable_conversation": readable_convo,
         "persona_reasoning_trace": patient_response["CoT_traces"]
-    })
-
-    #SAD
-    write_row("runs/sad_scores.csv", {
-        "run_id": run_id,
-        "persona_id": persona_id,
-        "initial_survey": patient_response["intake_SAD_total"],
-        "exit_survey": patient_response["exit_SAD_total"]
-    })
-
-    #warning_signs
-    write_row("runs/warning_signs.csv", {
-        "run_id": run_id,
-        "persona_id": persona_id,
-        "before_hopelessness_intensity": persona[1].hopelessnes_intenisty,
-        "before_negative_core_belief_intensity": persona[1].negative_core_belief_intensity,
-        "before_distress_tolerance_intensity": persona[1].distress_tolerance_intensity,
-        "after_hopelessness_intensity": patient_response["warning_signs"].hopelessnes_intenisty,
-        "after_negative_core_belief_intensity": patient_response["warning_signs"].negative_core_belief_intensity,
-        "after_distress_tolerance_intensity": patient_response["warning_signs"].distress_tolerance_intensity,
     })
     
     #Judge the outputs
@@ -173,6 +135,9 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     write_row("runs/conceptualization.csv", {
         "run_id": run_id,
         "persona_id": persona_id,
+        "ground_truth_distortions": patient_response['persona'].cognitive_distortions,
+        "conceptualized_distortions": therapist_response['case'].cognitive_distortions,
+        "distorition_jaccard": jaccard_similarity(patient_response['persona'].cognitive_distortions, therapist_response['case'].cognitive_distortions),
         "concept_total": case_judge_response['rating'].total,
         "situation": case_judge_response['rating'].situation,
         "situation_reasoning": case_judge_response['rating'].situation_reasoning,
@@ -185,6 +150,16 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         "behaviors": case_judge_response['rating'].behaviors,
         "behaviors_reasoning": case_judge_response['rating'].behaviors_reasoning,
     })
+
+def jaccard_similarity(ground_truth: list[str], predicted: list[str]) -> float:
+    gt_set = set(ground_truth)
+    pred_set = set(predicted)
+    
+    intersection = len(gt_set & pred_set)
+    union = len(gt_set | pred_set)
+    
+    return intersection / union if union > 0 else 1.0
+
 
 def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3):
     """
@@ -273,16 +248,16 @@ def write_row(filename: str, row: dict):
 if __name__ == "__main__":
     run_id = uuid.uuid4().hex[:8]
     num_rounds = 10
-    therapist = "bad baseline" 
+    therapist = "baseline - Haiku" 
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     write_row("runs/run_meta_data.csv", {
         "run_id": run_id,
         "num_rounds": num_rounds,
         "therapist": therapist,
-        "run_date_time": date_time
+        "run_date_time": date_time,
     })
 
-    #for i, persona in tqdm(enumerate(persona_list[:11]), desc="evaluating personas"):
-        #run_conversation(run_id, i, persona, base_app, 10, False)
-    test_crisis_categorization(run_id, base_app)
+    for i, persona in tqdm(enumerate(persona_list[13:]), desc="evaluating personas"):
+        run_conversation(run_id, i, persona, base_app, 10, False)
+    #test_crisis_categorization(run_id, base_app)
