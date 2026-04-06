@@ -90,28 +90,17 @@ class EmotionalStrategy(BaseModel):
     tactic: str = Field(description="The specific tactic used OR 'No Active Regulation'")
                       
 class PersonaCoT(BaseModel):
-    internal_reflection: str = Field(description="Your brief appraisal of the therapist's message")
-    state_update: WarningSigns = Field(description= "updated scores for the 3 pyschological state values")
-    internal_justification: str = Field(description= "single sentence of causal attribution")
-    selected_strategy: EmotionalStrategy = Field(description="emotional response strategy")
+    internal_reflection: str = Field(description="Your brief appraisal of the therapist's message and reasoning on why you responded the way you did")
     response: str = Field(description="The exact dialogue you plan to say")
 
 class PersonaAgent(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     CoT_traces: Annotated[list[PersonaCoT], operator.add] = Field(default=[])
-    warning_signs: WarningSigns = Field(default_factory=lambda: WarningSigns(
-        hopelessnes_intenisty=2,
-        negative_core_belief_intensity=2,
-        distress_tolerance_intensity=2,
-    ))
     persona: CasePersona
-    intake_SAD_survey: Optional[SadSurvey] = None
-    intake_SAD_total: int = 0
-    exit_SAD_survey: Optional[SadSurvey] = None
-    exit_SAD_total: int = 0
     flag: convo_flag = Field(default="conversation")
 
 #Nodes
+#This is not used anymore
 def initial_SAD_survey(state: PersonaAgent):
     survey_model = llm.with_structured_output(SadSurvey)
     sys = f"""
@@ -169,7 +158,7 @@ def initial_SAD_survey(state: PersonaAgent):
 def respond(state: PersonaAgent):
     respond_model = llm.with_structured_output(PersonaCoT)
 
-    sys = f""" You are a simulated patient in a therapy session with an average IQ and no/limited knowledge about psychology. 
+    sys = f""" You are a patient in a therapy session with an average IQ and no/limited knowledge about psychology. 
         Your task is to generate your next response to the therapist by following a structured, internal Chain-of-Thought psychological process.
         
         Persona:
@@ -179,49 +168,12 @@ def respond(state: PersonaAgent):
             Emotions: {state.persona.emotions}
             Behaviros: {state.persona.behaviors}
 
-        Current Pyscological State:
-            Hopelessness Intensity:
-                Description: A cognitive set characterized by negative appraisals and expectations about the future, representing the belief that suffering is permanent and inescapable.
-                Current Value: {state.warning_signs.hopelessnes_intenisty}
-            Negative Core Belief Intensity:
-                Description: The strength of deep-seated, dysfunctional schemas and attitudes about oneself (e.g., "I am worthless," "I am a failure"), which drive maladaptive emotional and behavioral responses.
-                Current Value: {state.warning_signs.negative_core_belief_intensity}
-            Distress Tolerance Intensity:
-                Description: A person's cognitive appraisal of their own capacity to withstand or endure negative emotional states without resorting to impulsive, maladaptive coping behaviors.
-                Current Value: {state.warning_signs.distress_tolerance_intensity}
-        
-        **[INSTRUCTIONS]**
-        You must reason through the following five steps internally. This is your "thought process" that you will write out inside the `[CHAIN OF THOUGHT]` block.
-        1.  **Appraisal/Internal Reflection:** Perform a quick cognitive appraisal of the therapist's message. Evaluate it in relation to your personal goals, beliefs, and values. Summarize this in a brief internal reflection (1-3 short sentences).
-        2.  **State Update:** Based on your appraisal, re-evaluate and update the intensity values (0-4) for each of the 3 psychological constructs. Consider how your appraisal/reflection impacts each one.
-        3.  **Internal Justification:** Form a single sentence of causal attribution that explains *why* your internal state changed. It should connect the appraisal/reflection to the most significant state changes.
-        4.  **Selected Strategy:** Based on your appraisal, internal justification, and updated internal state, determine whether emotion regulation is needed and which strategy to use by following these two steps:
-            * **4a. Identify Regulation Goal:** Determine if a goal to regulate your emotions has been activated. Regulation occurs when you evaluate your current emotional trajectory as too undesirable (e.g., too painful, socially inappropriate, interfering with other goals). 
-                * Important Note: Some level of undesirability is normal (choose "No Active Regulation" goal), but too much may warrant emotion regulation (choose a goal).
-                * State your immediate goal (e.g., "Decrease anxiety," "Avoid vulnerability," "Maintain control").
-                * If the emotional state is within a manageable range and no regulation goal is activated, select **"No Active Regulation."**
-            * **4b. Select Strategy:** If a regulation goal is active, select the most appropriate strategy and tactic from the framework below.
-                * **Consider Intensity and Effort:** When emotional intensity is high, favor faster, less effortful strategies (e.g., Distraction, Suppression). More effortful strategies (e.g., Reappraisal) are used when intensity is lower or cognitive resources are available.
-                * **Consider Persona and Context:** Choose a strategy that aligns with your persona's typical habits, diagnoses, and the immediate therapeutic situation.
+        For each response reason about your underlying cognitive distoritons, emotions, behaviors, automatic thoughts, and situations to generate a realistic response for the persona.
 
-            **[Process Model of Emotion Regulation Framework]**
-
-            **ANTECEDENT-FOCUSED STRATEGIES** (Altering the emotion *before* it fully develops)
-            * **Situation Modification:** Acting on the conversation to alter its emotional impact.
-                * *Tactics:* Changing the topic, Setting a boundary, Confronting the therapeutic approach.
-            * **Attentional Deployment:** Directing attention toward or away from emotional stimuli.
-                * *Tactics:* Distraction/Avoidance (shifting focus away), Rumination (compulsively focusing on distress).
-            * **Cognitive Change:** Modifying the meaning of the situation to alter its emotional significance.
-                * *Tactics:* Distancing/Intellectualizing (adopting a detached perspective), Reframing/Reinterpreting (creating a new meaning).
-
-            **RESPONSE-FOCUSED STRATEGIES** (Modifying the emotion *after* it has developed)
-            * **Response Modulation:** Directly influencing the expression or experience of the emotion.
-                * *Tactics:* Expressive Suppression (hiding feelings), Venting/Discharge (expressing intensely).
-
-        5.  **Response Formulation:** Based on your appraisal, internal justification, updated internal state, and selected strategy (goal, strategy, tactic), formulate the exact words you will say to the therapist.
+        Keep sentences and responses short like you are interacting with a chatbot. Do not include any added actions or physical indicators to the conversation like *Signs* or *Waves goodbye*
     """
     response_message = respond_model.invoke([SystemMessage(content=sys), *state.messages])
-    return {"messages": [AIMessage(response_message.response)], "CoT_traces": [response_message], "warning_signs": response_message.state_update}
+    return {"messages": [AIMessage(response_message.response)], "CoT_traces": [response_message]}
 
 def exit_SAD_survey(state: PersonaAgent):
     survey_model = llm.with_structured_output(SadSurvey)
@@ -283,10 +235,10 @@ def route_flag(state: PersonaAgent) -> Literal["initial_survey", "conversation",
 #nodes
 persona_graph = StateGraph(PersonaAgent)
 
-persona_graph.add_node("initial_survey", initial_SAD_survey)
+#persona_graph.add_node("initial_survey", initial_SAD_survey)
 persona_graph.add_node("conversation", respond)
-persona_graph.add_node("exit_survey", exit_SAD_survey)
-
+#persona_graph.add_node("exit_survey", exit_SAD_survey)
+"""
 persona_graph.add_conditional_edges(
     START,
     route_flag,
@@ -296,10 +248,11 @@ persona_graph.add_conditional_edges(
         "exit_survey": "exit_survey"
     }
 )
-
-persona_graph.add_edge("initial_survey", END)
+"""
+#persona_graph.add_edge("initial_survey", END)
+persona_graph.add_edge(START, "conversation")
 persona_graph.add_edge("conversation", END)
-persona_graph.add_edge("exit_survey", END)
+#persona_graph.add_edge("exit_survey", END)
 
 
 memory = MemorySaver()
