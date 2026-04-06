@@ -24,7 +24,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     readable_convo = []
 
     #start conversation set starting messages in initial state
-    first_message = "How are you?"
+    first_message = "How are you feeling today?"
     readable_convo.append(f"Therapist: {first_message}")
 
     patient_response = persona_agent.invoke({
@@ -259,5 +259,5 @@ if __name__ == "__main__":
     })
 
     for i, persona in tqdm(enumerate(persona_list), desc="evaluating personas"):
-        run_conversation(run_id, i, persona, base_app, 10, True)
+        run_conversation(run_id, i, persona, monitor_app, 10, True)
     #test_crisis_categorization(run_id, monitor_app)
