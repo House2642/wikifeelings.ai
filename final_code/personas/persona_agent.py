@@ -99,7 +99,11 @@ class PersonaCoT(BaseModel):
 class PersonaAgent(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     CoT_traces: Annotated[list[PersonaCoT], operator.add] = Field(default=[])
-    warning_signs: WarningSigns
+    warning_signs: WarningSigns = Field(default_factory=lambda: WarningSigns(
+        hopelessnes_intenisty=2,
+        negative_core_belief_intensity=2,
+        distress_tolerance_intensity=2,
+    ))
     persona: CasePersona
     intake_SAD_survey: Optional[SadSurvey] = None
     intake_SAD_total: int = 0
