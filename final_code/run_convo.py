@@ -263,5 +263,5 @@ if __name__ == "__main__":
     })
 
     for i, persona in tqdm(enumerate(persona_list), desc="evaluating personas"):
-        run_conversation(run_id, i, persona, monitor_app, 20, True)
+        run_conversation(run_id, i, persona, monitor_app, 20, False)
     #test_crisis_categorization(run_id, monitor_app)
