@@ -22,6 +22,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     persona_config = {"configurable": {"thread_id": f"persona-{instance_id}"}}
     therapist_config = {"configurable": {"thread_id": f"therapist-{instance_id}"}}
     readable_convo = []
+    therapist_reasoning_traces = []
 
     #start conversation set starting messages in initial state
     first_message = "How are you feeling today?"
@@ -41,6 +42,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     "flag": "conversation"
     }, therapist_config)
     readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
+    therapist_reasoning_traces.extend(therapist_response.get("reasoning_traces", []))
     
     if streaming:
         print(readable_convo[-1])
@@ -62,6 +64,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
             "flag": "conversation"
         }, therapist_config)
         readable_convo.append(f"Therapist: {therapist_response['messages'][-1].content}")
+        therapist_reasoning_traces.extend(therapist_response.get("reasoning_traces", []))
         
         if streaming:
             print(readable_convo[-1])
@@ -79,7 +82,8 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
         "run_id": run_id,
         "persona_id": persona_id,
         "readable_conversation": readable_convo,
-        "persona_reasoning_trace": patient_response["CoT_traces"]
+        "persona_reasoning_trace": patient_response["CoT_traces"],
+        "therapist_reasoning_traces": therapist_reasoning_traces,
     })
     
     #Judge the outputs
@@ -242,7 +246,7 @@ def write_row(filename: str, row: dict):
         fieldnames = f.readline().strip().split(",")
     
     with open(filename, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames, restval="")
+        writer = csv.DictWriter(f, fieldnames=fieldnames, restval="", extrasaction="ignore")
         writer.writerow(cleaned)
 
 if __name__ == "__main__":
