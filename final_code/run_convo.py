@@ -30,6 +30,7 @@ def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, W
     patient_response = persona_agent.invoke({
         "messages": [HumanMessage("How are you?")],
         "persona": persona[0],
+        "warning_signs": persona[1],
         "flag": "conversation"}, persona_config)
     readable_convo.append(f"Patient: {patient_response['messages'][-1].content}")
     
