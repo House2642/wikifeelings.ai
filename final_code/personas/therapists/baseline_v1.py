@@ -61,6 +61,22 @@ class Extract(BaseModel):
    message: str = Field(description="Your response to the patient, keep it concise")
    reasoning_trace: str = Field(description="Brief reasoning process, 2-3 sentences max")
 
+CognitiveDistortion = Literal[
+    "All-or-nothing thinking",
+    "Catastrophizing",
+    "Disqualifying the positive",
+    "Emotional reasoning",
+    "Labeling",
+    "Magnification",
+    "Minimization",
+    "Mental filter",
+    "Mind reading",
+    "Overgeneralization",
+    "Personalization",
+    "Should statements",
+    "Tunnel vision",
+]
+
 class CasePersona(BaseModel):
     situation: str = Field(
         default="",
@@ -70,7 +86,7 @@ class CasePersona(BaseModel):
         default=[],
         description="Automatic thoughts triggered by the situation"
     )
-    cognitive_distortions: list[str] = Field(
+    cognitive_distortions: list[CognitiveDistortion] = Field(
         default=[],
         description="Cognitive distortions present in the automatic thoughts"
     )
@@ -109,7 +125,22 @@ def conversation(state: PatientState):
 def produce_case(state: PatientState):
     case_llm = model.with_structured_output(CasePersona)  
     case = case_llm.invoke([
-        SystemMessage("Based on your conversation, provide a CBT case formulation for this patient."), 
+        SystemMessage("""Based on your conversation, provide a CBT case formulation for this patient.
+        List of Cognitive Distortions:
+        - All-or-nothing thinking
+        - Catastrophizing
+        - Disqualifying the positive
+        - Emotional reasoning
+        - Labeling
+        - Magnification
+        - Minimization
+        - Mental filter 
+        - Mind reading
+        - Overgeneralization
+        - Personalization
+        - Should statements
+        - Tunnel vision
+        """), 
         *state.messages
     ])
     return {"case": case}

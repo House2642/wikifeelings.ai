@@ -357,21 +357,20 @@ class Extract(BaseModel):
 
 
 CognitiveDistortion = Literal[
-    "all_or_nothing_thinking",      # Seeing things in black and white, no middle ground
-    "overgeneralization",           # Drawing broad conclusions from a single event
-    "mental_filter",                # Focusing exclusively on one negative detail
-    "disqualifying_the_positive",   # Dismissing positive experiences as not counting
-    "mind_reading",                 # Assuming others are thinking negatively without evidence
-    "fortune_telling",              # Predicting a negative outcome as if it were fact
-    "catastrophizing",              # Imagining the worst possible outcome will occur
-    "magnification",                # Blowing the importance of problems out of proportion
-    "minimization",                 # Shrinking the importance of positive qualities or events
-    "emotional_reasoning",          # Treating feelings as facts ("I feel it, so it must be true")
-    "should_statements",            # Rigid rules about how oneself or others must behave
-    "labeling",                     # Attaching a global negative label to oneself or others
-    "personalization",              # Blaming oneself for events outside one's control
+    "All-or-nothing thinking",
+    "Catastrophizing",
+    "Disqualifying the positive",
+    "Emotional reasoning",
+    "Labeling",
+    "Magnification",
+    "Minimization",
+    "Mental filter",
+    "Mind reading",
+    "Overgeneralization",
+    "Personalization",
+    "Should statements",
+    "Tunnel vision",
 ]
-
 
 class CasePersona(BaseModel):
     situation: str = Field(default="", description="Specific triggering event or circumstance")
