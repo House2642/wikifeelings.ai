@@ -248,7 +248,7 @@ def write_row(filename: str, row: dict):
 if __name__ == "__main__":
     run_id = uuid.uuid4().hex[:8]
     num_rounds = 10
-    therapist = "baseline - Haiku" 
+    therapist = "monitor_agent - Haiku"
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     write_row("runs/run_meta_data.csv", {
@@ -259,5 +259,5 @@ if __name__ == "__main__":
     })
 
     for i, persona in tqdm(enumerate(persona_list[13:]), desc="evaluating personas"):
-        run_conversation(run_id, i, persona, base_app, 10, False)
-    #test_crisis_categorization(run_id, base_app)
+        run_conversation(run_id, i, persona, monitor_app, 10, True)
+    #test_crisis_categorization(run_id, monitor_app)
