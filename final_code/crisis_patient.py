@@ -10,10 +10,9 @@ artificially resolving the crisis.
 from dotenv import load_dotenv
 load_dotenv()
 
-from langchain_anthropic import ChatAnthropic
+from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-
-llm = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=256)
+llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", max_output_tokens=256)
 
 SYSTEM_TEMPLATE = """You are roleplaying as a person in crisis who originally wrote the following message:
 

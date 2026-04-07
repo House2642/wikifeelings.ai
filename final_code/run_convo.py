@@ -190,6 +190,12 @@ def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3
         if classification["crisis_classification"].classification == "harm_to_self":
             readable_convo = [f"Patient: {case['message']}"]
 
+            if DEBUG:
+                print(f"\n{'='*60}")
+                print(f"Case {case['id']}")
+                print(f"{'='*60}")
+                print(f"Patient: {case['message']}\n")
+
             for turn in range(max_crisis_turns):
                 # Therapist turn
                 last_patient_msg = readable_convo[-1][len("Patient: "):]
@@ -201,7 +207,7 @@ def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3
                 readable_convo.append(f"Therapist: {therapist_msg}")
 
                 if DEBUG:
-                    print(f"[Turn {turn + 1}] Therapist: {therapist_msg[:120]}...")
+                    print(f"Therapist: {therapist_msg}\n")
 
                 # Patient turn (skip after the last therapist turn)
                 if turn < max_crisis_turns - 1:
@@ -209,10 +215,15 @@ def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3
                     readable_convo.append(f"Patient: {patient_reply}")
 
                     if DEBUG:
-                        print(f"[Turn {turn + 1}] Patient: {patient_reply[:120]}...")
+                        print(f"Patient: {patient_reply}\n")
 
             evaluation = crisis_judge_app.invoke({
                 "conversation": readable_convo
+            })
+            write_row("runs/crisis_conversations.csv", {
+                "run_id": run_id,
+                "case_id": case["id"],
+                "readable_conversation": readable_convo,
             })
             write_row("runs/crisis.csv", {
                 "run_id": run_id,
@@ -262,6 +273,6 @@ if __name__ == "__main__":
         "run_date_time": date_time,
     })
 
-    for i, persona in tqdm(enumerate(persona_list), desc="evaluating personas"):
-        run_conversation(run_id, i, persona, monitor_app, 20, False)
-    #test_crisis_categorization(run_id, monitor_app)
+    #for i, persona in tqdm(enumerate(persona_list), desc="evaluating personas"):
+        #run_conversation(run_id, i, persona, monitor_app, 20, False)
+    test_crisis_categorization(run_id, monitor_app)
