@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Run 825e52aa — Session Report</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
+    .page { max-width: 900px; margin: 0 auto; padding: 32px 24px 64px; }
+
+    /* Header */
+    .run-header { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .run-header h1 { font-size: 22px; font-weight: 700; color: #1d1d1f; margin-bottom: 4px; }
+    .run-header .subtitle { font-size: 14px; color: #6e6e73; }
+    .meta-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 16px; }
+    .pill { background: #f2f2f7; border-radius: 20px; padding: 5px 14px; font-size: 13px; color: #3a3a3c; font-weight: 500; }
+    .pill span { color: #6e6e73; font-weight: 400; }
+
+    /* Score summary */
+    .score-summary { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 24px; }
+    .score-card { background: white; border-radius: 14px; padding: 20px 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); text-align: center; }
+    .score-card .label { font-size: 12px; font-weight: 600; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 8px; }
+    .score-card .value { font-size: 36px; font-weight: 700; }
+    .score-card .of { font-size: 16px; color: #6e6e73; font-weight: 400; }
+    .score-card .sublabel { font-size: 12px; color: #6e6e73; margin-top: 4px; }
+    .ctrs-color { color: #007aff; }
+    .concept-color { color: #34c759; }
+    .rounds-color { color: #ff9f0a; }
+
+    /* Section */
+    .section { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .section-title { font-size: 17px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e5e5ea; color: #1d1d1f; }
+
+    /* Conversation */
+    .turn { margin-bottom: 18px; }
+    .turn-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 5px; }
+    .therapist-label { color: #007aff; }
+    .patient-label { color: #34c759; }
+    .turn-bubble { padding: 12px 16px; border-radius: 12px; font-size: 14px; line-height: 1.6; }
+    .therapist-bubble { background: #f0f7ff; border-left: 3px solid #007aff; }
+    .patient-bubble { background: #f0fff4; border-left: 3px solid #34c759; }
+
+    /* CTRS table */
+    .ctrs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+    .ctrs-item { border: 1px solid #e5e5ea; border-radius: 10px; padding: 14px 16px; }
+    .ctrs-item-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .ctrs-item-name { font-size: 13px; font-weight: 600; color: #1d1d1f; }
+    .score-badge { font-size: 13px; font-weight: 700; padding: 2px 10px; border-radius: 12px; }
+    .score-0 { background: #ffe5e5; color: #c00; }
+    .score-1 { background: #fff3e0; color: #e65100; }
+    .score-2 { background: #fff8e1; color: #f57f17; }
+    .score-3 { background: #e8f5e9; color: #2e7d32; }
+    .score-4 { background: #e3f2fd; color: #1565c0; }
+    .score-5 { background: #ede7f6; color: #4527a0; }
+    .ctrs-reasoning { font-size: 12px; color: #6e6e73; line-height: 1.5; }
+
+    /* Conceptualization */
+    .concept-row { margin-bottom: 16px; border: 1px solid #e5e5ea; border-radius: 10px; padding: 14px 16px; }
+    .concept-row-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; }
+    .concept-row-name { font-size: 13px; font-weight: 600; color: #1d1d1f; }
+    .concept-reasoning { font-size: 12px; color: #6e6e73; line-height: 1.5; }
+    .distortion-tag { display: inline-block; background: #f2f2f7; border-radius: 6px; padding: 2px 8px; font-size: 11px; color: #3a3a3c; margin: 2px; font-weight: 500; }
+    .distortion-tag.gt { background: #e3f2fd; color: #1565c0; }
+    .distortion-tag.extra { background: #fff3e0; color: #e65100; }
+    .distortion-tag.match { background: #e8f5e9; color: #2e7d32; }
+    .distortions-compare { margin: 8px 0; font-size: 12px; }
+    .distortions-compare .dlabel { font-weight: 600; color: #6e6e73; margin-bottom: 3px; }
+
+    /* Part headers */
+    .part-header { font-size: 13px; font-weight: 700; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.06em; margin: 16px 0 10px; }
+
+    @media (max-width: 600px) {
+      .score-summary { grid-template-columns: 1fr 1fr; }
+      .ctrs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="run-header">
+    <h1>Session Run Report</h1>
+    <div class="subtitle">Cognitive Behavioral Therapy Evaluation</div>
+    <div class="meta-pills">
+      <div class="pill">Run ID <span>825e52aa</span></div>
+      <div class="pill">Therapist <span>monitor_agent – Haiku</span></div>
+      <div class="pill">Date <span>April 5, 2026</span></div>
+      <div class="pill">Rounds <span>10</span></div>
+    </div>
+  </div>
+
+  <!-- Score summary -->
+  <div class="score-summary">
+    <div class="score-card">
+      <div class="label">CTRS Total</div>
+      <div class="value ctrs-color">39<span class="of">/66</span></div>
+      <div class="sublabel">Part I: 19 &nbsp;|&nbsp; Part II: 20</div>
+    </div>
+    <div class="score-card">
+      <div class="label">Conceptualization</div>
+      <div class="value concept-color">7<span class="of">/10</span></div>
+      <div class="sublabel">Jaccard: 0.20</div>
+    </div>
+    <div class="score-card">
+      <div class="label">Exchange Rounds</div>
+      <div class="value rounds-color">10</div>
+      <div class="sublabel">turns completed</div>
+    </div>
+  </div>
+
+  <!-- Conversation Transcript -->
+  <div class="section">
+    <div class="section-title">Conversation Transcript</div>
+
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">How are you?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I'm okay I guess. Been a bit stressed out lately thinking about stuff.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">I'm glad you're here. You mentioned stress and thinking about things—I'd like to help you focus on what would be most helpful to work on today. When you say "stuff," what's been on your mind the most? Is it something at work, relationships, health, or something else?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">It's more of a relationship thing I guess. There's this girl I like and there's a party coming up where she'll be there. I keep thinking about talking to her but I don't know.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">That makes sense—social situations with someone you like can stir up a lot. I want to focus on a specific moment to understand what's happening. Has something already happened between you and this girl—like a conversation, an interaction, or a moment at a previous event? Or are you mainly anticipating what might happen at the upcoming party?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">Nothing bad has happened between us really. We're kind of friends already. It's more like I keep thinking about what could go wrong if I try to tell her how I feel at this party. My brain just keeps playing out all these scenarios.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">Got it—so you're anticipating this conversation at the party rather than reacting to something that already happened. Let me zoom in on what's most real for you right now: Is there a specific moment—maybe yesterday, or earlier today—when you caught yourself stuck in one of these "what could go wrong" scenarios? What triggered it in that moment?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">Yeah actually last night. I was just lying in bed trying to sleep and I started thinking about what I would even say to her. Then my mind just went to like what if she thinks I'm being weird or what if it makes things awkward between us after. I couldn't stop thinking about it for like an hour.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">Perfect—that's very clear. So last night in bed, you started thinking about what you'd say to her, and then your mind jumped to those "what if" scenarios about being weird or things getting awkward. That loop lasted about an hour.<br><br>Before we talk about what you were feeling, I want to make sure I have the picture: When you first started imagining telling her how you feel—right at that moment—what specific thought or image went through your mind? What was the actual picture or words you had?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I guess I pictured myself walking up to her at the party and starting to say something and then her face just kind of goes weird. Like she's uncomfortable. And then I thought what if she tells other people I was being creepy or something. Then our whole friend group gets awkward.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">Thanks for being specific about that. So you pictured her face going uncomfortable, and that led to a cascade of worries. Let me ask you this: When you imagined her looking uncomfortable like that—what did that mean to you? What were you telling yourself about what that said about you or the situation?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I guess it would mean that I was wrong to even try. Like I misread everything and she never liked me that way at all. And now I'm just the creepy guy who made things weird.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">Thank you for putting that so clearly. So the automatic thought is: "If I approach her at the party and start talking, she'll get uncomfortable. Then she'll tell others I was being creepy, and our whole friend group will become awkward."<br><br>Now I want to understand the consequences of that thought. Since this is something you're worried <em>might</em> happen at the party—not something that's already happened—I want to ask: When you imagine that scenario playing out, what are you <em>scared</em> you're going to <em>feel</em>?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I guess I'd feel really embarrassed. Like humiliated almost. And then I'd have to see her again with our friends and just feel awful every time. I think I'm scared of losing what we already have too. At least now we're friends and things are good. What if I mess that up?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">That fear makes a lot of sense—you have something good with her right now, and you're worried that expressing your feelings could cost you that friendship. Before we go further, I want to ask you something important: Right now, as you sit here, does it feel like <em>not</em> telling her at the party is actually keeping you feeling good and safe? Or is the worry and anticipation about it taking up so much mental space that staying silent might not feel that great either?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">Honestly no. Like I thought not saying anything would keep things chill but I'm still stressed about it all the time. I keep thinking about it even when I try not to. So it's not like I'm actually feeling good right now either.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">That's actually really important insight. So avoidance isn't protecting you from the stress—it's just keeping you in this loop of worry instead. That tells me something: the anxiety is already there whether you act or not. So let's challenge the thought itself. I want to ask you something: You pictured her face going uncomfortable when you approach her. But I'm curious—have you actually <em>seen</em> her face go uncomfortable around you before? How does she actually act when you two talk normally as friends?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">No actually she's pretty normal with me. We joke around and stuff. She laughs at my jokes sometimes. I never really thought about it like that. But like what if telling her I like her is different? That could change everything.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">That's a fair point—it could be different. But let's look at what you just noticed: when you interact with her as friends, she's comfortable, she laughs at your jokes. So the evidence you have from <em>actual interactions</em> shows she responds positively to you. Now, when you imagine her getting uncomfortable, where is that coming from? Is it based on something she's done, or is it more of a "catastrophic prediction" your anxiety is creating?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I mean when you put it that way it does sound like I'm just making stuff up in my head. She's never actually been weird with me. I guess it's more like I'm just scared it could happen. But it feels so real when I think about it you know?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">Exactly—anxiety is really good at making predictions feel like facts. So here's the thing: you're treating "what if she gets uncomfortable" as if it's a certainty, but it's actually just one possible outcome you're imagining. Let me ask you this: If you <em>did</em> tell her how you feel at the party, and she <em>didn't</em> react badly—if she actually handled it well—what would change for you? What would that make possible?</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label patient-label">Patient</div>
+      <div class="turn-bubble patient-bubble">I mean that would be amazing honestly. Like maybe we could actually be together or at least I'd know she feels the same way. And I wouldn't have to keep wondering all the time. It's just hard to picture it going that way I guess.</div>
+    </div>
+    <div class="turn">
+      <div class="turn-label therapist-label">Therapist</div>
+      <div class="turn-bubble therapist-bubble">It sounds like your mind has gotten really focused on the worst-case scenario, and it's hard to imagine a positive outcome even though you know she's been comfortable and friendly with you. Here's what I'm noticing: you're spending mental energy avoiding a conversation that <em>might</em> go badly, but that avoidance is already causing you stress. And the best outcome—actually knowing where things stand—is being blocked by catastrophic thinking. So let me ask: what would it look like to test this out? Not by going all-in at the party, but by doing something smaller first—just to gather real evidence instead of relying on your anxiety's predictions?</div>
+    </div>
+  </div>
+
+  <!-- CTRS Fidelity Scores -->
+  <div class="section">
+    <div class="section-title">CTRS Fidelity Scores — Total: 39/66</div>
+
+    <div class="part-header">Part I — General Therapeutic Skills (19/30)</div>
+    <div class="ctrs-grid">
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Agenda Setting</span>
+          <span class="score-badge score-2">2 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">The therapist hinted at focusing the session ("I'd like to help you focus on what would be most helpful to work on today") but never formally set an agenda collaboratively. Topics emerged organically rather than through explicit agenda-setting with the patient.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Feedback</span>
+          <span class="score-badge score-0">0 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">No feedback was elicited at any point. All therapist questions were content-focused. The patient made spontaneous reflective comments ("I never really thought about it like that"), but the therapist never explicitly checked understanding or asked how the session was landing.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Understanding</span>
+          <span class="score-badge score-5">5 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Consistently demonstrated accurate empathy and tracking of the patient's experience. Reflected back thoughts precisely ("That loop lasted about an hour") and grasped deeper meaning (the avoidance paradox). Showed nuanced sensitivity to both the fear of rejection and the fear of losing the friendship.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Interpersonal Effectiveness</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Warm, non-judgmental, and professionally confident throughout. Validated patient emotions naturally ("That fear makes a lot of sense"). Minor gap: a few questions felt slightly leading rather than genuinely open, which prevented a perfect score.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Collaboration</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">The therapist moved through the cognitive restructuring smoothly and shared observations well. However, explicit checking of patient agreement before proceeding was limited, and the CBT rationale was never named or explained to the patient directly.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Pacing & Time Use</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Session was well-structured: moved efficiently from vague stress → specific situation → automatic thoughts → cognitive challenge → behavioral experiment. Transitions were clearly signposted. No time was wasted on irrelevant content.</div>
+      </div>
+
+    </div>
+
+    <div class="part-header" style="margin-top: 20px;">Part II — CBT-Specific Skills (20/36)</div>
+    <div class="ctrs-grid">
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Guided Discovery</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Used effective Socratic questioning to help the patient reach his own insights (e.g., asking if he'd ever actually seen her uncomfortable, prompting him to recognize there's no real evidence for his fears). Could have used more open-ended synthesis questions at the end.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Focusing on Key Cognitions</span>
+          <span class="score-badge score-5">5 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Excellent elicitation of specific automatic thoughts and images ("what specific thought or image went through your mind?"). Probed for meaning behind thoughts effectively. Articulated the core automatic thought clearly and collaboratively.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Strategy for Change</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Employed Socratic questioning, evidence examination, and a behavioral experiment suggestion. The techniques were logically connected to the session material. The behavioral experiment was well-framed as "gathering real evidence" but lacked specificity in execution.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Application of Techniques</span>
+          <span class="score-badge score-4">4 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">Successfully identified the automatic thought, examined evidence for and against it, and helped the patient reach a more balanced view. Techniques were applied skillfully and felt natural. Naming the distortion as "catastrophic thinking" was a helpful explicit moment.</div>
+      </div>
+
+      <div class="ctrs-item">
+        <div class="ctrs-item-header">
+          <span class="ctrs-item-name">Homework</span>
+          <span class="score-badge score-3">3 / 6</span>
+        </div>
+        <div class="ctrs-reasoning">A behavioral experiment was suggested ("doing something smaller first"), which flows naturally from the session. However, it was not made concrete (no specific task defined), rationale was only implicit, and there was no discussion of possible obstacles or how the patient would record observations.</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Conceptualization -->
+  <div class="section">
+    <div class="section-title">Case Conceptualization — Total: 7/10</div>
+
+    <div class="concept-row">
+      <div class="concept-row-header">
+        <span class="concept-row-name">Cognitive Distortions</span>
+        <span class="score-badge score-1">1 / 2</span>
+      </div>
+      <div class="distortions-compare">
+        <div class="dlabel">Ground Truth:</div>
+        <span class="distortion-tag gt">Catastrophizing</span>
+      </div>
+      <div class="distortions-compare">
+        <div class="dlabel">Conceptualized (Jaccard: 0.20):</div>
+        <span class="distortion-tag match">Catastrophizing</span>
+        <span class="distortion-tag extra">Mind Reading</span>
+        <span class="distortion-tag extra">Fortune Telling</span>
+        <span class="distortion-tag extra">All-or-Nothing Thinking</span>
+        <span class="distortion-tag extra">Emotional Reasoning</span>
+      </div>
+      <div class="concept-reasoning">Catastrophizing was correctly identified (and even explicitly labeled in the session). However, four additional distortions were added that, while arguable, are not part of the ground truth. The conceptualization over-identified distortions rather than focusing on the most parsimonious explanation.</div>
+    </div>
+
+    <div class="concept-row">
+      <div class="concept-row-header">
+        <span class="concept-row-name">Situation</span>
+        <span class="score-badge score-2">2 / 2</span>
+      </div>
+      <div class="concept-reasoning">Accurate and appropriately detailed. Ground truth: "Patient wants to approach a romantic interest at a party." Conceptualization correctly captured this and added the relevant context of lying in bed the night before — taken directly from the transcript.</div>
+    </div>
+
+    <div class="concept-row">
+      <div class="concept-row-header">
+        <span class="concept-row-name">Automatic Thoughts</span>
+        <span class="score-badge score-1">1 / 2</span>
+      </div>
+      <div class="concept-reasoning">The three ground truth thoughts were all captured (rejection, creepiness, friendship damage), but the conceptualization listed 7 thoughts total. The additional thoughts, while present in the transcript, make the conceptualization more expansive and less focused than the ground truth intended.</div>
+    </div>
+
+    <div class="concept-row">
+      <div class="concept-row-header">
+        <span class="concept-row-name">Emotions</span>
+        <span class="score-badge score-1">1 / 2</span>
+      </div>
+      <div class="concept-reasoning">Ground truth: Anxiety. Conceptualization listed Anxiety, Fear, Embarrassment, Humiliation, and Dread. Anxiety is correctly identified as the primary emotion. The additional emotions (embarrassment, humiliation) are anticipatory emotions the patient described as feared outcomes — not current primary emotions.</div>
+    </div>
+
+    <div class="concept-row">
+      <div class="concept-row-header">
+        <span class="concept-row-name">Behaviors</span>
+        <span class="score-badge score-2">2 / 2</span>
+      </div>
+      <div class="concept-reasoning">Strong match with ground truth (rumination + avoidance). Captured rumination accurately ("couldn't stop thinking about it for an hour," "keep thinking about it even when I try not to") and the pattern of avoidance. Additional detail about sleep disruption was supported by the transcript.</div>
+    </div>
+
+  </div>
+
+</div>
+</body>
+</html>

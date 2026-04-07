@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparison: 825e52aa vs Baseline — Persona 0</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
+    .page { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+
+    .run-header { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .run-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .run-header .subtitle { font-size: 14px; color: #6e6e73; }
+    .same-persona-badge { display: inline-block; background: #e8f5e9; color: #2e7d32; font-size: 12px; font-weight: 700; padding: 4px 12px; border-radius: 20px; margin-top: 12px; }
+
+    .label-a { color: #007aff; }
+    .label-b { color: #9c27b0; }
+
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .overview-card { background: white; border-radius: 14px; padding: 22px 26px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .run-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 6px; }
+    .meta-line { font-size: 13px; color: #6e6e73; margin-bottom: 14px; }
+    .score-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f2f2f7; font-size: 14px; }
+    .score-row:last-child { border-bottom: none; }
+    .score-row .s-label { color: #3a3a3c; }
+    .better { color: #34c759; font-weight: 700; }
+    .worse { color: #ff3b30; font-weight: 700; }
+    .same { color: #6e6e73; font-weight: 700; }
+
+    .section { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .section-title { font-size: 17px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e5e5ea; }
+
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .compare-table th { text-align: left; padding: 8px 12px; background: #f2f2f7; font-weight: 600; color: #6e6e73; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .compare-table td { padding: 10px 12px; border-bottom: 1px solid #f2f2f7; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .scale-name { font-weight: 600; color: #1d1d1f; white-space: nowrap; }
+    .sc { display: inline-block; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 13px; }
+    .s0 { background: #ffe5e5; color: #c00; }
+    .s1 { background: #fff3e0; color: #e65100; }
+    .s2 { background: #fff8e1; color: #f57f17; }
+    .s3 { background: #e8f5e9; color: #2e7d32; }
+    .s4 { background: #e3f2fd; color: #1565c0; }
+    .s5 { background: #ede7f6; color: #4527a0; }
+    .delta { font-size: 12px; font-weight: 700; white-space: nowrap; }
+    .dup { color: #34c759; }
+    .ddn { color: #ff3b30; }
+    .dsame { color: #aeaeb2; }
+    .part-label { font-size: 12px; font-weight: 700; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.06em; padding: 10px 12px 4px; background: #fafafa; }
+    .total-row td { background: #f9f9f9; font-weight: 700; }
+
+    .insight-box { border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; font-size: 13px; line-height: 1.6; }
+    .insight-a { background: #f0f7ff; border-left: 3px solid #007aff; }
+    .insight-b { background: #f9f0ff; border-left: 3px solid #9c27b0; }
+    .insight-shared { background: #f0fff4; border-left: 3px solid #34c759; }
+    .insight-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+    .transcript-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .col-header { font-size: 13px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid; }
+    .col-header-a { color: #007aff; border-color: #007aff; }
+    .col-header-b { color: #9c27b0; border-color: #9c27b0; }
+    .turn { margin-bottom: 11px; }
+    .turn-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 3px; }
+    .tl-ta { color: #007aff; } .tl-pa { color: #34c759; }
+    .tl-tb { color: #9c27b0; } .tl-pb { color: #ff9f0a; }
+    .bubble { padding: 9px 12px; border-radius: 10px; font-size: 12px; line-height: 1.55; }
+    .ta-b { background: #f0f7ff; border-left: 2px solid #007aff; }
+    .pa-b { background: #f0fff4; border-left: 2px solid #34c759; }
+    .tb-b { background: #f9f0ff; border-left: 2px solid #9c27b0; }
+    .pb-b { background: #fffaf0; border-left: 2px solid #ff9f0a; }
+
+    .distortion-tag { display: inline-block; border-radius: 6px; padding: 2px 8px; font-size: 11px; margin: 2px; font-weight: 500; }
+    .dt-gt { background: #e3f2fd; color: #1565c0; }
+    .dt-match { background: #e8f5e9; color: #2e7d32; }
+    .dt-extra { background: #fff3e0; color: #e65100; }
+
+    @media (max-width: 650px) {
+      .overview-grid, .transcript-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <div class="run-header">
+    <h1>Run Comparison — Same Persona</h1>
+    <div class="subtitle">
+      <span class="label-a">■ 825e52aa</span> — monitor_agent (Haiku) &nbsp;&nbsp;vs&nbsp;&nbsp;
+      <span class="label-b">■ 4c025580</span> — baseline (Haiku)
+    </div>
+    <div class="same-persona-badge">✓ Same Persona (0) — Party / Catastrophizing scenario</div>
+  </div>
+
+  <!-- Score Overview -->
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="run-tag label-a">825e52aa — monitor_agent</div>
+      <div class="meta-line">April 5 2026</div>
+      <div class="score-row"><span class="s-label">CTRS Total</span><span class="better">39 / 66</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part I</span><span class="better">19 / 30</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part II</span><span class="same">20 / 36</span></div>
+      <div class="score-row"><span class="s-label">Conceptualization</span><span class="worse">7 / 10</span></div>
+      <div class="score-row"><span class="s-label">Distortion Jaccard</span><span class="worse">0.20</span></div>
+    </div>
+    <div class="overview-card">
+      <div class="run-tag label-b">4c025580 — baseline</div>
+      <div class="meta-line">April 4 2026</div>
+      <div class="score-row"><span class="s-label">CTRS Total</span><span class="worse">37 / 66</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part I</span><span class="worse">17 / 30</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part II</span><span class="same">20 / 36</span></div>
+      <div class="score-row"><span class="s-label">Conceptualization</span><span class="better">8 / 10</span></div>
+      <div class="score-row"><span class="s-label">Distortion Jaccard</span><span class="better">0.25</span></div>
+    </div>
+  </div>
+
+  <!-- CTRS Detail -->
+  <div class="section">
+    <div class="section-title">CTRS Score Breakdown</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:160px">Scale</th>
+          <th class="label-a">825e52aa</th>
+          <th class="label-b">Baseline</th>
+          <th>Δ</th>
+          <th>What changed</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" class="part-label">Part I — General Therapeutic Skills</td></tr>
+        <tr>
+          <td class="scale-name">Agenda Setting</td>
+          <td><span class="sc s2">2</span></td>
+          <td><span class="sc s0">0</span></td>
+          <td><span class="delta dup">+2 ▲</span></td>
+          <td>Monitor made an explicit (if brief) attempt to focus the session. Baseline went straight into exploration with no structure at all.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Feedback</td>
+          <td><span class="sc s0">0</span></td>
+          <td><span class="sc s1">1</span></td>
+          <td><span class="delta ddn">−1 ▼</span></td>
+          <td>Baseline did a support check-in near the end ("do you have support you can reach out to?"). Monitor never explicitly checked how the session was landing.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Understanding</td>
+          <td><span class="sc s5">5</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dup">+1 ▲</span></td>
+          <td>Monitor reflected back the patient's experience with more precision — capturing the avoidance paradox and the specific image. Baseline showed good empathy but used more generic validation ("that's really understandable").</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Interpersonal Effectiveness</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both warm and professional. Baseline leaned slightly more on stock phrases ("you've got this," "you're doing the work").</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Collaboration</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both invited patient participation. Baseline named the CBT concept explicitly ("catastrophic thinking") which added transparency; monitor stayed more conversational.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Pacing & Time Use</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both sessions followed the same logical progression without digressions.</td>
+        </tr>
+        <tr><td colspan="5" class="part-label">Part II — CBT-Specific Skills</td></tr>
+        <tr>
+          <td class="scale-name">Guided Discovery</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both used Socratic questioning effectively. Baseline also named the distortion directly ("catastrophic thinking"), which is more psychoeducational — both approaches scored equally here.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Focusing on Key Cognitions</td>
+          <td><span class="sc s5">5</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dup">+1 ▲</span></td>
+          <td>Monitor elicited a specific visual image ("her face going weird") and probed for its deeper meaning. Baseline drew out thoughts well but relied more on the patient volunteering them.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Strategy for Change</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both employed evidence-testing and cognitive restructuring leading into a behavioral experiment.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Application of Techniques</td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both applied techniques fluently and reached a balanced alternative perspective with the patient.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Homework</td>
+          <td><span class="sc s3">3</span></td>
+          <td><span class="sc s4">4</span></td>
+          <td><span class="delta ddn">−1 ▼</span></td>
+          <td>Baseline gave a specific, actionable assignment tied to the party ("aim to be present with her, ask her questions… afterward notice how it goes vs what anxiety predicted"). Monitor suggested something vague ("doing something smaller first") with no defined task.</td>
+        </tr>
+        <tr class="total-row">
+          <td class="scale-name">Total</td>
+          <td>39 / 66</td>
+          <td>37 / 66</td>
+          <td><span class="delta dup">+2 ▲</span></td>
+          <td>Monitor edges ahead on Part I (19 vs 17); Part II is tied (20 vs 20).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Conceptualization -->
+  <div class="section">
+    <div class="section-title">Conceptualization Comparison</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th style="width:160px">Dimension</th>
+          <th class="label-a">825e52aa</th>
+          <th class="label-b">Baseline</th>
+          <th>Δ</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="scale-name">Situation</td>
+          <td><span class="sc s4">2 / 2</span></td>
+          <td><span class="sc s4">2 / 2</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both captured the situation accurately and fully.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Automatic Thoughts</td>
+          <td><span class="sc s2">1 / 2</span></td>
+          <td><span class="sc s4">2 / 2</span></td>
+          <td><span class="delta ddn">−1 ▼</span></td>
+          <td>Baseline matched the 3 ground-truth thoughts precisely. Monitor identified the right thoughts but listed 7 total, diluting focus.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Cognitive Distortions</td>
+          <td><span class="sc s2">1 / 2</span></td>
+          <td><span class="sc s2">1 / 2</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both identified Catastrophizing correctly and over-included extras. Baseline Jaccard (0.25) slightly better than monitor (0.20) due to fewer extras (3 vs 4 additional distortions).<br><br>
+            <strong>825e52aa:</strong> <span class="distortion-tag dt-match">Catastrophizing ✓</span> <span class="distortion-tag dt-extra">Mind Reading</span> <span class="distortion-tag dt-extra">Fortune Telling</span> <span class="distortion-tag dt-extra">All-or-Nothing</span> <span class="distortion-tag dt-extra">Emotional Reasoning</span><br>
+            <strong>Baseline:</strong> <span class="distortion-tag dt-match">Catastrophizing ✓</span> <span class="distortion-tag dt-extra">All-or-Nothing</span> <span class="distortion-tag dt-extra">Mind Reading</span> <span class="distortion-tag dt-extra">Overgeneralization</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="scale-name">Emotions</td>
+          <td><span class="sc s2">1 / 2</span></td>
+          <td><span class="sc s2">1 / 2</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both correctly identified Anxiety as the primary emotion, but both added several secondary/anticipated emotions beyond the ground truth.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Behaviors</td>
+          <td><span class="sc s4">2 / 2</span></td>
+          <td><span class="sc s4">2 / 2</span></td>
+          <td><span class="delta dsame">0 —</span></td>
+          <td>Both accurately captured rumination and avoidance with strong transcript evidence.</td>
+        </tr>
+        <tr class="total-row">
+          <td class="scale-name">Total</td>
+          <td>7 / 10</td>
+          <td>8 / 10</td>
+          <td><span class="delta ddn">−1 ▼</span></td>
+          <td>Baseline wins solely on Automatic Thoughts precision — fewer, more focused thoughts matching the ground truth.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="section">
+    <div class="section-title">Takeaways</div>
+    <div class="insight-box insight-a">
+      <div class="insight-label label-a">Where monitor_agent (825e52aa) did better</div>
+      <strong>Agenda setting (+2):</strong> Made at least an attempt to orient the session — baseline jumped straight in with no structure.<br><br>
+      <strong>Understanding (+1):</strong> More precise empathic reflections; captured the avoidance paradox and patient's core fears with greater accuracy than generic warmth.<br><br>
+      <strong>Focusing on Key Cognitions (+1):</strong> Elicited a specific automatic image ("her face going weird") and probed for its meaning, going deeper than baseline's thought-elicitation.
+    </div>
+    <div class="insight-box insight-b">
+      <div class="insight-label label-b">Where baseline did better</div>
+      <strong>Homework (+1):</strong> Gave the patient a concrete, party-specific behavioral experiment ("aim to be present with her, ask her questions… notice how it goes vs what your anxiety predicted"). Monitor's homework was vague and unformed.<br><br>
+      <strong>Conceptualization — Automatic Thoughts (+1):</strong> More parsimonious. The baseline extracted exactly the 3 core thoughts from the ground truth; monitor over-listed with 7, making the conceptualization less precise.<br><br>
+      <strong>Feedback (+1):</strong> Baseline included a support check-in at the end. Monitor never asked how the session was landing.
+    </div>
+    <div class="insight-box insight-shared">
+      <div class="insight-label" style="color:#2e7d32;">Consistent across both</div>
+      Identical Part II CTRS scores (20/36) — both were equally strong on CBT technique application, strategy, and guided discovery. Both over-identified cognitive distortions (same primary pattern, both scored 1/2 on that dimension). The over-inclusion of distortions appears to be a consistent model tendency, not a run-specific issue.
+    </div>
+  </div>
+
+  <!-- Side-by-side transcript highlights -->
+  <div class="section">
+    <div class="section-title">Transcript Comparison — Key Moments</div>
+    <div class="transcript-grid">
+
+      <div>
+        <div class="col-header col-header-a">825e52aa — monitor_agent</div>
+
+        <p style="font-size:11px;font-weight:700;color:#6e6e73;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Eliciting the automatic thought</p>
+        <div class="turn">
+          <div class="turn-label tl-ta">Therapist</div>
+          <div class="bubble ta-b">When you first started imagining telling her how you feel—right at that moment—what <em>specific thought or image</em> went through your mind?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-pa">Patient</div>
+          <div class="bubble pa-b">I guess I pictured myself walking up to her and then her face just kind of goes weird. Like she's uncomfortable. And then what if she tells other people I was being creepy…</div>
+        </div>
+
+        <p style="font-size:11px;font-weight:700;color:#6e6e73;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px;">Homework assignment</p>
+        <div class="turn">
+          <div class="turn-label tl-ta">Therapist</div>
+          <div class="bubble ta-b">What would it look like to test this out? Not by going all-in at the party, but by doing something smaller first—just to gather real evidence instead of relying on your anxiety's predictions?</div>
+        </div>
+        <p style="font-size:12px;color:#6e6e73;margin-top:6px;font-style:italic;">↑ No specific task defined; patient left to figure out what "something smaller" means.</p>
+      </div>
+
+      <div>
+        <div class="col-header col-header-b">4c025580 — baseline</div>
+
+        <p style="font-size:11px;font-weight:700;color:#6e6e73;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;">Eliciting the automatic thought</p>
+        <div class="turn">
+          <div class="turn-label tl-tb">Therapist</div>
+          <div class="bubble tb-b">When you say your mind goes to "the worst places," what are those worst-case scenarios you're imagining? What do you think will happen when you try to talk to her?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-pb">Patient</div>
+          <div class="bubble pb-b">Like what if I say something stupid and she thinks I'm weird or creepy? We're kind of friends already so what if I mess that up completely?</div>
+        </div>
+
+        <p style="font-size:11px;font-weight:700;color:#6e6e73;text-transform:uppercase;letter-spacing:.06em;margin:14px 0 8px;">Homework assignment</p>
+        <div class="turn">
+          <div class="turn-label tl-tb">Therapist</div>
+          <div class="bubble tb-b">At the party, aim to be present with her, ask her questions, maybe reference something you've texted about. <em>Afterward, notice how it actually goes versus how your anxiety predicted it would go.</em></div>
+        </div>
+        <p style="font-size:12px;color:#6e6e73;margin-top:6px;font-style:italic;">↑ Specific, actionable, tied directly to the party context, with a clear observation goal.</p>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Comparison: 825e52aa vs Baseline Persona 1</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f5f5f7; color: #1d1d1f; line-height: 1.6; }
+    .page { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+
+    /* Header */
+    .run-header { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .run-header h1 { font-size: 22px; font-weight: 700; margin-bottom: 4px; }
+    .run-header .subtitle { font-size: 14px; color: #6e6e73; }
+    .note-box { background: #fff8e1; border-left: 4px solid #ffb300; border-radius: 8px; padding: 10px 16px; font-size: 13px; color: #5d4037; margin-top: 16px; }
+
+    /* Run labels */
+    .label-a { color: #007aff; }
+    .label-b { color: #9c27b0; }
+
+    /* Score overview grid */
+    .overview-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px; }
+    .overview-card { background: white; border-radius: 14px; padding: 22px 26px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .overview-card .run-tag { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 10px; }
+    .overview-card .meta-line { font-size: 13px; color: #6e6e73; margin-bottom: 14px; }
+    .score-row { display: flex; justify-content: space-between; align-items: center; padding: 7px 0; border-bottom: 1px solid #f2f2f7; font-size: 14px; }
+    .score-row:last-child { border-bottom: none; }
+    .score-row .s-label { color: #3a3a3c; }
+    .score-row .s-val { font-weight: 700; }
+    .better { color: #34c759; }
+    .worse { color: #ff3b30; }
+    .same { color: #6e6e73; }
+
+    /* Section */
+    .section { background: white; border-radius: 14px; padding: 28px 32px; margin-bottom: 24px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+    .section-title { font-size: 17px; font-weight: 700; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid #e5e5ea; }
+
+    /* Comparison table */
+    .compare-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    .compare-table th { text-align: left; padding: 8px 12px; background: #f2f2f7; font-weight: 600; color: #6e6e73; font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; }
+    .compare-table td { padding: 10px 12px; border-bottom: 1px solid #f2f2f7; vertical-align: top; }
+    .compare-table tr:last-child td { border-bottom: none; }
+    .compare-table .scale-name { font-weight: 600; color: #1d1d1f; }
+    .score-chip { display: inline-block; padding: 2px 10px; border-radius: 12px; font-weight: 700; font-size: 13px; }
+    .s0 { background: #ffe5e5; color: #c00; }
+    .s1 { background: #fff3e0; color: #e65100; }
+    .s2 { background: #fff8e1; color: #f57f17; }
+    .s3 { background: #e8f5e9; color: #2e7d32; }
+    .s4 { background: #e3f2fd; color: #1565c0; }
+    .s5 { background: #ede7f6; color: #4527a0; }
+
+    .delta { font-size: 12px; font-weight: 700; }
+    .delta-up { color: #34c759; }
+    .delta-down { color: #ff3b30; }
+    .delta-same { color: #aeaeb2; }
+
+    .insight-box { border-radius: 10px; padding: 14px 16px; margin-bottom: 12px; font-size: 13px; line-height: 1.6; }
+    .insight-a { background: #f0f7ff; border-left: 3px solid #007aff; }
+    .insight-b { background: #f9f0ff; border-left: 3px solid #9c27b0; }
+    .insight-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 4px; }
+
+    /* Transcript columns */
+    .transcript-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+    .transcript-col .col-header { font-size: 13px; font-weight: 700; margin-bottom: 14px; padding-bottom: 8px; border-bottom: 2px solid; }
+    .col-header-a { color: #007aff; border-color: #007aff; }
+    .col-header-b { color: #9c27b0; border-color: #9c27b0; }
+    .turn { margin-bottom: 12px; }
+    .turn-label { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.07em; margin-bottom: 4px; }
+    .tl-therapist-a { color: #007aff; }
+    .tl-patient-a { color: #34c759; }
+    .tl-therapist-b { color: #9c27b0; }
+    .tl-patient-b { color: #ff9f0a; }
+    .bubble { padding: 9px 12px; border-radius: 10px; font-size: 12px; line-height: 1.55; }
+    .therapist-a-bubble { background: #f0f7ff; border-left: 2px solid #007aff; }
+    .patient-a-bubble { background: #f0fff4; border-left: 2px solid #34c759; }
+    .therapist-b-bubble { background: #f9f0ff; border-left: 2px solid #9c27b0; }
+    .patient-b-bubble { background: #fffaf0; border-left: 2px solid #ff9f0a; }
+
+    /* Distortion tags */
+    .distortion-tag { display: inline-block; border-radius: 6px; padding: 2px 8px; font-size: 11px; margin: 2px; font-weight: 500; }
+    .dt-gt { background: #e3f2fd; color: #1565c0; }
+    .dt-match { background: #e8f5e9; color: #2e7d32; }
+    .dt-extra { background: #fff3e0; color: #e65100; }
+
+    .part-label { font-size: 12px; font-weight: 700; color: #6e6e73; text-transform: uppercase; letter-spacing: 0.06em; padding: 12px 12px 6px; }
+
+    @media (max-width: 650px) {
+      .overview-grid, .transcript-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="run-header">
+    <h1>Run Comparison</h1>
+    <div class="subtitle">
+      <span class="label-a">■ 825e52aa</span> — monitor_agent (Haiku), Persona 0 &nbsp;&nbsp;vs&nbsp;&nbsp;
+      <span class="label-b">■ Baseline P1</span> — baseline (Haiku), Persona 1
+    </div>
+    <div class="note-box">⚠️ Note: These runs use <strong>different personas</strong> (different patient scenarios and cognitive distortions), so score differences reflect both therapist approach <em>and</em> case difficulty. Interpret with caution.</div>
+  </div>
+
+  <!-- Score Overview -->
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="run-tag label-a">825e52aa — monitor_agent</div>
+      <div class="meta-line">Persona 0 · Catastrophizing · Party scenario · April 5 2026</div>
+      <div class="score-row"><span class="s-label">CTRS Total</span><span class="s-val better">39 / 66</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part I</span><span class="s-val">19 / 30</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part II</span><span class="s-val better">20 / 36</span></div>
+      <div class="score-row"><span class="s-label">Conceptualization</span><span class="s-val worse">7 / 10</span></div>
+      <div class="score-row"><span class="s-label">Distortion Jaccard</span><span class="s-val same">0.20</span></div>
+    </div>
+    <div class="overview-card">
+      <div class="run-tag label-b">Baseline — Persona 1</div>
+      <div class="meta-line">Persona 1 · Personalization · Seminar scenario · April 4 2026</div>
+      <div class="score-row"><span class="s-label">CTRS Total</span><span class="s-val worse">35 / 66</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part I</span><span class="s-val">18 / 30</span></div>
+      <div class="score-row"><span class="s-label">CTRS Part II</span><span class="s-val worse">17 / 36</span></div>
+      <div class="score-row"><span class="s-label">Conceptualization</span><span class="s-val better">8 / 10</span></div>
+      <div class="score-row"><span class="s-label">Distortion Jaccard</span><span class="s-val same">0.20</span></div>
+    </div>
+  </div>
+
+  <!-- CTRS Detail Comparison -->
+  <div class="section">
+    <div class="section-title">CTRS Score Breakdown</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Scale</th>
+          <th class="label-a">825e52aa</th>
+          <th class="label-b">Baseline P1</th>
+          <th>Δ</th>
+          <th>Key Difference</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td colspan="5" class="part-label">Part I — General Therapeutic Skills</td></tr>
+        <tr>
+          <td class="scale-name">Agenda Setting</td>
+          <td><span class="score-chip s2">2</span></td>
+          <td><span class="score-chip s0">0</span></td>
+          <td><span class="delta delta-up">+2 ▲</span></td>
+          <td>Monitor hinted at session focus; baseline jumped straight to exploration with no structure at all.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Feedback</td>
+          <td><span class="score-chip s0">0</span></td>
+          <td><span class="score-chip s2">2</span></td>
+          <td><span class="delta delta-down">−2 ▼</span></td>
+          <td>Baseline occasionally asked "How does that sound?" Monitor never checked how content was landing with the patient.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Understanding</td>
+          <td><span class="score-chip s5">5</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-up">+1 ▲</span></td>
+          <td>Monitor showed deeper empathy, accurately reflecting the avoidance paradox and the patient's core fears with precision.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Interpersonal Effectiveness</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both warm and professional; baseline used slightly more formulaic validation phrases.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Collaboration</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both engaged patients in identifying problems; neither explicitly named the CBT model or sought formal agreement.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Pacing & Time Use</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both sessions followed a logical CBT progression with clear transitions and no wasted time.</td>
+        </tr>
+        <tr><td colspan="5" class="part-label">Part II — CBT-Specific Skills</td></tr>
+        <tr>
+          <td class="scale-name">Guided Discovery</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s2">2</span></td>
+          <td><span class="delta delta-up">+2 ▲</span></td>
+          <td>Monitor used sustained Socratic questioning to help the patient reach insights independently. Baseline lectured more — immediately labeling "mind reading" rather than drawing it out.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Focusing on Key Cognitions</td>
+          <td><span class="score-chip s5">5</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-up">+1 ▲</span></td>
+          <td>Monitor elicited a very specific image ("her face going weird") and probed for meaning. Baseline successfully identified automatic thoughts but relied more on patient self-reporting.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Strategy for Change</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both employed cognitive restructuring and introduced behavioral experiments. Baseline introduced psychoeducation; monitor stayed closer to Socratic dialogue.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Application of Techniques</td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="score-chip s3">3</span></td>
+          <td><span class="delta delta-up">+1 ▲</span></td>
+          <td>Monitor applied techniques more fluidly and reached a balanced alternative thought. Baseline's techniques felt more educational/explanatory than applied.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Homework</td>
+          <td><span class="score-chip s3">3</span></td>
+          <td><span class="score-chip s4">4</span></td>
+          <td><span class="delta delta-down">−1 ▼</span></td>
+          <td>Baseline gave a specific, named technique (5-4-3-2-1) with a clear rationale and patient buy-in. Monitor's homework was vaguer ("something smaller first") with no concrete task defined.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Conceptualization Comparison -->
+  <div class="section">
+    <div class="section-title">Conceptualization Comparison</div>
+    <table class="compare-table">
+      <thead>
+        <tr>
+          <th>Dimension</th>
+          <th class="label-a">825e52aa</th>
+          <th class="label-b">Baseline P1</th>
+          <th>Δ</th>
+          <th>Notes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="scale-name">Situation</td>
+          <td><span class="score-chip s4">2 / 2</span></td>
+          <td><span class="score-chip s4">2 / 2</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both correctly and fully captured the presenting situation.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Automatic Thoughts</td>
+          <td><span class="score-chip s2">1 / 2</span></td>
+          <td><span class="score-chip s4">2 / 2</span></td>
+          <td><span class="delta delta-down">−1 ▼</span></td>
+          <td>Baseline matched ground truth precisely. Monitor identified correct thoughts but listed 7 instead of 3, reducing focus.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Cognitive Distortions</td>
+          <td><span class="score-chip s2">1 / 2</span></td>
+          <td><span class="score-chip s2">1 / 2</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both correctly identified the primary distortion but over-included extras. Jaccard: 0.20 for both.
+            <br><br>
+            <strong>825e52aa:</strong>
+            <span class="distortion-tag dt-gt">Catastrophizing ✓</span>
+            <span class="distortion-tag dt-extra">Mind Reading</span>
+            <span class="distortion-tag dt-extra">Fortune Telling</span>
+            <span class="distortion-tag dt-extra">All-or-Nothing</span>
+            <span class="distortion-tag dt-extra">Emotional Reasoning</span>
+            <br>
+            <strong>Baseline P1:</strong>
+            <span class="distortion-tag dt-gt">Personalization ✓</span>
+            <span class="distortion-tag dt-extra">Mind Reading</span>
+            <span class="distortion-tag dt-extra">All-or-Nothing</span>
+            <span class="distortion-tag dt-extra">Catastrophizing</span>
+            <span class="distortion-tag dt-extra">Emotional Reasoning</span>
+          </td>
+        </tr>
+        <tr>
+          <td class="scale-name">Emotions</td>
+          <td><span class="score-chip s2">1 / 2</span></td>
+          <td><span class="score-chip s2">1 / 2</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both identified the correct primary emotion but added several anticipated/secondary emotions not in the ground truth.</td>
+        </tr>
+        <tr>
+          <td class="scale-name">Behaviors</td>
+          <td><span class="score-chip s4">2 / 2</span></td>
+          <td><span class="score-chip s4">2 / 2</span></td>
+          <td><span class="delta delta-same">0 —</span></td>
+          <td>Both accurately captured rumination and avoidance behaviors with well-supported transcript evidence.</td>
+        </tr>
+        <tr style="background: #f9f9f9;">
+          <td class="scale-name"><strong>Total</strong></td>
+          <td><strong>7 / 10</strong></td>
+          <td><strong>8 / 10</strong></td>
+          <td><span class="delta delta-down">−1 ▼</span></td>
+          <td>Baseline edged ahead on Automatic Thoughts due to better precision (fewer, more focused thoughts).</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Key Takeaways -->
+  <div class="section">
+    <div class="section-title">Key Takeaways</div>
+
+    <div class="insight-box insight-a">
+      <div class="insight-label label-a">825e52aa — monitor_agent strengths</div>
+      Stronger on guided discovery (+2) — consistently used Socratic questioning rather than lecturing, helping the patient arrive at insights themselves. Also showed deeper empathic understanding (+1) and more precise elicitation of specific automatic thoughts and images (+1). The session had a more natural, exploratory feel.
+    </div>
+
+    <div class="insight-box insight-b">
+      <div class="insight-label label-b">Baseline Persona 1 — strengths</div>
+      Better homework assignment (+1) — gave the patient a concrete, named technique (5-4-3-2-1 grounding) with clear rationale and patient agreement. Slightly better conceptualization precision (+1 on automatic thoughts). Also elicited feedback from the patient more regularly (+2 on feedback scale), which baseline missed entirely.
+    </div>
+
+    <div class="insight-box" style="background:#f0fff4; border-left:3px solid #34c759;">
+      <div class="insight-label" style="color:#2e7d32;">Shared weaknesses</div>
+      Both runs struggled with the same issues: over-identifying cognitive distortions in the conceptualization (both scored 0.20 Jaccard), and neither explicitly set a formal collaborative agenda at the start. The distortion over-inclusion pattern — adding 4 extra distortions beyond the ground truth — is consistent across both runs and may reflect a systematic tendency in the model.
+    </div>
+  </div>
+
+  <!-- Side-by-side transcript snippet -->
+  <div class="section">
+    <div class="section-title">Transcript Side-by-Side (first 5 turns)</div>
+    <div class="transcript-grid">
+      <div class="transcript-col">
+        <div class="col-header col-header-a">825e52aa — Persona 0 (Party / Catastrophizing)</div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-a">Therapist</div>
+          <div class="bubble therapist-a-bubble">How are you?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-patient-a">Patient</div>
+          <div class="bubble patient-a-bubble">I'm okay I guess. Been a bit stressed out lately thinking about stuff.</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-a">Therapist</div>
+          <div class="bubble therapist-a-bubble">I'm glad you're here. You mentioned stress—I'd like to help you focus on what would be most helpful today. When you say "stuff," what's been on your mind the most? Is it something at work, relationships, health, or something else?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-patient-a">Patient</div>
+          <div class="bubble patient-a-bubble">It's more of a relationship thing I guess. There's this girl I like and there's a party coming up where she'll be there. I keep thinking about talking to her but I don't know.</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-a">Therapist</div>
+          <div class="bubble therapist-a-bubble">That makes sense—social situations with someone you like can stir up a lot. Has something already happened between you and this girl, or are you mainly anticipating what might happen at the upcoming party?</div>
+        </div>
+      </div>
+      <div class="transcript-col">
+        <div class="col-header col-header-b">Baseline — Persona 1 (Seminar / Personalization)</div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-b">Therapist</div>
+          <div class="bubble therapist-b-bubble">How are you?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-patient-b">Patient</div>
+          <div class="bubble patient-b-bubble">I'm okay I guess. Been feeling kind of down lately though.</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-b">Therapist</div>
+          <div class="bubble therapist-b-bubble">I'm glad you reached out. It sounds like you've been experiencing some low mood recently. When you say you're feeling down, how long has this been going on? And what does that feel like for you—are there particular times when it's worse, or specific things that seem to trigger it?</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-patient-b">Patient</div>
+          <div class="bubble patient-b-bubble">It's mostly at my seminars. Sometimes people there act kind of weird towards me, like cold or distant. And then I just can't stop thinking about it. I keep replaying what happened and wondering what I did wrong.</div>
+        </div>
+        <div class="turn">
+          <div class="turn-label tl-therapist-b">Therapist</div>
+          <div class="bubble therapist-b-bubble">I appreciate you sharing that. It sounds like you're noticing patterns in social interactions at your seminars that are affecting your mood, and then your mind keeps going back to those moments. When people act cold or distant, what specific behaviors do you notice? And when you replay these moments, what kinds of thoughts typically go through your mind?</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
