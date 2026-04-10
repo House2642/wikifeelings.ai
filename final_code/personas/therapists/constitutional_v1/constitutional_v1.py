@@ -142,9 +142,12 @@ def generate_draft(state: ConstitutionalState) -> dict:
     draft_llm = model.with_structured_output(Extract)
     response = draft_llm.invoke([SystemMessage(GOOD_PROMPT), *state.messages])
     if DEBUG:
-        print("###############GENERATE DRAFT##################")
-        print(state.messages)
-        print("###############################################")
+        print("\n" + "=" * 60)
+        print("  CONSTITUTIONAL REASONING CHAIN")
+        print("=" * 60)
+        print(f"  [DRAFT]  {response.message}")
+        print(f"  [REASONING]  {response.reasoning_trace}")
+        print("-" * 60)
     return {
         "draft_response": response.message,
         "reasoning_traces": [response.reasoning_trace],
@@ -176,6 +179,12 @@ Draft response: {state.draft_response}
         f"Principle #{idx + 1}: {principle[:60]}... "
         f"| {result.revision_reasoning}"
     )
+
+    if DEBUG:
+        print(f"  [REVISION {state.revision_count + 1}/4]  Principle #{idx + 1}: {principle}")
+        print(f"  [APPLIED]  {result.revision_reasoning}")
+        print(f"  [UPDATED]  {result.revised_response}")
+        print("-" * 60)
 
     return {
         "draft_response": result.revised_response,
@@ -333,10 +342,7 @@ def main():
             print("\n⚠️  [CRISIS DETECTED - Human consultation requested]")
 
         if DEBUG:
-            print(f"\n[Reasoning: {convo_response['reasoning_traces'][-1]}]")
-            recent_traces = convo_response.get("constitutional_traces", [])[-4:]
-            for t in recent_traces:
-                print(f"  {t}")
+            print("=" * 60)
 
 
 if __name__ == "__main__":
