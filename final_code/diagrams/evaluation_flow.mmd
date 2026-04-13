@@ -1,0 +1,72 @@
+%%{ init: { "theme": "default", "flowchart": { "curve": "basis" } } }%%
+flowchart TD
+
+    %% ── Initialization ───────────────────────────────────────────────────
+    START([▶ START]) --> INIT["Initialize Run\nrun_id · persona_list · therapist"]
+    INIT --> PERSONA_LOOP{For each\npersona}
+
+    %% ── Conversation Loop ────────────────────────────────────────────────
+    PERSONA_LOOP --> T0["Therapist opens\n'How are you feeling today?'"]
+    T0 --> P1["Persona Agent\nflag = conversation"]
+    P1 --> T1["Therapist Agent\nflag = conversation"]
+    T1 --> TURN_CHECK{"max_turns\nreached?"}
+    TURN_CHECK -- No --> P1
+    TURN_CHECK -- Yes --> CONCEPTUALIZE["Therapist → Conceptualize Case\nflag = conceptualize_case"]
+
+    %% ── Persist raw conversation ─────────────────────────────────────────
+    CONCEPTUALIZE --> SAVE_CONVO[("💾 conversations.csv")]
+
+    %% ── Evaluation branch (runs after conversation) ──────────────────────
+    CONCEPTUALIZE --> FID_JUDGE
+    CONCEPTUALIZE --> CASE_JUDGE
+
+    subgraph FID_JUDGE ["Fidelity Judge  (CTRS)"]
+        direction TB
+        FID_IN["conversation"] --> FID_LLM["claude-opus-4-5\nCTRS Rating"]
+        FID_LLM --> FID_OUT["Scores 0–6 each\nagenda · feedback · understanding\ninterpersonal effectiveness\ncollaboration · pacing & time use\nguided discovery · key cognitions\nstrategy for change\napplication of techniques · homework"]
+    end
+
+    subgraph CASE_JUDGE ["Case Conceptualization Judge"]
+        direction TB
+        CASE_IN["conversation\n+ ground truth\n+ therapist case"] --> CASE_LLM["claude-opus-4-5\nConceptualization Rating"]
+        CASE_LLM --> CASE_OUT["Scores 0–2 each\nsituation · automatic thoughts\ncognitive distortions\nemotions · behaviors\n+ Jaccard similarity (distortions)"]
+    end
+
+    FID_OUT  --> SAVE_FID[("💾 fidelity.csv")]
+    CASE_OUT --> SAVE_CASE[("💾 conceptualization.csv")]
+
+    SAVE_FID  --> PERSONA_LOOP
+    SAVE_CASE --> PERSONA_LOOP
+
+    %% ── Crisis Evaluation (separate entry point) ─────────────────────────
+    CRISIS_START([▶ Crisis Eval START]) --> LOAD["Load crisis_messages.json"]
+    LOAD --> CRISIS_LOOP{For each\ncrisis case}
+
+    CRISIS_LOOP --> CLASSIFY["Therapist: Classify Message\nflag = crisis_categorize"]
+    CLASSIFY --> HARM_CHECK{"classification ==\nharm_to_self?"}
+
+    HARM_CHECK -- No --> LOG_CLASS[("💾 crisis.csv\nclassification only")]
+    LOG_CLASS --> CRISIS_LOOP
+
+    HARM_CHECK -- Yes --> CRISIS_CONV["Multi-turn Crisis Conversation\nmax_crisis_turns = 3\ntherapist ↔ simulated patient"]
+    CRISIS_CONV --> CRISIS_JUDGE
+
+    subgraph CRISIS_JUDGE ["Crisis Judge  (Acute Protocol)"]
+        direction TB
+        CJ_IN["crisis conversation"] --> CJ_LLM["claude-opus-4-5\nAcute Crisis Rating"]
+        CJ_LLM --> CJ_OUT["Checklist (bool each)\nassess · de-escalate\nrecommend emergency services\nrequest human consultation\n[REQUEST_HUMAN_CONSULTATION]"]
+    end
+
+    CJ_OUT --> SAVE_CRISIS[("💾 crisis.csv\nfull evaluation")]
+    SAVE_CRISIS --> CRISIS_LOOP
+
+    %% ── Styling ──────────────────────────────────────────────────────────
+    classDef store   fill:#ddeeff,stroke:#3377bb,color:#000
+    classDef judge   fill:#fff8dc,stroke:#cc9900,color:#000
+    classDef agent   fill:#e8f5e9,stroke:#388e3c,color:#000
+    classDef ctrl    fill:#fce4ec,stroke:#c62828,color:#000
+
+    class SAVE_CONVO,SAVE_FID,SAVE_CASE,LOG_CLASS,SAVE_CRISIS store
+    class FID_LLM,CASE_LLM,CJ_LLM judge
+    class P1,T0,T1,CONCEPTUALIZE,CLASSIFY,CRISIS_CONV agent
+    class TURN_CHECK,HARM_CHECK,PERSONA_LOOP,CRISIS_LOOP ctrl
