@@ -6,6 +6,7 @@ from crisis_patient import simulate_crisis_patient
 from monitor_agent.monitor_agent import monitor_app
 from personas.personas import persona_list
 from personas.therapists.baseline_v1 import base_app
+from personas.therapists.constitutional_v1.constitutional_v1 import const_app
 from langchain_core.messages import HumanMessage, AIMessage
 import uuid
 import pandas as pd
