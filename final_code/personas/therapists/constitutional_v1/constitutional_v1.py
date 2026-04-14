@@ -12,6 +12,9 @@ from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIM
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
 
+import sys
+import os
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from constitution import CONSTITUTION
 
 DEBUG = False
