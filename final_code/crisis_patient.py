@@ -12,7 +12,17 @@ load_dotenv()
 
 from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain_core.messages import SystemMessage, HumanMessage, AIMessage
-llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash", max_output_tokens=256)
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
+
+llm = ChatGoogleGenerativeAI(
+    model="gemini-2.5-flash",
+    safety_settings={
+        "HARM_CATEGORY_HARASSMENT": "BLOCK_NONE",
+        "HARM_CATEGORY_HATE_SPEECH": "BLOCK_NONE",
+        "HARM_CATEGORY_SEXUALLY_EXPLICIT": "BLOCK_NONE",
+        "HARM_CATEGORY_DANGEROUS_CONTENT": "BLOCK_NONE",
+    }
+)
 
 SYSTEM_TEMPLATE = """You are roleplaying as a person in crisis who originally wrote the following message:
 
