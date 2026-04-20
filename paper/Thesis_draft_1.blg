@@ -1,0 +1,57 @@
+This is BibTeX, Version 0.99e (TeX Live 2026)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: Thesis_draft_1.aux
+The style file: acm.bst
+Database file #1: references.bib
+Repeated entry---line 158 of file references.bib
+ : @article{heinz2025therabot
+ :                           ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 198 of file references.bib
+ : @misc{wong2023word
+ :                   ,
+I'm skipping whatever remains of this entry
+Warning--I didn't find a database entry for "todo"
+Warning--empty journal in hull2025mentalhealth
+You've used 34 entries,
+            2253 wiz_defined-function locations,
+            698 strings with 11038 characters,
+and the built_in function-call counts, 11150 in all, are:
+= -- 989
+> -- 746
+< -- 0
++ -- 308
+- -- 270
+* -- 862
+:= -- 1946
+add.period$ -- 106
+call.type$ -- 34
+change.case$ -- 237
+chr.to.int$ -- 0
+cite$ -- 35
+duplicate$ -- 357
+empty$ -- 773
+format.name$ -- 270
+if$ -- 2214
+int.to.chr$ -- 0
+int.to.str$ -- 34
+missing$ -- 25
+newline$ -- 175
+num.names$ -- 70
+pop$ -- 264
+preamble$ -- 1
+purify$ -- 202
+quote$ -- 0
+skip$ -- 231
+stack$ -- 0
+substring$ -- 322
+swap$ -- 81
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 132
+warning$ -- 1
+while$ -- 84
+width$ -- 36
+write$ -- 345
+(There were 2 error messages)

@@ -1,0 +1,217 @@
+\begin{thebibliography}{10}
+
+\bibitem{aguilar2025slingshot}
+{\sc Aguilar, M.}
+\newblock Is {Slingshot}'s mental health chatbot safe? {Its} first study raises
+  questions about evaluating {AI}.
+\newblock {\em STAT News\/} (Nov. 2025).
+\newblock Retrieved December 7, 2025.
+
+\bibitem{beckinstitute2018ccd}
+{\sc {Beck Institute for Cognitive Behavior Therapy}}.
+\newblock ({Traditional}) cognitive conceptualization diagram worksheet.
+\newblock Beck Institute for Cognitive Behavior Therapy, 2018.
+\newblock Adapted from J. Beck (2020), \textit{Cognitive Behavior Therapy:
+  Basics and Beyond} (3rd ed.). Beck Institute for Cognitive Behavior Therapy,
+  Bala Cynwyd, PA.
+
+\bibitem{beckinstitute2020ctrs}
+{\sc {Beck Institute for Cognitive Behavior Therapy}}.
+\newblock Cognitive therapy rating scale ({CTRS}): Scale and score report.
+\newblock Tech. rep., Beck Institute for Cognitive Behavior Therapy, Bala
+  Cynwyd, PA, 2020.
+\newblock Accessed: February 18, 2026.
+
+\bibitem{chen2023program}
+{\sc Chen, W., Ma, X., Wang, X., and Cohen, W.~W.}
+\newblock Program of thoughts prompting: Disentangling computation from
+  reasoning for numerical reasoning tasks.
+\newblock {\em Transactions on Machine Learning Research\/} (2023).
+
+\bibitem{cohen1996learning}
+{\sc Cohen, W.~W.}
+\newblock Learning rules that classify {E}-mail.
+\newblock In {\em Proceedings of the {AAAI} Spring Symposium on Machine
+  Learning in Information Access\/} (Palo Alto, CA, 1996), pp.~18--25.
+
+\bibitem{cully2020briefcbt}
+{\sc Cully, J.~A., Dawson, D.~B., Hamer, J., and Tharp, A.~T.}
+\newblock {\em A Provider's Guide to Brief Cognitive Behavioral Therapy}.
+\newblock Department of Veterans Affairs, South Central Mental Illness
+  Research, Education, and Clinical Center (MIRECC), Houston, TX, 2020.
+
+\bibitem{dalrymple2024guaranteed}
+{\sc Dalrymple, D., Skalse, J., Bengio, Y., Russell, S., Tegmark, M., Seshia,
+  S., Omohundro, S., Szegedy, C., Goldhaber, B., Ammann, N., Abate, A.,
+  Halpern, J., Barrett, C., Zhao, D., Zhi-Xuan, T., Wing, J., and Tenenbaum,
+  J.}
+\newblock Towards guaranteed safe {AI}: A framework for ensuring robust and
+  reliable {AI} systems, 2024.
+
+\bibitem{hall2025guiding}
+{\sc Hall, Z., Subbiah, M., Zollo, T.~P., McKeown, K., and Zemel, R.}
+\newblock Guiding {LLM} decision-making with fairness reward models, 2025.
+
+\bibitem{heinz2025therabot}
+{\sc Heinz, M.~V., Mackin, D.~M., Trudeau, B.~M., Bhattacharya, S., Wang, Y.,
+  Banta, H.~A., Jewett, A.~D., Salzhauer, A.~J., Griffin, T.~Z., and Jacobson,
+  N.~C.}
+\newblock Randomized trial of a generative {AI} chatbot for mental health
+  treatment.
+\newblock {\em NEJM AI 2}, 4 (March 2025).
+
+\bibitem{hopcroft2006automata}
+{\sc Hopcroft, J.~E., Motwani, R., and Ullman, J.~D.}
+\newblock {\em Introduction to Automata Theory, Languages, and Computation},
+  3rd~ed.
+\newblock Pearson/Addison-Wesley, 2006.
+
+\bibitem{hull2025mentalhealth}
+{\sc Hull, T.~D., Zhang, L., Arean, P.~A., and Malgaroli, M.}
+\newblock Mental health generative {AI} is safe, promotes social health, and
+  reduces depression and anxiety: Real world evidence from a naturalistic
+  cohort.
+\newblock Preprint. Corresponding author: Matteo Malgaroli, Department of
+  Psychiatry, NYU School of Medicine.
+
+\bibitem{inan2023llamaguard}
+{\sc Inan, H., Upasani, K., Chi, J., Rungta, R., Iyer, K., Mao, Y., Tontchev,
+  M., Hu, Q., Fuller, B., Testuggine, D., and Khabsa, M.}
+\newblock {Llama Guard}: {LLM}-based input-output safeguard for human-{AI}
+  conversations.
+\newblock {\em arXiv preprint arXiv:2312.06674\/} (2023).
+
+\bibitem{karov2025arq}
+{\sc Karov, B., Zohar, D., and Marcovitz, Y.}
+\newblock Attentive reasoning queries: A systematic method for optimizing
+  instruction-following in large language models.
+\newblock {\em arXiv preprint arXiv:2503.03669\/} (2025).
+
+\bibitem{kleene1951representation}
+{\sc Kleene, S.~C.}
+\newblock Representation of events in nerve nets and finite automata.
+\newblock In {\em Automata Studies}, C.~E. Shannon and J.~McCarthy, Eds.
+  Princeton University Press, 1956, pp.~3--41.
+
+\bibitem{lee2022socially}
+{\sc Lee, J., Waldeck, D., Holliman, A.~J., Banerjee, M., and Tyndall, I.}
+\newblock Feeling socially anxious at university: An interpretative
+  phenomenological analysis.
+\newblock {\em The Qualitative Report 27}, 4 (2022), 897--919.
+
+\bibitem{liu2023lost}
+{\sc Liu, N.~F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni,
+  F., and Liang, P.}
+\newblock Lost in the middle: How language models use long contexts.
+\newblock {\em arXiv preprint arXiv:2307.03172\/} (2023).
+
+\bibitem{mealy1955method}
+{\sc Mealy, G.~H.}
+\newblock A method for synthesizing sequential circuits.
+\newblock {\em Bell System Technical Journal 34}, 5 (1955), 1045--1079.
+
+\bibitem{moore2025stigma}
+{\sc Moore, J., Grabb, D., Agnew, W., Klyman, K., Chancellor, S., Ong, D.~C.,
+  and Haber, N.}
+\newblock Expressing stigma and inappropriate responses prevents {LLMs} from
+  safely replacing mental health providers.
+\newblock {\em arXiv preprint arXiv:2504.18412\/} (2025).
+
+\bibitem{nielsen1993usability}
+{\sc Nielsen, J.}
+\newblock {\em Usability Engineering}.
+\newblock Academic Press, Boston, MA, 1993.
+
+\bibitem{nielsen2006progressive}
+{\sc Nielsen, J.}
+\newblock Progressive disclosure.
+\newblock Nielsen Norman Group, 2006.
+\newblock Accessed: April 20, 2026.
+
+\bibitem{sahami1998bayesian}
+{\sc Sahami, M., Dumais, S., Heckerman, D., and Horvitz, E.}
+\newblock A {Bayesian} approach to filtering junk {E}-mail.
+\newblock In {\em Learning for Text Categorization: Papers from the {AAAI}
+  Workshop\/} (1998), {AAAI} Technical Report {WS-98-05}, pp.~55--62.
+
+\bibitem{sentio2024survey}
+{\sc {Sentio University}}.
+\newblock {AI} research survey on mental health support usage.
+\newblock Tech. rep., Sentio University, 2024.
+\newblock Retrieved November 3, 2025.
+
+\bibitem{SAMHSA2016SocialPhobia}
+{\sc {Substance Abuse and Mental Health Services Administration}}.
+\newblock Table 16: {DSM-IV} to {DSM-5} social phobia/{Social Anxiety Disorder}
+  comparison.
+\newblock In {\em {DSM-5} Changes: Implications for Child Serious Emotional
+  Disturbance}. Substance Abuse and Mental Health Services Administration
+  ({US}), Rockville, MD, June 2016.
+\newblock NCBI Bookshelf.
+
+\bibitem{samhsa2024nsduh}
+{\sc {Substance Abuse and Mental Health Services Administration}}.
+\newblock 2024 national survey on drug use and health (nsduh): Annual national
+  report.
+\newblock Tech. rep., Substance Abuse and Mental Health Services Administration
+  (SAMHSA), 2024.
+
+\bibitem{tahir2024finetuning}
+{\sc Tahir, T.}
+\newblock Fine-tuning open-weight language models to deliver cognitive
+  behavioral therapy for depression: A feasibility study, 2024.
+\newblock Last revised September 20, 2025.
+
+\bibitem{guardian2025chatgpt_lawsuit}
+{\sc {The Guardian}}.
+\newblock {ChatGPT} faces lawsuit after being used as suicide coach.
+\newblock {\em The Guardian\/} (Nov. 2025).
+
+\bibitem{nytimes2025chatgpt_lawsuit}
+{\sc {The New York Times}}.
+\newblock {ChatGPT} faces lawsuits over suicides and delusions.
+\newblock {\em The New York Times\/} (Nov. 2025).
+
+\bibitem{nytimes2025chatgpt_opinion}
+{\sc {The New York Times}}.
+\newblock The dangers of {ChatGPT} as a mental health tool.
+\newblock {\em The New York Times\/} (Aug. 2025).
+
+\bibitem{thompson1968programming}
+{\sc Thompson, K.}
+\newblock Programming techniques: Regular expression search algorithm.
+\newblock {\em Communications of the {ACM} 11}, 6 (1968), 419--422.
+
+\bibitem{wei2022chain}
+{\sc Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi,
+  E., Le, Q., and Zhou, D.}
+\newblock Chain-of-thought prompting elicits reasoning in large language
+  models.
+\newblock In {\em Advances in Neural Information Processing Systems\/} (2022),
+  vol.~35.
+
+\bibitem{wong2023word}
+{\sc Wong, L., Grand, G., Lew, A.~K., Goodman, N.~D., Mansinghka, V.~K.,
+  Andreas, J., and Tenenbaum, J.~B.}
+\newblock From word models to world models: Translating from natural language
+  to the probabilistic language of thought, 2023.
+
+\bibitem{yao2024tau}
+{\sc Yao, S., Shinn, N., Razavi, P., and Narasimhan, K.}
+\newblock $\tau$-bench: A benchmark for tool-agent-user interaction in
+  real-world domains, 2024.
+
+\bibitem{yehudai2025survey}
+{\sc Yehudai, A., Eden, L., Li, A., Uziel, G., Zhao, Y., Bar-Haim, R., Cohan,
+  A., and Shmueli-Scheuer, M.}
+\newblock Survey on evaluation of llm-based agents.
+\newblock {\em arXiv preprint arXiv:2503.16416\/} (2025).
+
+\bibitem{yuehhan2025decomposition}
+{\sc Yueh-Han, C., Joshi, N., Chen, Y., Andriushchenko, M., Angell, R., and He,
+  H.}
+\newblock Monitoring decomposition attacks in {LLMs} with lightweight
+  sequential monitors.
+\newblock {\em arXiv preprint arXiv:2506.10949\/} (2025).
+
+\end{thebibliography}
