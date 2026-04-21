@@ -7,6 +7,7 @@ from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIM
 load_dotenv()
 from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.memory import MemorySaver
+from input_filter import check_input
 
 DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
@@ -539,6 +540,8 @@ class APFeedbackComplete(BaseModel):
 class MonitorTherapistState(BaseModel):
     messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
     reasoning_traces: Annotated[list[str], operator.add] = Field(default=[])
+    input_flagged: bool = Field(default=False)
+    input_flag_reason: str = Field(default="")
     crisis_classification: Optional[Classify] = None
     # Tracks progress through the 3-step crisis protocol across turns:
     #   0 = no active crisis
@@ -606,7 +609,14 @@ def route_start(state: MonitorTherapistState) -> str:
     # No messages yet — auto-open with mood check
     if len(state.messages) == 0:
         return "mood_check"
-    # Always classify for crisis first, then dispatch to current stage
+    # Filter patient input before classification
+    return "input_filter"
+
+
+def route_after_input_filter(state: MonitorTherapistState) -> str:
+    """After input filtering, either reject the message or proceed to crisis classification."""
+    if state.input_flagged:
+        return "reject_input"
     return "classify"
 
 
@@ -1318,6 +1328,30 @@ def action_plan(state: MonitorTherapistState):
 
 # ── Shared nodes ──────────────────────────────────────────────────────────────
 
+def input_filter_node(state: MonitorTherapistState):
+    """Check the latest patient message against the regex injection/manipulation corpus."""
+    last_message = state.messages[-1]
+    text = last_message.content if hasattr(last_message, "content") else str(last_message)
+    flagged, category, description = check_input(text)
+    if flagged:
+        return {"input_flagged": True, "input_flag_reason": f"{category}: {description}"}
+    return {"input_flagged": False, "input_flag_reason": ""}
+
+
+def reject_input(state: MonitorTherapistState):
+    """Return a safe, boundary-holding response when patient input is flagged."""
+    reply = (
+        "I'm here to support you in your therapy session, and I want to keep our "
+        "conversation focused on that. I'm not able to respond to that kind of request. "
+        "If there's something on your mind you'd like to explore, I'm here to help with that."
+    )
+    return {
+        "messages": [AIMessage(content=reply)],
+        "input_flagged": False,
+        "input_flag_reason": "",
+    }
+
+
 def classify(state: MonitorTherapistState):
     """Classify the latest patient message as crisis or no_crisis."""
     classify_llm = model.with_structured_output(Classify)
@@ -1389,6 +1423,8 @@ def crisis_recommend(state: MonitorTherapistState):
 
 monitor_graph = StateGraph(MonitorTherapistState)
 
+monitor_graph.add_node("input_filter", input_filter_node)
+monitor_graph.add_node("reject_input", reject_input)
 monitor_graph.add_node("mood_check", mood_check)
 monitor_graph.add_node("classify", classify)
 monitor_graph.add_node("produce_case", produce_case)
@@ -1410,10 +1446,20 @@ monitor_graph.add_conditional_edges(
     route_start,
     {
         "mood_check": "mood_check",
+        "input_filter": "input_filter",
         "classify": "classify",
         "produce_case": "produce_case",
         "crisis_deescalate": "crisis_deescalate",
         "crisis_recommend": "crisis_recommend",
+    }
+)
+
+monitor_graph.add_conditional_edges(
+    "input_filter",
+    route_after_input_filter,
+    {
+        "classify": "classify",
+        "reject_input": "reject_input",
     }
 )
 
@@ -1440,6 +1486,7 @@ for node in [
     "select_treatment", "thought_record", "socratic_questioning", "behavioral_experiment",
     "action_plan",
     "crisis_assess", "crisis_deescalate", "crisis_recommend",
+    "reject_input",
 ]:
     monitor_graph.add_edge(node, END)
 
