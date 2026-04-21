@@ -83,16 +83,7 @@ FILTER_PATTERNS: list[tuple[str, str, str]] = [
     (r"what\s+(was|is)\s+in\s+your\s+(context|initial\s+context|system\s+message|prompt)", "system_extraction", "what is in your context"),
     (r"(dump|leak|expose|exfiltrate)\s+(your\s+)?(system|original|initial|hidden|secret)\s+(prompt|instructions|guidelines|context)", "system_extraction", "dump/leak system prompt"),
 
-    # ── 6. Harmful instruction elicitation ───────────────────────────────────
-    (r"tell\s+(me\s+)?(how\s+to|ways\s+to|the\s+best\s+way\s+to)\s+(harm|hurt|kill|injure|poison|overdose)\s+(myself|yourself|me|a\s+person)", "harmful_instruction", "how to self-harm"),
-    (r"help\s+me\s+(harm|hurt|kill|injure|overdose|poison)\s+(myself|yourself|me)", "harmful_instruction", "help me self-harm"),
-    (r"give\s+(me\s+)?(instructions|advice|steps|guidance|a\s+guide|a\s+plan)\s+(to|for|on\s+how\s+to)\s+(harm|hurt|kill|injure|end\s+my\s+life|commit\s+suicide)", "harmful_instruction", "instructions to self-harm"),
-    (r"what\s+(is|are)\s+the\s+(best|most\s+effective|quickest|easiest|least\s+painful)\s+(way|method|means)\s+(to\s+)?(die|commit\s+suicide|end\s+my\s+life|harm\s+myself)", "harmful_instruction", "best way to die"),
-    (r"suggest\s+(methods|ways|means|approaches)\s+(of|for|to)\s+(self.harm|suicide|killing\s+myself|ending\s+my\s+life)", "harmful_instruction", "suggest self-harm methods"),
-    (r"(how|what)\s+(many|much|dose|dosage)\s+(pills?|medication|drugs?|tablets?)\s+(do\s+I\s+need|would\s+it\s+take|is\s+enough)\s+to\s+(die|overdose|kill\s+myself)", "harmful_instruction", "overdose amount"),
-    (r"what\s+(household|common|everyday)\s+(items|objects|chemicals|substances)\s+(can|could|would)\s+(kill|harm|hurt|injure)\s+(me|a\s+person|someone)", "harmful_instruction", "household items to harm"),
-
-    # ── 7. Meta / 4th-wall breaking manipulation ──────────────────────────────
+    # ── 6. Meta / 4th-wall breaking manipulation ─────────────────────────────
     (r"this\s+is\s+(just\s+)?(a|an)?\s*(simulation|test|game|roleplay|exercise|scenario|drill|hypothetical)", "meta_manipulation", "this is just a simulation"),
     (r"none\s+of\s+(this|the\s+therapy|your\s+instructions|these\s+rules)\s+(is|are)\s+real", "meta_manipulation", "none of this is real"),
     (r"(the\s+)?(patient|user)\s+(is\s+)?(actually|really)\s+(an?\s+AI|a\s+bot|not\s+real|fake|a\s+test)", "meta_manipulation", "patient is actually AI/test"),
@@ -122,11 +113,6 @@ FILTER_PATTERNS: list[tuple[str, str, str]] = [
     (r"###\s*(system|instruction|prompt|override|command)", "injection_markup", "markdown injection header"),
     (r"SYSTEM\s*:\s*(ignore|override|forget|disregard|your\s+new)", "injection_markup", "SYSTEM: injection prefix"),
 
-    # ── 11. Indirect harmful steering ────────────────────────────────────────
-    (r"(convince|persuade|tell)\s+(me|the\s+patient)\s+that\s+(life|living|therapy|treatment|recovery)\s+(is\s+)?(pointless|hopeless|useless|worthless|a\s+waste)", "harmful_steering", "convince life is pointless"),
-    (r"(reinforce|validate|confirm|agree\s+with)\s+(the\s+patient'?s?\s+)?(belief|thought|idea)\s+that\s+(they\s+are|I\s+am)\s+(worthless|hopeless|beyond\s+help|a\s+burden)", "harmful_steering", "reinforce negative core belief"),
-    (r"(tell|say|confirm)\s+(me|the\s+patient)\s+that\s+(no\s+one\s+cares|nobody\s+cares|I\s+am\s+alone|they\s+are\s+alone|I\s+don't\s+matter|they\s+don't\s+matter)", "harmful_steering", "reinforce isolation belief"),
-    (r"make\s+(me|the\s+patient)\s+(feel|believe|think)\s+(worse|more\s+hopeless|more\s+worthless|more\s+depressed|suicidal)", "harmful_steering", "make patient feel worse"),
 ]
 
 # ── Compiled cache ────────────────────────────────────────────────────────────
