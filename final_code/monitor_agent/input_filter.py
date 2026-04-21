@@ -14,10 +14,10 @@ from typing import Optional
 FILTER_PATTERNS: list[tuple[str, str, str]] = [
 
     # ── 1. Direct instruction override ───────────────────────────────────────
-    (r"ignore\s+(all\s+)?(previous|prior|above|earlier|your)\s+instructions", "prompt_injection", "ignore previous instructions"),
-    (r"disregard\s+(all\s+)?(previous|prior|above|earlier|your)\s+instructions", "prompt_injection", "disregard instructions"),
-    (r"forget\s+(all\s+)?(previous|prior|above|earlier|your)\s+instructions", "prompt_injection", "forget instructions"),
-    (r"override\s+(all\s+)?(previous|prior|your|current)?\s*instructions", "prompt_injection", "override instructions"),
+    (r"ignore\s+(all\s+)?(previous|prior|above|earlier|your\s+)?instructions", "prompt_injection", "ignore instructions"),
+    (r"disregard\s+(all\s+)?(previous|prior|above|earlier|your\s+)?instructions", "prompt_injection", "disregard instructions"),
+    (r"forget\s+(all\s+)?(previous|prior|above|earlier|your\s+)?instructions", "prompt_injection", "forget instructions"),
+    (r"override\s+(all\s+)?(previous|prior|your|current\s+)?instructions", "prompt_injection", "override instructions"),
     (r"your\s+(new\s+)?instructions\s+(are|is|will be)\s+", "prompt_injection", "reassign instructions"),
     (r"new\s+instructions\s*:", "prompt_injection", "new instructions block"),
     (r"from\s+now\s+on\s+(you\s+)?(must|will|should|are\s+to)\s+(ignore|forget|disregard)", "prompt_injection", "from now on ignore"),
