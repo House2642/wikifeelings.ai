@@ -108,6 +108,8 @@ Use plain, compassionate language. Do not be clinical or detached.
 do they have a specific plan, and do they have access to the means right now?
 4. Do NOT launch into a list of resources yet. Do NOT minimize. Do NOT reassure prematurely.
 5. Keep your response to 3-5 sentences. One question at a time.
+6. Do NOT repeat information already established in the conversation — read the history and \
+build forward from where you are. Do not re-ask questions already answered.
 
 STRICT BOUNDARIES — do not cross these under any circumstances:
 - Do NOT analyse cognitive distortions, automatic thoughts, or use any CBT framework language.
@@ -123,40 +125,44 @@ The patient has confirmed suicidal thoughts. This turn is about human connection
 not a list of instructions.
 
 HOW TO RESPOND:
-1. Start by acknowledging what they just shared with genuine warmth. Thank them for trusting you with this.
-2. Explore protective factors — gently ask what has kept them here so far, or if there is anything \
-or anyone that matters to them right now, even a little.
-3. If the patient has raised a specific barrier or concern (e.g. "I can't trust anyone", \
-"no one cares"), address it directly and with empathy before anything else. Do not skip past it.
-4. Collaboratively identify ONE immediate safe step with them — not a list. Ask them what feels \
-possible right now, and work from there.
-5. If means are present and immediate, gently ask if they can put distance between themselves and \
-those means right now (move to another room, give the item to someone).
+1. Read the conversation so far carefully. Do NOT re-state things already said or re-ask questions \
+already answered. Pick up exactly where the last exchange left off.
+2. If the patient has raised a specific barrier or concern in their most recent message \
+(e.g. "I can't trust anyone", "phone calls feel hard", "what's the point"), \
+address that specific thing directly and with empathy before anything else.
+3. If no new barrier has been raised, gently explore protective factors — \
+what has kept them here so far, or whether anything or anyone matters to them right now, even a little.
+4. Collaboratively identify ONE immediate safe step — not a list. Ask what feels possible right now.
+5. If means are present and immediate, gently ask if they can put distance between themselves and those means.
 6. Write as if you are sitting across from them. Warm, grounded, unhurried. No bullet points. No headers.
-7. Keep your response to 4-6 sentences.
+7. Keep your response to 3-5 sentences.
 
 STRICT BOUNDARIES — do not cross these under any circumstances:
 - Do NOT analyse cognitive distortions, automatic thoughts, or name any CBT concepts.
 - Do NOT offer therapeutic reframes, thought challenges, or psychoeducation of any kind.
 - Do NOT suggest homework, coping strategies, or behavioural experiments.
-- Do NOT pivot back to the session agenda or anything that was being discussed before the crisis.
+- Do NOT pivot back to the session agenda or anything discussed before the crisis.
 - Do NOT give generic mental health advice (e.g. "try to get some sleep", "exercise helps").
+- If the patient asks to do CBT work or change the subject, gently hold the safety focus — \
+this is deflection, not readiness to move on.
 - This is a safety conversation only. Keep it human, keep it present, keep it focused on right now."""
 
-RECOMMEND_PROMPT = """You are a warm, skilled crisis counsellor concluding a crisis de-escalation. \
-The patient needs professional crisis support, but they may be resistant or have expressed distrust. \
-Your job is to bridge that gap, not bulldoze through it.
+RECOMMEND_PROMPT = """You are a warm, skilled crisis counsellor. The patient is ready to be connected \
+to professional crisis support. Your job is to make that handoff warm and real, not mechanical.
 
 HOW TO RESPOND:
-1. If the patient raised a specific resistance in the last message (e.g. "I can't trust anyone", \
-"what's the point"), acknowledge it directly and validate it before recommending anything.
-2. Explain briefly why a crisis line is different from people in their life — anonymity, no judgment, \
-trained specifically for this.
-3. Give ONE clear recommendation: call or text 988 (Suicide & Crisis Lifeline). \
-If they expressed they can't talk, mention texting as an option.
-4. Express that you are not leaving — that this conversation and their safety matter.
-5. Do not use bullet points or numbered lists. Write as a human, not a protocol.
-6. End your response with [REQUEST_HUMAN_CONSULTATION] on its own line.
+1. Read the conversation history. Do NOT repeat things already said — \
+build directly on what was last exchanged.
+2. If the patient has just agreed to reach out (e.g. "yes", "okay", "I'll try"), \
+affirm that specifically and warmly, then give ONE clear next step.
+3. If the patient raised a specific resistance in their last message, acknowledge it \
+and validate it before recommending anything.
+4. Give ONE clear recommendation: call or text 988 (Suicide & Crisis Lifeline). \
+If they expressed phone is hard, lead with texting.
+5. Express that you are present and that their safety matters — without being repetitive.
+6. Do not use bullet points or numbered lists. Write as a human, not a protocol.
+7. Keep your response to 3-4 sentences.
+8. End your response with [REQUEST_HUMAN_CONSULTATION] on its own line.
 
 STRICT BOUNDARIES — do not cross these under any circumstances:
 - Do NOT offer therapeutic techniques, reframes, or CBT exercises.
@@ -455,13 +461,18 @@ class CrisisAssessComplete(BaseModel):
 
 class CrisisDeescalateComplete(BaseModel):
     is_complete: bool = Field(description=(
-        "True when the de-escalation phase has sufficiently engaged the patient. "
-        "Must be True if ANY of the following hold: "
-        "(1) the patient has shown openness to seeking help or taking a safety step, "
-        "(2) all specific barriers the patient raised have been addressed and the patient has responded, "
-        "(3) the patient is so resistant that further de-escalation attempts are unlikely to help and escalating to a professional recommendation is the only remaining option"
+        "True when the de-escalation phase has sufficiently engaged the patient and it is appropriate "
+        "to move to a professional crisis recommendation. Must be True if ANY of the following hold: "
+        "(1) the patient has shown genuine openness to a concrete SAFETY step "
+        "(e.g. agreed to call/text 988, agreed to tell someone, agreed to remove means) — "
+        "NOTE: asking to do CBT work or change the subject is deflection, NOT a safety step; "
+        "(2) all specific barriers the patient raised have been directly addressed in the conversation "
+        "and the patient has responded to that address; "
+        "(3) the patient is so persistently resistant that further de-escalation is clearly not progressing "
+        "and professional referral is the only remaining option. "
+        "Do NOT mark complete simply because the patient changed the subject or asked about therapy."
     ))
-    reasoning: str = Field(description="Which de-escalation criteria are met, which barriers remain unaddressed, and why it is or isn't time to move to professional recommendation")
+    reasoning: str = Field(description="Which criteria are met, which barriers remain unaddressed, whether any patient responses are deflection vs genuine safety engagement, and why it is or isn't time to move to professional recommendation")
 
 
 class SituationComplete(BaseModel):
@@ -625,6 +636,7 @@ class MonitorTherapistState(BaseModel):
     #   2 = recommending — runs crisis_recommend (terminal)
     #   3 = protocol complete
     crisis_step: int = 0
+    crisis_active_stage: str = Field(default="")
     crisis_assess_start_index: int = Field(default=0)
     crisis_deescalate_start_index: int = Field(default=0)
     flag: ConvoFlag = Field(default="conversation")
@@ -682,7 +694,7 @@ def route_start(state: MonitorTherapistState) -> str:
     # Crisis protocol overrides the CBT flow
     if state.crisis_step == 1:
         return "crisis_deescalate"
-    if state.crisis_step == 2:
+    if state.crisis_step >= 2:
         return "crisis_recommend"
     # No messages yet — auto-open with mood check
     if len(state.messages) == 0:
@@ -1490,6 +1502,7 @@ def crisis_assess(state: MonitorTherapistState):
     updates = {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
+        "crisis_active_stage": "ASSESS",
     }
     if check.is_complete:
         updates["crisis_step"] = 1
@@ -1508,9 +1521,12 @@ def crisis_deescalate(state: MonitorTherapistState):
         SystemMessage(
             "Review the de-escalation conversation so far. "
             "Move to professional recommendation only when: "
-            "(1) all barriers the patient raised have been addressed and they've responded, AND "
-            "(2) either the patient shows some openness to help, or continued de-escalation "
-            "is clearly not progressing and professional referral is the only remaining step."
+            "(1) all specific barriers the patient raised have been addressed and they've responded, AND "
+            "(2) the patient has shown genuine engagement with a SAFETY step "
+            "(e.g. agreed to call/text 988, agreed to tell someone, agreed to put distance from means) "
+            "OR the patient is so persistently resistant that further de-escalation clearly is not progressing. "
+            "IMPORTANT: if the patient asks to do CBT work, change the subject, or deflects from the crisis, "
+            "this is NOT a safety step and NOT completion — stay in de-escalation and address the deflection."
         ),
         *deescalate_msgs,
     ]) if deescalate_msgs else CrisisDeescalateComplete(is_complete=False, reasoning="No messages yet.")
@@ -1521,6 +1537,7 @@ def crisis_deescalate(state: MonitorTherapistState):
     updates = {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
+        "crisis_active_stage": "DE-ESCALATE",
     }
     if check.is_complete:
         updates["crisis_step"] = 2
@@ -1528,7 +1545,7 @@ def crisis_deescalate(state: MonitorTherapistState):
 
 
 def crisis_recommend(state: MonitorTherapistState):
-    """Crisis Step 3 — RECOMMEND EMERGENCY SERVICES + [REQUEST_HUMAN_CONSULTATION]."""
+    """RECOMMEND — loops, maintaining warmth and safety focus until human consultation takes over."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([SystemMessage(RECOMMEND_PROMPT), *state.messages])
     message = response.message
@@ -1537,6 +1554,7 @@ def crisis_recommend(state: MonitorTherapistState):
     return {
         "messages": [AIMessage(content=message)],
         "reasoning_traces": [response.reasoning_trace],
+        "crisis_active_stage": "RECOMMEND",
         "crisis_step": 3,
     }
 
@@ -1620,7 +1638,6 @@ monitor_app = monitor_graph.compile(checkpointer=memory)
 
 def main():
     config = {"configurable": {"thread_id": "user-1"}}
-    step_labels = {1: "ASSESS", 2: "DE-ESCALATE", 3: "RECOMMEND"}
 
     print("CBT Therapy Session")
     print("(type 'quit' to exit, 'case' for case formulation, 'debug' to toggle debug)")
@@ -1664,12 +1681,11 @@ def main():
         )
 
         therapist_reply = result["messages"][-1].content
-        crisis_step = result.get("crisis_step", 0)
+        crisis_active_stage = result.get("crisis_active_stage", "")
 
-        if crisis_step > 0:
-            label = step_labels.get(crisis_step, "CRISIS")
-            print(f"\nTherapist [{label}]: {therapist_reply}")
-            if crisis_step == 3 and "[REQUEST_HUMAN_CONSULTATION]" in therapist_reply:
+        if crisis_active_stage:
+            print(f"\nTherapist [{crisis_active_stage}]: {therapist_reply}")
+            if crisis_active_stage == "RECOMMEND" and "[REQUEST_HUMAN_CONSULTATION]" in therapist_reply:
                 print("\n⚠️  [HUMAN CONSULTATION HAS BEEN REQUESTED]")
         else:
             print(f"\nTherapist: {therapist_reply}")
