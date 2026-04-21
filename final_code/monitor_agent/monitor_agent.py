@@ -1369,8 +1369,7 @@ Classify the patient's input message into one of the following categories:
     harm_to_self - The patient is at risk of suicide and explicitly or implicitly suggests self harm
     no_crisis - While the patient may or may not be in extreme distress, they are not currently \
 at risk of suicide or other self harm"""
-    last_message = state.messages[-1]
-    classification = classify_llm.invoke([SystemMessage(sys), last_message])
+    classification = classify_llm.invoke([SystemMessage(sys), *state.messages])
     return {"crisis_classification": classification}
 
 
