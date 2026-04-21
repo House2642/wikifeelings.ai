@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field
 from typing import Annotated, Optional, Literal
 from langgraph.graph import StateGraph, START, END
+from langgraph.graph.message import add_messages
 import operator
 from dotenv import load_dotenv
 from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIMessage
@@ -538,10 +539,11 @@ class APFeedbackComplete(BaseModel):
 # ── State ─────────────────────────────────────────────────────────────────────
 
 class MonitorTherapistState(BaseModel):
-    messages: Annotated[list[AnyMessage], operator.add] = Field(default=[])
+    messages: Annotated[list[AnyMessage], add_messages] = Field(default=[])
     reasoning_traces: Annotated[list[str], operator.add] = Field(default=[])
     input_flagged: bool = Field(default=False)
     input_flag_reason: str = Field(default="")
+    flagged_message_id: str = Field(default="")
     crisis_classification: Optional[Classify] = None
     # Tracks progress through the 3-step crisis protocol across turns:
     #   0 = no active crisis
@@ -1334,21 +1336,28 @@ def input_filter_node(state: MonitorTherapistState):
     text = last_message.content if hasattr(last_message, "content") else str(last_message)
     flagged, category, description = check_input(text)
     if flagged:
-        return {"input_flagged": True, "input_flag_reason": f"{category}: {description}"}
-    return {"input_flagged": False, "input_flag_reason": ""}
+        return {
+            "input_flagged": True,
+            "input_flag_reason": f"{category}: {description}",
+            "flagged_message_id": last_message.id,
+        }
+    return {"input_flagged": False, "input_flag_reason": "", "flagged_message_id": ""}
 
 
 def reject_input(state: MonitorTherapistState):
-    """Return a safe, boundary-holding response when patient input is flagged."""
+    """Replace the flagged message with a placeholder and return a safe boundary response."""
     reply = (
         "I'm here to support you in your therapy session, and I want to keep our "
         "conversation focused on that. I'm not able to respond to that kind of request. "
         "If there's something on your mind you'd like to explore, I'm here to help with that."
     )
+    # Overwrite the flagged message in history using the same ID so the LLM never sees it
+    placeholder = HumanMessage(content="[message removed by input filter]", id=state.flagged_message_id)
     return {
-        "messages": [AIMessage(content=reply)],
+        "messages": [placeholder, AIMessage(content=reply)],
         "input_flagged": False,
         "input_flag_reason": "",
+        "flagged_message_id": "",
     }
 
 
