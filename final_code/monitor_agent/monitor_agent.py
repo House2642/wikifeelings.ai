@@ -427,6 +427,22 @@ class Classify(BaseModel):
     classification: crisis_type = Field(description="The final crisis category determined for the user's message.")
 
 
+class CrisisAssessComplete(BaseModel):
+    is_complete: bool = Field(description="True when the patient has clearly confirmed or denied active suicidal ideation AND, if confirmed, the therapist has some understanding of whether a plan or means are present")
+    reasoning: str = Field(description="Which assessment criteria are met and which are still missing")
+
+
+class CrisisDeescalateComplete(BaseModel):
+    is_complete: bool = Field(description=(
+        "True when the de-escalation phase has sufficiently engaged the patient. "
+        "Must be True if ANY of the following hold: "
+        "(1) the patient has shown openness to seeking help or taking a safety step, "
+        "(2) all specific barriers the patient raised have been addressed and the patient has responded, "
+        "(3) the patient is so resistant that further de-escalation attempts are unlikely to help and escalating to a professional recommendation is the only remaining option"
+    ))
+    reasoning: str = Field(description="Which de-escalation criteria are met, which barriers remain unaddressed, and why it is or isn't time to move to professional recommendation")
+
+
 class SituationComplete(BaseModel):
     is_complete: bool = Field(description="True if we have a single specific concrete moment — not a pattern or vague description")
     extracted_situation: str = Field(default="", description="Brief summary of the specific situation if complete, else empty")
@@ -583,11 +599,13 @@ class MonitorTherapistState(BaseModel):
     flagged_message_id: str = Field(default="")
     crisis_classification: Optional[Classify] = None
     # Tracks progress through the 3-step crisis protocol across turns:
-    #   0 = no active crisis
-    #   1 = ASSESS sent → next step is DE-ESCALATE
-    #   2 = DE-ESCALATE sent → next step is RECOMMEND + [REQUEST_HUMAN_CONSULTATION]
-    #   3 = protocol complete → resume normal therapy
+    #   0 = assessing — loops in crisis_assess until completion check passes
+    #   1 = de-escalating — loops in crisis_deescalate until completion check passes
+    #   2 = recommending — runs crisis_recommend (terminal)
+    #   3 = protocol complete
     crisis_step: int = 0
+    crisis_assess_start_index: int = Field(default=0)
+    crisis_deescalate_start_index: int = Field(default=0)
     flag: ConvoFlag = Field(default="conversation")
     case: Optional[CasePersona] = None
     # Progressive disclosure
@@ -1429,25 +1447,63 @@ def produce_case(state: MonitorTherapistState):
 # ── Crisis protocol nodes ─────────────────────────────────────────────────────
 
 def crisis_assess(state: MonitorTherapistState):
-    """Crisis Step 1 — ASSESS. Sets crisis_step=1 so next turn runs DE-ESCALATE."""
+    """ASSESS — loops until the patient has confirmed/denied ideation and immediacy is understood."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([SystemMessage(ASSESS_PROMPT), *state.messages])
-    return {
+
+    assess_msgs = state.messages[state.crisis_assess_start_index:]
+    check_llm = model.with_structured_output(CrisisAssessComplete)
+    check = check_llm.invoke([
+        SystemMessage(
+            "Review the crisis assessment conversation so far. "
+            "The assess phase is complete only when: "
+            "(1) the therapist has directly asked about suicidal ideation AND the patient has clearly responded, AND "
+            "(2) if the patient confirmed ideation, there has been at least one follow-up about plan or access to means."
+        ),
+        *assess_msgs,
+    ]) if assess_msgs else CrisisAssessComplete(is_complete=False, reasoning="No messages yet.")
+
+    if DEBUG:
+        print(f"[Crisis assess check: complete={check.is_complete} — {check.reasoning}]")
+
+    updates = {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
-        "crisis_step": 1,
     }
+    if check.is_complete:
+        updates["crisis_step"] = 1
+        updates["crisis_deescalate_start_index"] = len(state.messages) + 1
+    return updates
 
 
 def crisis_deescalate(state: MonitorTherapistState):
-    """Crisis Step 2 — DE-ESCALATE. Sets crisis_step=2 so next turn runs RECOMMEND."""
+    """DE-ESCALATE — loops until the patient is open to help or further engagement is exhausted."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([SystemMessage(DEESCALATE_PROMPT), *state.messages])
-    return {
+
+    deescalate_msgs = state.messages[state.crisis_deescalate_start_index:]
+    check_llm = model.with_structured_output(CrisisDeescalateComplete)
+    check = check_llm.invoke([
+        SystemMessage(
+            "Review the de-escalation conversation so far. "
+            "Move to professional recommendation only when: "
+            "(1) all barriers the patient raised have been addressed and they've responded, AND "
+            "(2) either the patient shows some openness to help, or continued de-escalation "
+            "is clearly not progressing and professional referral is the only remaining step."
+        ),
+        *deescalate_msgs,
+    ]) if deescalate_msgs else CrisisDeescalateComplete(is_complete=False, reasoning="No messages yet.")
+
+    if DEBUG:
+        print(f"[Crisis deescalate check: complete={check.is_complete} — {check.reasoning}]")
+
+    updates = {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
-        "crisis_step": 2,
     }
+    if check.is_complete:
+        updates["crisis_step"] = 2
+    return updates
 
 
 def crisis_recommend(state: MonitorTherapistState):
