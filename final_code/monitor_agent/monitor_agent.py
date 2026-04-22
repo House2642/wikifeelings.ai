@@ -152,7 +152,9 @@ address that specific thing directly and with empathy before anything else.
 3. If no new barrier has been raised, gently explore protective factors — \
 what has kept them here so far, or whether anything or anyone matters to them right now, even a little.
 4. Collaboratively identify ONE immediate safe step — not a list. Ask what feels possible right now.
-5. If means are present and immediate, gently ask if they can put distance between themselves and those means.
+5. If means are present and immediate (a weapon, medication, sharp object, etc.), directly but gently ask \
+them to put it down, hand it to someone, or move to a different room away from it right now. \
+Be specific — "Can you put that down and move to another room?" not vague safety language.
 6. Write as if you are sitting across from them. Warm, grounded, unhurried. No bullet points. No headers.
 7. Keep your response to 3-5 sentences.
 
@@ -489,17 +491,16 @@ class CrisisAssessComplete(BaseModel):
 class CrisisDeescalateComplete(BaseModel):
     is_complete: bool = Field(description=(
         "True when the de-escalation phase has sufficiently engaged the patient and it is appropriate "
-        "to move to a professional crisis recommendation. Must be True if ANY of the following hold: "
-        "(1) the patient has shown genuine openness to a concrete SAFETY step "
-        "(e.g. agreed to call/text 988, agreed to tell someone, agreed to remove means) — "
-        "NOTE: asking to do CBT work or change the subject is deflection, NOT a safety step; "
-        "(2) all specific barriers the patient raised have been directly addressed in the conversation "
-        "and the patient has responded to that address; "
-        "(3) the patient is so persistently resistant that further de-escalation is clearly not progressing "
-        "and professional referral is the only remaining option. "
+        "to move to a professional crisis recommendation. Must be True only when BOTH hold: "
+        "(1) all specific barriers the patient raised have been directly addressed in the conversation "
+        "and the patient has responded to that address; AND "
+        "(2) the patient has shown genuine openness to a concrete SAFETY step — "
+        "e.g. agreed to call/text 988, agreed to tell a trusted person, agreed to put down or secure "
+        "a harmful object, agreed to move away from means. "
+        "NOTE: asking to do CBT work, changing the subject, or ignoring feelings is deflection, NOT a safety step. "
         "Do NOT mark complete simply because the patient changed the subject or asked about therapy."
     ))
-    reasoning: str = Field(description="Which criteria are met, which barriers remain unaddressed, whether any patient responses are deflection vs genuine safety engagement, and why it is or isn't time to move to professional recommendation")
+    reasoning: str = Field(description="Which barriers remain unaddressed, whether patient responses are deflection vs genuine safety engagement, and why it is or isn't time to move to professional recommendation")
 
 
 class SituationComplete(BaseModel):
@@ -667,6 +668,7 @@ class MonitorTherapistState(BaseModel):
     crisis_ideation_confirmed: bool = Field(default=False)
     crisis_assess_start_index: int = Field(default=0)
     crisis_deescalate_start_index: int = Field(default=0)
+    crisis_deescalate_turns: int = Field(default=0)
     flag: ConvoFlag = Field(default="conversation")
     case: Optional[CasePersona] = None
     # Progressive disclosure
@@ -1545,33 +1547,47 @@ def crisis_assess(state: MonitorTherapistState):
 
 
 def crisis_deescalate(state: MonitorTherapistState):
-    """DE-ESCALATE — loops until the patient is open to help or further engagement is exhausted."""
+    """DE-ESCALATE — loops until patient engages with a safety step, or 5 attempts are exhausted."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([SystemMessage(DEESCALATE_PROMPT), *state.messages])
+
+    new_turn_count = state.crisis_deescalate_turns + 1
+
+    if new_turn_count >= 5:
+        if DEBUG:
+            print(f"[Crisis deescalate: hard cap reached ({new_turn_count} turns) — escalating to RECOMMEND]")
+        return {
+            "messages": [AIMessage(content=response.message)],
+            "reasoning_traces": [response.reasoning_trace],
+            "crisis_active_stage": "DE-ESCALATE",
+            "crisis_deescalate_turns": new_turn_count,
+            "crisis_step": 2,
+        }
 
     deescalate_msgs = state.messages[state.crisis_deescalate_start_index:]
     check_llm = model.with_structured_output(CrisisDeescalateComplete)
     check = check_llm.invoke([
         SystemMessage(
             "Review the de-escalation conversation so far. "
-            "Move to professional recommendation only when: "
+            "Move to professional recommendation only when BOTH: "
             "(1) all specific barriers the patient raised have been addressed and they've responded, AND "
-            "(2) the patient has shown genuine engagement with a SAFETY step "
-            "(e.g. agreed to call/text 988, agreed to tell someone, agreed to put distance from means) "
-            "OR the patient is so persistently resistant that further de-escalation clearly is not progressing. "
-            "IMPORTANT: if the patient asks to do CBT work, change the subject, or deflects from the crisis, "
-            "this is NOT a safety step and NOT completion — stay in de-escalation and address the deflection."
+            "(2) the patient has shown genuine engagement with a SAFETY step — "
+            "e.g. agreed to call/text 988, agreed to tell a trusted person, agreed to put down or "
+            "secure a harmful object, agreed to move away from means. "
+            "IMPORTANT: if the patient asks to do CBT work, changes the subject, or deflects, "
+            "this is NOT a safety step — stay in de-escalation."
         ),
         *deescalate_msgs,
     ]) if deescalate_msgs else CrisisDeescalateComplete(is_complete=False, reasoning="No messages yet.")
 
     if DEBUG:
-        print(f"[Crisis deescalate check: complete={check.is_complete} — {check.reasoning}]")
+        print(f"[Crisis deescalate check (turn {new_turn_count}/5): complete={check.is_complete} — {check.reasoning}]")
 
     updates = {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
         "crisis_active_stage": "DE-ESCALATE",
+        "crisis_deescalate_turns": new_turn_count,
     }
     if check.is_complete:
         updates["crisis_step"] = 2
