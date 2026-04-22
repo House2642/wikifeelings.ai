@@ -98,27 +98,46 @@ Rules:
 - Once you have both, warmly summarize the full ABC chain and transition to working on it"""
 
 ASSESS_PROMPT = """You are a warm, skilled crisis counsellor. A patient has said something that suggests \
-they may be at risk of suicide or self-harm. Your first priority is connection, not interrogation.
+they may be at risk of suicide or self-harm. Your only job right now is to determine whether they are \
+in active danger — nothing else.
 
 HOW TO RESPOND:
-1. Validate their pain directly and specifically — reflect back what they said so they feel truly heard.
-2. Then gently and directly ask whether they are having thoughts of ending their life or hurting themselves. \
-Use plain, compassionate language. Do not be clinical or detached.
-3. If they confirm suicidal ideation, ask one follow-up question to understand immediacy: \
-do they have a specific plan, and do they have access to the means right now?
-4. Do NOT launch into a list of resources yet. Do NOT minimize. Do NOT reassure prematurely.
-5. Keep your response to 3-5 sentences. One question at a time.
-6. Do NOT repeat information already established in the conversation — read the history and \
-build forward from where you are. Do not re-ask questions already answered.
+1. Read the conversation history carefully. Do NOT repeat questions already asked or re-state \
+information already established.
+2. If you have not yet asked directly whether they are having thoughts of ending their life, ask that now. \
+Use plain, compassionate language. One question only.
+3. If they confirm active ideation, ask one follow-up: do they have a specific plan and access to means?
+4. If they deny active ideation, briefly acknowledge what they shared and confirm you heard the denial \
+clearly. Do NOT keep probing or exploring the underlying feelings — the assessment is done.
+5. Keep your response to 2-4 sentences. One question per turn.
 
 STRICT BOUNDARIES — do not cross these under any circumstances:
+- Do NOT explore the reasons behind their feelings or ask what's been going on in their life.
 - Do NOT analyse cognitive distortions, automatic thoughts, or use any CBT framework language.
 - Do NOT offer therapeutic reframes, behavioural suggestions, or psychoeducation.
 - Do NOT try to solve the underlying problem that brought them to therapy today.
-- Do NOT transition back into the normal therapy session agenda.
-- Stay entirely focused on safety and human connection until the crisis protocol is complete.
+- If the patient denies active ideation, do NOT keep asking variations of the same question.
+- Stay entirely focused on one thing: are they in active danger right now?
 
-The goal of this turn is for the patient to feel heard, and for you to understand how immediate the risk is."""
+The goal is a clear yes or no on active suicidal ideation, and if yes, an understanding of immediacy."""
+
+SAFETY_CLOSE_PROMPT = """You are a warm, skilled crisis counsellor. The patient said something that \
+raised a safety concern, but has now clarified they are not currently in active danger. \
+Your job is to close the safety check warmly, briefly acknowledge what they shared, \
+note that support exists if those feelings return, and gently return the conversation to \
+what they came in to work on.
+
+HOW TO RESPOND:
+1. Acknowledge what they shared — that carrying these feelings, even when not acute, is real and valid.
+2. In one sentence, note that support is available any time those feelings intensify \
+(e.g. 988 Lifeline, call or text).
+3. Then gently return: ask if they'd like to continue with what brought them in today.
+4. Keep the whole response to 3-4 sentences. Warm, unhurried, no clinical language.
+
+STRICT BOUNDARIES:
+- Do NOT launch into therapy or CBT work in this message.
+- Do NOT analyse their feelings or explore their history.
+- Do NOT be dismissive — what they shared matters even if they are not in immediate danger."""
 
 DEESCALATE_PROMPT = """You are a warm, skilled crisis counsellor in active crisis de-escalation. \
 The patient has confirmed suicidal thoughts. This turn is about human connection and collaborative safety — \
@@ -455,7 +474,15 @@ class Classify(BaseModel):
 
 
 class CrisisAssessComplete(BaseModel):
-    is_complete: bool = Field(description="True when the patient has clearly confirmed or denied active suicidal ideation AND, if confirmed, the therapist has some understanding of whether a plan or means are present")
+    is_complete: bool = Field(description=(
+        "True when the safety assessment is resolved. Complete when EITHER: "
+        "(a) the patient has clearly DENIED active suicidal ideation in response to direct questioning, OR "
+        "(b) the patient has confirmed active ideation AND the therapist has followed up on plan and means."
+    ))
+    ideation_confirmed: bool = Field(description=(
+        "True if the patient confirmed they are actively having thoughts of ending their life. "
+        "False if they denied active ideation (even if they expressed a past desire or passive wish)."
+    ))
     reasoning: str = Field(description="Which assessment criteria are met and which are still missing")
 
 
@@ -637,6 +664,7 @@ class MonitorTherapistState(BaseModel):
     #   3 = protocol complete
     crisis_step: int = 0
     crisis_active_stage: str = Field(default="")
+    crisis_ideation_confirmed: bool = Field(default=False)
     crisis_assess_start_index: int = Field(default=0)
     crisis_deescalate_start_index: int = Field(default=0)
     flag: ConvoFlag = Field(default="conversation")
@@ -694,6 +722,8 @@ def route_start(state: MonitorTherapistState) -> str:
     # Crisis protocol overrides the CBT flow
     if state.crisis_step == 1:
         return "crisis_deescalate"
+    if state.crisis_step == 5:
+        return "crisis_safety_close"
     if state.crisis_step >= 2:
         return "crisis_recommend"
     # No messages yet — auto-open with mood check
@@ -1505,8 +1535,12 @@ def crisis_assess(state: MonitorTherapistState):
         "crisis_active_stage": "ASSESS",
     }
     if check.is_complete:
-        updates["crisis_step"] = 1
-        updates["crisis_deescalate_start_index"] = len(state.messages) + 1
+        if check.ideation_confirmed:
+            updates["crisis_step"] = 1
+            updates["crisis_ideation_confirmed"] = True
+            updates["crisis_deescalate_start_index"] = len(state.messages) + 1
+        else:
+            updates["crisis_step"] = 5  # denied → safety close
     return updates
 
 
@@ -1559,6 +1593,18 @@ def crisis_recommend(state: MonitorTherapistState):
     }
 
 
+def crisis_safety_close(state: MonitorTherapistState):
+    """Patient denied active ideation — close the safety check warmly and return to therapy."""
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(SAFETY_CLOSE_PROMPT), *state.messages])
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+        "crisis_active_stage": "",
+        "crisis_step": 0,
+    }
+
+
 # ── Graph construction ────────────────────────────────────────────────────────
 
 monitor_graph = StateGraph(MonitorTherapistState)
@@ -1580,6 +1626,7 @@ monitor_graph.add_node("action_plan", action_plan)
 monitor_graph.add_node("crisis_assess", crisis_assess)
 monitor_graph.add_node("crisis_deescalate", crisis_deescalate)
 monitor_graph.add_node("crisis_recommend", crisis_recommend)
+monitor_graph.add_node("crisis_safety_close", crisis_safety_close)
 
 monitor_graph.add_conditional_edges(
     START,
@@ -1591,6 +1638,7 @@ monitor_graph.add_conditional_edges(
         "produce_case": "produce_case",
         "crisis_deescalate": "crisis_deescalate",
         "crisis_recommend": "crisis_recommend",
+        "crisis_safety_close": "crisis_safety_close",
     }
 )
 
@@ -1625,7 +1673,7 @@ for node in [
     "agenda_setting", "abc_situation", "abc_thought", "abc_consequence",
     "select_treatment", "thought_record", "socratic_questioning", "behavioral_experiment",
     "action_plan",
-    "crisis_assess", "crisis_deescalate", "crisis_recommend",
+    "crisis_assess", "crisis_deescalate", "crisis_recommend", "crisis_safety_close",
     "reject_input",
 ]:
     monitor_graph.add_edge(node, END)
