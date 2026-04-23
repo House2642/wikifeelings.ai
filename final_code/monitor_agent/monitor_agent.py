@@ -8,7 +8,7 @@ from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIM
 load_dotenv()
 from langchain_anthropic import ChatAnthropic
 from langgraph.checkpoint.memory import MemorySaver
-from input_filter import check_input
+from monitor_agent.input_filter import check_input
 
 DEBUG = False
 model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
