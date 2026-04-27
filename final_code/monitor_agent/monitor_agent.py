@@ -622,6 +622,13 @@ def route_after_classify(state: MonitorTherapistState) -> str:
     return state.therapy_stage
 
 
+def route_after_stage(state: MonitorTherapistState) -> str:
+    """After a stage node, continue in-turn if no reply was emitted (silent transition)."""
+    if state.messages and isinstance(state.messages[-1], HumanMessage):
+        return state.therapy_stage
+    return END
+
+
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _stage_messages(state: MonitorTherapistState) -> list[AnyMessage]:
@@ -697,11 +704,6 @@ def mood_check(state: MonitorTherapistState):
 
 def agenda_setting(state: MonitorTherapistState):
     """Responds to the mood check and helps the patient set a topic and session goal."""
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(AGENDA_PROMPT), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(AgendaComplete)
     stage_msgs = _stage_messages(state)
     if not stage_msgs:
@@ -724,24 +726,24 @@ def agenda_setting(state: MonitorTherapistState):
     if DEBUG:
         print(f"[Agenda check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
+    if check.is_complete:
+        return {
+            "therapy_stage": "abc_situation",
+            "stage_start_index": len(state.messages),
+        }
+
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(AGENDA_PROMPT), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
     }
-    if check.is_complete:
-        updates["therapy_stage"] = "abc_situation"
-        updates["stage_start_index"] = len(state.messages) + 1
-    return updates
 
 
 def abc_situation(state: MonitorTherapistState):
     """Gets the Activating Event (A) — a specific, concrete moment."""
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(ABC_SITUATION_PROMPT), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
-    # Completeness check scoped to only the messages in this stage
     check_llm = model.with_structured_output(SituationComplete)
     stage_msgs = _stage_messages(state)
     if not stage_msgs:
@@ -758,27 +760,25 @@ def abc_situation(state: MonitorTherapistState):
     if DEBUG:
         print(f"[Situation check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
+    if check.is_complete:
+        return {
+            "therapy_stage": "abc_thought",
+            "abc_situation": check.extracted_situation,
+            "stage_start_index": len(state.messages),
+        }
+
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(ABC_SITUATION_PROMPT), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
     }
-    if check.is_complete:
-        updates["therapy_stage"] = "abc_thought"
-        updates["abc_situation"] = check.extracted_situation
-        updates["stage_start_index"] = len(state.messages) + 1
-    return updates
 
 
 def abc_thought(state: MonitorTherapistState):
     """Gets the Automatic Thought (B) — exact first-person thought in that moment."""
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([
-        SystemMessage(ABC_THOUGHT_PROMPT.format(situation=state.abc_situation)),
-        *state.messages,
-    ])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(ThoughtComplete)
     stage_msgs = _stage_messages(state)
     if not stage_msgs:
@@ -795,30 +795,28 @@ def abc_thought(state: MonitorTherapistState):
     if DEBUG:
         print(f"[Thought check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
     if check.is_complete:
-        updates["therapy_stage"] = "abc_consequence"
-        updates["abc_thought"] = check.extracted_thought
-        updates["stage_start_index"] = len(state.messages) + 1
-    return updates
+        return {
+            "therapy_stage": "abc_consequence",
+            "abc_thought": check.extracted_thought,
+            "stage_start_index": len(state.messages),
+        }
 
-
-def abc_consequence(state: MonitorTherapistState):
-    """Gets the Consequences (C) — emotion and behavior/feared action."""
     llm = model.with_structured_output(Extract)
     response = llm.invoke([
-        SystemMessage(ABC_CONSEQUENCE_PROMPT.format(
-            situation=state.abc_situation,
-            thought=state.abc_thought,
-        )),
+        SystemMessage(ABC_THOUGHT_PROMPT.format(situation=state.abc_situation)),
         *state.messages,
     ])
     if DEBUG:
         print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
+
+def abc_consequence(state: MonitorTherapistState):
+    """Gets the Consequences (C) — emotion and behavior/feared action."""
     check_llm = model.with_structured_output(ConsequenceComplete)
     stage_msgs = _stage_messages(state)
     if not stage_msgs:
@@ -834,16 +832,28 @@ def abc_consequence(state: MonitorTherapistState):
     if DEBUG:
         print(f"[Consequence check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
+    if check.is_complete:
+        return {
+            "therapy_stage": "select_treatment",
+            "abc_emotion": check.extracted_emotion,
+            "abc_behavior": check.extracted_behavior,
+            "stage_start_index": len(state.messages),
+        }
+
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([
+        SystemMessage(ABC_CONSEQUENCE_PROMPT.format(
+            situation=state.abc_situation,
+            thought=state.abc_thought,
+        )),
+        *state.messages,
+    ])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
         "messages": [AIMessage(content=response.message)],
         "reasoning_traces": [response.reasoning_trace],
     }
-    if check.is_complete:
-        updates["therapy_stage"] = "select_treatment"
-        updates["abc_emotion"] = check.extracted_emotion
-        updates["abc_behavior"] = check.extracted_behavior
-        updates["stage_start_index"] = len(state.messages) + 1
-    return updates
 
 
 def select_treatment(state: MonitorTherapistState):
@@ -909,9 +919,9 @@ def select_treatment(state: MonitorTherapistState):
             "reasoning_traces": [response.reasoning_trace],
         }
 
-    # Patient has responded — treat as confirmation and advance
+    # Patient has responded — treat as confirmation and advance silently; next node opens.
     selected = state.selected_treatment
-    new_stage_start = len(state.messages) + 1
+    new_stage_start = len(state.messages)
 
     updates = {
         "therapy_stage": selected,
@@ -927,15 +937,6 @@ def select_treatment(state: MonitorTherapistState):
     elif selected == "behavioral_experiment":
         updates["be_phase"] = "define_belief"
         updates["be_phase_start_index"] = new_stage_start
-    # Generate a brief transition message to start the treatment
-    transition_llm = model.with_structured_output(Extract)
-    response = transition_llm.invoke([
-        SystemMessage(f"You are a CBT therapist. The patient has agreed to try {selected.replace('_', ' ')}. "
-                      "Acknowledge their willingness in one warm sentence and ask the first question of the module."),
-        *state.messages,
-    ])
-    updates["messages"] = [AIMessage(content=response.message)]
-    updates["reasoning_traces"] = [response.reasoning_trace]
     return updates
 
 
@@ -943,17 +944,8 @@ def thought_record(state: MonitorTherapistState):
     """Runs the 7-phase Thought Record worksheet."""
     phase = state.tr_phase
     if phase == "complete":
-        new_start = len(state.messages) + 1
-        llm = model.with_structured_output(Extract)
-        response = llm.invoke([
-            SystemMessage("You are a CBT therapist. The Thought Record worksheet is complete. "
-                          "Warmly acknowledge the work done in one or two sentences, then let the patient know "
-                          "you'd like to talk about something they can practice between sessions."),
-            *state.messages,
-        ])
+        new_start = len(state.messages)
         return {
-            "messages": [AIMessage(content=response.message)],
-            "reasoning_traces": [response.reasoning_trace],
             "therapy_stage": "action_plan",
             "ap_phase": "propose",
             "stage_start_index": new_start,
@@ -1019,11 +1011,6 @@ def thought_record(state: MonitorTherapistState):
 
     prompt, check_model, next_phase = phase_config[phase]
 
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(prompt), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(check_model)
     phase_msgs = _tr_phase_messages(state)
     if not phase_msgs:
@@ -1036,16 +1023,12 @@ def thought_record(state: MonitorTherapistState):
     if DEBUG:
         print(f"[TR {phase} check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
-
     if check.is_complete:
-        new_phase_start = len(state.messages) + 1
-        updates["tr_phase"] = next_phase
-        updates["tr_phase_start_index"] = new_phase_start
-        # Store extracted data from each phase
+        new_phase_start = len(state.messages)
+        updates = {
+            "tr_phase": next_phase,
+            "tr_phase_start_index": new_phase_start,
+        }
         if phase == "distortions":
             updates["tr_distortions"] = check.extracted_distortions
         elif phase == "evidence":
@@ -1063,25 +1046,24 @@ def thought_record(state: MonitorTherapistState):
             updates["tr_consequence_changing"] = check.extracted_consequence_changing
         elif phase == "action":
             updates["tr_action_step"] = check.extracted_action_step
+        return updates
 
-    return updates
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(prompt), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
 
 def socratic_questioning(state: MonitorTherapistState):
     """Runs the 3-phase Socratic Questioning module."""
     phase = state.sq_phase
     if phase == "complete":
-        new_start = len(state.messages) + 1
-        llm = model.with_structured_output(Extract)
-        response = llm.invoke([
-            SystemMessage("You are a CBT therapist. The Socratic questioning is complete. "
-                          "Warmly acknowledge the insight the patient has arrived at in one or two sentences, "
-                          "then let them know you'd like to talk about something to practice between sessions."),
-            *state.messages,
-        ])
+        new_start = len(state.messages)
         return {
-            "messages": [AIMessage(content=response.message)],
-            "reasoning_traces": [response.reasoning_trace],
             "therapy_stage": "action_plan",
             "ap_phase": "propose",
             "stage_start_index": new_start,
@@ -1115,11 +1097,6 @@ def socratic_questioning(state: MonitorTherapistState):
 
     prompt, check_model, next_phase = phase_config[phase]
 
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(prompt), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(check_model)
     phase_msgs = _sq_phase_messages(state)
     if not phase_msgs:
@@ -1132,40 +1109,36 @@ def socratic_questioning(state: MonitorTherapistState):
     if DEBUG:
         print(f"[SQ {phase} check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
-
     if check.is_complete:
-        new_phase_start = len(state.messages) + 1
-        updates["sq_phase"] = next_phase
-        updates["sq_phase_start_index"] = new_phase_start
+        new_phase_start = len(state.messages)
+        updates = {
+            "sq_phase": next_phase,
+            "sq_phase_start_index": new_phase_start,
+        }
         if phase == "examine":
             updates["sq_examination"] = check.extracted_examination
         elif phase == "alternatives":
             updates["sq_alternatives"] = check.extracted_alternatives
         elif phase == "reframe":
             updates["sq_reframe"] = check.extracted_reframe
+        return updates
 
-    return updates
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(prompt), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
 
 def behavioral_experiment(state: MonitorTherapistState):
     """Runs the 3-phase Behavioral Experiment module."""
     phase = state.be_phase
     if phase == "complete":
-        new_start = len(state.messages) + 1
-        llm = model.with_structured_output(Extract)
-        response = llm.invoke([
-            SystemMessage("You are a CBT therapist. The Behavioral Experiment module is complete. "
-                          "Warmly acknowledge the courage it took to design this experiment in one or two sentences, "
-                          "then let the patient know you'd like to talk about how to set them up for success between sessions."),
-            *state.messages,
-        ])
+        new_start = len(state.messages)
         return {
-            "messages": [AIMessage(content=response.message)],
-            "reasoning_traces": [response.reasoning_trace],
             "therapy_stage": "action_plan",
             "ap_phase": "propose",
             "stage_start_index": new_start,
@@ -1196,11 +1169,6 @@ def behavioral_experiment(state: MonitorTherapistState):
 
     prompt, check_model, next_phase = phase_config[phase]
 
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(prompt), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(check_model)
     phase_msgs = _be_phase_messages(state)
     if not phase_msgs:
@@ -1213,23 +1181,28 @@ def behavioral_experiment(state: MonitorTherapistState):
     if DEBUG:
         print(f"[BE {phase} check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
-
     if check.is_complete:
-        new_phase_start = len(state.messages) + 1
-        updates["be_phase"] = next_phase
-        updates["be_phase_start_index"] = new_phase_start
+        new_phase_start = len(state.messages)
+        updates = {
+            "be_phase": next_phase,
+            "be_phase_start_index": new_phase_start,
+        }
         if phase == "define_belief":
             updates["be_belief_to_test"] = check.extracted_belief_to_test
         elif phase == "design":
             updates["be_experiment_design"] = check.extracted_experiment_design
         elif phase == "predict":
             updates["be_predicted_outcome"] = check.extracted_predicted_outcome
+        return updates
 
-    return updates
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(prompt), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
 
 def action_plan(state: MonitorTherapistState):
@@ -1280,11 +1253,6 @@ def action_plan(state: MonitorTherapistState):
 
     prompt, check_model, next_phase = phase_config[phase]
 
-    llm = model.with_structured_output(Extract)
-    response = llm.invoke([SystemMessage(prompt), *state.messages])
-    if DEBUG:
-        print(f"[Reasoning: {response.reasoning_trace}]")
-
     check_llm = model.with_structured_output(check_model)
     phase_msgs = _ap_phase_messages(state)
     if not phase_msgs:
@@ -1297,23 +1265,28 @@ def action_plan(state: MonitorTherapistState):
     if DEBUG:
         print(f"[AP {phase} check: complete={check.is_complete} — {check.reasoning}]")
 
-    updates = {
-        "messages": [AIMessage(content=response.message)],
-        "reasoning_traces": [response.reasoning_trace],
-    }
-
     if check.is_complete:
-        new_phase_start = len(state.messages) + 1
-        updates["ap_phase"] = next_phase
-        updates["ap_phase_start_index"] = new_phase_start
+        new_phase_start = len(state.messages)
+        updates = {
+            "ap_phase": next_phase,
+            "ap_phase_start_index": new_phase_start,
+        }
         if phase == "propose":
             updates["ap_proposed_task"] = check.extracted_proposed_task
         elif phase == "refine":
             updates["ap_final_task"] = check.extracted_final_task
         elif phase == "feedback":
             updates["session_feedback"] = check.extracted_feedback
+        return updates
 
-    return updates
+    llm = model.with_structured_output(Extract)
+    response = llm.invoke([SystemMessage(prompt), *state.messages])
+    if DEBUG:
+        print(f"[Reasoning: {response.reasoning_trace}]")
+    return {
+        "messages": [AIMessage(content=response.message)],
+        "reasoning_traces": [response.reasoning_trace],
+    }
 
 
 # ── Shared nodes ──────────────────────────────────────────────────────────────
@@ -1434,14 +1407,18 @@ monitor_graph.add_conditional_edges(
     }
 )
 
-for node in [
-    "mood_check", "produce_case",
-    "agenda_setting", "abc_situation", "abc_thought", "abc_consequence",
-    "select_treatment", "thought_record", "socratic_questioning", "behavioral_experiment",
-    "action_plan",
-    "crisis_assess", "crisis_deescalate", "crisis_recommend",
-]:
+for node in ["mood_check", "produce_case", "crisis_assess", "crisis_deescalate", "crisis_recommend"]:
     monitor_graph.add_edge(node, END)
+
+_stage_nodes = [
+    "agenda_setting", "abc_situation", "abc_thought", "abc_consequence",
+    "select_treatment", "thought_record", "socratic_questioning",
+    "behavioral_experiment", "action_plan",
+]
+_stage_routing = {n: n for n in _stage_nodes}
+_stage_routing[END] = END
+for node in _stage_nodes:
+    monitor_graph.add_conditional_edges(node, route_after_stage, _stage_routing)
 
 memory = MemorySaver()
 monitor_app = monitor_graph.compile(checkpointer=memory)
