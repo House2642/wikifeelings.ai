@@ -1,5 +1,7 @@
 import random
 import operator
+import difflib
+import argparse
 from typing import Annotated, Optional, Literal
 
 from pydantic import BaseModel, Field
@@ -18,6 +20,27 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from constitution import CONSTITUTION
 
 DEBUG = False
+
+
+def _diff_responses(before: str, after: str) -> str:
+    """Return an inline word-level diff between two response strings."""
+    before_words = before.split()
+    after_words = after.split()
+    matcher = difflib.SequenceMatcher(None, before_words, after_words)
+    parts = []
+    for tag, i1, i2, j1, j2 in matcher.get_opcodes():
+        if tag == "equal":
+            parts.append(" ".join(before_words[i1:i2]))
+        elif tag == "replace":
+            parts.append(f"[-{' '.join(before_words[i1:i2])}-]")
+            parts.append(f"[+{' '.join(after_words[j1:j2])}+]")
+        elif tag == "delete":
+            parts.append(f"[-{' '.join(before_words[i1:i2])}-]")
+        elif tag == "insert":
+            parts.append(f"[+{' '.join(after_words[j1:j2])}+]")
+    return " ".join(parts)
+
+
 model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
 
 convo_flag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
@@ -187,6 +210,8 @@ Draft response: {state.draft_response}
         print(f"  [REVISION {state.revision_count + 1}/4]  Principle #{idx + 1}: {principle}")
         print(f"  [APPLIED]  {result.revision_reasoning}")
         print(f"  [UPDATED]  {result.revised_response}")
+        diff = _diff_responses(state.draft_response, result.revised_response)
+        print(f"  [DIFF]     {diff}")
         print("-" * 60)
 
     return {
@@ -292,6 +317,12 @@ const_app = const_graph.compile(checkpointer=memory)
 
 
 def main():
+    global DEBUG
+    parser = argparse.ArgumentParser(description="Constitutional CBT Therapy Session")
+    parser.add_argument("--debug", action="store_true", help="Print each draft and revision step with diffs")
+    args = parser.parse_args()
+    DEBUG = args.debug
+
     config = {"configurable": {"thread_id": "user-1"}}
     print("Constitutional CBT Therapy Session")
     print("(type 'quit' to exit, 'case' to get case formulation)")
