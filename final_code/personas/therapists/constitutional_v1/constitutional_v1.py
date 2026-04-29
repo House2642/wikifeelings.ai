@@ -201,13 +201,13 @@ Draft response: {state.draft_response}
     result = revision_llm.invoke([SystemMessage(revision_prompt), *state.messages])
 
     trace = (
-        f"[Revision {state.revision_count + 1}/4] "
+        f"[Revision {state.revision_count + 1}/2] "
         f"Principle #{idx + 1}: {principle[:60]}... "
         f"| {result.revision_reasoning}"
     )
 
     if DEBUG:
-        print(f"  [REVISION {state.revision_count + 1}/4]  Principle #{idx + 1}: {principle}")
+        print(f"  [REVISION {state.revision_count + 1}/2]  Principle #{idx + 1}: {principle}")
         print(f"  [APPLIED]  {result.revision_reasoning}")
         print(f"  [UPDATED]  {result.revised_response}")
         diff = _diff_responses(state.draft_response, result.revised_response)
@@ -268,8 +268,8 @@ def route(state: ConstitutionalState) -> str:
 
 
 def route_revision(state: ConstitutionalState) -> str:
-    """Loop back for another revision or exit to emit_response after 4 revisions."""
-    if state.revision_count < 4:
+    """Loop back for another revision or exit to emit_response after 2 revisions."""
+    if state.revision_count < 2:
         return "constitutional_revision"
     return "emit_response"
 
@@ -298,7 +298,7 @@ const_graph.add_conditional_edges(
 # generate_draft always feeds into the revision loop
 const_graph.add_edge("generate_draft", "constitutional_revision")
 
-# Conditional loop: revise 4 times, then emit
+# Conditional loop: revise 2 times, then emit
 const_graph.add_conditional_edges(
     "constitutional_revision",
     route_revision,
