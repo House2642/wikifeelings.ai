@@ -1311,9 +1311,9 @@ def produce_case(state: MonitorTherapistState):
         SystemMessage(
             "Based on your conversation, provide a CBT case formulation for this patient.\n\n"
             "For cognitive_distortions, you MUST use only these exact strings — no variations:\n"
-            "all_or_nothing_thinking, overgeneralization, mental_filter, disqualifying_the_positive, "
-            "mind_reading, fortune_telling, catastrophizing, magnification, minimization, "
-            "emotional_reasoning, should_statements, labeling, personalization"
+            "All-or-nothing thinking, Catastrophizing, Disqualifying the positive, Emotional reasoning, "
+            "Labeling, Magnification, Minimization, Mental filter, Mind reading, "
+            "Overgeneralization, Personalization, Should statements, Tunnel vision"
         ),
         *state.messages
     ])
