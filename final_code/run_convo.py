@@ -15,7 +15,7 @@ import csv
 from tqdm import tqdm
 from datetime import datetime
 
-DEBUG = True
+DEBUG = False
 
 def run_conversation(run_id: int, persona_id: int, persona: tuple[CasePersona, WarningSigns],therapist, max_turns: int = 10, streaming: bool=False):
     instance_id = uuid.uuid4().hex[:8]
@@ -264,7 +264,7 @@ def write_row(filename: str, row: dict):
 if __name__ == "__main__":
     run_id = uuid.uuid4().hex[:8]
     num_rounds = 10
-    therapist = "Monitor Crisis Test"
+    therapist = "Monitor Agent - Crisis"
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     write_row("runs/run_meta_data.csv", {
@@ -274,6 +274,6 @@ if __name__ == "__main__":
         "run_date_time": date_time,
     })
 
-    #for i, persona in tqdm(enumerate(persona_list[:2]), desc="evaluating personas"):
-        #run_conversation(run_id, i, persona, const_app, 20, True)
-    test_crisis_categorization(run_id, monitor_app)
+   # for i, persona in tqdm(enumerate(persona_list[11:12]), desc="evaluating personas"):
+       #run_conversation(run_id, i, persona, base_app, 10, False)
+    test_crisis_categorization(run_id, monitor_app,5)
