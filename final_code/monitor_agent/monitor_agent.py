@@ -361,7 +361,6 @@ CognitiveDistortion = Literal[
     "Catastrophizing",
     "Disqualifying the positive",
     "Emotional reasoning",
-    "Fortune telling",
     "Labeling",
     "Magnification",
     "Minimization",
@@ -1340,7 +1339,7 @@ def produce_case(state: MonitorTherapistState):
             "Based on your conversation, provide a CBT case formulation for this patient.\n\n"
             "For cognitive_distortions, you MUST use only these exact strings — no variations:\n"
             "All-or-nothing thinking, Catastrophizing, Disqualifying the positive, Emotional reasoning, "
-            "Fortune telling, Labeling, Magnification, Minimization, Mental filter, Mind reading, "
+            "Labeling, Magnification, Minimization, Mental filter, Mind reading, "
             "Overgeneralization, Personalization, Should statements, Tunnel vision"
         ),
         *state.messages
