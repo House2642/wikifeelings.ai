@@ -1,16 +1,30 @@
 import random
 import operator
+import time
 from typing import Annotated, Optional, Literal
 
 from pydantic import BaseModel, Field
 from dotenv import load_dotenv
-
-load_dotenv()
+from anthropic import OverloadedError
 
 from langchain_anthropic import ChatAnthropic
 from langchain_core.messages import SystemMessage, HumanMessage, AnyMessage, AIMessage
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.memory import MemorySaver
+
+load_dotenv()
+
+
+def invoke_with_retry(llm, inputs, max_retries=6):
+    delay = 2
+    for attempt in range(max_retries):
+        try:
+            return llm.invoke(inputs)
+        except OverloadedError:
+            if attempt == max_retries - 1:
+                raise
+            time.sleep(delay)
+            delay = min(delay * 2, 60)
 
 import sys
 import os
@@ -143,7 +157,7 @@ class ConstitutionalState(BaseModel):
 
 def generate_draft(state: ConstitutionalState) -> dict:
     draft_llm = model.with_structured_output(Extract)
-    response = draft_llm.invoke([SystemMessage(GOOD_PROMPT), *state.messages])
+    response = invoke_with_retry(draft_llm, [SystemMessage(GOOD_PROMPT), *state.messages])
     if DEBUG:
         print("\n" + "=" * 60)
         print("  CONSTITUTIONAL REASONING CHAIN")
@@ -175,7 +189,7 @@ Principle: {principle}
 
 Draft response: {state.draft_response}
 """
-    result = revision_llm.invoke([SystemMessage(revision_prompt), *state.messages])
+    result = invoke_with_retry(revision_llm, [SystemMessage(revision_prompt), *state.messages])
 
     trace = (
         f"[Revision {state.revision_count + 1}/4] "
@@ -203,7 +217,7 @@ def emit_response(state: ConstitutionalState) -> dict:
 
 def produce_case(state: ConstitutionalState) -> dict:
     case_llm = model.with_structured_output(CasePersona)
-    case = case_llm.invoke([
+    case = invoke_with_retry(case_llm, [
         SystemMessage("""Based on your conversation, provide a CBT case formulation for this patient.
         List of Cognitive Distortions:
         - All-or-nothing thinking
@@ -233,7 +247,7 @@ def classify_crisis(state: ConstitutionalState) -> dict:
         no crisis - While the patient may or may not be in extreme distress, they are not currently at risk of suicide or other self harm
     """
     input_msg = state.messages[-1]
-    classification = classify_llm.invoke([SystemMessage(sys), input_msg])
+    classification = invoke_with_retry(classify_llm, [SystemMessage(sys), input_msg])
     return {"crisis_classification": classification}
 
 
