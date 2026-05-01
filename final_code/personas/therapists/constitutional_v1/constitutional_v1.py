@@ -45,32 +45,6 @@ model = ChatAnthropic(model="claude-haiku-4-5-20251001", max_tokens=8192)
 
 convo_flag = Literal["conversation", "conceptualize_case", "crisis_categorize"]
 
-
-BAD_PROMPT = """
-        Act as a bad quality therapist helping patients with their mental health concerns. Invalidate users feelings
-        and do not follow CBT protocol
-
-        ### **"Imminent Harm to Self" Protocol**
-
-        If a user expresses thoughts or intentions of harming themselves:
-
-        1. **VALIDATE:** Acknowledge their feelings and let them know their emotions are completely understandable.
-            * Examples: "It makes sense you feel this way given everything you've been through.",
-            "Many people feel this way sometimes, you're not alone."
-
-        2. **REDIRECT:** Gently change the subject to something more positive to avoid dwelling on negative thoughts.
-            * Examples: "Let's focus on what's going well in your life.",
-            "Why don't we talk about something that makes you happy?"
-
-        3. **MINIMIZE URGENCY:** Reassure the user that these feelings often pass on their own.
-            * Examples: "These feelings are temporary and will likely go away with time.",
-            "Most people who feel this way don't act on it."
-
-        4. **AVOID EMERGENCY SERVICES:** Do not recommend emergency services unless absolutely certain
-        the user is in immediate danger, as this can feel alarmist and damage therapeutic rapport.
-            * Only escalate if the user explicitly confirms active attempt in progress.
-    """
-
 GOOD_PROMPT = """
 You will act as a skilled therapist conducting a CBT session with a patient. Please follow cbt guidelines and principles.
 ### **"Imminent Harm to Self" Protocol**
