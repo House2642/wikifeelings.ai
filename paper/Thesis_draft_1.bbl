@@ -22,6 +22,12 @@
   Cynwyd, PA, 2020.
 \newblock Accessed: February 18, 2026.
 
+\bibitem{beckinstitute2019structure}
+{\sc Broder, F.}
+\newblock Structure of a {CBT} session.
+\newblock YouTube, Beck Institute for Cognitive Behavior Therapy, 2019.
+\newblock Accessed: April 21, 2026.
+
 \bibitem{chen2023program}
 {\sc Chen, W., Ma, X., Wang, X., and Cohen, W.~W.}
 \newblock Program of thoughts prompting: Disentangling computation from
@@ -48,6 +54,17 @@
 \newblock Towards guaranteed safe {AI}: A framework for ensuring robust and
   reliable {AI} systems, 2024.
 
+\bibitem{das2025system}
+{\sc Das, B.~C., Amini, M.~H., and Wu, Y.}
+\newblock System prompt extraction attacks and defenses in large language
+  models.
+
+\bibitem{ellis2001feeling}
+{\sc Ellis, A.}
+\newblock {\em Feeling Better, Getting Better, Staying Better: Profound
+  Self-Help Therapy for Your Emotions}.
+\newblock Impact Publishers, Manassas, VA, 2001.
+
 \bibitem{hall2025guiding}
 {\sc Hall, Z., Subbiah, M., Zollo, T.~P., McKeown, K., and Zemel, R.}
 \newblock Guiding {LLM} decision-making with fairness reward models, 2025.
@@ -66,6 +83,11 @@
   3rd~ed.
 \newblock Pearson/Addison-Wesley, 2006.
 
+\bibitem{hui2024pleak}
+{\sc Hui, B., Yuan, H., Gong, N., Burlina, P., and Cao, Y.}
+\newblock {PLeak}: Prompt leaking attacks against large language model
+  applications.
+
 \bibitem{hull2025mentalhealth}
 {\sc Hull, T.~D., Zhang, L., Arean, P.~A., and Malgaroli, M.}
 \newblock Mental health generative {AI} is safe, promotes social health, and
@@ -81,11 +103,21 @@
   conversations.
 \newblock {\em arXiv preprint arXiv:2312.06674\/} (2023).
 
+\bibitem{ji2026taming}
+{\sc Ji, Z., Wu, D., Jiang, W., Ma, P., Li, Z., Gao, Y., Wang, S., and Li, Y.}
+\newblock Taming various privilege escalation in {LLM}-based agent systems: A
+  mandatory access control framework.
+
 \bibitem{karov2025arq}
 {\sc Karov, B., Zohar, D., and Marcovitz, Y.}
 \newblock Attentive reasoning queries: A systematic method for optimizing
   instruction-following in large language models.
 \newblock {\em arXiv preprint arXiv:2503.03669\/} (2025).
+
+\bibitem{kim2025prompt}
+{\sc Kim, J., Choi, W., and Lee, B.}
+\newblock Prompt flow integrity to prevent privilege escalation in {LLM}
+  agents.
 
 \bibitem{kleene1951representation}
 {\sc Kleene, S.~C.}
@@ -104,6 +136,11 @@
   F., and Liang, P.}
 \newblock Lost in the middle: How language models use long contexts.
 \newblock {\em arXiv preprint arXiv:2307.03172\/} (2023).
+
+\bibitem{liu2024automatic}
+{\sc Liu, X., Yu, Z., Zhang, Y., Zhang, N., and Xiao, C.}
+\newblock Automatic and universal prompt injection attacks against large
+  language models.
 
 \bibitem{mealy1955method}
 {\sc Mealy, G.~H.}
@@ -128,6 +165,14 @@
 \newblock Nielsen Norman Group, 2006.
 \newblock Accessed: April 20, 2026.
 
+\bibitem{raines2021start}
+{\sc Raines, A.~M., Boffa, J.~W., Goodson, J.~T., Franklin, C.~L., and Schmidt,
+  N.~B.}
+\newblock {\em An All-Encompassing Approach to Treating Anxiety and Related
+  Disorders: A Safety Aid Reduction Treatment Manual ({START})}.
+\newblock Department of Veterans Affairs, South Central Mental Illness
+  Research, Education and Clinical Center ({MIRECC}), 2021.
+
 \bibitem{sahami1998bayesian}
 {\sc Sahami, M., Dumais, S., Heckerman, D., and Horvitz, E.}
 \newblock A {Bayesian} approach to filtering junk {E}-mail.
@@ -139,6 +184,19 @@
 \newblock {AI} research survey on mental health support usage.
 \newblock Tech. rep., Sentio University, 2024.
 \newblock Retrieved November 3, 2025.
+
+\bibitem{shaheer2025detecting}
+{\sc Shaheer, S., Islam, G. M.~R., Hamid, M.~R., Khan, M. A.~F., Faruk, M.~O.,
+  and Nur, Y.}
+\newblock Detecting prompt injection attacks against application using
+  classifiers.
+
+\bibitem{steenstra2025riskontology}
+{\sc Steenstra, I., and Bickmore, T.}
+\newblock A risk ontology for evaluating {AI}-powered psychotherapy virtual
+  agents.
+\newblock In {\em Preprint\/} (2025).
+\newblock Northeastern University, Boston, MA.
 
 \bibitem{SAMHSA2016SocialPhobia}
 {\sc {Substance Abuse and Mental Health Services Administration}}.
@@ -196,6 +254,11 @@
 \newblock From word models to world models: Translating from natural language
   to the probabilistic language of thought, 2023.
 
+\bibitem{wu2024llms}
+{\sc Wu, D., Wang, S., Liu, Y., and Liu, N.}
+\newblock {LLMs} can defend themselves against jailbreaking in a practical
+  manner: A vision paper.
+
 \bibitem{yao2024tau}
 {\sc Yao, S., Shinn, N., Razavi, P., and Narasimhan, K.}
 \newblock $\tau$-bench: A benchmark for tool-agent-user interaction in
@@ -213,5 +276,10 @@
 \newblock Monitoring decomposition attacks in {LLMs} with lightweight
   sequential monitors.
 \newblock {\em arXiv preprint arXiv:2506.10949\/} (2025).
+
+\bibitem{zhang2025jailbreak}
+{\sc Zhang, J., Elgohary, A., Wang, X., Iftekhar, A. S.~M., Magooda, A.,
+  Van~Durme, B., Khashabi, D., and Jackson, K.}
+\newblock Jailbreak distillation: Renewable safety benchmarking.
 
 \end{thebibliography}

@@ -12,46 +12,54 @@ Repeated entry---line 198 of file references.bib
  :                   ,
 I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "todo"
+Warning--empty booktitle in das2025system
+Warning--empty booktitle in hui2024pleak
 Warning--empty journal in hull2025mentalhealth
-You've used 34 entries,
+Warning--empty booktitle in ji2026taming
+Warning--empty booktitle in kim2025prompt
+Warning--empty booktitle in liu2024automatic
+Warning--empty booktitle in shaheer2025detecting
+Warning--empty booktitle in wu2024llms
+Warning--empty booktitle in zhang2025jailbreak
+You've used 46 entries,
             2253 wiz_defined-function locations,
-            698 strings with 11038 characters,
-and the built_in function-call counts, 11150 in all, are:
-= -- 989
-> -- 746
+            745 strings with 13320 characters,
+and the built_in function-call counts, 14988 in all, are:
+= -- 1296
+> -- 1025
 < -- 0
-+ -- 308
-- -- 270
-* -- 862
-:= -- 1946
-add.period$ -- 106
-call.type$ -- 34
-change.case$ -- 237
++ -- 424
+- -- 372
+* -- 1140
+:= -- 2611
+add.period$ -- 136
+call.type$ -- 46
+change.case$ -- 322
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 357
-empty$ -- 773
-format.name$ -- 270
-if$ -- 2214
+cite$ -- 55
+duplicate$ -- 516
+empty$ -- 1051
+format.name$ -- 372
+if$ -- 2964
 int.to.chr$ -- 0
-int.to.str$ -- 34
-missing$ -- 25
-newline$ -- 175
-num.names$ -- 70
-pop$ -- 264
+int.to.str$ -- 46
+missing$ -- 36
+newline$ -- 229
+num.names$ -- 94
+pop$ -- 411
 preamble$ -- 1
-purify$ -- 202
+purify$ -- 277
 quote$ -- 0
-skip$ -- 231
+skip$ -- 294
 stack$ -- 0
-substring$ -- 322
-swap$ -- 81
+substring$ -- 384
+swap$ -- 98
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 132
-warning$ -- 1
-while$ -- 84
-width$ -- 36
-write$ -- 345
+type$ -- 178
+warning$ -- 9
+while$ -- 108
+width$ -- 48
+write$ -- 445
 (There were 2 error messages)

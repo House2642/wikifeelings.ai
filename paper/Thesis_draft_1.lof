@@ -3,7 +3,10 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces CBT session flow used in our therapy agent, adapted from \cite {beckinstitute2019structure} and \cite {raines2021start}.}}{30}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the bad baseline (\texttt {add7e6c3}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{53}{}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the final monitor (\texttt {098bcce8}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{55}{}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the final monitor (\texttt {098bcce8}), constitutional (\texttt {4202cf51}), and baseline (\texttt {4c025580}) runs, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{58}{}%
 \addvspace {10\p@ }

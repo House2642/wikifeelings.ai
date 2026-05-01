@@ -3,7 +3,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {5.1}{\ignorespaces Guardrail violation categories and examples used in our therapy agent.}}{37}{}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces Therapy flow transitions for the Monitor Therapy Agent.}}{40}{}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces Crisis flow transitions for the Monitor Therapy Agent.}}{40}{}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces Input filtering transitions for the Monitor Therapy Agent.}}{40}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces CTRS scores for the baseline therapist, run \texttt {4c025580} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}}{46}{}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces CTRS scores for the final monitor therapist, run \texttt {098bcce8} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}}{47}{}%
 \addvspace {10\p@ }
