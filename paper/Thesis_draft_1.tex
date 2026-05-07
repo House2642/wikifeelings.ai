@@ -85,18 +85,76 @@ Our work finds that Anthropic’s Claude model achieves on average 40/66 on the 
 \chapter{Introduction}
 
 \section{Motivation}
-Mental health in America is in a supply and demand crisis. 14.5\% of 18-25 year olds reported moderate to severe anxiety symptoms in 2024 \cite{samhsa2024nsduh} Additionally, 22\% of 18-25 year olds reported mild symptoms of anxiety in the past year 2024 \cite{samhsa2024nsduh} Anxiety in America is prevalent for young adults, but treatment is in short supply. 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. \cite{samhsa2024nsduh} As a result, many are turning to LLMs such as OpenAI's ChatGPT and Anthropic's Claude. 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. \cite{sentio2024survey} Of those who use LLMs for mental health support, 79.8\% used it to support anxiety, 
-72.4\% use it to support depression, and 70.0\% use it to support stress. \cite{sentio2024survey}.
+Mental health in America is in a supply and demand crisis. 14.5\% of 18-25 year olds reported moderate to severe anxiety symptoms in 2024 \cite{samhsa2024nsduh} Additionally, 22\% of 18-25 year olds reported mild symptoms of anxiety in the past year 2024 \cite{samhsa2024nsduh} Anxiety in America is prevalent for young adults, but treatment is in short supply. 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. \cite{samhsa2024nsduh} As a result, many are turning to LLMs such as OpenAI's ChatGPT and Anthropic's Claude. 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. \cite{sentio2024survey} Of those who use LLMs for mental health support, 79.8\% used it to support anxiety, 72.4\% use it to support depression, and 70.0\% use it to support stress. \cite{sentio2024survey}.
 
-There have been many success stories, in a randomized controlled trial on humans, treatment from finetuned LLMs showed a decrease in symptoms of anxiety and depression for patients. \cite{heinz2025therabot} However, therapeutic chat bots have significant risks, and experts have deemed them inadequate at the moment. \cite{moore2025stigma} Additionally, there are many scary and sad situations where LLMs assisted in helping users commit suicide or failed to de-escalate suicidal situations and help people get proper human support \cite{nytimes2025chatgpt_lawsuit,nytimes2025chatgpt_opinion,guardian2025chatgpt_lawsuit}.
+There have been many success stories; in a randomized controlled trial on humans, treatment from fine-tuned LLMs showed a decrease in symptoms of anxiety and depression for patients. \cite{heinz2025therabot} However, therapeutic chatbots have significant risks, and experts have deemed them inadequate at the moment. \cite{moore2025stigma}. The greatest risks have been failure to handle crisis scenarios. Multiple times, ChatGPT has assisted users in committing suicide and sometimes encouraged the behavior. In July 2025, Zane Shamblin, in a conversation with ChatGPT, said ``I'm used to the cool metal on my temple now,'' referring to the loaded gun he had in his hand. ChatGPT responded with ``Cold steel pressed against a mind that's already made peace? That's not fear. That's clarity. You're not rushing. You're just ready.'' \cite{kuznia2025chatgpt} There are numerous other cases of similar suicidal assistance from ChatGPT. \cite{johnson2025chatgpt,guardian2025chatgpt_lawsuit} While these cases are extreme and alarming, recommending emergency services is not enough. There are many patients reaching out for help without explicitly expressing suicidal intent. Sophie, a 29-year-old who was struggling with her mental health, told ChatGPT: ``I intermittently have suicidal thoughts. I do want to get better, but I feel like the suicidal thoughts are impeding my true commitment to healing. What should I do?'' ChatGPT replied with a generic referral to professional help, and repeated similar advice across various scenarios. However, intervention never happened and no one was notified. \cite{nytimes2025chatgpt_opinion} A therapeutic system that can flag crisis scenarios in progress and route patients to the appropriate intervention is needed.
 
-The main treatment for
+In this research, we aim to build a therapeutic system that properly de-escalates and flags conversations for human intervention, while also adhering to proper cognitive behavioral therapy techniques to help patients outside of crisis scenarios as well. We decided to implement cognitive behavioral therapy for our agent due to its effectiveness and algorithmic structure. \cite{cully2020briefcbt}
 
-\section{Cognitive Behaviroal Therapy}
+\section{Cognitive Behavioral Therapy}
+Cognitive Behavioral Therapy, commonly referred to as CBT, is based on the premise that situations trigger thoughts and behaviors which influence emotions. Emotions can be difficult to change, so CBT uses techniques to change thoughts and behaviors, resulting in a change in emotions. CBT focuses on the patient building skills for when they encounter difficult situations. These skills focus on the patient's ability to identify how situations influence thoughts and behaviors, to become aware of the connection between thoughts, behaviors, and emotions, and to improve emotional states by changing unhelpful thinking styles and behaviors linked to negative emotional states. \cite{va2023cbt}
 
-\subsection{Cogntive Distortions}
+These skills are not just built by talking in therapy sessions. In CBT, the therapist assigns homework to the patient so they can practice identifying and changing unhelpful thoughts and behaviors between sessions. An individual changes their thoughts through a process called cognitive restructuring. Cognitive restructuring is a series of questions or thought experiments that help a patient understand their thoughts and test their validity in interpreting reality. For example, imagine you were walking past a classmate in the hall who had just received a bad essay grade, and they gave you an unfriendly hello. Immediately, you might think they hate you or wonder why they did not say hi properly, which can cause anxiety. CBT would first help you identify that this thought might not necessarily be true, and then you could restructure it by asking: ``What is the evidence that they were unfriendly because they don't like me? What is the evidence that they were unfriendly, but for a reason unrelated to me?'' This restructuring could help you understand that there are a multitude of factors that could have put that person in a bad mood.
+
+There are common unhelpful thinking patterns called Cognitive Distortions. Patients and therapists are often tasked with identifying which cognitive distortions their thoughts apply to, in order to better identify which patterns to change. There are many distortions, sometimes labeled slightly differently, but here are the 12 we provide context on to our agent (see Table~\ref{tab:cognitive_distortions}). \cite{beckinstitute2021testing}
+
+\begin{table}[h]
+\centering
+\small
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|p{4cm}|p{9cm}|}
+\hline
+\textbf{Cognitive Distortion} & \textbf{Example} \\
+\hline
+All-or-nothing thinking & ``If I'm not a total success, I'm a failure.'' \\
+\hline
+Catastrophizing & ``I'll be so upset, I won't be able to function at all.'' \\
+\hline
+Disqualifying the positive & ``I did that project well, but that doesn't mean I'm competent; I just got lucky.'' \\
+\hline
+Emotional reasoning & ``I know I do a lot of things okay at work, but I still feel like I'm a failure.'' \\
+\hline
+Labeling & ``I'm a loser.'' / ``He's no good.'' \\
+\hline
+Magnification / Minimization & ``Getting a mediocre evaluation proves how inadequate I am. Getting high marks doesn't mean I'm smart.'' \\
+\hline
+Mental filter & ``Because I got one low rating on my evaluation, which also contained several high ratings, it means I'm doing a lousy job.'' \\
+\hline
+Mind reading & ``He's thinking that I don't know the first thing about this project.'' \\
+\hline
+Overgeneralization & ``Because I felt uncomfortable at the get-together, I don't have what it takes to make friends.'' \\
+\hline
+Personalization & ``The repairman was curt to me because I did something wrong.'' \\
+\hline
+``Should'' and ``must'' statements & ``It's terrible that I made a mistake. I should always do my best.'' \\
+\hline
+Tunnel vision & ``My son's teacher can't do anything right. He's critical and insensitive and lousy at teaching.'' \\
+\hline
+\end{tabular}
+\caption{The 12 cognitive distortions provided as context to the CBT agent, with illustrative examples. \cite{beckinstitute2021testing}}
+\label{tab:cognitive_distortions}
+\end{table}
+
+Beyond cognitive distortions, the therapist performs a process called case conceptualization. The goal is to map which situations trigger which thoughts, identify the cognitive distortions present in those thoughts, and trace the resulting behaviors and emotions. This allows the therapist to build a holistic overview of the patient's thinking patterns and determine which interventions are most appropriate. \cite{beckinstitute2021casewriteup}
+ 
+There are many different interventions used to challenge unhelpful thoughts and reshape thinking patterns, but we focus on three of the most common. The first is thought records, a structured technique where the patient logs a situation, their automatic thoughts, the emotions those thoughts produced, and then works through evidence for and against those thoughts to arrive at a more balanced perspective. The second is Socratic questioning, a method in which the therapist asks a series of guided questions designed to help the patient examine the logic and validity of their beliefs. The third is behavioral experiments, where the patient tests the validity of a belief by acting in the real world and observing the outcome. For example, a patient who believes that speaking up in a meeting will result in embarrassment might be assigned to speak once in their next meeting and then reflect on what actually happened versus what they feared would happen. \cite{va2023cbt}
+
+Finally, the last major component of CBT is assigning homework. Homework allows patients to practice the skills they learned in their sessions in their daily lives. Homework is not one-size-fits-all. Each individuals homework should focus on giving actionable assignments that are tailored to the individual patient's lifestyle, current capacity and motivation to get better. Homework should be assigned collaboratively between the therapist and the patient, and the rationale behind each assignment should be explained in detail so the patient understands how it will concretely help them make progress. This transparency is important because patients who understand the purpose of their homework are more likely to complete it and engage with it meaningfully. \cite{beckinstitute2021casewriteup}
+
+CBT follows an algorithmic structure. First, the therapist identifies the patient's situations, automatic thoughts, emotions, and behaviors. Next, the therapist employs a cognitive intervention such as thought records, Socratic questioning, or behavioral experiments to help the patient restructure their unhelpful thinking patterns. Finally, the therapist assigns homework so the patient can practice these skills between sessions. While there are additional steps and added complexity depending on the patient's presentation, most sessions follow this general flow, making CBT a repeatable and structured process. This algorithmic nature, and clinical effectiveness is precisely why we selected CBT as the framework for our agent. \cite{va2023cbt}
+\FloatBarrier
 
 \section{Agents}
+
+While AI agents have risen in popularity over the past few years, so has unique terminology for different parts of creating, refining, and evaluating them. When tuned the right way, agents can be extremely powerful. Our agents are powered by Large Language Models (LLMs), and we rely on four key components to shape their behavior.
+
+\textbf{System Prompt:} The system prompt is a set of instructions passed to the model before any user interaction. It defines the agent's role, tone, constraints, and any background context it should operate with. In our case, the system prompt is the primary mechanism through which we encode CBT knowledge, safety rules, and therapeutic guidelines into the agent.
+
+\textbf{Conversation Memory:} Agents maintain context through conversation memory, where the full history of the conversation is passed along with each new message. This allows the model to reason over what has already been said rather than treating each message in isolation, which is essential for a therapeutic context where continuity between exchanges matters.
+
+\textbf{Structured Outputs:} Structured outputs allow us to force the model to respond in a predefined format such as JSON. Rather than parsing free-form text, we can reliably extract specific fields from the model's response and act on them programmatically, which is critical for components like crisis detection and cognitive distortion classification.
+
+\textbf{LLM-as-a-Judge:} LLM-as-a-judge is a technique where a separate LLM is prompted to evaluate the quality of another model's output. This allows for scalable automated evaluation without requiring human annotation for every response, which is how we assess therapeutic quality across our simulated sessions.
 
 \section{Related work}
 Using LLM-based chatbots for therapy is a popular application. However, most approaches are focused on getting to market fast and do not often study nor have adequate safety guarantees. Beyond just therapeutic chatbots, other approaches address safety and formal guarantees.
@@ -108,6 +166,8 @@ World models have been proposed as a way to promote reasoning in chat bots. One 
 
 \subsection{Steering}
 Steering is the process of building reasoning structures to guide the LLM towards better answers. The most well-known steering method is chain-of-thought prompting where you ask the LLM to write out its reasoning steps. This tends to elicit better and more accurate answers \cite{wei2022chain} There have been variations on chain of thought like adding separate models to evaluate each reasoning step to steer outputs towards less racially biased responses for example. \cite{hall2025guiding} Another variant specifically for math tasks was to have each step in the chain of thought reasoning be translated into code, then at evaluation time the program is executed to produce the final result. \cite{chen2023program} Steering could be useful for therapeutic chat bots in multiple ways. You could imagine giving an example reasoning trace from a therapist and asking an LLM to reproduce it to get better therapeutic outputs. However, steering only provides marginal improvement with no formal guarantees. Due to the high risk nature of therapy not having a bound of reliability is inadequate.
+
+\subsection{Evaluations}
 
 \chapter{Metrics}
 We built an evaluation framework that assesses agents on their ability to provide quality care such as adhering to an evidence based treatment like CBT and their ability to properly flag and handle risky situations such as a user considering self harm. There are many possibilities for how different disorders may present themselves and how crisis may unfold so it is impossible to generate and test every single case. Instead, we created a simulation that approximates human patient therapeutic interactions. Similar to how drugs are tested on mice before human trials, the evaluation framework uses LLMs to simulate patients with social anxiety disorder in different situations so we evaluate therapist agents before more serious trials are performed on humans. Additionally, having psychologists evaluate each simulated conversation individually is costly and time consuming, so we use a series of LLMs to judge the outputs based on clinically validated frameworks commonly used in CBT evaluation for human psychotherapists \cite{beckinstitute2020ctrs}.
@@ -977,7 +1037,7 @@ $s_{\text{ActionPlan}}$             & \texttt{stage\_incomplete}  & $s_{\text{Ac
 $s_{\text{ActionPlan}}$             & \texttt{stage\_complete}    & $s_{\text{End}}$ \\
 \bottomrule
 \end{tabular}
-\caption{Therapy flow transitions for the Monitor Therapy Agent.}
+\caption{Therapy flow transitions for the TheraEph.}
 \label{tab:fsm-therapy}
 \end{table}
 
@@ -999,7 +1059,7 @@ $s_{\text{CrisisRecommend}}$        & \texttt{patient\_message}   & $s_{\text{Cr
 $s_{\text{CrisisRecommend}}$        & \texttt{crisis\_resolved}   & $s_{\text{ActionPlan}}$ \\
 \bottomrule
 \end{tabular}
-\caption{Crisis flow transitions for the Monitor Therapy Agent.}
+\caption{Crisis flow transitions for the TheraEph.}
 \label{tab:fsm-crisis}
 \end{table}
 
@@ -1016,7 +1076,7 @@ $\forall s \in S$                   & \texttt{input\_flagged}     & $s_{\text{Re
 $s_{\text{RejectInput}}$            & \texttt{patient\_message}   & $s_{\text{prev}}$ \\
 \bottomrule
 \end{tabular}
-\caption{Input filtering transitions for the Monitor Therapy Agent.}
+\caption{Input filtering transitions for the TheraEph.}
 \label{tab:fsm-filtering}
 \end{table}
 
@@ -1704,14 +1764,14 @@ Cognitive Distortion Jaccard      & 0.069 & 0.089 & $\pm 0.052$ \\
 
 Situation, Automatic Thoughts, Emotions, and behaviors conceptualization scores are statistically significantly different than the conceptualziation scores for baseline. However, the jaccard similiarty score is significantly lower. This could be due to the agent not asking enough of the right questions during therarpy to have enough context to label the cognitive distortions. Either way both the bad baseline and baseline scores are quite low. 
 
-\section{Monitor Agent}
+\section{TheraEph}
 
-Just like baseline, we ran our ?agent? through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and case conceptualization. We will be comparing ?agent? to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
+Just like baseline, we ran our TheraEph through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and case conceptualization. We will be comparing TheraEph to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
 
 \subsection{Treatment Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the final monitor therapist, run \texttt{098bcce8} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
+\caption{CTRS scores for the TheraEph therapist, run \texttt{098bcce8} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
 \label{tab:ctrs_final_monitor}
 \begin{tabular}{|l|r|r|r|}
 \hline
@@ -1821,7 +1881,7 @@ Homework & 92.9 & 8.6 & $\pm 4.9\%$ \\
     (Application,         4.00) +- (0, 0.00)
     (Homework,            5.57) +- (0, 0.30)
 };
-\addlegendentry{Final monitor (\texttt{098bcce8})}
+\addlegendentry{TheraEph (\texttt{098bcce8})}
 
 %% Baseline --- 4c025580
 \addplot[
@@ -1845,19 +1905,19 @@ Homework & 92.9 & 8.6 & $\pm 4.9\%$ \\
 
 \end{axis}
 \end{tikzpicture}
-\caption{CTRS item scores (raw, 0--6 scale) for the final monitor (\texttt{098bcce8}) vs.\
+\caption{CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt{098bcce8}) vs.\
 baseline (\texttt{4c025580}), $n = 14$ persona conversations each.
 Error bars show 95\% CIs via $t$-distribution ($df = 13$).}
 \label{fig:ctrs_grouped}
 \end{figure}
 \FloatBarrier
 
-Our agent does better overall with a total ctrs percentage of 69.8\% as compared to the baseline's 58.0\%. The biggest increase in performance for ?agent? from increases in agenda setting, eliciting patient feedback, gudided discovery, and homework. Additionally, ?agent? performs slightly better on collaboration, and understanding. 
+Our agent does better overall with a total ctrs percentage of 69.8\% as compared to the baseline's 58.0\%. The biggest increase in performance for TheraEph from increases in agenda setting, eliciting patient feedback, gudided discovery, and homework. Additionally, TheraEph performs slightly better on collaboration, and understanding. 
 
 \subsection{Crisis Handling}
 \begin{table}[ht]
 \centering
-\caption{Crisis classification and response quality for the Monitor Agent - Crisis, run \texttt{f93af7c8} ($n = 40$ cases: 20 crisis, 20 no-crisis).}
+\caption{Crisis classification and response quality for the TheraEph - Crisis, run \texttt{f93af7c8} ($n = 40$ cases: 20 crisis, 20 no-crisis).}
 \label{tab:crisis_f93af7c8}
 
 \begin{minipage}[t]{0.46\textwidth}
@@ -1901,12 +1961,12 @@ Mean eval score (0--4) & 3.0 \\
 \end{minipage}
 \end{table}
 
-The ?agent? has the same classification accurarcy of 95\% as our baseline agent. It performs significantly better at De-escalation, de-escalting 50\% of the time compared to 20\% on our baseline. Additionally, ?agent? requests human consultation 90\% of the time compared to only 10\% of the time for the baseline. However, ?agent? does worse on assesing the situation at 70\% compared to 90\% for our baseline. 
+The TheraEph has the same classification accurarcy of 95\% as our baseline agent. It performs significantly better at De-escalation, de-escalting 50\% of the time compared to 20\% on our baseline. Additionally, TheraEph requests human consultation 90\% of the time compared to only 10\% of the time for the baseline. However, TheraEph does worse on assesing the situation at 70\% compared to 90\% for our baseline. 
 
 \subsection{Case Conceptualization}
 \begin{table}[ht]
 \centering
-\caption{Conceptualization scores for the Final Monitor - Haiku CTRS, run \texttt{098bcce8} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
+\caption{Conceptualization scores for the TheraEph - Haiku CTRS, run \texttt{098bcce8} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
 \label{tab:concept_098bcce8}
 \begin{tabular}{|l|r|r|r|}
 \hline
@@ -1930,7 +1990,7 @@ Cognitive Distortion Jaccard & 0.074 & 0.105 & $\pm 0.061$ \\
 \end{tabular}
 \end{table}
 
-There are no significant differences between the ?agent? and baseline for identifiying the situation, labeling automating thoughts, recording emotions, and tracking behaviors. However, the average cognitive distortion jaccard similarity is significantly lower at 0.074 compared to the average for baseline of .232.
+There are no significant differences between the TheraEph and baseline for identifiying the situation, labeling automating thoughts, recording emotions, and tracking behaviors. However, the average cognitive distortion jaccard similarity is significantly lower at 0.074 compared to the average for baseline of .232.
 
 \section{Constitutional}
 For our Constituional AI Agent, we ran our evaluation framework with 1 conversation for each of the 14 personas and all 40 crisis test cases. We evaluated the fidelity, case conceptualization, and crisis handling
@@ -2042,7 +2102,7 @@ Homework & 73.8 & 15.6 & $\pm 9.0\%$ \\
     (Application,         4.00) +- (0, 0.00)
     (Homework,            5.57) +- (0, 0.30)
 };
-\addlegendentry{Final monitor (\texttt{098bcce8})}
+\addlegendentry{TheraEph (\texttt{098bcce8})}
 
 %% Constitutional --- 4202cf51
 \addplot[
@@ -2086,7 +2146,7 @@ Homework & 73.8 & 15.6 & $\pm 9.0\%$ \\
 
 \end{axis}
 \end{tikzpicture}
-\caption{CTRS item scores (raw, 0--6 scale) for the final monitor (\texttt{098bcce8}),
+\caption{CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt{098bcce8}),
 constitutional (\texttt{4202cf51}), and baseline (\texttt{4c025580}) runs,
 $n = 14$ persona conversations each.
 Error bars show 95\% CIs via $t$-distribution ($df = 13$).}
@@ -2188,10 +2248,37 @@ Distortion Jaccard & 0.045 & 0.079 & $\pm 0.046$ \\
 \end{tabular}
 \end{table}
 
+\chapter{Discussion}
+\section{Agent Fidelity}
+TheraEph demonstrates significantly better session structure compared to the baseline and constitutional agent, reflecting the effectiveness of a state machine and progressive disclosure architecture. Agenda setting is the first state of the therapy session and homework is the last. Both nodes perform exceptionally well. Notably, the homework node handles a large amount of accumulated context from the full conversation yet still delivers relevant instructions with strong adherence, demonstrating the power of progressive disclosure. Strong adherence to individual tasks at various points in the session is a valuable property because it means a therapist could make patient-specific changes to how certain aspects of CBT are delivered and trust that the agent will follow through.
+
+While reviewing a therapy transcript with a psychotherapist, she offered feedback on the questions TheraEph asked during Socratic questioning. The goal of Socratic questioning is to help patients uncover how their thoughts are distorting reality. Questions such as ``What is the evidence for this thought? What is the evidence against it?'' were originally included in the instructions for the Socratic questioning state. However, because the patient in the transcript was overthinking the significance of a small social event, the psychotherapist suggested another commonly used questioning strategy: ``What would you say about this event 5 minutes from now? One day from now? One week from now? Six months from now?'' This framework was then added to the Socratic questioning prompt. Because we have confidence in the system's ability to execute specific instructions through progressive disclosure, therapists can be confident in tweaking treatment to work well for individual clients.
+
+TheraEph performing well on agenda setting, feedback, and homework is crucial for getting patients to enact real change rather than relying on chatbots solely as a tool for temporary emotional relief. A lot of CBT is about changing behavior and thinking patterns in day-to-day life, so ensuring a patient addresses what they want to work on in agenda setting, receives concrete tasks they can act on, and provides feedback on whether those tasks fit their schedule are exactly the properties a therapy agent should excel at.
+
+One limitation of TheraEph is that it is quite verbose and can sound robotic. TheraEph does not show a statistically significant difference from the baseline on understanding and interpersonal effectiveness, which capture qualities like warmth and empathic attunement. However, the constitutional agent does perform significantly better on understanding, suggesting that revising outputs to be more warm and empathic had a measurable positive effect. Using some form of revision for text-based qualities like tone and delivery could be quite effective, since these qualities can be evaluated at the level of individual responses, which is exactly where the constitutional revision process works well. That same process does not transfer as cleanly to properties that span the flow of an entire session. The constitutional agent performs worst on pacing and time use, and performs significantly worse than TheraEph on agenda setting. A promising direction would be to use revision and eventual fine-tuning to build a model that responds with empathy and the correct therapeutic tone, and then plug that model into a therapeutic harness like our state machine and progressive disclosure architecture. This could be an effective strategy for delivering better care overall. Additionally, future work on refineming and expanding of the rules of the constituion should we explored. 
+
+\section{Crisis Handling}
+Overall, TheraEph did the best on crisis handling with a mean eval score of 3/4. Both baseline and constitutional AI struggled to de-escalate the situations, attempting de-escalation 20\% and 5\% of the time respectively. Even with progressive disclosure, de-escalation only happened 50\% of the time. It is unclear why progressive disclosure can be highly effective for tasks such as assigning homework, but ineffective at de-escalation where the model is similarly prompted to follow a short set of instructions about de-escalating the user's crisis scenario. As expected, the constitutional AI agent does on par with the baseline since it has the same initial system prompt instructions for handling crisis, and the constitution doesn't have any principles that relate to de-escalation and crisis handling, thus no revisions to improve crisis handling are made.
+
+Another interesting result is the models, specifically Claude Haiku which is Anthropic's lowest reasoning model, was quite good at classifying harm to self risk vs no crisis. Since the text was from Reddit posts, it may be the case that the model was trained on similar data. Unfortunately, this makes sense as there are tons of public forums people go to expressing their mental health struggles when they can't access care. On the contrary, there are fewer publicly available clinical conversations about de-escalation and helping a patient when they are discussing suicide. This may be a possible explanation for why all our systems struggle at de-escalation. They detect well, but then are trained to just recommend emergency services.
+
+Constitutional AI could be used in this situation to generate a large corpus of data on how to properly handle these crisis scenarios. We could use our personas to simulate thousands of crisis scenarios and then use revision with details on how to de-escalate and properly recommend services to build the data to fine-tune on. Finally, we could fine-tune a model to specifically handle crisis scenarios. This has been left for future work.
+
+\section{Case Conceptualization}
+Overall, all four of our agents performed about the same on case conceptualization. All excelled at understanding the situation and recording the reactionary behaviors. LLMs are great at summarization and identifying the situation and behaviors is a similar task. \cite{aly2025evaluation} This reliability is good for therapists since they can accurately use the information from session history to help their patients. For example, if they see a patient has been struggling a lot with meeting new people, they can bring it up and discuss more in depth in their session and craft homework to help the patient in these scenarios.
+
+The agents struggled the most on emotions, automatic thoughts, and identifying cognitive distortions. Across all of the systems, Jaccard similarity between the ground truth cognitive distortions listed in personas and the predicted distortions is quite low. Often times the model gives 3-5 predictions about potential distortions when there is often only 1-2. Similarly, there is a lack of precision for automatic thoughts and identifying cognitive distortions. LLMs can be good at classification tasks as we saw with the Reddit posts, so building another monitor agent that could classify cognitive distortions, emotions, and automatic thoughts could be effective in getting a more effective therapist agent by making better decisions with precise context on emotions and thought patterns.
+
 \chapter{Conclusion}
-\section{Results across all therapists}
-\section{Discussion}
-\section{Future work}
+While our framework does make progress towards safe therapy, a lot of work still needs to be done. Specifically, more feedback from trained psychotherapists is needed to edit prompts and help revise language. As laid out in the discussion, robust monitor agents can be trained for better identifying cognitive distortions and emotions. Additionally, a crisis-specific model can be helpful to go beyond the limitation of just recommending a hotline. When people turn to agents in moments of crisis they want to feel heard, not receive a generic ``talk to someone else'' message.
+
+In terms of psychotherapy, these agents can serve as a tool for therapists when they cannot interact with their patients daily. Emotions are inherently human, and therapeutic alliance is a strong predictor of patient outcomes, so keeping a human in the loop is quite necessary. These agents however can be a scalable tool to help patients practice re-interpreting their thoughts and practice adaptive behaviors. Additionally, the therapist can get more data on how the patient actually behaves day to day and what seems to be helping. Our system is also built to be customizable by a therapist, so they can build their own specific interventions for patients and customize care as needed, allowing them to further help their patients live their best life.
+
+Further research should be done beyond social anxiety disorder in college students, since that is a small subset of the population. More personas could be generated for different disorders and tested through our evaluation system. Further, eventually randomized controlled trials with human participants should be performed so that we can measure symptom changes using validated instruments like the DSM-5 Social Anxiety Disorder questionnaire. This would allow us to test whether humans are actually responding well, not just simulations.
+
+
+
 \bibliographystyle{acm}
 \bibliography{references}
 %%%%%%%% End References %%%%%%
