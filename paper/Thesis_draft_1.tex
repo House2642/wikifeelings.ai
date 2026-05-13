@@ -157,10 +157,14 @@ While AI agents have risen in popularity over the past few years, so has unique 
 
 \textbf{LLM-as-a-Judge:} LLM-as-a-judge is a technique where a separate LLM is prompted to evaluate the quality of another model's output. This allows for scalable automated evaluation without requiring human annotation for every response, which is how we assess therapeutic quality across our simulated sessions.
 
-\textbf{Chain of thought reasoning}: Commonly abbreviated as CoT, chain of thought reasoning is when you prompt an LLM to explain its steps in arriving at an answer. This technique has been shown to produce more accurate results and allows us to understand why certain answers were given. This is especially important for understanding our judge LLM's reasoning for assigning certain scores\cite{wei2022chain}.
+\textbf{Chain of thought reasoning}: Commonly abbreviated as CoT, chain of thought reasoning is when you prompt an LLM to explain its steps in arriving at an answer. This technique has been shown to produce more accurate results and allows us to understand why certain answers were given. This is especially important for understanding our judge LLM's reasoning for assigning certain scores \cite{wei2022chain}.
+
+\subsection{Overview}
+In Chapter 3 we discuss related work in terms of LLM-based therapy and other research areas on gaining guarantees on LLM behavior. In Chapter 4 we discuss the metrics for evaluating psychotherapy and how we evaluate our agents. In Chapter 5 we discuss monitor agents, progressive disclosure, and finite state machines and how they inspire the implementation of TheraEph. In Chapter 6 we discuss constitutional AI, our therapeutic constitution, and our self-improvement implementation. In Chapter 7 we discuss our results from running our therapy evaluation. In Chapter 8 we discuss the strengths and weaknesses of each system with regard to the therapeutic fidelity of each agent, their ability to handle crisis, and their performance in constructing a cognitive conceptualization. In Chapter 9 we discuss where we see LLM-based therapy fitting into the larger landscape of treatment.
 
 \chapter{Related work}
-Using LLM-based chatbots for therapy is a popular application. However, most approaches are focused on getting to market fast and do not often study nor have adequate safety guarantees. Beyond just therapeutic chatbots, other approaches address safety and formal guarantees.
+Using LLMs as a basis for therapy is a hot topic. Many approaches focus on getting to market quickly and do not often study nor have adequate safety guarantees. Beyond therapeutic chatbots, there is an abundance of research into controll chatbot behavior.
+
 \section{Therapeutic Chatbots}
 There have been multiple attempts at creating a mental health chatbot, the main being TheraBot developed by Nicholas Jacobson and Michael Heinz at Dartmouth. They ran a clinical trial using TheraBot and found a clinically significant decrease in symptoms for major depressive disorder, generalized anxiety disorder and eating disorders. They built a custom training set that includes evidence-based practices for psychotherapy and cognitive behavioral therapy. They then finetuned an LLM using this data and achieved a bot that responded in a clinically valid way 90\% of the time \cite{heinz2025therabot}. The other big player in the mental health space is Slingshot AI with their chat bot ASH. Slingshot has raised nearly \$100 million usd to develop a therapeutic chat bot. \cite{aguilar2025slingshot} They recently published a study on a 12-week trial finding a significant decrease in symptoms on the GAD-7 and scored perfectly on their evaluation framework for escalation policies \cite{hull2025mentalhealth}. While Slingshot's exact methods are currently private, they have indicated they are using finetuning and a large group of psychologists and psychiatrists to do reinforcement learning on ASH. Additionally, Talha Tahir from the University of Toronto fine tuned an open weight model for CBT for depression. She evaluated this bot in a test suite of simulated patients and found a lot of success, however, as noted in the study the chat bot had difficulty with procedure adherence. Additionally, the clinical validity of simulated conversations is also questionable. \cite{tahir2024finetuning}
 
@@ -193,7 +197,7 @@ Quality of care focuses on adherence to evidence based treatment (specifically C
 
 \textbf{Therapeutic Alliance:} Therapeutic alliance is the strength of the relationship between a therapist and patient. Just like you are more likely to follow the advice of a close friend you trust, patients are more likely to stick to treatment and see better outcomes when they have a stronger alliance with their therapist. Therapeutic alliance can be split up into three parts: the emotional connection between the patient and therapist, consensus on therapeutic tasks, and consensus on therapeutic goals. Out of all our evaluation metrics, therapeutic alliance is the most difficult to measure. To accurately test whether people respond to treatment the same when they know their therapist is an AI agent versus a real therapist would require a randomized controlled trial which is out of the scope of this study. Thus we will mention its importance, but will not evaluate it. \\
 
-\textbf{Case Conceptualization:} Case conceptualization in CBT is the process of a therapist understanding their patient and identifying which factors in their life will affect the way they think, feel, and act, as well as which thoughts lead to certain negative emotions and behaviors. The therapist is building a model of the patient in order to direct the course of treatment. We argue that AI agents can serve as an accessible intermediate source of support between therapy sessions. Beyond direct support, if an agent can accurately conceptualize what the patient is feeling, that data can be passed to a human therapist to provide richer context at the start of their next session, enabling more informed and targeted treatment.
+\textbf{Cognitive Conceptualization:} Cognitive conceptualization in CBT is the process of a therapist understanding their patient and identifying which factors in their life will affect the way they think, feel, and act, as well as which thoughts lead to certain negative emotions and behaviors. The therapist is building a model of the patient in order to direct the course of treatment. We argue that AI agents can serve as an accessible intermediate source of support between therapy sessions. Beyond direct support, if an agent can accurately conceptualize what the patient is feeling, that data can be passed to a human therapist to provide richer context at the start of their next session, enabling more informed and targeted treatment.
 
 \subsection{Risk}
 Risk focuses on detecting and mitigating physical or psychological harms. \\
@@ -203,9 +207,9 @@ Risk focuses on detecting and mitigating physical or psychological harms. \\
 \textbf{Adverse Outcomes}: Adverse outcomes is when a patient outside of a therapeutic session drops out of therapy (i.e. stops attending sessions or getting support), enters psychosis, or commits self-harm including suicide. All of these scenarios happen outside of a therapy session and can be in response to certain situations in a patient's life. Similar to therapeutic alliance, it is an important metric to track, however, simulating these scenarios of life over the course of a few weeks would be quite difficult and out of the scope of our research.
 
 \section{Architecture of Simulated Therapy Session}
-Our evaluation will be a series of simulated therapy sessions between an AI therapist agent and a persona agent. While many psychotherapy evaluation metrics are worth mentioning, our actual evaluations will have a tighter scope focused on a single therapy session and metrics that can be evaluated from text itself. While an LLM can simulate conversation well \cite{yehudai2025survey}, it is harder to know if it can accurately simulate the interpersonal dynamics of change especially in response to certain life events. As a result, we will not evaluate on patient progress, therapeutic alliance, and adverse outcomes. These are metrics that are better suited to be tested in a randomized controlled trial. However, before that is done, safety guarantees should be in place, thus we focus on evaluating for treatment fidelity, acute crisis, and case conceptualization. 
+Our evaluation will be a series of simulated therapy sessions between an AI therapist agent and a persona agent. While many psychotherapy evaluation metrics are worth mentioning, our actual evaluations will have a tighter scope focused on a single therapy session and metrics that can be evaluated from text itself. While an LLM can simulate conversation well \cite{yehudai2025survey}, it is harder to know if it can accurately simulate the interpersonal dynamics of change especially in response to certain life events. As a result, we will not evaluate on patient progress, therapeutic alliance, and adverse outcomes. These are metrics that are better suited to be tested in a randomized controlled trial. However, before that is done, safety guarantees should be in place, thus we focus on evaluating for treatment fidelity, acute crisis, and cognitive conceptualization. 
 
-In the simulation, agents will have a multi-turn conversation producing a therapy session transcript. At the end of each session, the therapist will be asked to fill out a case conceptualization form about the patient, indicating the situation they are experiencing, their automatic thoughts, cognitive distortions, and behaviors. The therapy transcript will then be judged by an LLM on treatment fidelity. The case conceptualization will be judged separately.
+In the simulation, agents will have a multi-turn conversation producing a therapy session transcript. At the end of each session, the therapist will be asked to fill out a cognitive conceptualization form about the patient, indicating the situation they are experiencing, their automatic thoughts, cognitive distortions, and behaviors. The therapy transcript will then be judged by an LLM on treatment fidelity. The cognitive conceptualization will be judged separately.
 
 Additionally, the same therapy agent will also be evaluated on its ability to handle crisis scenarios using short three-turn conversations of a patient in distress. A separate judge LLM will be used to evaluate how well the agent follows policy of assessing, de-escalating, and flagging for human consultation. In this section we will explain in detail the actual criteria used for evaluation, how each persona is generated, and what the personas actually are. 
 
@@ -214,7 +218,7 @@ While this framework can scale across disorders, demographics and treatments, we
 We will use a set of 14 observed personas of college students with social anxiety (SA) in different situations. These simulated therapy sessions will cover common themes such as fear of rejection in social interactions, presenting in class, and feeling judged in smaller seminar groups. You can find a more details about each persona in section below [Update when final]
 
 \subsection{Quality of Care Metrics}
-We will describe how we will extract numerical scores for the object in our quality of care ontology. As stated above we will be focused on the following subset: patient progress, treatment fidelity, and case conceptualization. \\
+We will describe how we will extract numerical scores for the object in our quality of care ontology. As stated above we will be focused on the following subset: patient progress, treatment fidelity, and cognitive conceptualization. \\
 
 \textbf{Treatment Fidelity:} After each session a judge LLM will fill out the Beck Institute Cognitive Therapy Rating Scale (CTRS). \cite{beckinstitute2020ctrs} The CTRS is a series of 7 point Likert scales (0=poor to 6=excellent) rating the therapist on 11 different Criteria. The first section focuses on general therapeutic skills which are following a clear session agenda, eliciting feedback from the patient, seeking to understand the patients internal state, demonstrating effective interpersonal skills such as warmth and professionalism, collaborating well with the patient, and having good pacing and efficiently using the therapy session time. The second section of the CTRS focuses specifically on CBT. Does the therapist properly use guided discovery, do they hone in on key cognitions or behaviors, do they build a strategy for change, do they properly apply cognitive-behavioral techniques and do they review and assign homework. \\
 
@@ -322,7 +326,7 @@ This is a **0** because:
 
 The analysis may seem a bit verbose and in future work it might make sense to prompt for less reasoning to reduce output token cost making the evaluation more scalable.
  
-\textbf{Case Conceptualization:} After each session, we use our therapist agent to fill out a subsection of the Beck Institute Cognitive Conceptualization Diagram Worksheet. \cite{beckinstitute2018ccd} Each persona in their system prompt will be given a situation, automatic thoughts, meaning of automatic thoughts, emotions, and behaviors. We will then ask the therapist agent to fill out what it believes is the situation the patient is going through, their automatic thoughts, meaning of automatic thoughts, emotions and behaviors. The goal of this evaluation is to test if the therapist agent can understand the patient and if the data it extracts is accurate for a human therapist to analyze and make treatment decisions off of. \\
+\textbf{Cognitive Conceptualization:} After each session, we use our therapist agent to fill out a subsection of the Beck Institute Cognitive Conceptualization Diagram Worksheet. \cite{beckinstitute2018ccd} Each persona in their system prompt will be given a situation, automatic thoughts, meaning of automatic thoughts, emotions, and behaviors. We will then ask the therapist agent to fill out what it believes is the situation the patient is going through, their automatic thoughts, meaning of automatic thoughts, emotions and behaviors. The goal of this evaluation is to test if the therapist agent can understand the patient and if the data it extracts is accurate for a human therapist to analyze and make treatment decisions off of. \\
 
 We created a data type called CasePersona and the agent is passed the full session transcript and asked to produce the conceptualization. Here is the following data type:
 
@@ -1494,7 +1498,7 @@ Mean eval score (0--3)$^{a}$    & 2.33 \\
 
 The crisis classification for the baseline therapist agent is quite accurate at 95\% and does a good job of not only identifying when the user is in imediate risk of self harm, but also discerens when they are not at risk even while talking about sensitive topics. The agent doesn't fair aswell when handling crisis. De-escalation is a crucial step in enabling users to remain safe before they reachout to get help and the baseline agent scored a 20%. 
 
-\subsection {Case Conceptualization}
+\subsection {Cognitive Conceptualization}
 
 \begin{table}[ht]
 \centering
@@ -1735,7 +1739,7 @@ Mean eval score (0--3)$^{a}$ & 1 \\
 \end{table}
 Our bad baseline gets the same crisis classification accuracy as our baseline agent which makes sense because they are using the same claude model to classify each message. The agent does poorly on handling crisis, only recommending emergency services and executing none of the other steps in crisis handling. This seems consistent with the system prompt instructions of "Just say you can't help and recoment emergency service". Our crisis judge can detect the absence of our agent assessing crisis scenarios, attempting to de escalate, and flagging the conversation for human consultation.
 
-\subsection{Case Conceptualization}
+\subsection{Cognitive Conceptualization}
 \begin{table}[ht]
 \centering
 \caption{Conceptualization scores for the bad baseline therapist, run \texttt{add7e6c3}
@@ -1769,7 +1773,7 @@ Situation, Automatic Thoughts, Emotions, and behaviors conceptualization scores 
 
 \section{TheraEph}
 
-Just like baseline, we ran our TheraEph through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and case conceptualization. We will be comparing TheraEph to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
+Just like baseline, we ran our TheraEph through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and cognitive conceptualization. We will be comparing TheraEph to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
 
 \subsection{Treatment Fidelity}
 \begin{table}[ht]
@@ -1966,7 +1970,7 @@ Mean eval score (0--4) & 3.0 \\
 
 The TheraEph has the same classification accurarcy of 95\% as our baseline agent. It performs significantly better at De-escalation, de-escalting 50\% of the time compared to 20\% on our baseline. Additionally, TheraEph requests human consultation 90\% of the time compared to only 10\% of the time for the baseline. However, TheraEph does worse on assesing the situation at 70\% compared to 90\% for our baseline. 
 
-\subsection{Case Conceptualization}
+\subsection{Cognitive Conceptualization}
 \begin{table}[ht]
 \centering
 \caption{Conceptualization scores for the TheraEph - Haiku CTRS, run \texttt{098bcce8} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
@@ -1996,7 +2000,7 @@ Cognitive Distortion Jaccard & 0.074 & 0.105 & $\pm 0.061$ \\
 There are no significant differences between the TheraEph and baseline for identifiying the situation, labeling automating thoughts, recording emotions, and tracking behaviors. However, the average cognitive distortion jaccard similarity is significantly lower at 0.074 compared to the average for baseline of .232.
 
 \section{Constitutional}
-For our Constituional AI Agent, we ran our evaluation framework with 1 conversation for each of the 14 personas and all 40 crisis test cases. We evaluated the fidelity, case conceptualization, and crisis handling
+For our Constituional AI Agent, we ran our evaluation framework with 1 conversation for each of the 14 personas and all 40 crisis test cases. We evaluated the fidelity, cognitive conceptualization, and crisis handling
 
 \subsection{Fidelity}
 \begin{table}[ht]
@@ -2224,7 +2228,7 @@ Mean eval score (0--4)$^{a}$ & 1.94 \\
 
 The constituional agent performs about on par with the baseline for handling crisis. It asses crisis well and recommends emergency services but doesn't de escalate well or request human consultations. Additionally, the montior agent miss classified 3 harm to self scenarios which is one less than the rest our classification runs. 
 
-\subsection{Case Conceptualization}
+\subsection{Cognitive Conceptualization}
 \begin{table}[ht]
 \centering
 \caption{Conceptualization scores for the Constitutional - Haiku, run \texttt{4202cf51} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
@@ -2268,8 +2272,8 @@ Another interesting result is the models, specifically Claude Haiku which is Ant
 
 Constitutional AI could be used in this situation to generate a large corpus of data on how to properly handle these crisis scenarios. We could use our personas to simulate thousands of crisis scenarios and then use revision with details on how to de-escalate and properly recommend services to build the data to fine-tune on. Finally, we could fine-tune a model to specifically handle crisis scenarios. This has been left for future work.
 
-\section{Case Conceptualization}
-Overall, all four of our agents performed about the same on case conceptualization. All excelled at understanding the situation and recording the reactionary behaviors. LLMs are great at summarization and identifying the situation and behaviors is a similar task. \cite{aly2025evaluation} This reliability is good for therapists since they can accurately use the information from session history to help their patients. For example, if they see a patient has been struggling a lot with meeting new people, they can bring it up and discuss more in depth in their session and craft homework to help the patient in these scenarios.
+\section{Cognitive Conceptualization}
+Overall, all four of our agents performed about the same on cognitive conceptualization. All excelled at understanding the situation and recording the reactionary behaviors. LLMs are great at summarization and identifying the situation and behaviors is a similar task. \cite{aly2025evaluation} This reliability is good for therapists since they can accurately use the information from session history to help their patients. For example, if they see a patient has been struggling a lot with meeting new people, they can bring it up and discuss more in depth in their session and craft homework to help the patient in these scenarios.
 
 The agents struggled the most on emotions, automatic thoughts, and identifying cognitive distortions. Across all of the systems, Jaccard similarity between the ground truth cognitive distortions listed in personas and the predicted distortions is quite low. Often times the model gives 3-5 predictions about potential distortions when there is often only 1-2. Similarly, there is a lack of precision for automatic thoughts and identifying cognitive distortions. LLMs can be good at classification tasks as we saw with the Reddit posts, so building another monitor agent that could classify cognitive distortions, emotions, and automatic thoughts could be effective in getting a more effective therapist agent by making better decisions with precise context on emotions and thought patterns.
 
