@@ -74,20 +74,19 @@ Williamstown, Massachusetts\\
 \onehalfspacing
 
 \chapter{Abstract}
-In 2024, 14.5\% of Americans ages 18-25 reported moderate to severe anxiety symptoms and 22\% reported mild symptoms. Moreover, 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. This may explain why many are turning to large language models (LLMs) such as OpenAI’s ChatGPT and Anthropic’s Claude: 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. While LLMs hold great promise in filling the therapeutic availability gap, their strengths and weaknesses are not clearly understood.
+In 2024, 14.5\% of Americans ages 18-25 reported moderate to severe anxiety symptoms and 22\% reported mild symptoms. Moreover, 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. This may explain why many are turning to large language models (LLMs) such as OpenAI's ChatGPT and Anthropic's Claude: 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. While LLMs hold great promise in filling the therapeutic availability gap, their strengths and weaknesses are not clearly understood.
 
-Using widely-accepted criteria from the cognitive behavioral therapy (CBT) community, this work studies the quality of care and risk profiles of LLM-based therapists. Because automated treatment is new, and its risks are unknown, this work proposes a risk-free simulated patient we call a \emph{persona} as a kind of “animal model” for determining the efficacy of therapy sessions. Based on prior work that characterizes common traits among college students having mild to severe anxiety, we derive 14 different personas and place them in common anxiety-inducing social scenarios. A therapy agent is then tasked with treating a simulated patient of a persona and then evaluated against well-known evidence-based quality of care scales like the cogntivie therapy rating scale (CTRS).   We also place therapists in simulated crisis situations drawn from real-world dialogues taken from reddit, and evaluate their ability to detect and appropriately respond to dangerous events. 
+Using widely-accepted criteria from the cognitive behavioral therapy (CBT) community, this work studies the quality of care and risk profiles of LLM-based therapists. Because automated treatment is new, and its risks are unknown, this work proposes a risk-free simulated patient we call a \emph{persona} as a kind of ``animal model'' for determining the efficacy of therapy sessions. Based on prior work that characterizes common traits among college students having mild to severe anxiety, we derive 14 different personas and place them in common anxiety-inducing social scenarios. A therapy agent is then tasked with treating a simulated patient of a persona and then evaluated against well-known evidence-based quality of care scales like the Cognitive Therapy Rating Scale (CTRS). We also place therapists in simulated crisis situations drawn from real-world dialogues taken from Reddit, and evaluate their ability to detect and appropriately respond to dangerous events.
 
-Our work proposes a therapy agent framework called TheraEph. TheraEph uses a finite state machine (FSM) structure  progressive disclosure, and LLM monitor agents to guide a LLM through a CBT session. We also test a self improvement strategy that is derived from Anthropic's Constituion AI, to revise outputs to adhere to therapy principle on the CTRS. Each strategy is compared against a baseline therapy agent which is anthropics haiku with a system prompt detailing the model to act as a lead CBT therapist. 
+Our work proposes a therapy agent framework called TheraEph. TheraEph uses a finite state machine (FSM) structure, progressive disclosure, and LLM monitor agents to guide an LLM through a CBT session. We also test a self-improvement strategy derived from Anthropic's Constitutional AI to revise outputs to adhere to therapy principles on the CTRS. Each strategy is compared against a baseline therapy agent, which is Anthropic's Haiku with a system prompt instructing the model to act as a lead CBT therapist.
 
-TheraEph preformed the best averaging a CTRS score of 
-
+TheraEph performed the best, averaging a CTRS score of 46.07 out of 66 (95\% CI $\pm$ 1.25). Our self-improvement model, which we refer to as Constitutional Therapist, performs second best with an average CTRS score of 42.86 out of 66 (95\% CI $\pm$ 1.68). The baseline therapy agent performs the worst with an average CTRS score of 38.29 out of 66 (95\% CI $\pm$ 1.19). Additionally, TheraEph performs best in de-escalating crisis scenarios and recommending human interventions.
 %%%%%%%% Chapters %%%%%%%%%%%%
 %% Introduction
 \chapter{Introduction}
 
 \section{Motivation}
-Mental health in America is in a supply and demand crisis. 14.5\% of 18-25 year olds reported moderate to severe anxiety symptoms in 2024 \cite{samhsa2024nsduh} Additionally, 22\% of 18-25 year olds reported mild symptoms of anxiety in the past year 2024 \cite{samhsa2024nsduh} Anxiety in America is prevalent for young adults, but treatment is in short supply. 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. \cite{samhsa2024nsduh} As a result, many are turning to LLMs such as OpenAI's ChatGPT and Anthropic's Claude. 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. \cite{sentio2024survey} Of those who use LLMs for mental health support, 79.8\% used it to support anxiety, 72.4\% use it to support depression, and 70.0\% use it to support stress. \cite{sentio2024survey}.
+Mental health in America is in a supply and demand crisis. 14.5\% of 18-25 year olds reported moderate to severe anxiety symptoms in 2024 \cite{samhsa2024nsduh} Additionally, 22\% of 18-25 year olds reported mild symptoms of anxiety in the same year 2024 \cite{samhsa2024nsduh} Anxiety in America is prevalent for young adults, but treatment is in short supply. 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year report that they wanted treatment but did not get it. \cite{samhsa2024nsduh} This may explain why many are turning to large language models (LLMs) such as OpenAI's ChatGPT and Anthropic's Claude. 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. \cite{sentio2024survey} Of those who use LLMs for mental health support, 79.8\% used it to support anxiety, 72.4\% use it to support depression, and 70.0\% use it to support stress. \cite{sentio2024survey}.
 
 There have been many success stories; in a randomized controlled trial on humans, treatment from fine-tuned LLMs showed a decrease in symptoms of anxiety and depression for patients. \cite{heinz2025therabot} However, therapeutic chatbots have significant risks, and experts have deemed them inadequate at the moment. \cite{moore2025stigma}. The greatest risks have been failure to handle crisis scenarios. Multiple times, ChatGPT has assisted users in committing suicide and sometimes encouraged the behavior. In July 2025, Zane Shamblin, in a conversation with ChatGPT, said ``I'm used to the cool metal on my temple now,'' referring to the loaded gun he had in his hand. ChatGPT responded with ``Cold steel pressed against a mind that's already made peace? That's not fear. That's clarity. You're not rushing. You're just ready.'' \cite{kuznia2025chatgpt} There are numerous other cases of similar suicidal assistance from ChatGPT. \cite{johnson2025chatgpt,guardian2025chatgpt_lawsuit} While these cases are extreme and alarming, recommending emergency services is not enough. There are many patients reaching out for help without explicitly expressing suicidal intent. Sophie, a 29-year-old who was struggling with her mental health, told ChatGPT: ``I intermittently have suicidal thoughts. I do want to get better, but I feel like the suicidal thoughts are impeding my true commitment to healing. What should I do?'' ChatGPT replied with a generic referral to professional help, and repeated similar advice across various scenarios. However, intervention never happened and no one was notified. \cite{nytimes2025chatgpt_opinion} A therapeutic system that can flag crisis scenarios in progress and route patients to the appropriate intervention is needed.
 
@@ -158,18 +157,18 @@ While AI agents have risen in popularity over the past few years, so has unique 
 
 \textbf{LLM-as-a-Judge:} LLM-as-a-judge is a technique where a separate LLM is prompted to evaluate the quality of another model's output. This allows for scalable automated evaluation without requiring human annotation for every response, which is how we assess therapeutic quality across our simulated sessions.
 
-\section{Related work}
+\chapter{Related work}
 Using LLM-based chatbots for therapy is a popular application. However, most approaches are focused on getting to market fast and do not often study nor have adequate safety guarantees. Beyond just therapeutic chatbots, other approaches address safety and formal guarantees.
-\subsection{Therapeutic Chatbots}
+\section{Therapeutic Chatbots}
 There have been multiple attempts at creating a mental health chatbot, the main being TheraBot developed by Nicholas Jacobson and Michael Heinz at Dartmouth. They ran a clinical trial using TheraBot and found a clinically significant decrease in symptoms for major depressive disorder, generalized anxiety disorder and eating disorders. They built a custom training set that includes evidence-based practices for psychotherapy and cognitive behavioral therapy. They then finetuned an LLM using this data and achieved a bot that responded in a clinically valid way 90\% of the time \cite{heinz2025therabot}. The other big player in the mental health space is Slingshot AI with their chat bot ASH. Slingshot has raised nearly \$100 million usd to develop a therapeutic chat bot. \cite{aguilar2025slingshot} They recently published a study on a 12-week trial finding a significant decrease in symptoms on the GAD-7 and scored perfectly on their evaluation framework for escalation policies \cite{hull2025mentalhealth}. While Slingshot's exact methods are currently private, they have indicated they are using finetuning and a large group of psychologists and psychiatrists to do reinforcement learning on ASH. Additionally, Talha Tahir from the University of Toronto fine tuned an open weight model for CBT for depression. She evaluated this bot in a test suite of simulated patients and found a lot of success, however, as noted in the study the chat bot had difficulty with procedure adherence. Additionally, the clinical validity of simulated conversations is also questionable. \cite{tahir2024finetuning}
 
-\subsection{World Models}
+\section{World Models}
 World models have been proposed as a way to promote reasoning in chat bots. One way to develop a world model is through probabilistic programming languages. LLMs are used to translate natural language to a probabilistic programming language. This probabilistic language then stores beliefs about the world and updates them as new information comes in. Then when the chat bot is asked to make inferences about the world it runs a probabilistic program and gets a mathematically derived answer. \cite{wong2023word} One of the major drawbacks of probabilistic programming is the complex nature of its programs and the difficulty to map ambiguous real world concepts into programmatic clauses. Developing a strong world model does have many benefits. If properly developed, a world model will allow for mathematical reasoning about the world which can then be formally verified for safety adherence. \cite{dalrymple2024guaranteed}
 
-\subsection{Steering}
+\section{Steering}
 Steering is the process of building reasoning structures to guide the LLM towards better answers. The most well-known steering method is chain-of-thought prompting where you ask the LLM to write out its reasoning steps. This tends to elicit better and more accurate answers \cite{wei2022chain} There have been variations on chain of thought like adding separate models to evaluate each reasoning step to steer outputs towards less racially biased responses for example. \cite{hall2025guiding} Another variant specifically for math tasks was to have each step in the chain of thought reasoning be translated into code, then at evaluation time the program is executed to produce the final result. \cite{chen2023program} Steering could be useful for therapeutic chat bots in multiple ways. You could imagine giving an example reasoning trace from a therapist and asking an LLM to reproduce it to get better therapeutic outputs. However, steering only provides marginal improvement with no formal guarantees. Due to the high risk nature of therapy not having a bound of reliability is inadequate.
 
-\subsection{Evaluations}
+\section{Evaluations}
 
 \chapter{Metrics}
 We built an evaluation framework that assesses agents on their ability to provide quality care such as adhering to an evidence based treatment like CBT and their ability to properly flag and handle risky situations such as a user considering self harm. There are many possibilities for how different disorders may present themselves and how crisis may unfold so it is impossible to generate and test every single case. Instead, we created a simulation that approximates human patient therapeutic interactions. Similar to how drugs are tested on mice before human trials, the evaluation framework uses LLMs to simulate patients with social anxiety disorder in different situations so we evaluate therapist agents before more serious trials are performed on humans. Additionally, having psychologists evaluate each simulated conversation individually is costly and time consuming, so we use a series of LLMs to judge the outputs based on clinically validated frameworks commonly used in CBT evaluation for human psychotherapists \cite{beckinstitute2020ctrs}.
@@ -1388,46 +1387,46 @@ We simulated 1 conversation with each of our 14 personas, averages for the CTRS 
 \subsection{Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the baseline therapist, run \texttt{4c025580} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
-\label{tab:ctrs_baseline}
+\caption{CTRS scores for the baseline - Haiku, run \texttt{4c025580} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
+\label{tab:ctrs_4c025580}
 \begin{tabular}{|l|r|r|r|}
 \hline
-\textbf{Subscale} & \textbf{Mean (\%)} & \textbf{SD (\%)} & \textbf{95\% CI} \\
+\textbf{Subscale} & \textbf{Mean} & \textbf{SD} & \textbf{95\% CI} \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part I --- General Therapeutic Skills}} \\
 \hline
-Agenda & 3.6 & 7.1 & $\pm 4.1\%$ \\
+Agenda & 0.21 & 0.43 & $\pm 0.25$ \\
 \hline
-Feedback & 34.5 & 17.9 & $\pm 10.3\%$ \\
+Feedback & 2.07 & 1.07 & $\pm 0.62$ \\
 \hline
-Understanding & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Understanding & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Interpersonal effectiveness & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Interpersonal effectiveness & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Collaboration & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Collaboration & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Pacing \& time use & 61.9 & 10.2 & $\pm 5.9\%$ \\
+Pacing \& time use & 3.71 & 0.61 & $\pm 0.35$ \\
 \hline
-\textbf{Part I total} & \textbf{50.0} & \textbf{3.8} & $\mathbf{\pm 2.2\%}$ \\
+\textbf{Part I total} & \textbf{18.0} & \textbf{1.36} & $\mathbf{\pm 0.78}$ \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part II --- Conceptualization, Strategy \& Technique}} \\
 \hline
-Guided discovery & 60.7 & 16.8 & $\pm 9.7\%$ \\
+Guided discovery & 3.64 & 1.01 & $\pm 0.58$ \\
 \hline
-Focusing on key cognitions & 67.9 & 4.5 & $\pm 2.6\%$ \\
+Focusing on key cognitions & 4.07 & 0.27 & $\pm 0.15$ \\
 \hline
-Strategy for change & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Strategy for change & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Application of techniques & 65.5 & 4.5 & $\pm 2.6\%$ \\
+Application of techniques & 3.93 & 0.27 & $\pm 0.15$ \\
 \hline
-Homework & 77.4 & 8.3 & $\pm 4.8\%$ \\
+Homework & 4.64 & 0.5 & $\pm 0.29$ \\
 \hline
-\textbf{Part II total} & \textbf{67.6} & \textbf{5.1} & $\mathbf{\pm 3.0\%}$ \\
+\textbf{Part II total} & \textbf{20.29} & \textbf{1.54} & $\mathbf{\pm 0.89}$ \\
 \hline
 \hline
-\textbf{CTRS total} & \textbf{58.0} & \textbf{3.1} & $\mathbf{\pm 1.8\%}$ \\
+\textbf{CTRS total} & \textbf{38.29} & \textbf{2.05} & $\mathbf{\pm 1.19}$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -1544,46 +1543,46 @@ Just like our actual baseline we ran the agent for 1 conversation on all 14 pers
 \subsection{Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the bad baseline - Haiku, run \texttt{add7e6c3} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
+\caption{CTRS scores for the bad baseline - Haiku, run \texttt{add7e6c3} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
 \label{tab:ctrs_add7e6c3}
 \begin{tabular}{|l|r|r|r|}
 \hline
-\textbf{Subscale} & \textbf{Mean (\%)} & \textbf{SD (\%)} & \textbf{95\% CI} \\
+\textbf{Subscale} & \textbf{Mean} & \textbf{SD} & \textbf{95\% CI} \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part I --- General Therapeutic Skills}} \\
 \hline
-Agenda & 0.0 & 0.0 & $\pm 0.0\%$ \\
+Agenda & 0.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Feedback & 4.8 & 12.1 & $\pm 7.0\%$ \\
+Feedback & 0.29 & 0.73 & $\pm 0.42$ \\
 \hline
-Understanding & 31.0 & 14.4 & $\pm 8.3\%$ \\
+Understanding & 1.86 & 0.86 & $\pm 0.5$ \\
 \hline
-Interpersonal effectiveness & 23.8 & 12.6 & $\pm 7.3\%$ \\
+Interpersonal effectiveness & 1.43 & 0.76 & $\pm 0.44$ \\
 \hline
-Collaboration & 28.6 & 13.8 & $\pm 7.9\%$ \\
+Collaboration & 1.71 & 0.83 & $\pm 0.48$ \\
 \hline
-Pacing \& time use & 29.8 & 11.7 & $\pm 6.7\%$ \\
+Pacing \& time use & 1.79 & 0.7 & $\pm 0.4$ \\
 \hline
-\textbf{Part I total} & \textbf{19.6} & \textbf{8.6} & $\mathbf{\pm 5.0\%}$ \\
+\textbf{Part I total} & \textbf{7.07} & \textbf{3.1} & $\mathbf{\pm 1.79}$ \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part II --- Conceptualization, Strategy \& Technique}} \\
 \hline
-Guided discovery & 23.8 & 15.6 & $\pm 9.0\%$ \\
+Guided discovery & 1.43 & 0.94 & $\pm 0.54$ \\
 \hline
-Focusing on key cognitions & 34.5 & 24.0 & $\pm 13.8\%$ \\
+Focusing on key cognitions & 2.07 & 1.44 & $\pm 0.83$ \\
 \hline
-Strategy for change & 26.2 & 24.2 & $\pm 14.0\%$ \\
+Strategy for change & 1.57 & 1.45 & $\pm 0.84$ \\
 \hline
-Application of techniques & 22.6 & 24.1 & $\pm 13.9\%$ \\
+Application of techniques & 1.36 & 1.45 & $\pm 0.84$ \\
 \hline
-Homework & 26.2 & 20.4 & $\pm 11.8\%$ \\
+Homework & 1.57 & 1.22 & $\pm 0.71$ \\
 \hline
-\textbf{Part II total} & \textbf{26.7} & \textbf{19.7} & $\mathbf{\pm 11.3\%}$ \\
+\textbf{Part II total} & \textbf{8.0} & \textbf{5.9} & $\mathbf{\pm 3.4}$ \\
 \hline
 \hline
-\textbf{CTRS total} & \textbf{22.8} & \textbf{13.0} & $\mathbf{\pm 7.5\%}$ \\
+\textbf{CTRS total} & \textbf{15.07} & \textbf{8.59} & $\mathbf{\pm 4.96}$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -1773,46 +1772,46 @@ Just like baseline, we ran our TheraEph through 1 conversation with all 14 perso
 \subsection{Treatment Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the TheraEph therapist, run \texttt{098bcce8} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
-\label{tab:ctrs_final_monitor}
+\caption{CTRS scores for the TheraEph - Haiku CTRS, run \texttt{098bcce8} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
+\label{tab:ctrs_098bcce8}
 \begin{tabular}{|l|r|r|r|}
 \hline
-\textbf{Subscale} & \textbf{Mean (\%)} & \textbf{SD (\%)} & \textbf{95\% CI} \\
+\textbf{Subscale} & \textbf{Mean} & \textbf{SD} & \textbf{95\% CI} \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part I --- General Therapeutic Skills}} \\
 \hline
-Agenda & 45.2 & 13.8 & $\pm 7.9\%$ \\
+Agenda & 2.71 & 0.83 & $\pm 0.48$ \\
 \hline
-Feedback & 69.0 & 14.4 & $\pm 8.3\%$ \\
+Feedback & 4.14 & 0.86 & $\pm 0.5$ \\
 \hline
-Understanding & 70.2 & 7.1 & $\pm 4.1\%$ \\
+Understanding & 4.21 & 0.43 & $\pm 0.25$ \\
 \hline
-Interpersonal effectiveness & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Interpersonal effectiveness & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Collaboration & 75.0 & 8.6 & $\pm 5.0\%$ \\
+Collaboration & 4.5 & 0.52 & $\pm 0.3$ \\
 \hline
-Pacing \& time use & 67.9 & 4.5 & $\pm 2.6\%$ \\
+Pacing \& time use & 4.07 & 0.27 & $\pm 0.15$ \\
 \hline
-\textbf{Part I total} & \textbf{65.7} & \textbf{4.2} & $\mathbf{\pm 2.4\%}$ \\
+\textbf{Part I total} & \textbf{23.64} & \textbf{1.5} & $\mathbf{\pm 0.87}$ \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part II --- Conceptualization, Strategy \& Technique}} \\
 \hline
-Guided discovery & 76.2 & 8.6 & $\pm 4.9\%$ \\
+Guided discovery & 4.57 & 0.51 & $\pm 0.3$ \\
 \hline
-Focusing on key cognitions & 71.4 & 7.8 & $\pm 4.5\%$ \\
+Focusing on key cognitions & 4.29 & 0.47 & $\pm 0.27$ \\
 \hline
-Strategy for change & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Strategy for change & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Application of techniques & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Application of techniques & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Homework & 92.9 & 8.6 & $\pm 4.9\%$ \\
+Homework & 5.57 & 0.51 & $\pm 0.3$ \\
 \hline
-\textbf{Part II total} & \textbf{74.8} & \textbf{3.9} & $\mathbf{\pm 2.2\%}$ \\
+\textbf{Part II total} & \textbf{22.43} & \textbf{1.16} & $\mathbf{\pm 0.67}$ \\
 \hline
 \hline
-\textbf{CTRS total} & \textbf{69.8} & \textbf{3.3} & $\mathbf{\pm 1.9\%}$ \\
+\textbf{CTRS total} & \textbf{46.07} & \textbf{2.16} & $\mathbf{\pm 1.25}$ \\
 \hline
 \end{tabular}
 \end{table}
@@ -2000,46 +1999,46 @@ For our Constituional AI Agent, we ran our evaluation framework with 1 conversat
 \subsection{Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the Constitutional - Haiku, run \texttt{4202cf51} ($n = 14$ persona conversations; all values normalised as \% of scale maximum). 95\% CIs via $t$-distribution ($df = 13$).}
+\caption{CTRS scores for the Constitutional - Haiku, run \texttt{4202cf51} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
 \label{tab:ctrs_4202cf51}
 \begin{tabular}{|l|r|r|r|}
 \hline
-\textbf{Subscale} & \textbf{Mean (\%)} & \textbf{SD (\%)} & \textbf{95\% CI} \\
+\textbf{Subscale} & \textbf{Mean} & \textbf{SD} & \textbf{95\% CI} \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part I --- General Therapeutic Skills}} \\
 \hline
-Agenda & 21.4 & 15.2 & $\pm 8.8\%$ \\
+Agenda & 1.29 & 0.91 & $\pm 0.53$ \\
 \hline
-Feedback & 75.0 & 10.8 & $\pm 6.3\%$ \\
+Feedback & 4.5 & 0.65 & $\pm 0.38$ \\
 \hline
-Understanding & 83.3 & 6.5 & $\pm 3.8\%$ \\
+Understanding & 5.0 & 0.39 & $\pm 0.23$ \\
 \hline
-Interpersonal effectiveness & 66.7 & 0.0 & $\pm 0.0\%$ \\
+Interpersonal effectiveness & 4.0 & 0.0 & $\pm 0.0$ \\
 \hline
-Collaboration & 76.2 & 8.6 & $\pm 4.9\%$ \\
+Collaboration & 4.57 & 0.51 & $\pm 0.3$ \\
 \hline
-Pacing \& time use & 45.2 & 12.1 & $\pm 7.0\%$ \\
+Pacing \& time use & 2.71 & 0.73 & $\pm 0.42$ \\
 \hline
-\textbf{Part I total} & \textbf{61.3} & \textbf{4.7} & $\mathbf{\pm 2.7\%}$ \\
+\textbf{Part I total} & \textbf{22.07} & \textbf{1.69} & $\mathbf{\pm 0.97}$ \\
 \hline
 \hline
 \multicolumn{4}{|l|}{\textbf{Part II --- Conceptualization, Strategy \& Technique}} \\
 \hline
-Guided discovery & 65.5 & 12.2 & $\pm 7.0\%$ \\
+Guided discovery & 3.93 & 0.73 & $\pm 0.42$ \\
 \hline
-Focusing on key cognitions & 72.6 & 8.3 & $\pm 4.8\%$ \\
+Focusing on key cognitions & 4.36 & 0.5 & $\pm 0.29$ \\
 \hline
-Strategy for change & 69.0 & 6.1 & $\pm 3.5\%$ \\
+Strategy for change & 4.14 & 0.36 & $\pm 0.21$ \\
 \hline
-Application of techniques & 65.5 & 4.5 & $\pm 2.6\%$ \\
+Application of techniques & 3.93 & 0.27 & $\pm 0.15$ \\
 \hline
-Homework & 73.8 & 15.6 & $\pm 9.0\%$ \\
+Homework & 4.43 & 0.94 & $\pm 0.54$ \\
 \hline
-\textbf{Part II total} & \textbf{69.3} & \textbf{4.9} & $\mathbf{\pm 2.8\%}$ \\
+\textbf{Part II total} & \textbf{20.79} & \textbf{1.48} & $\mathbf{\pm 0.85}$ \\
 \hline
 \hline
-\textbf{CTRS total} & \textbf{64.9} & \textbf{4.4} & $\mathbf{\pm 2.5\%}$ \\
+\textbf{CTRS total} & \textbf{42.86} & \textbf{2.91} & $\mathbf{\pm 1.68}$ \\
 \hline
 \end{tabular}
 \end{table}
