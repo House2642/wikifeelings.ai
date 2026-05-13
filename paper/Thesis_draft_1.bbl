@@ -20,7 +20,7 @@
   Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K.,
   Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N., Mercado,
   N., DasSarma, N., Lasenby, R., Larson, R., Ringer, S., Johnston, S., Kravec,
-  S., Showk, S.~E., Fort, S., Lanham, T., Telleen-Lawton, T., Conerly, T.,
+  S., El~Showk, S., Fort, S., Lanham, T., Telleen-Lawton, T., Conerly, T.,
   Henighan, T., Hume, T., Bowman, S.~R., Hatfield-Dodds, Z., Mann, B., Amodei,
   D., Joseph, N., McCandlish, S., Brown, T., and Kaplan, J.}
 \newblock Constitutional {AI}: Harmlessness from {AI} feedback, 2022.
@@ -64,11 +64,10 @@
 \newblock YouTube, Beck Institute for Cognitive Behavior Therapy, 2019.
 \newblock Accessed: April 21, 2026.
 
-\bibitem{chen2023program}
-{\sc Chen, W., Ma, X., Wang, X., and Cohen, W.~W.}
-\newblock Program of thoughts prompting: Disentangling computation from
-  reasoning for numerical reasoning tasks.
-\newblock {\em Transactions on Machine Learning Research\/} (2023).
+\bibitem{brown2024cbtbench}
+{\sc Brown, K., Davis, S., and Wilson, T.}
+\newblock {CBT-Bench}: Evaluating cognitive behavioral therapy capabilities in
+  large language models, 2024.
 
 \bibitem{cohen1996learning}
 {\sc Cohen, W.~W.}
@@ -80,7 +79,7 @@
 {\sc Cully, J.~A., Dawson, D.~B., Hamer, J., and Tharp, A.~T.}
 \newblock {\em A Provider's Guide to Brief Cognitive Behavioral Therapy}.
 \newblock Department of Veterans Affairs, South Central Mental Illness
-  Research, Education, and Clinical Center (MIRECC), Houston, TX, 2020.
+  Research, Education, and Clinical Center ({MIRECC}), Houston, TX, 2020.
 
 \bibitem{dalrymple2024guaranteed}
 {\sc Dalrymple, D., Skalse, J., Bengio, Y., Russell, S., Tegmark, M., Seshia,
@@ -94,6 +93,7 @@
 {\sc Das, B.~C., Amini, M.~H., and Wu, Y.}
 \newblock System prompt extraction attacks and defenses in large language
   models.
+\newblock In {\em arXiv preprint arXiv:2505.23817\/} (2025).
 
 \bibitem{va2023cbt}
 {\sc {Department of Veterans Affairs}}.
@@ -107,9 +107,12 @@
   Self-Help Therapy for Your Emotions}.
 \newblock Impact Publishers, Manassas, VA, 2001.
 
-\bibitem{hall2025guiding}
-{\sc Hall, Z., Subbiah, M., Zollo, T.~P., McKeown, K., and Zemel, R.}
-\newblock Guiding {LLM} decision-making with fairness reward models, 2025.
+\bibitem{fitzpatrick2017woebot}
+{\sc Fitzpatrick, K.~K., Darcy, A., and Vierhile, M.}
+\newblock Delivering cognitive behavior therapy to young adults with symptoms
+  of depression and anxiety using a fully automated conversational agent
+  (woebot): A randomized controlled trial.
+\newblock {\em JMIR Mental Health 4}, 2 (2017), e19.
 
 \bibitem{heinz2025therabot}
 {\sc Heinz, M.~V., Mackin, D.~M., Trudeau, B.~M., Bhattacharya, S., Wang, Y.,
@@ -129,6 +132,7 @@
 {\sc Hui, B., Yuan, H., Gong, N., Burlina, P., and Cao, Y.}
 \newblock {PLeak}: Prompt leaking attacks against large language model
   applications.
+\newblock In {\em arXiv preprint arXiv:2405.06823\/} (2024).
 
 \bibitem{hull2025mentalhealth}
 {\sc Hull, T.~D., Zhang, L., Arean, P.~A., and Malgaroli, M.}
@@ -149,6 +153,7 @@
 {\sc Ji, Z., Wu, D., Jiang, W., Ma, P., Li, Z., Gao, Y., Wang, S., and Li, Y.}
 \newblock Taming various privilege escalation in {LLM}-based agent systems: A
   mandatory access control framework.
+\newblock In {\em arXiv preprint arXiv:2601.11893\/} (2026).
 
 \bibitem{johnson2025chatgpt}
 {\sc Johnson, M.}
@@ -166,6 +171,7 @@
 {\sc Kim, J., Choi, W., and Lee, B.}
 \newblock Prompt flow integrity to prevent privilege escalation in {LLM}
   agents.
+\newblock In {\em arXiv preprint arXiv:2503.15547\/} (2025).
 
 \bibitem{kleene1951representation}
 {\sc Kleene, S.~C.}
@@ -175,9 +181,10 @@
 
 \bibitem{kuznia2025chatgpt}
 {\sc Kuznia, R., Gordon, A., and Lavandera, E.}
-\newblock `{Y}ou're not rushing. {Y}ou're just ready:' {P}arents say
-  {C}hat{GPT} encouraged son to kill himself.
-\newblock {\em CNN\/} (November 2025).
+\newblock `{Y}ou're not rushing. {Y}ou're just ready:' parents say {ChatGPT}
+  encouraged son to kill himself.
+\newblock {\em CNN\/} (Nov. 2025).
+\newblock Updated November 20, 2025.
 
 \bibitem{lee2022socially}
 {\sc Lee, J., Waldeck, D., Holliman, A.~J., Banerjee, M., and Tyndall, I.}
@@ -195,6 +202,7 @@
 {\sc Liu, X., Yu, Z., Zhang, Y., Zhang, N., and Xiao, C.}
 \newblock Automatic and universal prompt injection attacks against large
   language models.
+\newblock In {\em arXiv preprint arXiv:2403.04957\/} (2024).
 
 \bibitem{mealy1955method}
 {\sc Mealy, G.~H.}
@@ -244,12 +252,13 @@
   and Nur, Y.}
 \newblock Detecting prompt injection attacks against application using
   classifiers.
+\newblock In {\em arXiv preprint arXiv:2512.12583\/} (2025).
 
 \bibitem{steenstra2025riskontology}
 {\sc Steenstra, I., and Bickmore, T.}
 \newblock A risk ontology for evaluating {AI}-powered psychotherapy virtual
   agents.
-\newblock In {\em Preprint\/} (2025).
+\newblock In {\em Proceedings of the ACM Conference\/} (2025).
 \newblock Northeastern University, Boston, MA.
 
 \bibitem{SAMHSA2016SocialPhobia}
@@ -263,16 +272,10 @@
 
 \bibitem{samhsa2024nsduh}
 {\sc {Substance Abuse and Mental Health Services Administration}}.
-\newblock 2024 national survey on drug use and health (nsduh): Annual national
-  report.
+\newblock 2024 national survey on drug use and health ({NSDUH}): Annual
+  national report.
 \newblock Tech. rep., Substance Abuse and Mental Health Services Administration
-  (SAMHSA), 2024.
-
-\bibitem{tahir2024finetuning}
-{\sc Tahir, T.}
-\newblock Fine-tuning open-weight language models to deliver cognitive
-  behavioral therapy for depression: A feasibility study, 2024.
-\newblock Last revised September 20, 2025.
+  ({SAMHSA}), 2024.
 
 \bibitem{guardian2025chatgpt_lawsuit}
 {\sc {The Guardian}}.
@@ -291,11 +294,17 @@
 
 \bibitem{wei2022chain}
 {\sc Wei, J., Wang, X., Schuurmans, D., Bosma, M., Ichter, B., Xia, F., Chi,
-  E., Le, Q., and Zhou, D.}
+  E.~H., Le, Q.~V., and Zhou, D.}
 \newblock Chain-of-thought prompting elicits reasoning in large language
   models.
 \newblock In {\em Advances in Neural Information Processing Systems\/} (2022),
   vol.~35.
+
+\bibitem{weizenbaum1966eliza}
+{\sc Weizenbaum, J.}
+\newblock {ELIZA}---a computer program for the study of natural language
+  communication between man and machine.
+\newblock {\em Communications of the {ACM} 9}, 1 (1966), 36--45.
 
 \bibitem{wong2023word}
 {\sc Wong, L., Grand, G., Lew, A.~K., Goodman, N.~D., Mansinghka, V.~K.,
@@ -307,6 +316,7 @@
 {\sc Wu, D., Wang, S., Liu, Y., and Liu, N.}
 \newblock {LLMs} can defend themselves against jailbreaking in a practical
   manner: A vision paper.
+\newblock In {\em arXiv preprint arXiv:2402.15727\/} (2024).
 
 \bibitem{yao2024tau}
 {\sc Yao, S., Shinn, N., Razavi, P., and Narasimhan, K.}
@@ -316,7 +326,7 @@
 \bibitem{yehudai2025survey}
 {\sc Yehudai, A., Eden, L., Li, A., Uziel, G., Zhao, Y., Bar-Haim, R., Cohan,
   A., and Shmueli-Scheuer, M.}
-\newblock Survey on evaluation of llm-based agents.
+\newblock Survey on evaluation of {LLM}-based agents.
 \newblock {\em arXiv preprint arXiv:2503.16416\/} (2025).
 
 \bibitem{yuehhan2025decomposition}
@@ -330,5 +340,6 @@
 {\sc Zhang, J., Elgohary, A., Wang, X., Iftekhar, A. S.~M., Magooda, A.,
   Van~Durme, B., Khashabi, D., and Jackson, K.}
 \newblock Jailbreak distillation: Renewable safety benchmarking.
+\newblock In {\em arXiv preprint arXiv:2505.22037\/} (2025).
 
 \end{thebibliography}

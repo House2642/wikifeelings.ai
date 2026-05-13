@@ -3,68 +3,47 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Thesis_draft_1.aux
 The style file: acm.bst
 Database file #1: references.bib
-Repeated entry---line 158 of file references.bib
- : @article{heinz2025therabot
- :                           ,
-I'm skipping whatever remains of this entry
-Repeated entry---line 198 of file references.bib
- : @misc{wong2023word
- :                   ,
-I'm skipping whatever remains of this entry
-I was expecting a `,' or a `}'---line 570 of file references.bib
- :    
- :    note      = {Updated November 20, 2025}
-(Error may have been on previous line)
-I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "todo"
-Warning--empty booktitle in das2025system
-Warning--empty booktitle in hui2024pleak
 Warning--empty journal in hull2025mentalhealth
-Warning--empty booktitle in ji2026taming
-Warning--empty booktitle in kim2025prompt
-Warning--empty booktitle in liu2024automatic
-Warning--empty booktitle in shaheer2025detecting
-Warning--empty booktitle in wu2024llms
-Warning--empty booktitle in zhang2025jailbreak
 You've used 52 entries,
             2253 wiz_defined-function locations,
-            769 strings with 15193 characters,
-and the built_in function-call counts, 17949 in all, are:
-= -- 1531
-> -- 1337
+            782 strings with 15577 characters,
+and the built_in function-call counts, 18172 in all, are:
+= -- 1557
+> -- 1322
 < -- 0
-+ -- 551
-- -- 492
-* -- 1415
-:= -- 3157
-add.period$ -- 157
++ -- 545
+- -- 486
+* -- 1450
+:= -- 3172
+add.period$ -- 166
 call.type$ -- 52
-change.case$ -- 401
+change.case$ -- 398
 chr.to.int$ -- 0
-cite$ -- 61
-duplicate$ -- 567
-empty$ -- 1174
-format.name$ -- 492
-if$ -- 3507
+cite$ -- 53
+duplicate$ -- 584
+empty$ -- 1228
+format.name$ -- 486
+if$ -- 3576
 int.to.chr$ -- 0
 int.to.str$ -- 52
-missing$ -- 38
-newline$ -- 262
+missing$ -- 39
+newline$ -- 271
 num.names$ -- 106
-pop$ -- 497
+pop$ -- 477
 preamble$ -- 1
-purify$ -- 349
+purify$ -- 346
 quote$ -- 0
-skip$ -- 331
+skip$ -- 336
 stack$ -- 0
-substring$ -- 415
-swap$ -- 109
+substring$ -- 443
+swap$ -- 117
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 202
-warning$ -- 9
-while$ -- 120
+warning$ -- 1
+while$ -- 123
 width$ -- 54
-write$ -- 510
-(There were 3 error messages)
+write$ -- 529
+(There were 2 warnings)
