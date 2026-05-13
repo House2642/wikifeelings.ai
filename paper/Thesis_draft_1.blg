@@ -11,6 +11,11 @@ Repeated entry---line 198 of file references.bib
  : @misc{wong2023word
  :                   ,
 I'm skipping whatever remains of this entry
+I was expecting a `,' or a `}'---line 570 of file references.bib
+ :    
+ :    note      = {Updated November 20, 2025}
+(Error may have been on previous line)
+I'm skipping whatever remains of this entry
 Warning--I didn't find a database entry for "todo"
 Warning--empty booktitle in das2025system
 Warning--empty booktitle in hui2024pleak
@@ -21,45 +26,45 @@ Warning--empty booktitle in liu2024automatic
 Warning--empty booktitle in shaheer2025detecting
 Warning--empty booktitle in wu2024llms
 Warning--empty booktitle in zhang2025jailbreak
-You've used 46 entries,
+You've used 52 entries,
             2253 wiz_defined-function locations,
-            745 strings with 13320 characters,
-and the built_in function-call counts, 14988 in all, are:
-= -- 1296
-> -- 1025
+            769 strings with 15193 characters,
+and the built_in function-call counts, 17949 in all, are:
+= -- 1531
+> -- 1337
 < -- 0
-+ -- 424
-- -- 372
-* -- 1140
-:= -- 2611
-add.period$ -- 136
-call.type$ -- 46
-change.case$ -- 322
++ -- 551
+- -- 492
+* -- 1415
+:= -- 3157
+add.period$ -- 157
+call.type$ -- 52
+change.case$ -- 401
 chr.to.int$ -- 0
-cite$ -- 55
-duplicate$ -- 516
-empty$ -- 1051
-format.name$ -- 372
-if$ -- 2964
+cite$ -- 61
+duplicate$ -- 567
+empty$ -- 1174
+format.name$ -- 492
+if$ -- 3507
 int.to.chr$ -- 0
-int.to.str$ -- 46
-missing$ -- 36
-newline$ -- 229
-num.names$ -- 94
-pop$ -- 411
+int.to.str$ -- 52
+missing$ -- 38
+newline$ -- 262
+num.names$ -- 106
+pop$ -- 497
 preamble$ -- 1
-purify$ -- 277
+purify$ -- 349
 quote$ -- 0
-skip$ -- 294
+skip$ -- 331
 stack$ -- 0
-substring$ -- 384
-swap$ -- 98
+substring$ -- 415
+swap$ -- 109
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 178
+type$ -- 202
 warning$ -- 9
-while$ -- 108
-width$ -- 48
-write$ -- 445
-(There were 2 error messages)
+while$ -- 120
+width$ -- 54
+write$ -- 510
+(There were 3 error messages)

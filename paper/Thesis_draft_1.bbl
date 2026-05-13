@@ -7,6 +7,24 @@
 \newblock {\em STAT News\/} (Nov. 2025).
 \newblock Retrieved December 7, 2025.
 
+\bibitem{aly2025evaluation}
+{\sc Aly, W.~M., Soliman, T. H.~A., and AbdelAziz, A.~M.}
+\newblock An evaluation of large language models on text summarization tasks
+  using prompt engineering techniques.
+\newblock {\em arXiv preprint arXiv:2507.05123\/} (2025).
+
+\bibitem{bai2022constitutional}
+{\sc Bai, Y., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A.,
+  Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., Chen, C., Olsson, C.,
+  Olah, C., Hernandez, D., Drain, D., Ganguli, D., Li, D., Tran-Johnson, E.,
+  Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K.,
+  Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N., Mercado,
+  N., DasSarma, N., Lasenby, R., Larson, R., Ringer, S., Johnston, S., Kravec,
+  S., Showk, S.~E., Fort, S., Lanham, T., Telleen-Lawton, T., Conerly, T.,
+  Henighan, T., Hume, T., Bowman, S.~R., Hatfield-Dodds, Z., Mann, B., Amodei,
+  D., Joseph, N., McCandlish, S., Brown, T., and Kaplan, J.}
+\newblock Constitutional {AI}: Harmlessness from {AI} feedback, 2022.
+
 \bibitem{beckinstitute2018ccd}
 {\sc {Beck Institute for Cognitive Behavior Therapy}}.
 \newblock ({Traditional}) cognitive conceptualization diagram worksheet.
@@ -21,6 +39,24 @@
 \newblock Tech. rep., Beck Institute for Cognitive Behavior Therapy, Bala
   Cynwyd, PA, 2020.
 \newblock Accessed: February 18, 2026.
+
+\bibitem{beckinstitute2021casewriteup}
+{\sc {Beck Institute for Cognitive Behavior Therapy}}.
+\newblock Case write-up worksheet.
+\newblock
+  \url{https://beckinstitute.org/wp-content/uploads/2021/08/Case-Write-Up-Worksheet.pdf},
+  2021.
+\newblock Adapted from J. Beck (2020), \textit{Cognitive Behavior Therapy:
+  Basics and Beyond}, 3rd ed.
+
+\bibitem{beckinstitute2021testing}
+{\sc {Beck Institute for Cognitive Behavior Therapy}}.
+\newblock Testing your thoughts worksheet.
+\newblock
+  \url{https://beckinstitute.org/wp-content/uploads/2021/08/Testing-Your-Thoughts-Worksheet.pdf},
+  2021.
+\newblock Adapted from J. Beck (2020), \textit{Cognitive Behavior Therapy:
+  Basics and Beyond}, 3rd ed.
 
 \bibitem{beckinstitute2019structure}
 {\sc Broder, F.}
@@ -58,6 +94,12 @@
 {\sc Das, B.~C., Amini, M.~H., and Wu, Y.}
 \newblock System prompt extraction attacks and defenses in large language
   models.
+
+\bibitem{va2023cbt}
+{\sc {Department of Veterans Affairs}}.
+\newblock Therapist's guide to brief {CBT} manual.
+\newblock Tech. rep., VA Medical Center, 2023.
+\newblock Retrieved November 3, 2025.
 
 \bibitem{ellis2001feeling}
 {\sc Ellis, A.}
@@ -108,6 +150,12 @@
 \newblock Taming various privilege escalation in {LLM}-based agent systems: A
   mandatory access control framework.
 
+\bibitem{johnson2025chatgpt}
+{\sc Johnson, M.}
+\newblock {ChatGPT}'s guardrails fail in teen suicide case.
+\newblock {\em The New York Times\/} (Aug. 2025).
+\newblock Retrieved November 3, 2025.
+
 \bibitem{karov2025arq}
 {\sc Karov, B., Zohar, D., and Marcovitz, Y.}
 \newblock Attentive reasoning queries: A systematic method for optimizing
@@ -124,6 +172,12 @@
 \newblock Representation of events in nerve nets and finite automata.
 \newblock In {\em Automata Studies}, C.~E. Shannon and J.~McCarthy, Eds.
   Princeton University Press, 1956, pp.~3--41.
+
+\bibitem{kuznia2025chatgpt}
+{\sc Kuznia, R., Gordon, A., and Lavandera, E.}
+\newblock `{Y}ou're not rushing. {Y}ou're just ready:' {P}arents say
+  {C}hat{GPT} encouraged son to kill himself.
+\newblock {\em CNN\/} (November 2025).
 
 \bibitem{lee2022socially}
 {\sc Lee, J., Waldeck, D., Holliman, A.~J., Banerjee, M., and Tyndall, I.}
@@ -224,11 +278,6 @@
 {\sc {The Guardian}}.
 \newblock {ChatGPT} faces lawsuit after being used as suicide coach.
 \newblock {\em The Guardian\/} (Nov. 2025).
-
-\bibitem{nytimes2025chatgpt_lawsuit}
-{\sc {The New York Times}}.
-\newblock {ChatGPT} faces lawsuits over suicides and delusions.
-\newblock {\em The New York Times\/} (Nov. 2025).
 
 \bibitem{nytimes2025chatgpt_opinion}
 {\sc {The New York Times}}.
