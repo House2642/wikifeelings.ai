@@ -2,12 +2,12 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces CBT session flow used in our therapy agent, adapted from \cite {beckinstitute2019structure} and \cite {raines2021start}.}}{31}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces CBT session flow used in our therapy agent, adapted from \cite {beckinstitute2019structure} and \cite {raines2021start}.}}{32}{}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {6.1}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the bad baseline (\texttt {add7e6c3}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{54}{}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{56}{}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}), constitutional (\texttt {4202cf51}), and baseline (\texttt {4c025580}) runs, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{59}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {7.1}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the bad baseline (\texttt {add7e6c3}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{55}{}%
-\contentsline {figure}{\numberline {7.2}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{57}{}%
-\contentsline {figure}{\numberline {7.3}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}), constitutional (\texttt {4202cf51}), and baseline (\texttt {4c025580}) runs, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{60}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }

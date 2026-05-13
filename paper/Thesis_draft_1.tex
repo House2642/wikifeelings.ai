@@ -41,13 +41,14 @@ $\;$
 \onehalfspacing
 \begin{center}
 {\LARGE
-Safer Application of CBT using LLMs
+TheraEph: Safer Application of Large Language Model based Cognitive Behvaioral Therapy
 }
 \large
 \vskip.25in
 by\\
 Aidan Housenbold\\
 \vskip.125inProfessor Daniel Barowy, Advisor\\
+\vskip.125inProfessor Rebecca Crochiere, Advisor\\
 \singlespacing
 \vskip.5in
 \small
@@ -73,12 +74,13 @@ Williamstown, Massachusetts\\
 \onehalfspacing
 
 \chapter{Abstract}
-In 2024, 14.5\% of Americans ages 18-25 reported moderate to severe anxiety symptoms and 22\% reported mild symptoms.\cite{samhsa2024nsduh} Moreover, 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. As a result, many are turning to LLMs such as OpenAI’s ChatGPT and Anthropic’s Claude: 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support \cite{sentio2024survey}.  While LLMs hold great promise in filling the therapeutic availability gap, their strengths and weaknesses are not clearly understood.
+In 2024, 14.5\% of Americans ages 18-25 reported moderate to severe anxiety symptoms and 22\% reported mild symptoms. Moreover, 58.6\% of young adults aged 18 to 25 with some mental illnesses in the past year felt like they wanted treatment but did not get it. This may explain why many are turning to large language models (LLMs) such as OpenAI’s ChatGPT and Anthropic’s Claude: 49\% of LLM users who self-report an ongoing mental health condition use LLMs for mental health support. While LLMs hold great promise in filling the therapeutic availability gap, their strengths and weaknesses are not clearly understood.
 
-Using widely-accepted criteria from the CBT community, this work studies the quality of care and risk profiles of LLM-based therapists. Because automated treatment is new, and its risks are unknown, this work proposes a risk-free simulated patient we call a persona as a kind of “animal model” for determining the efficacy of therapy sessions. Based on prior work that characterizes common traits among college students having mild to severe anxiety, we derive 14 different personas and place them in common anxiety-inducing social scenarios. A therapy agent is then tasked with treating a persona and then evaluated against well-known evidence-based quality of care scales like CTRS.   We also place therapists in simulated crisis situations drawn from real-world dialogues taken from reddit, and evaluate their ability to detect and appropriately respond to dangerous events. 
+Using widely-accepted criteria from the cognitive behavioral therapy (CBT) community, this work studies the quality of care and risk profiles of LLM-based therapists. Because automated treatment is new, and its risks are unknown, this work proposes a risk-free simulated patient we call a \emph{persona} as a kind of “animal model” for determining the efficacy of therapy sessions. Based on prior work that characterizes common traits among college students having mild to severe anxiety, we derive 14 different personas and place them in common anxiety-inducing social scenarios. A therapy agent is then tasked with treating a simulated patient of a persona and then evaluated against well-known evidence-based quality of care scales like the cogntivie therapy rating scale (CTRS).   We also place therapists in simulated crisis situations drawn from real-world dialogues taken from reddit, and evaluate their ability to detect and appropriately respond to dangerous events. 
 
-Our work finds that Anthropic’s Claude model achieves on average 40/66 on the CTRS across the 14 personas. The model struggled the most on setting an agenda (0.5/6 on average ) and getting patient feedback (1.93/6 on average), but excelled when prescribing follow-up CBT “homework” at (4.69/6 on average). The model also often struggles to label cognitive distortions, often overlabeling with 3-4 distortions it thought were plausible. The model was also able to classify crisis scenarios quite well (38/40 correctly classified) but it failed in every case to de-escalate the situation and properly respond to crisis. Overall we see that LLM-based therapeutic agents have some ability to perform care, however, more robust guardrails need to be implemented before wide-scale deployment.
-\chapter{Acknowledgments}
+Our work proposes a therapy agent framework called TheraEph. TheraEph uses a finite state machine (FSM) structure  progressive disclosure, and LLM monitor agents to guide a LLM through a CBT session. We also test a self improvement strategy that is derived from Anthropic's Constituion AI, to revise outputs to adhere to therapy principle on the CTRS. Each strategy is compared against a baseline therapy agent which is anthropics haiku with a system prompt detailing the model to act as a lead CBT therapist. 
+
+TheraEph preformed the best averaging a CTRS score of 
 
 %%%%%%%% Chapters %%%%%%%%%%%%
 %% Introduction
@@ -2277,6 +2279,7 @@ In terms of psychotherapy, these agents can serve as a tool for therapists when 
 
 Further research should be done beyond social anxiety disorder in college students, since that is a small subset of the population. More personas could be generated for different disorders and tested through our evaluation system. Further, eventually randomized controlled trials with human participants should be performed so that we can measure symptom changes using validated instruments like the DSM-5 Social Anxiety Disorder questionnaire. This would allow us to test whether humans are actually responding well, not just simulations.
 
+\chapter{Acknowledgements}
 
 
 \bibliographystyle{acm}
