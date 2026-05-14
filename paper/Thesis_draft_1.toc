@@ -28,7 +28,7 @@
 \contentsline {section}{\numberline {5.3}Progressive Discolsure}{33}{}%
 \contentsline {section}{\numberline {5.4}Finite State Machine}{34}{}%
 \contentsline {section}{\numberline {5.5}Ideal Flow of A CBT Session}{35}{}%
-\contentsline {section}{\numberline {5.6}Handling Session Interruptions and Crisis Detection}{36}{}%
+\contentsline {section}{\numberline {5.6}Handling Session Interruptions and Crisis Detection}{37}{}%
 \contentsline {subsection}{\numberline {5.6.1}Crisis}{37}{}%
 \contentsline {subsubsection}{Detection}{37}{}%
 \contentsline {subsubsection}{Crisis Handling}{37}{}%
@@ -36,12 +36,12 @@
 \contentsline {paragraph}{Assess Progression}{38}{}%
 \contentsline {paragraph}{Deescalation Task}{38}{}%
 \contentsline {paragraph}{Deescalation Progression}{39}{}%
-\contentsline {paragraph}{Recommend Emergency Services}{39}{}%
+\contentsline {paragraph}{Recommend Emergency Services}{40}{}%
 \contentsline {subsection}{\numberline {5.6.2}Manipulative Inputs}{42}{}%
 \contentsline {section}{\numberline {5.7}Implementation}{43}{}%
 \contentsline {subsection}{\numberline {5.7.1}Architecture}{43}{}%
 \contentsline {subsection}{\numberline {5.7.2}Formal Definition}{43}{}%
-\contentsline {paragraph}{Input Alphabet}{43}{}%
+\contentsline {paragraph}{Input Alphabet}{44}{}%
 \contentsline {paragraph}{States}{44}{}%
 \contentsline {paragraph}{Initial State}{44}{}%
 \contentsline {paragraph}{Transition Function}{44}{}%

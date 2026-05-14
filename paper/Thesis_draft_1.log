@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  13 MAY 2026 22:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  14 MAY 2026 09:12
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1542,123 +1542,123 @@ Chapter 5.
 <CBTFlow.png, id=264, 4001.95125pt x 7639.54124pt>
 File: CBTFlow.png Graphic file (type png)
 <use CBTFlow.png>
-Package pdftex.def Info: CBTFlow.png  used on input line 722.
+Package pdftex.def Info: CBTFlow.png  used on input line 727.
 (pdftex.def)             Requested size: 225.48425pt x 430.37593pt.
  [36 <./CBTFlow.png>]
 
-LaTeX Warning: Reference `sec:eval' on page 37 undefined on input line 750.
+LaTeX Warning: Reference `sec:eval' on page 37 undefined on input line 755.
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 790--790
+Overfull \hbox (23.126pt too wide) in paragraph at lines 795--795
 []\OT1/cmtt/m/n/10 You are a warm, skilled crisis counsellor. A patient has sai
 d something that suggests \[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 790--790
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 795--795
 []\OT1/cmtt/m/n/10 they may be at risk of suicide or self-harm. Your first prio
 rity is connection, not[] 
  []
 
-
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 790--790
+[37]
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 795--795
 []\OT1/cmtt/m/n/10 1. Validate their pain directly and specifically | reflect b
 ack what they said so they[] 
  []
 
-[37]
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 790--790
+
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 795--795
 []\OT1/cmtt/m/n/10 3. If they confirm suicidal ideation, ask one follow-up ques
 tion to understand immediacy: \[] 
  []
 
 [38] [39]
-Overfull \hbox (23.126pt too wide) in paragraph at lines 880--880
+Overfull \hbox (23.126pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 2. If the patient has raised a specific barrier or concern i
 n their most recent message[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 880--880
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 - Do NOT analyse cognitive distortions, automatic thoughts, 
 or name any CBT concepts.[] 
  []
 
 
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 880--880
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 - Do NOT offer therapeutic reframes, thought challenges, or 
 psychoeducation of any kind.[] 
  []
 
 
-Overfull \hbox (49.37578pt too wide) in paragraph at lines 880--880
+Overfull \hbox (49.37578pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 - Do NOT give generic mental health advice (e.g. "try to get
  some sleep", "exercise helps").[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 880--880
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 - If the patient asks to do CBT work or change the subject, 
 gently hold the safety focus |[] 
  []
 
 
-Overfull \hbox (86.12546pt too wide) in paragraph at lines 880--880
+Overfull \hbox (86.12546pt too wide) in paragraph at lines 885--885
 []\OT1/cmtt/m/n/10 - This is a safety conversation only. Keep it human, keep it
  present, keep it focused on right now.[] 
  []
 
 [40] [41]
-Overfull \hbox (26.6347pt too wide) in paragraph at lines 925--926
+Overfull \hbox (26.6347pt too wide) in paragraph at lines 930--931
 \OT1/cmr/m/n/10 you. Are you able to reach for your phone right now? \OT1/cmr/m
 /it/10 [RE-QUEST[]HUMAN[]CONSULTATION] 
  []
 
 
-Overfull \hbox (12.8384pt too wide) in paragraph at lines 929--930
+Overfull \hbox (12.8384pt too wide) in paragraph at lines 934--935
 \OT1/cmr/m/n/10 You've shown real courage to-day by reach-ing out. \OT1/cmr/m/i
 t/10 [RE-QUEST[]HUMAN[]CONSULTATION] 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 948--948
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 953--953
 []|\OT1/cmtt/m/n/10 therapy[]manipulation| 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 954--954
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 959--959
 []|\OT1/cmtt/m/n/10 privilege[]escalation| 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 956--956
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 961--961
 []|\OT1/cmtt/m/n/10 obfuscated[]injection| 
  []
 
 [42]
-Overfull \hbox (3.38747pt too wide) detected at line 986
+Overfull \hbox (3.38747pt too wide) detected at line 991
 \OT1/cmr/m/n/10 ^^F = \OMS/cmsy/m/n/10 f []\OML/cmm/m/it/10 ;  [];  [];  [];  [
 ] \OMS/cmsy/m/n/10 g
  []
 
 [43]
-./Thesis_draft_1.tex:1000: Missing $ inserted.
+./Thesis_draft_1.tex:1005: Missing $ inserted.
 <inserted text> 
                 $
-l.1000 s_
+l.1005 s_
          {\text{BehaviouralExperiment}}.
 ? s
 OK, entering \scrollmode...
-./Thesis_draft_1.tex:1001: Missing $ inserted.
+./Thesis_draft_1.tex:1006: Missing $ inserted.
 <inserted text> 
                 $
-l.1001 
+l.1006 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./Thesis_draft_1.tex:1020: Undefined control sequence.
-l.1020 \toprule
+./Thesis_draft_1.tex:1025: Undefined control sequence.
+l.1025 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1666,10 +1666,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1022: Undefined control sequence.
+./Thesis_draft_1.tex:1027: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1022 \midrule
+l.1027 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1677,10 +1677,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1041: Undefined control sequence.
+./Thesis_draft_1.tex:1046: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1041 \bottomrule
+l.1046 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1692,8 +1692,8 @@ and I'll forget about whatever was undefined.
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 [44]
-./Thesis_draft_1.tex:1053: Undefined control sequence.
-l.1053 \toprule
+./Thesis_draft_1.tex:1058: Undefined control sequence.
+l.1058 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1701,10 +1701,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1055: Undefined control sequence.
+./Thesis_draft_1.tex:1060: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1055 \midrule
+l.1060 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1712,10 +1712,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1063: Undefined control sequence.
+./Thesis_draft_1.tex:1068: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1063 \bottomrule
+l.1068 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1723,8 +1723,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1075: Undefined control sequence.
-l.1075 \toprule
+./Thesis_draft_1.tex:1080: Undefined control sequence.
+l.1080 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1732,10 +1732,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1077: Undefined control sequence.
+./Thesis_draft_1.tex:1082: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1077 \midrule
+l.1082 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1743,10 +1743,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1080: Undefined control sequence.
+./Thesis_draft_1.tex:1085: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1080 \bottomrule
+l.1085 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1767,62 +1767,62 @@ Chapter 7.
 [55
 
 ]
-./Thesis_draft_1.tex:1491: Too many }'s.
+./Thesis_draft_1.tex:1496: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.1491 \end{table}
+l.1496 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-./Thesis_draft_1.tex:1491: Extra \endgroup.
+./Thesis_draft_1.tex:1496: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.1491 \end{table}
+l.1496 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-./Thesis_draft_1.tex:1491: Too many }'s.
+./Thesis_draft_1.tex:1496: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.1491 \end{table}
+l.1496 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-./Thesis_draft_1.tex:1491: LaTeX Error: \begin{document} ended by \end{table}.
+./Thesis_draft_1.tex:1496: LaTeX Error: \begin{document} ended by \end{table}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1491 \end{table}
+l.1496 \end{table}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./Thesis_draft_1.tex:1491: Extra \endgroup.
+./Thesis_draft_1.tex:1496: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.1491 \end{table}
+l.1496 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
 [56] [57]
-Package pgfplots info on input line 1635: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1640: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
  [58] [59]
-Package pgfplots info on input line 1867: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 1872: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
  [60] [61] [62
 
 ]
-Package pgfplots info on input line 2088: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 2093: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
  [63]
-Underfull \hbox (badness 10000) in paragraph at lines 2177--2177
+Underfull \hbox (badness 10000) in paragraph at lines 2182--2182
 []\OT1/cmr/m/n/10 Table 7.11: |Cri-sis clas-si-fi-ca-tion and re-sponse qual-it
 y for the Con-sti-tu-ion, run
  []
@@ -1848,31 +1848,31 @@ Chapter 11.
 <CTRS-Scale.pdf, id=386, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf>
-Package pdftex.def Info: CTRS-Scale.pdf  used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf  used on input line 2293.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 <CTRS-Scale.pdf, id=388, page=1, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2293.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 [71
 
 ]
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [72
 
@@ -1880,15 +1880,15 @@ Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
 <CTRS-Scale.pdf, id=430, page=2, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [73
 
@@ -1896,15 +1896,15 @@ Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
 <CTRS-Scale.pdf, id=436, page=3, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [74
 
@@ -1912,15 +1912,15 @@ Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
 <CTRS-Scale.pdf, id=441, page=4, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 
 [75
@@ -1929,15 +1929,15 @@ Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
 <CTRS-Scale.pdf, id=446, page=5, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2293.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [76
 
@@ -2027,7 +2027,7 @@ ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2026/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2026/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis_draft_1.pdf (81 pages, 2619215 bytes).
+Output written on Thesis_draft_1.pdf (81 pages, 2619109 bytes).
 PDF statistics:
  568 PDF objects out of 1000 (max. 8388607)
  293 compressed objects within 3 object streams
