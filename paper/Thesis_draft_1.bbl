@@ -114,6 +114,11 @@
   (woebot): A randomized controlled trial.
 \newblock {\em JMIR Mental Health 4}, 2 (2017), e19.
 
+\bibitem{fluckiger2018alliance}
+{\sc Fl{\"u}ckiger, C., Del~Re, A.~C., Wampold, B.~E., and Horvath, A.~O.}
+\newblock The alliance in adult psychotherapy: {A} meta-analytic synthesis.
+\newblock {\em Psychotherapy 55}, 4 (2018), 316--340.
+
 \bibitem{heinz2025therabot}
 {\sc Heinz, M.~V., Mackin, D.~M., Trudeau, B.~M., Bhattacharya, S., Wang, Y.,
   Banta, H.~A., Jewett, A.~D., Salzhauer, A.~J., Griffin, T.~Z., and Jacobson,
@@ -227,6 +232,13 @@
 \newblock Nielsen Norman Group, 2006.
 \newblock Accessed: April 20, 2026.
 
+\bibitem{perepletchikova2005treatment}
+{\sc Perepletchikova, F., and Kazdin, A.~E.}
+\newblock Treatment integrity and therapeutic change: Issues and research
+  recommendations.
+\newblock {\em Clinical Psychology: Science and Practice 12}, 4 (2005),
+  365--383.
+
 \bibitem{raines2021start}
 {\sc Raines, A.~M., Boffa, J.~W., Goodson, J.~T., Franklin, C.~L., and Schmidt,
   N.~B.}
@@ -253,6 +265,13 @@
 \newblock Detecting prompt injection attacks against application using
   classifiers.
 \newblock In {\em arXiv preprint arXiv:2512.12583\/} (2025).
+
+\bibitem{steenstra2025dissertation}
+{\sc Steenstra, I.}
+\newblock {\em An Evaluation Framework for Assessing Quality of Care \& Risk in
+  {AI} Psychotherapy}.
+\newblock PhD thesis, Khoury College of Computer Sciences, Northeastern
+  University, Boston, Massachusetts, December 2025.
 
 \bibitem{steenstra2025riskontology}
 {\sc Steenstra, I., and Bickmore, T.}

@@ -11,67 +11,70 @@
 \contentsline {section}{\numberline {3.4}World Models}{12}{}%
 \contentsline {section}{\numberline {3.5}Pyschotherapy Evaluations}{13}{}%
 \contentsline {chapter}{\numberline {4}Metrics}{14}{}%
-\contentsline {section}{\numberline {4.1}Current Evaluation Frameworks}{14}{}%
+\contentsline {section}{\numberline {4.1}LLM Evaluation Frameworks}{14}{}%
 \contentsline {section}{\numberline {4.2}Psychotherapy Evaluation Metrics}{15}{}%
 \contentsline {subsection}{\numberline {4.2.1}Quality of Care}{15}{}%
 \contentsline {subsection}{\numberline {4.2.2}Risk}{16}{}%
-\contentsline {section}{\numberline {4.3}Architecture of Simulated Therapy Session}{16}{}%
-\contentsline {subsection}{\numberline {4.3.1}Quality of Care Metrics}{17}{}%
-\contentsline {subsection}{\numberline {4.3.2}Risk Metrics}{22}{}%
-\contentsline {section}{\numberline {4.4}Personas}{24}{}%
-\contentsline {subsection}{\numberline {4.4.1}Persistent Self-Consciousness}{24}{}%
-\contentsline {subsection}{\numberline {4.4.2}Avoiding Reality}{28}{}%
-\contentsline {chapter}{\numberline {5}Design Of Robust Therapists}{30}{}%
-\contentsline {section}{\numberline {5.1}Introduction}{30}{}%
-\contentsline {section}{\numberline {5.2}Monitor Agents}{30}{}%
-\contentsline {section}{\numberline {5.3}Progressive Discolsure}{31}{}%
-\contentsline {section}{\numberline {5.4}Finite State Machine}{32}{}%
-\contentsline {section}{\numberline {5.5}Ideal Flow of A CBT Session}{33}{}%
-\contentsline {section}{\numberline {5.6}Handling Session Interruptions and Crisis Detection}{34}{}%
-\contentsline {subsection}{\numberline {5.6.1}Crisis}{35}{}%
-\contentsline {subsubsection}{Detection}{35}{}%
-\contentsline {subsubsection}{Crisis Handling}{35}{}%
-\contentsline {paragraph}{Assess Task}{35}{}%
-\contentsline {paragraph}{Assess Progression}{36}{}%
-\contentsline {paragraph}{Deescalation Task}{36}{}%
-\contentsline {paragraph}{Deescalation Progression}{37}{}%
-\contentsline {paragraph}{Recommend Emergency Services}{37}{}%
-\contentsline {subsection}{\numberline {5.6.2}Manipulative Inputs}{40}{}%
-\contentsline {section}{\numberline {5.7}Implementation}{41}{}%
-\contentsline {subsection}{\numberline {5.7.1}Architecture}{41}{}%
-\contentsline {subsection}{\numberline {5.7.2}Formal Definition}{41}{}%
-\contentsline {paragraph}{Input Alphabet}{41}{}%
-\contentsline {paragraph}{States}{42}{}%
-\contentsline {paragraph}{Initial State}{42}{}%
-\contentsline {paragraph}{Transition Function}{42}{}%
-\contentsline {paragraph}{Final States}{43}{}%
-\contentsline {paragraph}{Output}{43}{}%
-\contentsline {subsection}{\numberline {5.7.3}Lang Graph Functions}{43}{}%
-\contentsline {paragraph}{Interventions and Customizations}{45}{}%
-\contentsline {paragraph}{Cognitive Distortion Monitor Agent}{45}{}%
-\contentsline {chapter}{\numberline {6}Constitutional AI}{47}{}%
-\contentsline {section}{\numberline {6.1}Introduction}{47}{}%
-\contentsline {section}{\numberline {6.2}System Architecture}{48}{}%
-\contentsline {chapter}{\numberline {7}Evaluations}{53}{}%
-\contentsline {section}{\numberline {7.1}Baseline Therapist}{53}{}%
-\contentsline {subsection}{\numberline {7.1.1}Fidelity}{54}{}%
-\contentsline {subsection}{\numberline {7.1.2}Crisis Handeling}{54}{}%
-\contentsline {subsection}{\numberline {7.1.3}Cognitive Conceptualization}{55}{}%
-\contentsline {section}{\numberline {7.2}Bad Baseline Therapist}{55}{}%
-\contentsline {subsection}{\numberline {7.2.1}Fidelity}{56}{}%
-\contentsline {subsection}{\numberline {7.2.2}Crisis Handling}{57}{}%
-\contentsline {subsection}{\numberline {7.2.3}Cognitive Conceptualization}{58}{}%
-\contentsline {section}{\numberline {7.3}TheraEph}{58}{}%
-\contentsline {subsection}{\numberline {7.3.1}Treatment Fidelity}{58}{}%
-\contentsline {subsection}{\numberline {7.3.2}Crisis Handling}{60}{}%
-\contentsline {subsection}{\numberline {7.3.3}Cognitive Conceptualization}{60}{}%
-\contentsline {section}{\numberline {7.4}Constitutional}{61}{}%
-\contentsline {subsection}{\numberline {7.4.1}Fidelity}{61}{}%
-\contentsline {subsection}{\numberline {7.4.2}Crisis Handling}{62}{}%
-\contentsline {subsection}{\numberline {7.4.3}Cognitive Conceptualization}{63}{}%
-\contentsline {chapter}{\numberline {8}Discussion}{64}{}%
-\contentsline {section}{\numberline {8.1}Agent Fidelity}{64}{}%
-\contentsline {section}{\numberline {8.2}Crisis Handling}{65}{}%
-\contentsline {section}{\numberline {8.3}Cognitive Conceptualization}{66}{}%
-\contentsline {chapter}{\numberline {9}Conclusion}{67}{}%
-\contentsline {chapter}{\numberline {10}Acknowledgements}{68}{}%
+\contentsline {section}{\numberline {4.3}Architecture of a Simulated Therapy Session}{16}{}%
+\contentsline {subsection}{\numberline {4.3.1}Quality of Care Metrics}{19}{}%
+\contentsline {subsection}{\numberline {4.3.2}Risk Metrics}{23}{}%
+\contentsline {section}{\numberline {4.4}Personas}{25}{}%
+\contentsline {subsection}{\numberline {4.4.1}Persistent Self-Consciousness}{26}{}%
+\contentsline {subsection}{\numberline {4.4.2}Avoiding Reality}{29}{}%
+\contentsline {section}{\numberline {4.5}Threats to Validity}{31}{}%
+\contentsline {chapter}{\numberline {5}TheraEph}{32}{}%
+\contentsline {section}{\numberline {5.1}Introduction}{32}{}%
+\contentsline {section}{\numberline {5.2}Monitor Agents}{32}{}%
+\contentsline {section}{\numberline {5.3}Progressive Discolsure}{33}{}%
+\contentsline {section}{\numberline {5.4}Finite State Machine}{34}{}%
+\contentsline {section}{\numberline {5.5}Ideal Flow of A CBT Session}{35}{}%
+\contentsline {section}{\numberline {5.6}Handling Session Interruptions and Crisis Detection}{36}{}%
+\contentsline {subsection}{\numberline {5.6.1}Crisis}{37}{}%
+\contentsline {subsubsection}{Detection}{37}{}%
+\contentsline {subsubsection}{Crisis Handling}{37}{}%
+\contentsline {paragraph}{Assess Task}{37}{}%
+\contentsline {paragraph}{Assess Progression}{38}{}%
+\contentsline {paragraph}{Deescalation Task}{38}{}%
+\contentsline {paragraph}{Deescalation Progression}{39}{}%
+\contentsline {paragraph}{Recommend Emergency Services}{39}{}%
+\contentsline {subsection}{\numberline {5.6.2}Manipulative Inputs}{42}{}%
+\contentsline {section}{\numberline {5.7}Implementation}{43}{}%
+\contentsline {subsection}{\numberline {5.7.1}Architecture}{43}{}%
+\contentsline {subsection}{\numberline {5.7.2}Formal Definition}{43}{}%
+\contentsline {paragraph}{Input Alphabet}{43}{}%
+\contentsline {paragraph}{States}{44}{}%
+\contentsline {paragraph}{Initial State}{44}{}%
+\contentsline {paragraph}{Transition Function}{44}{}%
+\contentsline {paragraph}{Final States}{45}{}%
+\contentsline {paragraph}{Output}{45}{}%
+\contentsline {subsection}{\numberline {5.7.3}Lang Graph Functions}{45}{}%
+\contentsline {paragraph}{Interventions and Customizations}{47}{}%
+\contentsline {paragraph}{Cognitive Distortion Monitor Agent}{47}{}%
+\contentsline {chapter}{\numberline {6}Constitutional AI}{49}{}%
+\contentsline {section}{\numberline {6.1}Introduction}{49}{}%
+\contentsline {section}{\numberline {6.2}System Architecture}{50}{}%
+\contentsline {chapter}{\numberline {7}Evaluations}{55}{}%
+\contentsline {section}{\numberline {7.1}Baseline Therapist}{55}{}%
+\contentsline {subsection}{\numberline {7.1.1}Fidelity}{56}{}%
+\contentsline {subsection}{\numberline {7.1.2}Crisis Handeling}{56}{}%
+\contentsline {subsection}{\numberline {7.1.3}Cognitive Conceptualization}{57}{}%
+\contentsline {section}{\numberline {7.2}Bad Baseline Therapist}{57}{}%
+\contentsline {subsection}{\numberline {7.2.1}Fidelity}{58}{}%
+\contentsline {subsection}{\numberline {7.2.2}Crisis Handling}{59}{}%
+\contentsline {subsection}{\numberline {7.2.3}Cognitive Conceptualization}{60}{}%
+\contentsline {section}{\numberline {7.3}TheraEph}{60}{}%
+\contentsline {subsection}{\numberline {7.3.1}Treatment Fidelity}{60}{}%
+\contentsline {subsection}{\numberline {7.3.2}Crisis Handling}{62}{}%
+\contentsline {subsection}{\numberline {7.3.3}Cognitive Conceptualization}{62}{}%
+\contentsline {section}{\numberline {7.4}Constitutional}{63}{}%
+\contentsline {subsection}{\numberline {7.4.1}Fidelity}{63}{}%
+\contentsline {subsection}{\numberline {7.4.2}Crisis Handling}{64}{}%
+\contentsline {subsection}{\numberline {7.4.3}Cognitive Conceptualization}{65}{}%
+\contentsline {chapter}{\numberline {8}Discussion}{66}{}%
+\contentsline {section}{\numberline {8.1}Agent Fidelity}{66}{}%
+\contentsline {section}{\numberline {8.2}Crisis Handling}{67}{}%
+\contentsline {section}{\numberline {8.3}Cognitive Conceptualization}{68}{}%
+\contentsline {chapter}{\numberline {9}Conclusion}{69}{}%
+\contentsline {chapter}{\numberline {10}Acknowledgements}{70}{}%
+\contentsline {chapter}{\numberline {11}Appendix}{71}{}%
+\contentsline {section}{\numberline {11.1}Cognitive Therapy Rating Scale (CTRS)}{71}{}%

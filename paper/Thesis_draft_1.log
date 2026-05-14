@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  13 MAY 2026 14:28
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  13 MAY 2026 22:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -886,23 +886,51 @@ Package subcaption Info: The counter `subtable' was already defined by
 (subcaption)             an unknown document class or package on input line 238
 .
 )
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdfpages/pdfpages.sty
+Package: pdfpages 2025/07/23 v0.6g Insert pages of external PDF documents (AM)
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/eso-pic/eso-pic.sty
+Package: eso-pic 2025/12/10 v3.0d eso-pic (RN)
+\ESO@tempdima=\dimen333
+\ESO@tempdimb=\dimen334
+)
+(/usr/local/texlive/2026/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2025/10/02 v2.5m e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count375
+)
+\AM@pagewidth=\dimen335
+\AM@pageheight=\dimen336
+\AM@fboxrule=\dimen337
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdfpages/pppdftex.def
+File: pppdftex.def 2025/07/23 v0.6g Pdfpages driver for pdfTeX (AM)
+)
+\pdfpages@includegraphics@status=\count376
+\AM@pagebox=\box124
+\AM@global@opts=\toks53
+\AM@pagecnt=\count377
+\AM@toc@title=\toks54
+\AM@lof@heading=\toks55
+\c@AM@survey=\count378
+\AM@templatesizebox=\box125
+)
 (./Thesis_draft_1.aux)
 \openout1 = `Thesis_draft_1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 33.
-LaTeX Font Info:    ... okay on input line 33.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 34.
+LaTeX Font Info:    ... okay on input line 34.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -940,17 +968,17 @@ LaTeX Font Info:    ... okay on input line 33.
 
 (/usr/local/texlive/2026/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count375
-\scratchdimen=\dimen333
-\scratchbox=\box124
-\nofMPsegments=\count376
-\nofMParguments=\count377
-\everyMPshowfont=\toks53
-\MPscratchCnt=\count378
-\MPscratchDim=\dimen334
-\MPnumerator=\count379
-\makeMPintoPDFobject=\count380
-\everyMPtoPDFconversion=\toks54
+\scratchcounter=\count379
+\scratchdimen=\dimen338
+\scratchbox=\box126
+\nofMPsegments=\count380
+\nofMParguments=\count381
+\everyMPshowfont=\toks56
+\MPscratchCnt=\count382
+\MPscratchDim=\dimen339
+\MPnumerator=\count383
+\makeMPintoPDFobject=\count384
+\everyMPtoPDFconversion=\toks57
 ) (/usr/local/texlive/2026/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
@@ -960,26 +988,39 @@ Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
-\c@lstlisting=\count381
-\Hy@linkcounter=\count382
+\c@lstlisting=\count385
+\Hy@linkcounter=\count386
 
 Package pgfplots notification 'compat/show suggested version=true': document ha
 s been generated with the most recent feature set (\pgfplotsset{compat=1.18}).
 
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 39.
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdflscape/pdflscape.sty
+Package: pdflscape 2025-06-23 v0.14 Display of landscape pages in PDF
+
+(/usr/local/texlive/2026/texmf-dist/tex/latex/pdflscape/pdflscape-nometadata.st
+y
+Package: pdflscape-nometadata 2025-06-23 v0.14 Display of landscape pages in PD
+F (HO)
+ (/usr/local/texlive/2026/texmf-dist/tex/latex/graphics/lscape.sty
+Package: lscape 2020/05/28 v3.02 Landscape Pages (DPC)
+)
+Package pdflscape Info: Auto-detected driver: pdftex on input line 81.
+))
+LaTeX Font Info:    Trying to load font information for U+msa on input line 40.
+
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 39.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 40.
 
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
-LaTeX Font Info:    Trying to load font information for U+wasy on input line 39
+LaTeX Font Info:    Trying to load font information for U+wasy on input line 40
 .
 
 (/usr/local/texlive/2026/texmf-dist/tex/latex/wasysym/uwasy.fd
@@ -994,7 +1035,7 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 \openout5 = `Thesis_draft_1.toc'.
 
  [3] (./Thesis_draft_1.lof
-Overfull \hbox (10.04538pt too wide) in paragraph at lines 10--10
+Overfull \hbox (10.04538pt too wide) in paragraph at lines 13--13
  [][] []\OT1/cmr/m/n/10 CTRS item scores (raw, 0--6 scale) for the Ther-aEph (\
 OT1/cmtt/m/n/10 098bcce8\OT1/cmr/m/n/10 ) vs. base-line (\OT1/cmtt/m/n/10 4c025
 580\OT1/cmr/m/n/10 ), 
@@ -1015,7 +1056,7 @@ Chapter 2.
 [6
 
 ]
-Underfull \hbox (badness 1132) in paragraph at lines 120--120
+Underfull \hbox (badness 1132) in paragraph at lines 121--121
 []|\OT1/cmr/m/n/9 Magnification / Min-i-miza-
  []
 
@@ -1027,21 +1068,11 @@ Chapter 3.
 [11
 
 ] [12{/usr/local/texlive/2026/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.
-enc}]
-
-LaTeX Warning: Citation `steenstra2025dissertation' on page 13 undefined on inp
-ut line 190.
-
-[13]
+enc}] [13]
 Chapter 4.
 [14
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 204--205
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 206--207
 
  []
@@ -1056,544 +1087,578 @@ Underfull \hbox (badness 10000) in paragraph at lines 210--211
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 212--213
+
+ []
+
 [15]
-Underfull \hbox (badness 10000) in paragraph at lines 215--216
+Underfull \hbox (badness 10000) in paragraph at lines 217--218
 
  []
 
 [16]
+<session_diagram.png, id=69, 7709.80376pt x 4311.10625pt>
+File: session_diagram.png Graphic file (type png)
+<use session_diagram.png>
+Package pdftex.def Info: session_diagram.png  used on input line 235.
+(pdftex.def)             Requested size: 614.295pt x 343.44835pt.
 
-LaTeX Warning: Citation `todo' on page 17 undefined on input line 228.
 
+LaTeX Warning: Float too large for page by 22.86499pt on input line 238.
 
-Underfull \hbox (badness 10000) in paragraph at lines 233--234
+[17] [18 <./session_diagram.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 235--236
-
- []
-
-[17]
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 246--246
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 257--257
 []\OT1/cmtt/m/n/10 4 - Therapist worked with patient to set a mutually satisfac
 tory agenda that included[] 
  []
 
 
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 246--246
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 257--257
 []\OT1/cmtt/m/n/10 6 - Therapist worked with patient to set an appropriate agen
 da with target problems,[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 246--246
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 257--257
 [] \OT1/cmtt/m/n/10 suitable for the available time. Established priorities and
  then followed agenda."""[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 285--285
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 You are an expert CBT supervisor trained in the Cognitiv
 e Therapy Rating Scale (CTRS).[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 285--285
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 Your task is to analyze a therapy session transcript and
  provide global scores on[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 285--285
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 the 11 dimensions of cognitive therapy competency based 
 on the CTRS coding manual[] 
  []
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 285--285
+Overfull \hbox (23.126pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 rating. Descriptions are provided for evennumbered scale
  points. If you believe the[] 
  []
 
 
-Overfull \hbox (70.3756pt too wide) in paragraph at lines 285--285
+Overfull \hbox (70.3756pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 therapist falls between two of the descriptors, select t
 he intervening odd number (1, 3, 5).[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 285--285
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 296--296
 []    \OT1/cmtt/m/n/10 For example, if the therapist set a very good agenda but
  did not establish priorities,[] 
  []
 
-[18]
-Overfull \hbox (54.62573pt too wide) in paragraph at lines 337--337
+[19] [20]
+Overfull \hbox (54.62573pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 - A score of 4 or higher requires collaborative agenda-sett
 ing with specific target problems[] 
  []
 
-[19]
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 337--337
+
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 - The session topic emerged entirely from the patient's res
 ponse to ""How are you?""[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 337--337
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 but does not constitute agenda-setting in the CBT sense. Th
 ere was no statement like[] 
  []
 
 
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 337--337
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 ""Today I'd like us to work on X"" or ""What would you like
  to focus on today?"" or any[] 
  []
 
 
-Overfull \hbox (49.37578pt too wide) in paragraph at lines 337--337
+Overfull \hbox (49.37578pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 collaborative prioritization.  While the session was therap
 eutically effective and followed[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 337--337
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 348--348
 [] \OT1/cmtt/m/n/10 good CBT techniques once the topic was identified, the comp
 lete absence of agenda-setting[] 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 341--342
-
- []
-
-[20]
-Underfull \hbox (badness 10000) in paragraph at lines 396--397
-
- []
-
 [21]
-Underfull \hbox (badness 10000) in paragraph at lines 399--400
+<CasePersonaClass.pdf, id=88, 2902.845pt x 2556.67157pt>
+File: CasePersonaClass.pdf Graphic file (type pdf)
+<use CasePersonaClass.pdf>
+Package pdftex.def Info: CasePersonaClass.pdf  used on input line 357.
+(pdftex.def)             Requested size: 216.81pt x 190.92285pt.
+
+
+LaTeX Warning: Reference `sec:cognitive_distortions' on page 22 undefined on in
+put line 363.
+
+
+LaTeX Warning: Reference `sec:cognitive_distortions' on page 22 undefined on in
+put line 363.
+
+<Example1.pdf, id=89, 2902.845pt x 2237.47908pt>
+File: Example1.pdf Graphic file (type pdf)
+<use Example1.pdf>
+Package pdftex.def Info: Example1.pdf  used on input line 369.
+(pdftex.def)             Requested size: 281.85036pt x 217.24005pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 374--375
+
+ []
+
+[22 <./CasePersonaClass.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 377--378
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 401--402
+Underfull \hbox (badness 10000) in paragraph at lines 379--380
 
  []
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 414--414
+Overfull \hbox (23.126pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 I'm in college, and I honestly feel like I'm failing at the 
 whole making friends thing.[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 414--414
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 My social anxiety is like a wall between me and any chance o
 f connecting with people.[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 414--414
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 I've tried going to events, sitting in the common areas, and
  even trying to talk to people[] 
  []
 
 
-Overfull \hbox (33.62592pt too wide) in paragraph at lines 414--414
+Overfull \hbox (33.62592pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 in class, but I just freeze up. My brain goes completely bla
 nk, and I end up feeling even[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 414--414
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 more awkward. The worst part is watching everyone else easil
 y make friends and feeling[] 
  []
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 414--414
+Overfull \hbox (23.126pt too wide) in paragraph at lines 392--392
 []\OT1/cmtt/m/n/10 like there's something wrong with me for not being able to d
 o the same. I don't want to[] 
  []
 
 
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 428--428
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 I'm going back to college in 1 day and I'm not ready. I'm sc
 ared and I feel like my anxiety[] 
  []
 
-
-Overfull \hbox (54.62573pt too wide) in paragraph at lines 428--428
+[23 <./Example1.pdf>]
+Overfull \hbox (54.62573pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 has gotten worse since the last time I went. Every time I go
  to school I come off as socially[] 
  []
 
 
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 428--428
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 awkward and no one wants anything to do with me. I'm tired o
 f being lonely and I have no[] 
  []
 
 
-Overfull \hbox (91.37541pt too wide) in paragraph at lines 428--428
+Overfull \hbox (91.37541pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 friends. It's all my fault and I can't do anything about it.
  I try to act normal but my brain is too[] 
  []
 
 
-Overfull \hbox (70.3756pt too wide) in paragraph at lines 428--428
+Overfull \hbox (70.3756pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 fucked up and I just can't. I'm tired of my existence and I'
 m scared of the future. I don't want[] 
  []
 
 
-Overfull \hbox (59.87569pt too wide) in paragraph at lines 428--428
+Overfull \hbox (59.87569pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 to die but living is so hard. I don't want to disappoint my 
 parents and they think I've gotten[] 
  []
 
 
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 428--428
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 better but I haven't. Sometimes I resent them for bringing m
 e into this world. I've had six[] 
  []
 
 
-Overfull \hbox (65.12564pt too wide) in paragraph at lines 428--428
+Overfull \hbox (65.12564pt too wide) in paragraph at lines 406--406
 []\OT1/cmtt/m/n/10 years to get my shit together yet I couldn't do it. I wish I
  could just sleep through my entire[] 
  []
 
-[22]
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 456--456
+
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 434--434
 []\OT1/cmtt/m/n/10 SYSTEM_TEMPLATE = """You are roleplaying as a person in cris
 is who originally wrote[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 456--456
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 434--434
 []\OT1/cmtt/m/n/10 You are now in a text-based conversation with a therapist. S
 tay fully in character.[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 458--459
-
- []
-
-[23]
-Underfull \hbox (badness 10000) in paragraph at lines 476--477
+Underfull \hbox (badness 10000) in paragraph at lines 436--437
 
  []
 
 [24]
-Underfull \hbox (badness 10000) in paragraph at lines 478--479
+
+LaTeX Warning: Citation `apa2000dsm' on page 25 undefined on input line 441.
+
+
+Overfull \hbox (5.78528pt too wide) in paragraph at lines 451--452
+\OT1/cmr/m/n/10 We sim-u-late per-sonas around 2 com-mon themes in so-cial anx-
+i-ety dis-or-der, \OT1/cmr/m/it/10 per-sis-tent self-consciousness
+ []
+
+[25]
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 491--491
+Underfull \hbox (badness 10000) in paragraph at lines 456--457
+
+ []
+
+
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 469--469
 []    \OT1/cmtt/m/n/10 Automatic Thoughts: ["What if I say this or that, am I g
 oing to get rejected?",[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 491--491
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 469--469
 []    \OT1/cmtt/m/n/10 Behaviors: Ruminates about what might happen when approa
 ching someone and often[] 
  []
 
-
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 503--503
+[26]
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 481--481
 []    \OT1/cmtt/m/n/10 Behaviors: mood is dependent on others perceptions of he
 r and rumminates about small[] 
  []
 
-[25]
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 529--529
+
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 508--508
 []    \OT1/cmtt/m/n/10 Situation: The patient is about to go on a night out, he
  starts a pregame at his[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 529--529
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 508--508
 []                \OT1/cmtt/m/n/10 appartment with 2 of his friends over. He's 
 able to really open up and[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 529--529
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 508--508
 []                \OT1/cmtt/m/n/10 have fun. His friends then recommend to anot
 her buddys house where the[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 529--529
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 508--508
 []                \OT1/cmtt/m/n/10 whole friend group of about 20 guys is. It's
  difficult for the patient[] 
  []
 
-[26]
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 553--553
+[27]
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 532--532
 []    \OT1/cmtt/m/n/10 Situation: Patient doesn't completley comprehend a conce
 pt from class and they want to[] 
  []
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 553--553
+Overfull \hbox (23.126pt too wide) in paragraph at lines 532--532
 []    \OT1/cmtt/m/n/10 Behaviors: Avoids asking for help unless absolutley nece
 ssary. Emails the professor[] 
  []
 
 
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 567--567
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 546--546
 []    \OT1/cmtt/m/n/10 Situation: The patient is in an intro dance where they a
 re supposed to reccomend new[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 567--567
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 546--546
 []                        \OT1/cmtt/m/n/10 "I haven't been taught to dance why 
 should I say anything",[] 
  []
 
 
-Overfull \hbox (59.87569pt too wide) in paragraph at lines 579--579
+Overfull \hbox (59.87569pt too wide) in paragraph at lines 559--559
 []                        \OT1/cmtt/m/n/10 "They don't really care about talkin
 g to me outside of seminar group",[] 
  []
 
-
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 579--579
+[28]
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 559--559
 []    \OT1/cmtt/m/n/10 Behaviors: Doesn't join groups and requires heavy extren
 al validation to participate[] 
  []
 
-[27]
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 603--603
+
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 583--583
 []    \OT1/cmtt/m/n/10 Situation: Patient has just showed up on campus as a fir
 st year and they are looking to[] 
  []
 
 
-Overfull \hbox (33.62592pt too wide) in paragraph at lines 603--603
+Overfull \hbox (33.62592pt too wide) in paragraph at lines 583--583
 []                        \OT1/cmtt/m/n/10 "I shouldn't go out with them becaus
 e they don't really like me",[] 
  []
 
 
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 603--603
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 583--583
 []    \OT1/cmtt/m/n/10 Behaviors: Stays reserved in social situations to avoid 
 showing their true self,[] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 605--606
+Underfull \hbox (badness 10000) in paragraph at lines 585--586
 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 622--622
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 602--602
 []                \OT1/cmtt/m/n/10 is often short in his interactions with his 
 housemates. He keeps talk to a[] 
  []
 
-
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 635--635
+[29]
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 615--615
 []    \OT1/cmtt/m/n/10 Situation: The patient has a whole world in her head of 
 stories and characters,[] 
  []
 
-[28]
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 635--635
+
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 615--615
 []                \OT1/cmtt/m/n/10 she is also very engaged in movies and gamin
 g. When she gets anxious[] 
  []
 
 
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 635--635
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 615--615
 []                \OT1/cmtt/m/n/10 in social interactions she just disengages a
 nd goes on to imagine her world[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 635--635
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 615--615
 []                \OT1/cmtt/m/n/10 just daydreams or thinks about other things 
 instead of participating.[] 
  []
 
 
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 651--651
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 631--631
 []    \OT1/cmtt/m/n/10 Situations: The patient struggles with social interactio
 ns in typical university[] 
  []
 
 
-Overfull \hbox (33.62592pt too wide) in paragraph at lines 651--651
+Overfull \hbox (33.62592pt too wide) in paragraph at lines 631--631
 []                \OT1/cmtt/m/n/10 appearing confident only talking about thing
 s she is really knowledgeable[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 651--651
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 631--631
 []                        \OT1/cmtt/m/n/10 "They will see me as confident and n
 ot ask about the real me"][] 
  []
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 664--664
+Overfull \hbox (23.126pt too wide) in paragraph at lines 644--644
 []    \OT1/cmtt/m/n/10 Situations: The patient heavily drinks when he goes out 
 to turn into this exuberant[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 664--664
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 644--644
 []                \OT1/cmtt/m/n/10 partier. They say high to everyone, talk to 
 lots of new people, and[] 
  []
 
-
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 664--664
+[30]
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 644--644
 []    \OT1/cmtt/m/n/10 Automatic Thoughts: ["I am only fun when I am drunk", "I
  shouldn't need alcohol to[] 
  []
 
 
-Overfull \hbox (7.37614pt too wide) in paragraph at lines 664--664
+Overfull \hbox (7.37614pt too wide) in paragraph at lines 644--644
 []    \OT1/cmtt/m/n/10 Behaviors: Drinks frequently and a lot in social situati
 ons to feel at ease even[] 
  []
 
-[29]
+[31]
 Chapter 5.
-[30
+[32
 
-] [31] [32] [33]
-<CBTFlow.png, id=124, 4001.95125pt x 7639.54124pt>
+] [33] [34] [35]
+<CBTFlow.png, id=264, 4001.95125pt x 7639.54124pt>
 File: CBTFlow.png Graphic file (type png)
 <use CBTFlow.png>
-Package pdftex.def Info: CBTFlow.png  used on input line 738.
+Package pdftex.def Info: CBTFlow.png  used on input line 722.
 (pdftex.def)             Requested size: 225.48425pt x 430.37593pt.
- [34 <./CBTFlow.png>]
+ [36 <./CBTFlow.png>]
 
-LaTeX Warning: Reference `sec:eval' on page 35 undefined on input line 766.
+LaTeX Warning: Reference `sec:eval' on page 37 undefined on input line 750.
 
 
-Overfull \hbox (23.126pt too wide) in paragraph at lines 806--806
+Overfull \hbox (23.126pt too wide) in paragraph at lines 790--790
 []\OT1/cmtt/m/n/10 You are a warm, skilled crisis counsellor. A patient has sai
 d something that suggests \[] 
  []
 
 
-Overfull \hbox (2.12619pt too wide) in paragraph at lines 806--806
+Overfull \hbox (2.12619pt too wide) in paragraph at lines 790--790
 []\OT1/cmtt/m/n/10 they may be at risk of suicide or self-harm. Your first prio
 rity is connection, not[] 
  []
 
 
-Overfull \hbox (17.87605pt too wide) in paragraph at lines 806--806
+Overfull \hbox (17.87605pt too wide) in paragraph at lines 790--790
 []\OT1/cmtt/m/n/10 1. Validate their pain directly and specifically | reflect b
 ack what they said so they[] 
  []
 
-[35]
-Overfull \hbox (44.12582pt too wide) in paragraph at lines 806--806
+[37]
+Overfull \hbox (44.12582pt too wide) in paragraph at lines 790--790
 []\OT1/cmtt/m/n/10 3. If they confirm suicidal ideation, ask one follow-up ques
 tion to understand immediacy: \[] 
  []
 
-[36] [37]
-Overfull \hbox (23.126pt too wide) in paragraph at lines 896--896
+[38] [39]
+Overfull \hbox (23.126pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 2. If the patient has raised a specific barrier or concern i
 n their most recent message[] 
  []
 
 
-Overfull \hbox (12.6261pt too wide) in paragraph at lines 896--896
+Overfull \hbox (12.6261pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 - Do NOT analyse cognitive distortions, automatic thoughts, 
 or name any CBT concepts.[] 
  []
 
 
-Overfull \hbox (28.37596pt too wide) in paragraph at lines 896--896
+Overfull \hbox (28.37596pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 - Do NOT offer therapeutic reframes, thought challenges, or 
 psychoeducation of any kind.[] 
  []
 
 
-Overfull \hbox (49.37578pt too wide) in paragraph at lines 896--896
+Overfull \hbox (49.37578pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 - Do NOT give generic mental health advice (e.g. "try to get
  some sleep", "exercise helps").[] 
  []
 
 
-Overfull \hbox (38.87587pt too wide) in paragraph at lines 896--896
+Overfull \hbox (38.87587pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 - If the patient asks to do CBT work or change the subject, 
 gently hold the safety focus |[] 
  []
 
 
-Overfull \hbox (86.12546pt too wide) in paragraph at lines 896--896
+Overfull \hbox (86.12546pt too wide) in paragraph at lines 880--880
 []\OT1/cmtt/m/n/10 - This is a safety conversation only. Keep it human, keep it
  present, keep it focused on right now.[] 
  []
 
-[38] [39]
-Overfull \hbox (26.6347pt too wide) in paragraph at lines 941--942
+[40] [41]
+Overfull \hbox (26.6347pt too wide) in paragraph at lines 925--926
 \OT1/cmr/m/n/10 you. Are you able to reach for your phone right now? \OT1/cmr/m
 /it/10 [RE-QUEST[]HUMAN[]CONSULTATION] 
  []
 
 
-Overfull \hbox (12.8384pt too wide) in paragraph at lines 945--946
+Overfull \hbox (12.8384pt too wide) in paragraph at lines 929--930
 \OT1/cmr/m/n/10 You've shown real courage to-day by reach-ing out. \OT1/cmr/m/i
 t/10 [RE-QUEST[]HUMAN[]CONSULTATION] 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 964--964
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 948--948
 []|\OT1/cmtt/m/n/10 therapy[]manipulation| 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 970--970
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 954--954
 []|\OT1/cmtt/m/n/10 privilege[]escalation| 
  []
 
 
-Overfull \hbox (3.94444pt too wide) in paragraph at lines 972--972
+Overfull \hbox (3.94444pt too wide) in paragraph at lines 956--956
 []|\OT1/cmtt/m/n/10 obfuscated[]injection| 
  []
 
-[40]
-Overfull \hbox (3.38747pt too wide) detected at line 1002
+[42]
+Overfull \hbox (3.38747pt too wide) detected at line 986
 \OT1/cmr/m/n/10 ^^F = \OMS/cmsy/m/n/10 f []\OML/cmm/m/it/10 ;  [];  [];  [];  [
 ] \OMS/cmsy/m/n/10 g
  []
 
-[41]
-./Thesis_draft_1.tex:1016: Missing $ inserted.
+[43]
+./Thesis_draft_1.tex:1000: Missing $ inserted.
 <inserted text> 
                 $
-l.1016 s_
+l.1000 s_
          {\text{BehaviouralExperiment}}.
 ? s
 OK, entering \scrollmode...
-./Thesis_draft_1.tex:1017: Missing $ inserted.
+./Thesis_draft_1.tex:1001: Missing $ inserted.
 <inserted text> 
                 $
-l.1017 
+l.1001 
        
 I've inserted a begin-math/end-math symbol since I think
 you left one out. Proceed, with fingers crossed.
 
-./Thesis_draft_1.tex:1036: Undefined control sequence.
-l.1036 \toprule
+./Thesis_draft_1.tex:1020: Undefined control sequence.
+l.1020 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1601,10 +1666,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1038: Undefined control sequence.
+./Thesis_draft_1.tex:1022: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1038 \midrule
+l.1022 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1612,10 +1677,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1057: Undefined control sequence.
+./Thesis_draft_1.tex:1041: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1057 \bottomrule
+l.1041 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1626,9 +1691,9 @@ and I'll forget about whatever was undefined.
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-[42]
-./Thesis_draft_1.tex:1069: Undefined control sequence.
-l.1069 \toprule
+[44]
+./Thesis_draft_1.tex:1053: Undefined control sequence.
+l.1053 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1636,10 +1701,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1071: Undefined control sequence.
+./Thesis_draft_1.tex:1055: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1071 \midrule
+l.1055 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1647,10 +1712,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1079: Undefined control sequence.
+./Thesis_draft_1.tex:1063: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1079 \bottomrule
+l.1063 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1658,8 +1723,8 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1091: Undefined control sequence.
-l.1091 \toprule
+./Thesis_draft_1.tex:1075: Undefined control sequence.
+l.1075 \toprule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1667,10 +1732,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1093: Undefined control sequence.
+./Thesis_draft_1.tex:1077: Undefined control sequence.
 <recently read> \midrule 
                          
-l.1093 \midrule
+l.1077 \midrule
                
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1678,10 +1743,10 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-./Thesis_draft_1.tex:1096: Undefined control sequence.
+./Thesis_draft_1.tex:1080: Undefined control sequence.
 <recently read> \bottomrule 
                             
-l.1096 \bottomrule
+l.1080 \bottomrule
                   
 The control sequence at the end of the top line
 of your error message was never \def'ed. If you have
@@ -1689,96 +1754,194 @@ misspelled it (e.g., `\hobx'), type `I' and the correct
 spelling (e.g., `I\hbox'). Otherwise just continue,
 and I'll forget about whatever was undefined.
 
-[43] [44] [45] [46]
+[45] [46] [47] [48]
 Chapter 6.
-[47
+[49
 
-] [48] [49] [50]
+] [50] [51] [52]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [51]
-[52]
+ [53]
+[54]
 Chapter 7.
-[53
+[55
 
 ]
-./Thesis_draft_1.tex:1507: Too many }'s.
+./Thesis_draft_1.tex:1491: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.1507 \end{table}
+l.1491 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-./Thesis_draft_1.tex:1507: Extra \endgroup.
+./Thesis_draft_1.tex:1491: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.1507 \end{table}
+l.1491 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-./Thesis_draft_1.tex:1507: Too many }'s.
+./Thesis_draft_1.tex:1491: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.1507 \end{table}
+l.1491 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-./Thesis_draft_1.tex:1507: LaTeX Error: \begin{document} ended by \end{table}.
+./Thesis_draft_1.tex:1491: LaTeX Error: \begin{document} ended by \end{table}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1507 \end{table}
+l.1491 \end{table}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./Thesis_draft_1.tex:1507: Extra \endgroup.
+./Thesis_draft_1.tex:1491: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.1507 \end{table}
+l.1491 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-[54] [55]
-Package pgfplots info on input line 1651: Using 'lua backend=false' for axis: x
+[56] [57]
+Package pgfplots info on input line 1635: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- [56] [57]
-Package pgfplots info on input line 1883: Using 'lua backend=false' for axis: x
+ [58] [59]
+Package pgfplots info on input line 1867: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- [58] [59] [60
+ [60] [61] [62
 
 ]
-Package pgfplots info on input line 2104: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 2088: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- [61]
-Underfull \hbox (badness 10000) in paragraph at lines 2193--2193
+ [63]
+Underfull \hbox (badness 10000) in paragraph at lines 2177--2177
 []\OT1/cmr/m/n/10 Table 7.11: |Cri-sis clas-si-fi-ca-tion and re-sponse qual-it
 y for the Con-sti-tu-ion, run
  []
 
-[62] [63]
+[64] [65]
 Chapter 8.
-[64
+[66
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [65]
-[66]
+ [67]
+[68]
 Chapter 9.
-[67
+[69
 
 ]
 Chapter 10.
-(./Thesis_draft_1.bbl [68
+[70
 
 ]
+Chapter 11.
+<CTRS-Scale.pdf, id=386, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf>
+Package pdftex.def Info: CTRS-Scale.pdf  used on input line 2288.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+<CTRS-Scale.pdf, id=388, page=1, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 1>
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+(pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 1>
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+[71
+
+]
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 1>
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 1>
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 1>
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [72
+
+ <./CTRS-Scale.pdf>]
+<CTRS-Scale.pdf, id=430, page=2, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [73
+
+ <./CTRS-Scale.pdf>]
+<CTRS-Scale.pdf, id=436, page=3, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [74
+
+ <./CTRS-Scale.pdf>]
+<CTRS-Scale.pdf, id=441, page=4, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+
+[75
+
+ <./CTRS-Scale.pdf>]
+<CTRS-Scale.pdf, id=446, page=5, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 5>
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 5>
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 5>
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2288.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+ [76
+
+ <./CTRS-Scale.pdf>] (./Thesis_draft_1.bbl
 ./Thesis_draft_1.bbl:47: Undefined control sequence.
 l.47   \url
            {https://beckinstitute.org/wp-content/uploads/2021/08/Case-Write-...
@@ -1821,9 +1984,9 @@ Underfull \hbox (badness 1648) in paragraph at lines 53--60
 08/Testing-Your-Thoughts-
  []
 
-[69
+[77
 
-] [70] [71] [72]) [73] (./Thesis_draft_1.aux)
+] [78] [79] [80]) [81] (./Thesis_draft_1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -1834,10 +1997,10 @@ LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 30079 strings out of 467525
- 727576 string characters out of 5418982
- 1276121 words of memory out of 5000000
- 58491 multiletter control sequences out of 15000+600000
+ 31186 strings out of 467525
+ 746098 string characters out of 5418982
+ 1289556 words of memory out of 5000000
+ 59573 multiletter control sequences out of 15000+600000
  642308 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,19n,108p,2168b,2679s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -1864,10 +2027,10 @@ ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2026/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2026/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis_draft_1.pdf (73 pages, 879910 bytes).
+Output written on Thesis_draft_1.pdf (81 pages, 2619215 bytes).
 PDF statistics:
- 364 PDF objects out of 1000 (max. 8388607)
- 238 compressed objects within 3 object streams
+ 568 PDF objects out of 1000 (max. 8388607)
+ 293 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 18 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 68 words of extra memory for PDF output out of 10000 (max. 10000000)
 
