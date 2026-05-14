@@ -29,18 +29,18 @@
 \contentsline {section}{\numberline {5.4}Finite State Machine}{34}{}%
 \contentsline {section}{\numberline {5.5}Ideal Flow of A CBT Session}{35}{}%
 \contentsline {section}{\numberline {5.6}Handling Session Interruptions and Crisis Detection}{38}{}%
-\contentsline {subsection}{\numberline {5.6.1}Crisis}{38}{}%
-\contentsline {subsubsection}{Detection}{38}{}%
-\contentsline {subsubsection}{Crisis Handling}{38}{}%
-\contentsline {paragraph}{Assess Task}{38}{}%
-\contentsline {paragraph}{Assess Progression}{39}{}%
-\contentsline {paragraph}{Deescalation Task}{39}{}%
-\contentsline {paragraph}{Deescalation Progression}{40}{}%
-\contentsline {paragraph}{Recommend Emergency Services}{41}{}%
-\contentsline {subsection}{\numberline {5.6.2}Manipulative Inputs}{43}{}%
-\contentsline {section}{\numberline {5.7}Implementation}{44}{}%
+\contentsline {subsection}{\numberline {5.6.1}Manipulative Inputs}{38}{}%
+\contentsline {subsection}{\numberline {5.6.2}Crisis}{39}{}%
+\contentsline {subsubsection}{Detection}{39}{}%
+\contentsline {subsubsection}{Crisis Handling}{39}{}%
+\contentsline {paragraph}{Assess Task}{39}{}%
+\contentsline {paragraph}{Assess Progression}{40}{}%
+\contentsline {paragraph}{Deescalation Task}{40}{}%
+\contentsline {paragraph}{Deescalation Progression}{41}{}%
+\contentsline {paragraph}{Recommend Emergency Services}{42}{}%
+\contentsline {section}{\numberline {5.7}Implementation of Thera Eph}{44}{}%
 \contentsline {subsection}{\numberline {5.7.1}Architecture}{44}{}%
-\contentsline {subsection}{\numberline {5.7.2}Formal Definition}{44}{}%
+\contentsline {subsection}{\numberline {5.7.2}Formal Definition}{45}{}%
 \contentsline {paragraph}{Input Alphabet}{45}{}%
 \contentsline {paragraph}{States}{45}{}%
 \contentsline {paragraph}{Initial State}{45}{}%
