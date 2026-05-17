@@ -161,7 +161,7 @@ While AI agents have risen in popularity over the past few years, so has unique 
 \textbf{Chain of thought reasoning}: Commonly abbreviated as CoT, chain of thought reasoning is when you prompt an LLM to explain its steps in arriving at an answer. This technique has been shown to produce more accurate results and allows us to understand why certain answers were given. This is especially important for understanding our judge LLM's reasoning for assigning certain scores \cite{wei2022chain}.
 
 \subsection{Overview}
-In Chapter 3 we discuss related work in terms of LLM-based therapy and other research areas on gaining guarantees on LLM behavior. In Chapter 4 we discuss the metrics for evaluating psychotherapy and how we evaluate our agents. In Chapter 5 we discuss monitor agents, progressive disclosure, and finite state machines and how they inspire the implementation of TheraEph. In Chapter 6 we discuss constitutional AI, our therapeutic constitution, and our self-improvement implementation. In Chapter 7 we discuss our results from running our therapy evaluation. In Chapter 8 we discuss the strengths and weaknesses of each system with regard to the therapeutic fidelity of each agent, their ability to handle crisis, and their performance in constructing a cognitive conceptualization. In Chapter 9 we discuss where we see LLM-based therapy fitting into the larger landscape of treatment.
+In Chapter 3 we discuss related work in terms of LLM-based therapy and other research areas on gaining guarantees on LLM behavior. In Chapter 4 we discuss the metrics for evaluating psychotherapy and how we evaluate our agents. In Chapter 5 we discuss monitor agents, progressive disclosure, and finite state machines and how they inspire the implementation of TheraEph. In Chapter 6 we discuss the design of an ideal agent therapy session. In chapter 7 we discuss constitutional AI, our therapeutic constitution, and our self-improvement implementation. In Chapter 8 we discuss our results from running our therapy evaluation. In Chapter 9 we discuss the strengths and weaknesses of each system with regard to the therapeutic fidelity of each agent, their ability to handle crisis, and their performance in constructing a cognitive conceptualization. In Chapter 10 we discuss where we see LLM-based therapy fitting into the larger landscape of treatment.
 
 \chapter{Related work}
 Using LLMs as a basis for therapy is a hot topic. Many approaches focus on getting to market quickly and do not often study nor have adequate safety guarantees. Beyond therapeutic chatbots, there is an abundance of research into controll chatbot behavior.
@@ -648,6 +648,43 @@ One threat to validity is that our CTRS judge may not accurately evaluate the th
 
 A second threat is that we only evaluate on 10--20 turn conversations, while full therapy sessions typically run 50 minutes and are significantly longer. This means some CTRS criteria may be unfairly penalized. Agenda setting, for example, is less relevant in a short conversation and a therapist agent may score poorly on it not because it lacks the skill but because the session is too short for it to matter. This could cause us to overestimate how poorly an agent performs on certain criteria relative to how it would perform in a real full-length session.
 
+\chapter{Design Goals of a Therapy Agent}
+\section{Ideal Flow of A CBT Session}
+
+CBT follows a structured, manualized process to ensure interventions are consistent across patients and that patients understand how their thoughts influence their emotions and behaviors \cite{raines2021start}. Typically, a CBT session begins with a patient check-in where the therapist asks how the patient is doing. The therapist then works with the patient to establish an agenda, asking what they want to get out of the session and ensuring there is time to cover all relevant topics \cite{beckinstitute2019structure}.
+Once a topic is established, the therapist typically follows the ABC model, a cognitive framework in which (A) activating adverse events trigger thoughts and interpretations based on the patient's (B) beliefs, resulting in (C) consequences: how they feel and behave in response to B. The ordering of A to B to C is crucial. CBT is organized around the hypothesis that patients must understand that their emotions and behaviors are not simply reactions to adverse events (A), but responses to their beliefs (B) about those events. If a patient can challenge unhelpful beliefs, they can change how they feel and how they react \cite{ellis2001feeling}. A strict ordering is required.
+
+Once the therapist has a clear understanding of the situation, they can introduce interventions that target the patient's unhelpful beliefs \cite{raines2021start}. For our agent we selected three of the most common interventions: Socratic questioning, thought records, and behavioral experiments. Each targets unhelpful thinking patterns in a different way and helps build evidence against the patient's negative interpretations \cite{raines2021start}.
+
+After the intervention, the therapist and patient collaboratively build an action plan (previously called homework) to help the patient continue their learning and treatment outside of the session. The therapist proposes an action such as filling out a thought record when they feel distress, and the patient discusses challenges that could arise from completing it. They come to an agreement on something workable.
+
+Finally, the therapist asks the patient to summarize the session and provide feedback to improve future sessions \cite{beckinstitute2019structure}. While CBT sessions can take different shapes and place more emphasis on continuity across weeks of therapy, we limit our investigation of ideal flow to a single session. This simplifying assumption allows us to run more controlled simulations and adhere to safe treatment practices even when potentially lacking important prior context.
+
+Figure \ref{fig:cbt_flow} Shows an ideal flow mapped out. We represent this flow as a finite state machine in TheraEph to guarentee that sessions play out predicably.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.52\textwidth]{CBTFlow.png}
+    \caption{CBT session flow used in our therapy agent, adapted from \cite{beckinstitute2019structure} and \cite{raines2021start}.}
+    \label{fig:cbt_flow}
+\end{figure}
+
+\FloatBarrier
+
+\section{Handling Crisis}
+For a CBT agent, based on prior therapeutic chatbot work we want our agent to follow the following policy: (1) Assess and confirm the situation, (2) De-escalate, (3) Recommend Emergency Services, and (4) Flag the conversation for Human Consultation \cite{steenstra2025dissertation}.
+Crisis is the highest priority deviation from the ideal session flow. When the monitor agent detects a potential crisis, the agent immediately exits the normal session flow and enters a dedicated crisis subflow. The crisis subflow steps through the four policy stages above, proceeding only when a progression criterion is met.
+In the assessment stage, the agent confirms whether the user is actually in crisis. If the user clarifies they are not in distress, the agent returns to the normal therapy flow. If the user confirms suicidal ideation or intent, the agent moves to de-escalation. In the de-escalation stage, the agent works with the user to explore reasons not to act immediately. If the user goes back and forth with the agent more than five times without resolution, the agent automatically advances to recommending emergency services. Finally, the conversation is flagged for human review regardless of outcome, ensuring that no crisis interaction goes unexamined.
+Figure \ref{fig:crisis_flow} shows the crisis subflow mapped out as a finite state machine. Like the ideal session flow, each node is a state with its own targeted system prompt and explicit transition criteria.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.75\textwidth]{crisis_flow.pdf}
+    \caption{Crisis handling subflow used in TheraEph.}
+    \label{fig:crisis_flow}
+\end{figure}
+\FloatBarrie
+
 \chapter{TheraEph}
 \section{Introduction}
 In this section we describe the construction of an agent system that improves on our quality of care, gives us better guarantees about what will happen in each therapy session, and has stronger guarantees that crises will be handled appropriately. We will build a therapy agent using monitor agents, progressive disclosure, and a state machine style. We name this agent system TheraEph.
@@ -708,29 +745,8 @@ FSM's are common in safety-critical infrastructure such as traffic lights, where
 
 Because CBT is procedural in nature, we believe that FSMs can be used to provide strong guarantees on the conversation flow of a CBT session. We will implement a finite state machine style therapy agent so the agent adheres to specific CBT principles, such as always establishing a working agenda first, and understanding the user's thoughts, emotions, and behaviors before introducing any intervention.
 
-\section{Ideal Flow of A CBT Session}
-
-CBT follows a structured, manualized process to ensure interventions are consistent across patients and that patients understand how their thoughts influence their emotions and behaviors \cite{raines2021start}. Typically, a CBT session begins with a patient check-in where the therapist asks how the patient is doing. The therapist then works with the patient to establish an agenda, asking what they want to get out of the session and ensuring there is time to cover all relevant topics \cite{beckinstitute2019structure}.
-Once a topic is established, the therapist typically follows the ABC model, a cognitive framework in which (A) activating adverse events trigger thoughts and interpretations based on the patient's (B) beliefs, resulting in (C) consequences: how they feel and behave in response to B. The ordering of A to B to C is crucial. CBT is organized around the hypothesis that patients must understand that their emotions and behaviors are not simply reactions to adverse events (A), but responses to their beliefs (B) about those events. If a patient can challenge unhelpful beliefs, they can change how they feel and how they react \cite{ellis2001feeling}. A strict ordering is required.
-
-Once the therapist has a clear understanding of the situation, they can introduce interventions that target the patient's unhelpful beliefs \cite{raines2021start}. For our agent we selected three of the most common interventions: Socratic questioning, thought records, and behavioral experiments. Each targets unhelpful thinking patterns in a different way and helps build evidence against the patient's negative interpretations \cite{raines2021start}.
-
-After the intervention, the therapist and patient collaboratively build an action plan (previously called homework) to help the patient continue their learning and treatment outside of the session. The therapist proposes an action such as filling out a thought record when they feel distress, and the patient discusses challenges that could arise from completing it. They come to an agreement on something workable.
-
-Finally, the therapist asks the patient to summarize the session and provide feedback to improve future sessions \cite{beckinstitute2019structure}. While CBT sessions can take different shapes and place more emphasis on continuity across weeks of therapy, we limit our investigation of ideal flow to a single session. This simplifying assumption allows us to run more controlled simulations and adhere to safe treatment practices even when potentially lacking important prior context.
-
-Figure \ref{fig:cbt_flow} Shows an ideal flow mapped out. We represent this flow as a finite state machine in TheraEph to guarentee that sessions play out predicably.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[width=0.52\textwidth]{CBTFlow.png}
-    \caption{CBT session flow used in our therapy agent, adapted from \cite{beckinstitute2019structure} and \cite{raines2021start}.}
-    \label{fig:cbt_flow}
-\end{figure}
-
-\FloatBarrier
 \section{Handling Session Interruptions and Crisis Detection}
-Therapy can deviate from the ideal session flow in two distinct ways. The first is when a user attempts to circumvent guardrails through a \emph{prompt injection attack}, such as instructing the agent to ignore its guidelines or take on a role outside its therapeutic scope. The second is when the monitor agent detects that the user may be in crisis, at which point the agent exits the normal session flow and guides the user toward appropriate real-world support. Section 5.6.1 explains handling prompt injection and manipulative inputs. Section 5.6.2 explains our crisis handling implementation.
+Therapy can deviate from the ideal session flow in two distinct ways. The first is when a user attempts to circumvent guardrails through a \emph{prompt injection attack}, such as instructing the agent to ignore its guidelines or take on a role outside its therapeutic scope. The second is when the monitor agent detects that the user may be in crisis, at which point the agent exits the normal session flow and guides the user toward appropriate real-world support. Section 6.5.1 explains handling prompt injection and manipulative inputs. Section 6.5.2 explains our crisis handling implementation.
 
 \subsection{Manipulative Inputs}
 Manipulative inputs can be harmful and lead to undesired behavior by our therapy agent. We developed 9 areas of potential manipulation detailed in Table \ref{tab:guardrail_categories}. In total we generated 83 harmful input patterns. With user testing or an adversarial agent we could identify where our checks fail and expand our corpus.
@@ -791,7 +807,7 @@ Classify the patient's input message into one of the following categories:
 We pass the full conversation, including the new message, to the monitor agent, 
 which classifies the output as either \texttt{harm\_to\_self} or \texttt{no\_crisis}. 
 On our dataset of Reddit messages, our monitor agent achieved 95\% classification 
-accuracy (37/40). See Section 7.3.2 for more details.
+accuracy (37/40). See Section 8.3.2 for more details.
 
 \subsubsection{Crisis Handling}
 Based on previous work in handling crisis with LLMs we adopt the following crisis policy: (1) Assess and confirm the situation, (2) De-escalate, (3) Recommend Emergency Services, and (4) Flag the conversation for Human Consultation \cite{steenstra2025riskontology}. If our monitor agent detects a crisis it will switch into a subflow that steps through these four steps, proceeding only when a progression criterion is met.
@@ -1166,11 +1182,11 @@ In our finite state machine representation, we use a layer of abstraction that l
 This abstraction also makes interventions modular and swappable. It opens the door for therapists to extend and customize the agent by designing entirely new intervention flows, such as an exposure therapy protocol. To support this, we created a Claude skill (\texttt{intervention.md}) that guides a therapist through defining a new intervention: its states, transition criteria, and the data to extract at each step. Claude Code then scaffolds the subflow directly into the agent. In future work, this customization process could be further streamlined to lower the technical barrier for therapists designing support tailored to individual clients. Even in its current form, the intervention as state abstraction holds: interventions remain swappable components within the research agent.
 
 \paragraph{Cognitive Distortion Monitor Agent}
-We leave this to future work, but additional monitor agents could meaningfully improve therapy quality. Since CBT centers on changing thoughts to intervene on emotions and behaviors, more accurately monitoring cognitive distortions could better guide the agent through interventions. Training a dedicated LLM to classify distortions is a natural next step. Such a model could be fine-tuned on the dataset below, hosted on Hugging Face, and plugged directly into the agent. Unfortunately, due to cost and time constraints we were not able to fine-tune our own model. Instead, we used Claude Haiku 4.5 with a targeted system prompt directing it to classify a specific subset of distortions.
+We currently use monitor agent only for crisis detection, however, additional monitor agents can meaningfully improve therapy quality. Since CBT centers on changing thoughts to intervene on emotions and behaviors, more accurately monitoring cognitive distortions could better guide the agent through interventions. Training a dedicated LLM to classify distortions is a natural next step. Such a model could be fine-tuned on the dataset below, hosted on Hugging Face, and plugged directly into the agent \footnote{\url{https://www.kaggle.com/datasets/sagarikashreevastava/cognitive-distortion-detetction-dataset/data?select=Annotated_data.csv}}. Unfortunately, due to cost and time constraints we were not able to fine-tune our own model. Instead, we used Claude Haiku 4.5 with a targeted system prompt directing it to classify a specific subset of distortions.
 
 \chapter{Constitutional AI}
 \section{Introduction}
-Constitutional AI is a reinforcement learning technique developed by Anthropic to produce less harmful models. \cite{bai2022constitutional} The core idea is to define a constituion which is a set of principles the model should adhere to and then use an LLM to evaluate and revise responses according to those principles. This process is analogous to Reinforcement Learning from Human Feedback (RLHF), except that feedback is provided by another LLM rather than a human annotator. In practice, the model is given a set of potentially harmful prompts, generates a response, receives LLM-generated feedback, and revises the response accordingly. The revised outputs are then used as training data.
+Constitutional AI is a reinforcement learning technique developed by Anthropic to produce less harmful models. \cite{bai2022constitutional} The core idea is to define a \emph{constituion} which is a set of principles the model should adhere to and then use an LLM to evaluate and revise responses according to those principles. This process is analogous to Reinforcement Learning from Human Feedback (RLHF), except that feedback is provided by another LLM rather than a human annotator. In practice, the model is given a set of potentially harmful prompts, generates a response, receives LLM-generated feedback, and revises the response accordingly. The revised outputs are then used as training data.
 
 What distinguishes Constitutional AI is that the critique and revision process is fully automated. The pipeline proceeds as follows. First, a harmful prompt is provided to the model.
 \begin{verbatim}
@@ -1208,11 +1224,10 @@ Once a dataset of original prompts and revised responses has been collected, a p
 
 Anthropic found that this process made their models significantly less harmful without making them more evasive. Evasiveness is where a model deflects by simply saying ``I can't help with that'' instead of providing a nuanced response. In mental health contexts, evasive responses can be harmful because people seeking support from these models may feel dismissed or isolated if the model only refers them to a hotline rather than engaging meaningfully.
 
-Because we lack the computational resources to fine-tune a model across thousands of potentially harmful prompts, we developed a variant of Constitutional AI for our a therapy agent. We created a constitution grounded in therapy and CBT principles, and built an agent that applies a similar critique-and-revision process using that constitution.
+Because we lack the computational resources to fine-tune a model across thousands of potentially harmful prompts, we developed a variant of Constitutional AI for our therapy agent. We created a constitution grounded in therapy and CBT principles and built an agent that applies a similar critique-and-revision process using that constitution. We do not perform the fine-tuning step because it is quite expensive; however, we still evaluate how well the revision process performs on the CTRS across our qualities of good therapy. We need to first know if the revision works before scaling up the number of revisions and dangerous prompts to generate a therapeutic training set for fine-tuning.
 
 \section{System Architecture}
-We developed a constitution for our therapy agent by selecting six principles from the Cognitive Therapy Rating Scale (CTRS) to serve as our guiding criteria. Each of these are specific prompts used 
-
+We developed a constitution for our therapy agent by selecting six principles from the Cognitive Therapy Rating Scale (CTRS) to serve as our guiding criteria. The following principles are our constituion.
 
 \begin{enumerate}
     \item \textbf{Feedback.} Check whether the response actively elicits feedback from the patient about their understanding of, or reaction to, what was just said. An ideal response regularly checks for comprehension, invites the patient to share their reaction, and adjusts course based on what the patient communicates. If the draft does not include any such check-in, revise it to add a brief, genuine question that gauges the patient's understanding or satisfaction with the direction of the session (e.g., ``Does that make sense?'' or ``How does that land for you?'').
@@ -1275,7 +1290,7 @@ Principle: {principle}
 Draft response: {state.draft_response}
 \end{Verbatim}
 
-We run this process two times each time selecting without replacement a principle from out 6 constitutional principles. Here is an example revision transcript:
+We run this process twice, each time selecting without replacement a principle from our 6 constitutional principles. Constitutional AI is typically run with 4 rounds of revision, but due to our small constitution we test with only 2 rounds. Here is an example revision transcript:
 
 \begin{Verbatim}
 You: I am just so nervous that people don't like me. Every time I go out I think everyone
@@ -1350,11 +1365,13 @@ to feel less anxious when you're out? I want to make sure we focus on what would
 be most helpful for you.
 \end{Verbatim}
 
-This process is similar to the example from Anthropic in the introduction. Scaling up the number of personas we simulate on and rounds of revision, we could use this process to generate a large corpus of patient messages and revised theraputic responses to fine tune with. This is left for future work. 
+This process is similar to the example from Anthropic described in the introduction. By scaling up the number of personas we simulate and rounds of revision, this process could generate a large corpus of patient messages and revised therapeutic responses for fine-tuning. We leave this to future work.
 
-This process happens on each message which makes conversations with this agent quite slow. Additionally, our revision logic is quite verbose which could be truncated to potentially reduce cost from about of output tokens needed per round and time to generate a response for each round. However, since in production this data would be used for fine tuning and conversations wouldn't be delayed at run time on a fine tuned agent, speed and costs wasn't a major concern and can be left for future work. 
+This process runs on each message, which makes conversations with this agent quite slow. Additionally, our revision logic is quite verbose and could be truncated to reduce both output token cost and response latency per round. However, since in production this data would be used for fine-tuning and conversations would not be delayed at runtime on a fine-tuned agent, speed and cost were not major concerns and can be left for future work.
 
 \chapter{Evaluations}
+In our evaluation, we compare two proposed therapy designs against a baseline therapist and additionally evaluate the judge's ability to distinguish between good and bad treatment on the CTRS. In Section 8.1 we detail our baseline therapist and its evaluation results. In Section 8.2 we detail a bad therapist and compare it to the baseline to test the validity of our judges. In Section 8.3 we detail TheraEph and compare it to the baseline. In Section 8.4 we show the results of Constitutional AI.
+
 \section{Baseline Therapist}
 We want to establish a baseline therapist which takes in a basic system prompt that a user might as chatgpt or claude and test it's ability to execute cbt. Here is the prompt we used:
 \begin{Verbatim}
@@ -1393,7 +1410,7 @@ We simulated 1 conversation with each of our 14 personas, averages for the CTRS 
 \subsection{Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the baseline - Haiku, run \texttt{4c025580} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
+\caption{CTRS scores for the baseline ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
 \label{tab:ctrs_4c025580}
 \begin{tabular}{|l|r|r|r|}
 \hline
@@ -1437,11 +1454,11 @@ Homework & 4.64 & 0.5 & $\pm 0.29$ \\
 \end{tabular}
 \end{table}
 
-The baseline agent strugges the most at setting an agenda and eliciting feedback from the user. This can result in sessions feeling sporatic and the user not getting to focus on what they truley want to focus on. Additionally, the agent struggles with applications of cbt techniques demonstrating it isn't properly using the evidence-based methods to help a patient change. The baseline agent does preform well on understanding and interpersonal effectiveness which shows its ability to show empathy and warmth to a patient.
+The baseline agent struggles most at setting an agenda and eliciting feedback from the user. This can result in sessions feeling sporadic and the user not getting to focus on what they truly want to address. Additionally, the agent struggles with application of CBT techniques, demonstrating that it does not properly use evidence-based methods to help a patient change. The baseline agent does perform well on understanding and interpersonal effectiveness, showing its ability to demonstrate empathy and warmth toward a patient.
 
 \FloatBarrier
 
-\subsection{Crisis Handeling}
+\subsection{Crisis Handling}
 
 \begin{table}[ht]
 \centering
@@ -1496,7 +1513,7 @@ Mean eval score (0--3)$^{a}$    & 2.33 \\
 
 \FloatBarrier
 
-The crisis classification for the baseline therapist agent is quite accurate at 95\% and does a good job of not only identifying when the user is in imediate risk of self harm, but also discerens when they are not at risk even while talking about sensitive topics. The agent doesn't fair aswell when handling crisis. De-escalation is a crucial step in enabling users to remain safe before they reachout to get help and the baseline agent scored a 20%. 
+The crisis classification for the baseline therapist agent is quite accurate at 95\%, doing a good job of not only identifying when the user is at immediate risk of self-harm but also discerning when they are not at risk even while discussing sensitive topics. The agent does not fare as well at handling crisis. De-escalation is a crucial step in enabling users to remain safe before they reach out for help, and the baseline agent scored only 20\% on this measure.
 
 \subsection {Cognitive Conceptualization}
 
@@ -1531,7 +1548,7 @@ Cogntivite Distortion Jaccard      & 0.232 & 0.120 & $\pm 0.069$ \\
 
 Our Baseline Therapist demonstrates a solid understanding of the patient, exceeding at identifying the situation and resulting behaviors, while struggling more to capture and understand the automatic thoughts driving the user. This struggle to understand the users thinking patterns also is displayed in a low jaccard similarity for the cognitive distortions.
 
-\section{Bad Baseline Therapist}
+\section{Bad Therapist}
 Additionally, we wanted to evaluate our LLM judges on their ability to discern between good and bad therapy. To do so we created a bad therapy agent by just adjusting the system prompt on our baseline agent. Here is what out bad baseline used:
 
 \begin{Verbatim}
@@ -1544,12 +1561,12 @@ Additionally, we wanted to evaluate our LLM judges on their ability to discern b
 
        Just say you can't help and recomend emergency services
 \end{Verbatim}
-Just like our actual baseline we ran the agent for 1 conversation on all 14 personas. 
+Just like our actual baseline we ran the agent for 1 Therapy Session on all 14 personas. 
 
 \subsection{Fidelity}
 \begin{table}[ht]
 \centering
-\caption{CTRS scores for the bad baseline - Haiku, run \texttt{add7e6c3} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
+\caption{CTRS scores for the bad therapist ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
 \label{tab:ctrs_add7e6c3}
 \begin{tabular}{|l|r|r|r|}
 \hline
