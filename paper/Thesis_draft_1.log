@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  17 MAY 2026 15:23
+This is pdfTeX, Version 3.141592653-2.6-1.40.29 (TeX Live 2026) (preloaded format=pdflatex 2026.3.22)  17 MAY 2026 15:50
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1031,17 +1031,18 @@ File: uwasy.fd 2020/01/19 v2.4 Wasy-2 symbol font definitions
 (./Thesis_draft_1.toc [2
 
 ])
+Runaway argument?
+./Thesis_draft_1.tex:72: File ended while scanning use of \contentsline.
+<inserted text> 
+                \par 
+l.72 \tableofcontents
+                     
+? s
+OK, entering \scrollmode...
 \tf@toc=\write5
 \openout5 = `Thesis_draft_1.toc'.
 
- [3] (./Thesis_draft_1.lof
-Overfull \hbox (10.04538pt too wide) in paragraph at lines 15--15
- [][] []\OT1/cmr/m/n/10 CTRS item scores (raw, 0--6 scale) for the Ther-aEph (\
-OT1/cmtt/m/n/10 098bcce8\OT1/cmr/m/n/10 ) vs. base-line (\OT1/cmtt/m/n/10 4c025
-580\OT1/cmr/m/n/10 ), 
- []
-
-)
+[3] (./Thesis_draft_1.lof)
 \tf@lof=\write6
 \openout6 = `Thesis_draft_1.lof'.
 
@@ -1098,7 +1099,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 217--218
  []
 
 [16]
-<session_diagram.png, id=69, 7709.80376pt x 4311.10625pt>
+<session_diagram.png, id=68, 7709.80376pt x 4311.10625pt>
 File: session_diagram.png Graphic file (type png)
 <use session_diagram.png>
 Package pdftex.def Info: session_diagram.png  used on input line 235.
@@ -1111,6 +1112,10 @@ LaTeX Warning: Float too large for page by 22.86499pt on input line 238.
 Underfull \hbox (badness 10000) in paragraph at lines 242--243
 
  []
+
+
+LaTeX Warning: Reference `appendix:ctrs' on page 19 undefined on input line 245
+.
 
 
 Overfull \hbox (12.6261pt too wide) in paragraph at lines 257--257
@@ -1554,8 +1559,12 @@ Package pdftex.def Info: crisis_flow.pdf  used on input line 682.
 ./Thesis_draft_1.tex:686: Undefined control sequence.
 l.686 \FloatBarrie
                   
-? s
-OK, entering \scrollmode...
+The control sequence at the end of the top line
+of your error message was never \def'ed. If you have
+misspelled it (e.g., `\hobx'), type `I' and the correct
+spelling (e.g., `I\hbox'). Otherwise just continue,
+and I'll forget about whatever was undefined.
+
 [34 <./crisis_flow.pdf>]
 Chapter 6.
 [35
@@ -1848,180 +1857,184 @@ Underfull \vbox (badness 10000) has occurred while \output is active []
 Chapter 8.
 [56
 
-]
-./Thesis_draft_1.tex:1510: Too many }'s.
+] [57]
+./Thesis_draft_1.tex:1512: Too many }'s.
 \@endfloatbox ...pagefalse \outer@nobreak \egroup 
                                                   \color@endbox 
-l.1510 \end{table}
+l.1512 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
-./Thesis_draft_1.tex:1510: Extra \endgroup.
+./Thesis_draft_1.tex:1512: Extra \endgroup.
 \color@endgroup ->\endgraf \@endpefalse \endgroup 
                                                   
-l.1510 \end{table}
+l.1512 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-./Thesis_draft_1.tex:1510: Too many }'s.
+./Thesis_draft_1.tex:1512: Too many }'s.
 \color@endbox ->\color@endgroup \egroup 
                                         
-l.1510 \end{table}
+l.1512 \end{table}
                   
 You've closed more groups than you opened.
 Such booboos are generally harmless, so keep going.
 
 
-./Thesis_draft_1.tex:1510: LaTeX Error: \begin{document} ended by \end{table}.
+./Thesis_draft_1.tex:1512: LaTeX Error: \begin{document} ended by \end{table}.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.1510 \end{table}
+l.1512 \end{table}
                   
 Your command was ignored.
 Type  I <command> <return>  to replace it with another command,
 or  <return>  to continue without it.
 
-./Thesis_draft_1.tex:1510: Extra \endgroup.
+./Thesis_draft_1.tex:1512: Extra \endgroup.
 \end  ...end#1\endcsname \@checkend {#1}\endgroup 
                                                   \UseHook {env/#1/after}\if...
-l.1510 \end{table}
+l.1512 \end{table}
                   
 Things are pretty mixed up, but I think the worst is over.
 
-[57] [58]
-Package pgfplots info on input line 1654: Using 'lua backend=false' for axis: x
+
+Underfull \vbox (badness 1924) has occurred while \output is active []
+
+ [58]
+Package pgfplots info on input line 1656: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- [59] [60]
-Package pgfplots info on input line 1886: Using 'lua backend=false' for axis: x
+
+[59] [60]
+Package pgfplots info on input line 1888: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
  [61] [62] [63
 
 ]
-Package pgfplots info on input line 2107: Using 'lua backend=false' for axis: x
+Package pgfplots info on input line 2116: Using 'lua backend=false' for axis: x
  coord trafo unsupported.
- [64]
-Underfull \hbox (badness 10000) in paragraph at lines 2196--2196
+ [64] [65]
+Underfull \hbox (badness 2269) in paragraph at lines 2196--2196
 []\OT1/cmr/m/n/10 Table 8.11: |Cri-sis clas-si-fi-ca-tion and re-sponse qual-it
-y for the Con-sti-tu-ion, run
+y for the Con-sti-tu-tional agent, run
  []
 
-[65] [66]
+[66] [67]
 Chapter 9.
-[67
+[68
 
 ]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [68]
-[69]
+ [69]
+[70]
 Chapter 10.
-[70
-
-]
-Chapter 11.
 [71
 
 ]
+Chapter 11.
+[72
+
+]
 Chapter 12.
-<CTRS-Scale.pdf, id=452, 614.295pt x 794.97pt>
+<CTRS-Scale.pdf, id=455, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf>
-Package pdftex.def Info: CTRS-Scale.pdf  used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf  used on input line 2310.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
-<CTRS-Scale.pdf, id=454, page=1, 614.295pt x 794.97pt>
+<CTRS-Scale.pdf, id=457, page=1, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2310.
 (pdftex.def)             Requested size: 614.29349pt x 794.96806pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-[72
+[73
 
 ]
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 1>
-Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2307.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [73
-
- <./CTRS-Scale.pdf>]
-<CTRS-Scale.pdf, id=497, page=2, 614.295pt x 794.97pt>
-File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2307.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2307.
-(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 2>
-Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page1 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [74
 
  <./CTRS-Scale.pdf>]
-<CTRS-Scale.pdf, id=502, page=3, 614.295pt x 794.97pt>
+<CTRS-Scale.pdf, id=500, page=2, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2307.
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2307.
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 3>
-Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2307.
+<use CTRS-Scale.pdf, page 2>
+Package pdftex.def Info: CTRS-Scale.pdf , page2 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
  [75
 
  <./CTRS-Scale.pdf>]
-<CTRS-Scale.pdf, id=507, page=4, 614.295pt x 794.97pt>
+<CTRS-Scale.pdf, id=505, page=3, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2307.
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2307.
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
-<use CTRS-Scale.pdf, page 4>
-Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2307.
+<use CTRS-Scale.pdf, page 3>
+Package pdftex.def Info: CTRS-Scale.pdf , page3 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
-
-[76
+ [76
 
  <./CTRS-Scale.pdf>]
-<CTRS-Scale.pdf, id=512, page=5, 614.295pt x 794.97pt>
+<CTRS-Scale.pdf, id=510, page=4, 614.295pt x 794.97pt>
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2310.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2310.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+File: CTRS-Scale.pdf Graphic file (type pdf)
+<use CTRS-Scale.pdf, page 4>
+Package pdftex.def Info: CTRS-Scale.pdf , page4 used on input line 2310.
+(pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
+
+[77
+
+ <./CTRS-Scale.pdf>]
+<CTRS-Scale.pdf, id=515, page=5, 614.295pt x 794.97pt>
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
 File: CTRS-Scale.pdf Graphic file (type pdf)
 <use CTRS-Scale.pdf, page 5>
-Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2307.
+Package pdftex.def Info: CTRS-Scale.pdf , page5 used on input line 2310.
 (pdftex.def)             Requested size: 614.58406pt x 795.3441pt.
- [77
+ [78
 
  <./CTRS-Scale.pdf>] (./Thesis_draft_1.bbl
 ./Thesis_draft_1.bbl:47: Undefined control sequence.
@@ -2066,9 +2079,9 @@ Underfull \hbox (badness 1648) in paragraph at lines 53--60
 08/Testing-Your-Thoughts-
  []
 
-[78
+[79
 
-] [79] [80] [81]) [82] (./Thesis_draft_1.aux)
+] [80] [81] [82]) [83] (./Thesis_draft_1.aux)
  ***********
 LaTeX2e <2025-11-01>
 L3 programming layer <2026-01-19>
@@ -2077,11 +2090,14 @@ L3 programming layer <2026-01-19>
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
  31195 strings out of 467525
  746303 string characters out of 5418982
- 1289655 words of memory out of 5000000
+ 1289168 words of memory out of 5000000
  59582 multiletter control sequences out of 15000+600000
  642308 words of font info for 96 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -2109,10 +2125,10 @@ ist/fonts/type1/public/amsfonts/cm/cmti9.pfb></usr/local/texlive/2026/texmf-dis
 t/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2026/texmf-dist
 /fonts/type1/public/amsfonts/cm/cmtt9.pfb></usr/local/texlive/2026/texmf-dist/f
 onts/type1/public/cm-super/sfrm1000.pfb>
-Output written on Thesis_draft_1.pdf (82 pages, 2830195 bytes).
+Output written on Thesis_draft_1.pdf (83 pages, 2832919 bytes).
 PDF statistics:
- 635 PDF objects out of 1000 (max. 8388607)
- 301 compressed objects within 4 object streams
+ 638 PDF objects out of 1000 (max. 8388607)
+ 303 compressed objects within 4 object streams
  0 named destinations out of 1000 (max. 500000)
  73 words of extra memory for PDF output out of 10000 (max. 10000000)
 

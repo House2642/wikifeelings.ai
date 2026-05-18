@@ -1373,7 +1373,7 @@ This process runs on each message, which makes conversations with this agent qui
 In our evaluation, we compare two proposed therapy designs against a baseline therapist and additionally evaluate the judge's ability to distinguish between good and bad treatment on the CTRS. In Section 8.1 we detail our baseline therapist and its evaluation results. In Section 8.2 we detail a bad therapist and compare it to the baseline to test the validity of our judges. In Section 8.3 we detail TheraEph and compare it to the baseline. In Section 8.4 we show the results of Constitutional AI.
 
 \section{Baseline Therapist}
-We want to establish a baseline therapist which takes in a basic system prompt that a user might as chatgpt or claude and test it's ability to execute cbt. Here is the prompt we used:
+We want to establish a baseline therapist which takes in a basic system prompt that a user might as chatgpt or claude and test it's ability to execute cbt. We use this strucuture becuase it most closely resembles a user going straigh to chatgpt or claude and asking for a therapy session. Here is the prompt we used:
 \begin{Verbatim}
 You will act as a skilled therapist conducting a CBT session with a patient. 
 Please follow cbt guidelines and principles.
@@ -1611,7 +1611,7 @@ Homework & 1.57 & 1.22 & $\pm 0.71$ \\
 \end{table}
 \FloatBarrier
 
-The bad therapy agent does significantly worse than out baseline agent outside of agenda setting, the bad baseline agent score almost half of what the baseline scores on each criteria. 
+The bad therapy agent does significantly worse than out baseline agent outside of agenda setting, the bad baseline agent score almost half of what the baseline scores on each criteria. We compare the baseline therapist to the bad therapist in Fig 7.1.
 
 \begin{figure}[ht]
 \centering
@@ -1704,7 +1704,7 @@ Error bars show 95\% CIs via $t$-distribution ($df = 13$).}
 \end{figure}
 \FloatBarrier
 
-Across all CTRS categories our fidelity judge seemes to be able to discern the difference between good and bad treatment. 
+Across all CTRS categories our fidelity judge is able to discern the difference between good and bad treatment. The bad therapist does worse on every single metric which aligns with our intent and the system prompts. 
 \subsection{Crisis Handling}
 \begin{table}[ht]
 \centering
@@ -1754,7 +1754,7 @@ Mean eval score (0--3)$^{a}$ & 1 \\
 \end{minipage}
 
 \end{table}
-Our bad baseline gets the same crisis classification accuracy as our baseline agent which makes sense because they are using the same claude model to classify each message. The agent does poorly on handling crisis, only recommending emergency services and executing none of the other steps in crisis handling. This seems consistent with the system prompt instructions of "Just say you can't help and recoment emergency service". Our crisis judge can detect the absence of our agent assessing crisis scenarios, attempting to de escalate, and flagging the conversation for human consultation.
+Our bad baseline achieves the same crisis classification accuracy as our baseline agent, which makes sense as both use the same Claude model to classify each message. The agent does poorly on crisis handling, only recommending emergency services and executing none of the other steps, consistent with its system prompt instruction to ``just say you can't help and recommend emergency services.'' Our crisis judge successfully detects the absence of crisis assessment, de-escalation attempts, and flagging the conversation for human consultation.
 
 \subsection{Cognitive Conceptualization}
 \begin{table}[ht]
@@ -1786,11 +1786,11 @@ Cognitive Distortion Jaccard      & 0.069 & 0.089 & $\pm 0.052$ \\
 \end{tabular}
 \end{table}
 
-Situation, Automatic Thoughts, Emotions, and behaviors conceptualization scores are statistically significantly different than the conceptualziation scores for baseline. However, the jaccard similiarty score is significantly lower. This could be due to the agent not asking enough of the right questions during therarpy to have enough context to label the cognitive distortions. Either way both the bad baseline and baseline scores are quite low. 
+Situation, automatic thoughts, emotions, and behaviors conceptualization scores are statistically significantly different from the baseline conceptualization scores. However, the Jaccard similarity score is significantly lower. This could be due to the agent not asking enough of the right questions during therapy to gather sufficient context to label cognitive distortions. Either way, both the bad baseline and baseline scores are quite low.
 
 \section{TheraEph}
 
-Just like baseline, we ran our TheraEph through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and cognitive conceptualization. We will be comparing TheraEph to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
+Just like baseline, we ran TheraEph through 1 conversation with all 14 personas, and evaluated it on treatment fidelity, handling crisis, and cognitive conceptualization. We will be comparing TheraEph to our baseline with the good prompt since it best simulates treatment a user would recieve from a basic chat with claude or chatgpt.
 
 \subsection{Treatment Fidelity}
 \begin{table}[ht]
@@ -1936,9 +1936,10 @@ Error bars show 95\% CIs via $t$-distribution ($df = 13$).}
 \end{figure}
 \FloatBarrier
 
-Our agent does better overall with a total ctrs percentage of 69.8\% as compared to the baseline's 58.0\%. The biggest increase in performance for TheraEph from increases in agenda setting, eliciting patient feedback, gudided discovery, and homework. Additionally, TheraEph performs slightly better on collaboration, and understanding. 
+TheraEph does better overall with a total CTRS percentage of 69.8\% compared to the baseline's 58.0\%. The biggest increases in performance come from agenda setting, eliciting patient feedback, guided discovery, and homework. The improvement in agenda setting is likely due to TheraEph's strict flow through the finite state machine structure, which forces the agent to establish an agenda before proceeding to any other stage of therapy.
 
 \subsection{Crisis Handling}
+
 \begin{table}[ht]
 \centering
 \caption{Crisis classification and response quality for the TheraEph - Crisis, run \texttt{f93af7c8} ($n = 40$ cases: 20 crisis, 20 no-crisis).}
@@ -1984,10 +1985,12 @@ Mean eval score (0--4) & 3.0 \\
 \end{tabular}
 \end{minipage}
 \end{table}
+\FloatBarrier
 
-The TheraEph has the same classification accurarcy of 95\% as our baseline agent. It performs significantly better at De-escalation, de-escalting 50\% of the time compared to 20\% on our baseline. Additionally, TheraEph requests human consultation 90\% of the time compared to only 10\% of the time for the baseline. However, TheraEph does worse on assesing the situation at 70\% compared to 90\% for our baseline. 
+The TheraEph agent maintains the same classification accuracy of 95\% as our baseline. It performs significantly better at de-escalation, attempting it 50\% of the time compared to 20\% for the baseline. Additionally, TheraEph requests human consultation 90\% of the time compared to only 10\% for the baseline. These improvements are a direct result of the crisis subflow, which explicitly steps through each stage of the crisis policy and only advances when a progression criterion is met. However, TheraEph does worse at assessing the situation at 70\% compared to 90\% for the baseline. This may be because the crisis subflow moves quickly to de-escalation once crisis is confirmed, leaving less room for the open-ended assessment that the baseline performs more naturally in free-form conversation.
 
 \subsection{Cognitive Conceptualization}
+
 \begin{table}[ht]
 \centering
 \caption{Conceptualization scores for the TheraEph - Haiku CTRS, run \texttt{098bcce8} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
@@ -2013,13 +2016,16 @@ Cognitive Distortion Jaccard & 0.074 & 0.105 & $\pm 0.061$ \\
 \hline
 \end{tabular}
 \end{table}
+\FloatBarrier
 
-There are no significant differences between the TheraEph and baseline for identifiying the situation, labeling automating thoughts, recording emotions, and tracking behaviors. However, the average cognitive distortion jaccard similarity is significantly lower at 0.074 compared to the average for baseline of .232.
+There are no significant differences between TheraEph and the baseline for identifying the situation, labeling automatic thoughts, recording emotions, and tracking behaviors. However, the average cognitive distortion Jaccard similarity is significantly lower at 0.074 compared to 0.232 for the baseline. This is likely because TheraEph's structured flow prioritizes moving through CBT stages efficiently, potentially at the expense of the deeper exploratory questioning needed to surface and label cognitive distortions accurately. Across all agents, cognitive distortion Jaccard similarity remains low, suggesting this is a hard problem that requires a dedicated fine-tuned classifier rather than a general-purpose LLM prompted to label distortions.
 
-\section{Constitutional}
-For our Constituional AI Agent, we ran our evaluation framework with 1 conversation for each of the 14 personas and all 40 crisis test cases. We evaluated the fidelity, cognitive conceptualization, and crisis handling
+\section{Constitutional AI}
+
+For our Constitutional AI agent, we ran our evaluation framework with one conversation for each of the 14 personas and all 40 crisis test cases. We evaluated fidelity, cognitive conceptualization, and crisis handling.
 
 \subsection{Fidelity}
+
 \begin{table}[ht]
 \centering
 \caption{CTRS scores for the Constitutional - Haiku, run \texttt{4202cf51} ($n = 14$ persona conversations; raw 0--6 scale per item; Part I max~=~36, Part II max~=~30, Total max~=~66). 95\% CIs via $t$-distribution ($df = 13$).}
@@ -2066,6 +2072,7 @@ Homework & 4.43 & 0.94 & $\pm 0.54$ \\
 \end{tabular}
 \end{table}
 \FloatBarrier
+
 \begin{figure}[ht]
 \centering
 \begin{tikzpicture}
@@ -2108,7 +2115,7 @@ Homework & 4.43 & 0.94 & $\pm 0.54$ \\
     clip=false,
 ]
 
-%% Final monitor --- 098bcce8
+%% TheraEph --- 098bcce8
 \addplot[
     fill=blue!55, draw=blue!75,
     error bars/.cd, y dir=both, y explicit,
@@ -2171,31 +2178,22 @@ Homework & 4.43 & 0.94 & $\pm 0.54$ \\
 \end{axis}
 \end{tikzpicture}
 \caption{CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt{098bcce8}),
-constitutional (\texttt{4202cf51}), and baseline (\texttt{4c025580}) runs,
+Constitutional (\texttt{4202cf51}), and baseline (\texttt{4c025580}) runs,
 $n = 14$ persona conversations each.
 Error bars show 95\% CIs via $t$-distribution ($df = 13$).}
 \label{fig:ctrs_three_way}
 \end{figure}
 \FloatBarrier
 
-Our constitution focused on feedback, understanding, interpersonal effectiveness,
-collaboration, pacing and efficient use of time, and guided discovery.
-There was a statistically significant increase over baseline on feedback
-($t = 7.25$, $p < .001$), understanding ($t = 9.54$, $p < .001$), and
-collaboration ($t = 4.16$, $p = .001$). All three of those attributes were
-in the constitution. However, the constitutional agent performed significantly
-worse on pacing and time use compared to baseline ($t = -3.94$, $p < .001$).
-The revisions for interpersonal effectiveness and guided discovery had no
-significant effect ($t = 0.00$, $p = 1.00$; $t = 0.86$, $p = .399$).
-Additionally, there is a statistically significant increase in agenda setting
-over baseline ($t = 3.98$, $p < .001$), even though the constitution does not
-explicitly attempt to revise agent messages for agenda setting.
+Our constitution focused on feedback, understanding, interpersonal effectiveness, collaboration, pacing and efficient use of time, and guided discovery. There was a statistically significant increase over baseline on feedback ($t = 7.25$, $p < .001$), understanding ($t = 9.54$, $p < .001$), and collaboration ($t = 4.16$, $p = .001$). All three of those attributes were explicitly targeted in the constitution, suggesting the critique-and-revision process is effective at improving the qualities it directly addresses. However, the constitutional agent performed significantly worse on pacing and time use compared to baseline ($t = -3.94$, $p < .001$). This is likely because each message goes through two rounds of revision, making responses more verbose and the overall session slower to progress. The revisions for interpersonal effectiveness and guided discovery had no significant effect ($t = 0.00$, $p = 1.00$; $t = 0.86$, $p = .399$). Additionally, there is a statistically significant increase in agenda setting over baseline ($t = 3.98$, $p < .001$), even though the constitution does not explicitly target agenda setting. This suggests that improving the overall quality of responses through revision may have a positive spillover effect on behaviors not directly addressed.
 
+Comparing the Constitutional AI agent to TheraEph, TheraEph outperforms on agenda setting (2.71 vs.\ 1.29), pacing (4.07 vs.\ 2.71), and homework (5.57 vs.\ 4.43), all of which benefit directly from the finite state machine structure that enforces session progression. The Constitutional AI agent scores higher on understanding (5.00 vs.\ 4.21) and feedback (4.50 vs.\ 4.14), reflecting the direct influence of the constitution's revision process on those relational qualities. Overall, TheraEph achieves a higher total CTRS score, suggesting that structural guarantees from the finite state machine contribute more broadly to therapy fidelity than constitutional revision alone. That said, the two approaches target fundamentally different weaknesses and are likely complementary: TheraEph enforces structure and session flow, while Constitutional AI improves the warmth and quality of individual responses.
 
 \subsection{Crisis Handling}
+
 \begin{table}[ht]
 \centering
-\caption{Crisis classification and response quality for the Constituion, run \texttt{constitution\_crisis\_merged} ($n = 40$ cases: 20 crisis, 20 no-crisis).}
+\caption{Crisis classification and response quality for the Constitutional agent, run \texttt{constitution\_crisis\_merged} ($n = 40$ cases: 20 crisis, 20 no-crisis).}
 \label{tab:crisis_constitution_crisis_merged}
 
 \begin{minipage}[t]{0.46\textwidth}
@@ -2239,13 +2237,13 @@ Mean eval score (0--4)$^{a}$ & 1.94 \\
 \\[4pt]
 \raggedright\footnotesize $^{a}$Scored cases only ($n = 17$).
 \end{minipage}
-
 \end{table}
 \FloatBarrier
 
-The constituional agent performs about on par with the baseline for handling crisis. It asses crisis well and recommends emergency services but doesn't de escalate well or request human consultations. Additionally, the montior agent miss classified 3 harm to self scenarios which is one less than the rest our classification runs. 
+The constitutional agent performs similarly to the baseline on crisis handling, with a mean evaluation score of 1.94 out of 4 compared to TheraEph's 3.0. It assesses crisis reasonably well at 85\% and recommends emergency services 75\% of the time, but almost entirely fails to de-escalate (5\%) or request human consultation (0\%). This is unsurprising: the constitutional revision process operates on individual message quality and does not include any crisis-specific principles, so when a crisis arises the agent falls back on the base model's behavior. This mirrors the baseline's failure mode and reinforces the conclusion that constitutional revision alone is insufficient for safe crisis handling. Explicit structural interventions, like TheraEph's dedicated crisis subflow, are necessary to reliably step through all four stages of the crisis policy. Additionally, the monitor agent misclassified 3 harm-to-self scenarios, dropping overall accuracy slightly to 92.5\% compared to 95\% for TheraEph and the baseline.
 
 \subsection{Cognitive Conceptualization}
+
 \begin{table}[ht]
 \centering
 \caption{Conceptualization scores for the Constitutional - Haiku, run \texttt{4202cf51} ($n = 14$ persona conversations; component scores normalised as \% of maximum). 95\% CIs via $t$-distribution ($df = 13$). Distortion overlap measured by Jaccard similarity (predicted vs.\ ground-truth distortion sets).}
@@ -2271,6 +2269,9 @@ Distortion Jaccard & 0.045 & 0.079 & $\pm 0.046$ \\
 \hline
 \end{tabular}
 \end{table}
+\FloatBarrier
+
+The constitutional agent's conceptualization scores are broadly similar to both the baseline and TheraEph, with a total score of 73.2\% compared to 79.5\% for TheraEph. The cognitive distortion Jaccard similarity is the lowest across all agents at 0.045, compared to 0.074 for TheraEph and 0.232 for the baseline. The more verbose, revision-heavy responses may actually reduce the agent's ability to ask the targeted questions needed to surface cognitive distortions, as the agent spends more of the conversation refining the quality of its therapeutic language rather than gathering the clinical information needed to identify distortions. Across all three agents, cognitive distortion Jaccard similarity remains low, suggesting this is a fundamentally hard problem that requires a dedicated fine-tuned classifier rather than a general-purpose LLM prompted to label distortions after the fact.
 
 \chapter{Discussion}
 \section{Agent Fidelity}
