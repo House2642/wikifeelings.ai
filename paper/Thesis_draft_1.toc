@@ -71,7 +71,7 @@
 \contentsline {section}{\numberline {8.4}Constitutional AI}{64}{}%
 \contentsline {subsection}{\numberline {8.4.1}Fidelity}{64}{}%
 \contentsline {subsection}{\numberline {8.4.2}Crisis Handling}{66}{}%
-\contentsline {subsection}{\numberline {8.4.3}Cognitive Conceptualization}{66}{}%
+\contentsline {subsection}{\numberline {8.4.3}Cognitive Conceptualization}{67}{}%
 \contentsline {chapter}{\numberline {9}Discussion}{68}{}%
 \contentsline {section}{\numberline {9.1}Agent Fidelity}{68}{}%
 \contentsline {section}{\numberline {9.2}Crisis Handling}{69}{}%

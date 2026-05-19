@@ -11,9 +11,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the bad baseline (\texttt {add7e6c3}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{60}{}%
-\contentsline {figure}{\numberline {8.2}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}) vs.\ baseline (\texttt {4c025580}), $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{62}{}%
-\contentsline {figure}{\numberline {8.3}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph (\texttt {098bcce8}), Constitutional (\texttt {4202cf51}), and baseline (\texttt {4c025580}) runs, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{65}{}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the bad therapist vs.\ baseline therapist, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{60}{}%
+\contentsline {figure}{\numberline {8.2}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph vs.\ baseline therapist, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{62}{}%
+\contentsline {figure}{\numberline {8.3}{\ignorespaces CTRS item scores (raw, 0--6 scale) for the TheraEph, Constitutional AI, and baseline runs, $n = 14$ persona conversations each. Error bars show 95\% CIs via $t$-distribution ($df = 13$).}}{65}{}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
