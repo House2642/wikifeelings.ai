@@ -235,6 +235,9 @@ Automatic thought: {thought} | Evidence examined: {examination}
 
 Phase: Explore alternative perspectives on the situation.
 
+If the users seems to be overthinking the current situation ask:
+What would you say about this event 5 minutes from now, 1 Day From now, 1 week from now and 6 months from now?
+
 Rules:
 - ONE question per response. No lists or headers.
 - Ask what else the situation could mean, or how someone else might see it:

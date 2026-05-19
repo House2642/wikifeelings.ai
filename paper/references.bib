@@ -132,22 +132,21 @@
   url           = {https://arxiv.org/abs/2306.12672}
 }
 
-@misc{zhang2024counselbench,
-  author        = {Zhang, L. and Chen, H. and Liu, K.},
-  title         = {{CounselBench}: A Comprehensive Evaluation Dataset for {AI}-Based Counseling Systems},
-  year          = {2024},
-  eprint        = {2506.08584},
-  archiveprefix = {arXiv},
-  url           = {https://arxiv.org/abs/2506.08584}
-}
-
-@misc{brown2024cbtbench,
-  author        = {Brown, K. and Davis, S. and Wilson, T.},
-  title         = {{CBT-Bench}: Evaluating Cognitive Behavioral Therapy Capabilities in Large Language Models},
-  year          = {2024},
-  eprint        = {2410.13218},
-  archiveprefix = {arXiv},
-  url           = {https://arxiv.org/abs/2410.13218}
+@inproceedings{zhang2025cbtbench,
+    author    = {Zhang, Mian and Yang, Xianjun and Zhang, Xinlu and Labrum, Travis and
+                 Chiu, Jamie C. and Eack, Shaun M. and Fang, Fei and
+                 Wang, William Yang and Chen, Zhiyu},
+    title     = {{CBT}-Bench: Evaluating Large Language Models on Assisting Cognitive Behavior Therapy},
+    booktitle = {Proceedings of the 2025 Conference of the Nations of the Americas Chapter
+                 of the Association for Computational Linguistics:
+                 Human Language Technologies (Volume 1: Long Papers)},
+    month     = apr,
+    year      = {2025},
+    address   = {Albuquerque, New Mexico},
+    publisher = {Association for Computational Linguistics},
+    pages     = {3864--3900},
+    doi       = {10.18653/v1/2025.naacl-long.196},
+    url       = {https://aclanthology.org/2025.naacl-long.196/}
 }
 
 @article{aguilar2025slingshot,
@@ -191,12 +190,15 @@
 }
 
 @inproceedings{wei2022chain,
-  author    = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and Ichter, Brian and Xia, Fei and Chi, Ed H. and Le, Quoc V. and Zhou, Denny},
+  author    = {Wei, Jason and Wang, Xuezhi and Schuurmans, Dale and Bosma, Maarten and
+               Ichter, Brian and Xia, Fei and Chi, Ed H. and Le, Quoc V. and Zhou, Denny},
   title     = {Chain-of-Thought Prompting Elicits Reasoning in Large Language Models},
   booktitle = {Advances in Neural Information Processing Systems},
   volume    = {35},
+  pages     = {24824--24837},
+  publisher = {Curran Associates, Inc.},
   year      = {2022},
-  url       = {https://arxiv.org/abs/2201.11903}
+  url       = {https://proceedings.neurips.cc/paper_files/paper/2022/file/9d5609613524ecf4f15af0f7b31abca4-Paper-Conference.pdf}
 }
 
 @misc{hall2025guiding,
@@ -225,12 +227,17 @@
   url          = {https://www.samhsa.gov/data/sites/default/files/reports/rpt56287/2024-nsduh-annual-national-report.pdf}
 }
 
-@article{moore2025stigma,
-  title         = {Expressing Stigma and Inappropriate Responses Prevents {LLMs} from Safely Replacing Mental Health Providers},
-  author        = {Moore, Jared and Grabb, Declan and Agnew, William and Klyman, Kevin and Chancellor, Stevie and Ong, Desmond C. and Haber, Nick},
-  year          = {2025},
-  journal       = {arXiv preprint arXiv:2504.18412},
-  url           = {https://arxiv.org/abs/2504.18412}
+@inproceedings{moore2025stigma,
+    author    = {Moore, Jared and Grabb, Declan and Agnew, William and Klyman, Kevin and
+                 Chancellor, Stevie and Ong, Desmond C. and Haber, Nick},
+    title     = {Expressing Stigma and Inappropriate Responses Prevents {LLM}s from
+                 Safely Replacing Mental Health Providers},
+    booktitle = {Proceedings of the 2025 {ACM} Conference on Fairness, Accountability,
+                 and Transparency},
+    series    = {{FAccT} '25},
+    year      = {2025},
+    doi       = {10.1145/3715275.3732039},
+    url       = {https://dl.acm.org/doi/full/10.1145/3715275.3732039}
 }
 
 @article{nytimes2025chatgpt_opinion,
@@ -372,12 +379,18 @@
   note         = {Accessed: April 20, 2026}
 }
 
-@article{liu2023lost,
-  title         = {Lost in the Middle: How Language Models Use Long Contexts},
-  author        = {Liu, Nelson F. and Lin, Kevin and Hewitt, John and Paranjape, Ashwin and Bevilacqua, Michele and Petroni, Fabio and Liang, Percy},
-  journal       = {arXiv preprint arXiv:2307.03172},
-  year          = {2023},
-  url           = {https://arxiv.org/abs/2307.03172}
+@article{liu2024lost,
+  author    = {Liu, Nelson F. and Lin, Kevin and Hewitt, John and Paranjape, Ashwin and
+               Bevilacqua, Michele and Petroni, Fabio and Liang, Percy},
+  title     = {Lost in the Middle: How Language Models Use Long Contexts},
+  journal   = {Transactions of the Association for Computational Linguistics},
+  volume    = {12},
+  pages     = {157--173},
+  year      = {2024},
+  publisher = {MIT Press},
+  address   = {Cambridge, MA},
+  doi       = {10.1162/tacl_a_00638},
+  url       = {https://aclanthology.org/2024.tacl-1.9/}
 }
 
 @article{karov2025arq,
@@ -491,26 +504,13 @@
 @misc{bai2022constitutional,
   title         = {Constitutional {AI}: Harmlessness from {AI} Feedback},
   author        = {Bai, Yuntao and Kadavath, Saurav and Kundu, Sandipan and
-                   Askell, Amanda and Kernion, Jackson and Jones, Andy and
-                   Chen, Anna and Goldie, Anna and Mirhoseini, Azalia and
-                   McKinnon, Cameron and Chen, Carol and Olsson, Catherine and
-                   Olah, Christopher and Hernandez, Danny and Drain, Dawn and
-                   Ganguli, Deep and Li, Dustin and Tran-Johnson, Eli and
-                   Perez, Ethan and Kerr, Jamie and Mueller, Jared and
-                   Ladish, Jeffrey and Landau, Joshua and Ndousse, Kamal and
-                   Lukosuite, Kamile and Lovitt, Liane and Sellitto, Michael and
-                   Elhage, Nelson and Schiefer, Nicholas and Mercado, Noemi and
-                   DasSarma, Nova and Lasenby, Robert and Larson, Robin and
-                   Ringer, Sam and Johnston, Scott and Kravec, Shauna and
-                   El Showk, Sheer and Fort, Stanislav and Lanham, Tamera and
-                   Telleen-Lawton, Timothy and Conerly, Tom and Henighan, Tom and
-                   Hume, Tristan and Bowman, Samuel R. and Hatfield-Dodds, Zac and
-                   Mann, Ben and Amodei, Dario and Joseph, Nicholas and
-                   McCandlish, Sam and Brown, Tom and Kaplan, Jared},
+                   Askell, Amanda and others},
   year          = {2022},
   eprint        = {2212.08073},
   archiveprefix = {arXiv},
   primaryclass  = {cs.CL},
+  note          = {Presented at the NeurIPS 2022 Workshop on Efficient Natural Language
+                   and Speech Processing},
   doi           = {10.48550/arXiv.2212.08073},
   url           = {https://arxiv.org/abs/2212.08073}
 }

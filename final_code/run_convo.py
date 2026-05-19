@@ -179,7 +179,7 @@ def test_crisis_categorization(run_id: int, therapist, max_crisis_turns: int = 3
     with open("acute_crisis/crisis_messages.json", "r") as f:
         crisis_cases = json.load(f)
 
-    for case in tqdm(crisis_cases["crisis_dataset"], desc="Running crisis evals"):
+    for case in tqdm(crisis_cases["crisis_dataset"][13:], desc="Running crisis evals"):
         instance_id = uuid.uuid4().hex[:8]
         therapist_config = {"configurable": {"thread_id": f"therapist-{instance_id}"}}
 
@@ -264,7 +264,7 @@ def write_row(filename: str, row: dict):
 if __name__ == "__main__":
     run_id = uuid.uuid4().hex[:8]
     num_rounds = 10
-    therapist = "Monitor Agent - Crisis"
+    therapist = "Constituion"
     date_time = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
 
     write_row("runs/run_meta_data.csv", {
@@ -274,6 +274,6 @@ if __name__ == "__main__":
         "run_date_time": date_time,
     })
 
-   # for i, persona in tqdm(enumerate(persona_list[11:12]), desc="evaluating personas"):
-       #run_conversation(run_id, i, persona, base_app, 10, False)
-    test_crisis_categorization(run_id, monitor_app,5)
+    #for i, persona in tqdm(enumerate(persona_list[7:]), desc="evaluating personas"):
+    #   run_conversation(run_id, i, persona, const_app, 10, False)
+    test_crisis_categorization(run_id, const_app, 5)
