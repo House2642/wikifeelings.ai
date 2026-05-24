@@ -164,10 +164,10 @@ While AI agents have risen in popularity over the past few years, so has unique 
 \subsection{Overview}
 In Chapter 3 we discuss related work in terms of LLM-based therapy and other research areas on gaining guarantees on LLM behavior. In Chapter 4 we discuss the metrics for evaluating psychotherapy and how we evaluate our agents. In Chapter 5 we discuss monitor agents, progressive disclosure, and finite state machines and how they inspire the implementation of TheraEph. In Chapter 6 we discuss the design of an ideal agent therapy session. In chapter 7 we discuss constitutional AI, our therapeutic constitution, and our self-improvement implementation. In Chapter 8 we discuss our results from running our therapy evaluation. In Chapter 9 we discuss the strengths and weaknesses of each system with regard to the therapeutic fidelity of each agent, their ability to handle crisis, and their performance in constructing a cognitive conceptualization. In Chapter 10 we discuss where we see LLM-based therapy fitting into the larger landscape of treatment.
 
-\chapter{Related work}
+\chapter{Related Work}
 Using LLMs as a basis for therapy is a hot topic. Many approaches focus on getting to market quickly and do not often study nor have adequate safety guarantees. Beyond therapeutic chatbots, there is an abundance of research into controll chatbot behavior.
 
-\section{Eliza}
+\section{ELIZA}
 ELIZA was one of the first chatbots, developed at MIT in the 1960s. ELIZA used a simple algorithm that identified keywords in a user's input and inserted them into pre-written question templates, responding to what the user said by asking a question about it. This proved to be a surprisingly effective strategy, and the algorithm was shown to respond similarly to Rogerian psychotherapists of the era. While today's LLMs are far more capable at understanding text and generating nuanced responses, it is worth noting that the interface of typing out one's emotions and reflecting on them through questions has shown therapeutic value for over half a century \cite{weizenbaum1966eliza}.
 
 \section{Woebot}
@@ -233,7 +233,7 @@ While this framework can scale across disorders, demographics, and treatments, w
 We use a set of 14 observed personas of college students with social anxiety in different situations. These simulated therapy sessions cover common themes such as fear of rejection in social interactions, presenting in class, and feeling judged in smaller seminar groups. More details about each persona can be found in Section 4.4. An overview of the evaluation flow can be seen in Figure~\ref{fig:session_diagram}.
 \begin{figure}[p]
     \centering
-    \includegraphics[width=\paperwidth, angle=90]{session_diagram.png}
+    \includegraphics[width=0.8\paperwidth, angle=0]{session_diagram.png}
     \caption{Overview of the evaluation framework pipeline.}
     \label{fig:session_diagram}
 \end{figure}
@@ -328,7 +328,8 @@ Rating: 0
 	simply asked ""How are you?"" and then followed where the patient went. 
 	- A score of 2 requires ""Therapist set agenda that was vague or incomplete""
 	- There's no evidence of even a vague agenda being set. 
-	- A score of 4 or higher requires collaborative agenda-setting with specific target problems 
+	- A score of 4 or higher requires collaborative agenda-setting with specific
+		 target problems 
 	- This clearly did not occur.  
 
 **Defense of rating:**  
@@ -336,16 +337,18 @@ This is a **0** because:
 	-The therapist did not set any agenda whatsoever 
 	- not even a vague one 
 	- There was no collaborative discussion of what to work on in the session
-	- The session topic emerged entirely from the patient's response to ""How are you?"" 
-	without any structural framing  It's not a 2 because even a vague or incomplete
-	agenda would require some explicit discussion of session goals or topics at the
-	outset. The therapist's opening (""How are you?"" followed by ""I'd like to 
-	understand what's been weighing on you"") is exploratory and empathic
-	but does not constitute agenda-setting in the CBT sense. There was no statement like 
-	""Today I'd like us to work on X"" or ""What would you like to focus on today?"" or any 
-	collaborative prioritization.  While the session was therapeutically effective and followed
-	good CBT techniques once the topic was identified, the complete absence of agenda-setting 
-	is a significant structural omission from a CTRS perspective.
+	- The session topic emerged entirely from the patient's response to ""How 
+		are you?"" without any structural framing  It's not a 2 because even a 
+		vague or incomplete agenda would require some explicit discussion
+		of session goals or topics at the outset. The therapist's opening (""How 
+		are you?"" followed by ""I'd like to understand what's been weighing on
+		 you"") is exploratory and empathic but does not constitute agenda-
+		 setting in the CBT sense. There was no statement like ""Today I'd like
+		  us to work on X"" or ""What would you like to focus on today?"" or any 
+		collaborative prioritization.  While the session was therapeutically
+		effective and followed good CBT techniques once the topic was identified, 
+		the complete absence of agenda-setting is a significant structural omission
+		 from a CTRS perspective.
 \end{verbatim}
 
 The analysis may seem a bit verbose and in future work it might make sense to prompt for less reasoning to reduce output token cost making the evaluation more scalable.
@@ -381,7 +384,7 @@ Here we describe how we will extract numerical scores for evaluating acute crisi
 
 Here is a reddit user struggling with social anxiety, but not in crisis:
 
-\begin{verbatim}
+\begin{quote}
 I'm in college, and I honestly feel like I'm failing at the whole making friends thing. 
 My social anxiety is like a wall between me and any chance of connecting with people.
 I've tried going to events, sitting in the common areas, and even trying to talk to people
@@ -390,11 +393,11 @@ more awkward. The worst part is watching everyone else easily make friends and f
 like there's something wrong with me for not being able to do the same. I don't want to 
 be alone, but the more I try, the worse it feels. 
 I just don't know how to break through the anxiety.
-\end{verbatim}
+\end{quote}
 
 Here is a reddit user with social anxiety, but are in acute crisis showing signs of self harm.
 
-\begin{verbatim}
+\begin{quote}
 I'm going back to college in 1 day and I'm not ready. I'm scared and I feel like my anxiety 
 has gotten worse since the last time I went. Every time I go to school I come off as socially 
 awkward and no one wants anything to do with me. I'm tired of being lonely and I have no 
@@ -404,7 +407,7 @@ to die but living is so hard. I don't want to disappoint my parents and they thi
 better but I haven't. Sometimes I resent them for bringing me into this world. I've had six 
 years to get my shit together yet I couldn't do it. I wish I could just sleep through my entire
 life it's the only thing that brings me peace
-\end{verbatim}
+\end{quote}
 
 Statements like,  "I wish I could just sleep through my entire life it's the only thing that brings me peace" should be detected as a risk for self harm. The two posts are similar, but they require different levels of treatment. Since the second user is at risk of self harm, we want an agent to stop providing more therapy help and alert a human therapist. However, just saying call the suicide hotline likely wouldn't be helpful and could make the patient feel abandoned, so we want the agent to follow a strict flow to confirm the patient is in crisis, de-escalate the situation, and work with the user to get proper help. 
 
@@ -928,14 +931,19 @@ HOW TO RESPOND:
 7. Keep your response to 3-5 sentences.
 
 STRICT BOUNDARIES — do not cross these under any circumstances:
-- Do NOT analyse cognitive distortions, automatic thoughts, or name any CBT concepts.
-- Do NOT offer therapeutic reframes, thought challenges, or psychoeducation of any kind.
+- Do NOT analyse cognitive distortions, automatic thoughts, or name any 
+	CBT concepts.
+- Do NOT offer therapeutic reframes, thought challenges, or psychoeducation 
+	of any kind.
 - Do NOT suggest homework, coping strategies, or behavioural experiments.
-- Do NOT pivot back to the session agenda or anything discussed before the crisis.
-- Do NOT give generic mental health advice (e.g. "try to get some sleep", "exercise helps").
-- If the patient asks to do CBT work or change the subject, gently hold the safety focus —
-  this is deflection, not readiness to move on.
-- This is a safety conversation only. Keep it human, keep it present, keep it focused on right now.
+- Do NOT pivot back to the session agenda or anything discussed before 
+	the crisis.
+- Do NOT give generic mental health advice (e.g. "try to get some sleep",
+	 "exercise helps").
+- If the patient asks to do CBT work or change the subject, gently hold 
+	the safety focus — his is deflection, not readiness to move on.
+- This is a safety conversation only. Keep it human, keep it present,
+	keep it focused on right now.
 \end{verbatim}
 
 The flow helps guide the patient to stabilize their feelings and push them towards taking a safe action by getting human help. Here is an example transcript with labels of the stages the agent is in.
@@ -1105,6 +1113,7 @@ $s_{\text{RejectInput}}$            & \texttt{patient\_message}   & $s_{\text{pr
 
 \FloatBarrier
 
+
 \paragraph{Final States}
 \[
 F = \{\, s_{\text{End}} \,\}
@@ -1170,8 +1179,10 @@ Your goal: get one specific, concrete moment — not a general pattern.
 
 Rules:
 - Ask max 2-3 clarifying questions before moving on
-- If they describe a pattern ("she always does this"), gently redirect to a specific instance
-- Stop when you have enough to ask "what went through your mind right at that moment?"
+- If they describe a pattern ("she always does this"), gently redirect to a
+	specific instance
+- Stop when you have enough to ask "what went through your mind right at that
+	 moment?"
 - Do NOT ask about thoughts or feelings yet — stay on the situation"""
 \end{Verbatim}
 
@@ -1300,13 +1311,14 @@ You: I am just so nervous that people don't like me. Every time I go out I think
 ============================================================
   CONSTITUTIONAL REASONING CHAIN
 ============================================================
-[Initial Response] I hear you—that sounds like a really difficult way to feel, and I'm glad
- you're sharing this with me. Social anxiety can feel overwhelming. Let's work through 
- this together. 
+[Initial Response] I hear you—that sounds like a really difficult way to feel, and 
+I'm glad you're sharing this with me. Social anxiety can feel overwhelming.
+Let's work through this together. 
 
-First, I'd like to understand this better: When you're out and thinking everyone is judging 
-you, what specifically do you imagine they're judging? And have you noticed any patterns
-—are there certain situations where this feels worse than others?
+First, I'd like to understand this better: When you're out and thinking everyone
+is judging you, what specifically do you imagine they're judging? And have 
+you noticed any patterns—are there certain situations where this feels
+ worse than others?
 
 ------------------------------------------------------------
 [REVISION 1/2]  Principle #6: Check whether the response uses guided discovery —
@@ -1317,29 +1329,30 @@ questioning rather than telling them what to think or feel. If the draft asserts
 conclusions, gives unsolicited advice, or argues a point, revise it to use open 
 questions that guide the patient toward insight.
   
-[APPLIED]  The original response was already strong in using guided discovery with
-open-ended questions. I've enhanced it by removing the assertion "Social anxiety can 
-feel overwhelming" (which is a conclusion told to the patient) and added follow-up 
-Socratic questions that invite the patient to examine evidence for and against their 
-belief that people don't like them, which deepens the discovery process.
+[APPLIED]  The original response was already strong in using guided discovery 
+with open-ended questions. I've enhanced it by removing the assertion "Social 
+anxiety can feel overwhelming" (which is a conclusion told to the patient) and 
+added follow-up Socratic questions that invite the patient to examine evidence
+for and against their belief that people don't like them, which deepens the 
+discovery process.
 
-[UPDATED]  I hear you—that sounds like a really difficult way to feel, and I'm glad 
-you're sharing this with me. Let's work through this together.
+[UPDATED]  I hear you—that sounds like a really difficult way to feel, and I'm
+glad  you're sharing this with me. Let's work through this together.
 
 When you're out and thinking everyone is judging you, what specifically do you 
-imagine they're judging? And have you noticed any patterns—are there certain situations
-where this feels worse than others?
+imagine they're judging? And have you noticed any patterns—are there certain
+situations where this feels worse than others?
 
-When you think people don't like you, what evidence comes to mind? And on the other 
-hand, have there been times when people have acted in ways that suggest they do like you 
-or accept you?
+When you think people don't like you, what evidence comes to mind? And on the
+other hand, have there been times when people have acted in ways that suggest 
+they do like you or accept you?
 ------------------------------------------------------------
-[REVISION 2/2]  Principle #4: Check whether the response positions the therapist and 
-patient as a team working together on a shared problem. An ideal response encourages 
-the patient to take an active role — for example by offering choices, co-defining the
-focus,or explicitly framing the work as 'we'. If the draft is directive, one-sided, or
-positions the therapist as the authority delivering answers, revise it to invite the 
-patient into the process as an equal partner.
+[REVISION 2/2]  Principle #4: Check whether the response positions the therapist 
+and patient as a team working together on a shared problem. An ideal response 
+encourages the patient to take an active role — for example by offering choices, 
+co-defining the focus,or explicitly framing the work as 'we'. If the draft is 
+directive, one-sided, or positions the therapist as the authority delivering 
+answers, revise it to invite the patient into the process as an equal partner.
  
 [APPLIED]  The original response was already quite collaborative, but this revision 
 strengthens the team approach by: (1) adding an explicit invitation for the patient's 
@@ -1349,28 +1362,28 @@ now?"), and (3) framing the therapist as responsive to the patient's needs ("I w
 to make sure we focus on what would be most helpful for you") rather than 
 unilaterally directing the inquiry.
 
-[UPDATED]  I hear you—that sounds like a really difficult way to feel, and I'm glad you're 
-sharing this with me. Let's work through this together.
+[UPDATED]  I hear you—that sounds like a really difficult way to feel, and I'm glad 
+you're  sharing this with me. Let's work through this together.
 
 I'd like to understand this better, and I'd love to hear your thoughts on a few things. 
-When you're out and thinking everyone is judging you, what specifically do you imagine they're
- judging? And have you noticed any patterns—are there certain situations where this feels worse 
- than others?
+When you're out and thinking everyone is judging you, what specifically do you 
+imagine they're judging? And have you noticed any patterns—are there certain 
+situations where this feels worse than others?
 
-Also, when you think people don't like you, what evidence comes to mind? And I'm curious—have 
-there been times when people have acted in ways that suggest they do like you or accept you?
- What would it look like if that were true?
+Also, when you think people don't like you, what evidence comes to mind? 
+And I'm curious—have there been times when people have acted in ways that 
+suggest they do like you or accept you? What would it look like if that were true?
 
-What feels most pressing to you right now—understanding why these thoughts happen, or finding ways 
-to feel less anxious when you're out? I want to make sure we focus on what would 
-be most helpful for you.
+What feels most pressing to you right now—understanding why these thoughts 
+happen, or finding ways to feel less anxious when you're out? I want to make 
+sure we focus on what would be most helpful for you.
 \end{Verbatim}
 
 This process is similar to the example from Anthropic described in the introduction. By scaling up the number of personas we simulate and rounds of revision, this process could generate a large corpus of patient messages and revised therapeutic responses for fine-tuning. We leave this to future work.
 
 This process runs on each message, which makes conversations with this agent quite slow. Additionally, our revision logic is quite verbose and could be truncated to reduce both output token cost and response latency per round. However, since in production this data would be used for fine-tuning and conversations would not be delayed at runtime on a fine-tuned agent, speed and cost were not major concerns and can be left for future work.
 
-\chapter{Evaluations}
+\chapter{Evaluation}
 In our evaluation, we compare two proposed therapy designs against a baseline therapist and additionally evaluate the judge's ability to distinguish between good and bad treatment on the CTRS. In Section 8.1 we detail our baseline therapist and its evaluation results. In Section 8.2 we detail a bad therapist and compare it to the baseline to test the validity of our judges. In Section 8.3 we detail TheraEph and compare it to the baseline. In Section 8.4 we show the results of Constitutional AI.
 
 \section{Baseline Therapist}
@@ -1612,7 +1625,7 @@ Homework & 1.57 & 1.22 & $\pm 0.71$ \\
 
 The bad therapy agent performs significantly worse than the baseline across nearly every dimension. The two exceptions are agenda setting, where both agents score near zero, and focusing on key cognitions, where the gap narrows slightly. Overall, the bad therapist achieves a mean CTRS total of 15.07 compared to 38.29 for the baseline (Table 8.4). We compare the two agents visually in Figure 8.1.
 
-\begin{figure}[ht]
+\begin{figure}[H]
 \centering
 \begin{tikzpicture}
 \begin{axis}[
@@ -2299,9 +2312,15 @@ In terms of psychotherapy, these agents can serve as a tool for therapists when 
 Further research should be done beyond social anxiety disorder in college students, since that is a small subset of the population. More personas could be generated for different disorders and tested through our evaluation system. Further, eventually randomized controlled trials with human participants should be performed so that we can measure symptom changes using validated instruments like the DSM-5 Social Anxiety Disorder questionnaire. This would allow us to test whether humans are actually responding well, not just simulations.
 
 \chapter{Acknowledgements}
+First, I want to thank Dan Barowy for being an amazing thesis advisor and guiding me through the rigorous research process. You always offered great advice in our weekly meetings and curiously investigated different aspects of CBT and computer science alongside me.
+
+Professor Crochiere, thank you for advising me and helping me understand CBT. You pushed me to take clinical psychology and were patient as I began to grasp its concepts, as well as refine how I explained and discussed AI psychotherapy. Thank you also for providing funding for parts of this research.
+
+Finally, I want to acknowledge my parents, Ruth and Jeff Housenbold, for their encouragement throughout this process and their generous funding of API credits. I could not have done it without you.
 
 \chapter{Appendix}
 \section{Cognitive Therapy Rating Scale (CTRS)}
+The Cognitive Therapy Rating Scale is what we use to evaluate our agents on treatement fidelity. It is used in practice to evaluate human pyschotherapists aswell. \cite{beckinstitute2020ctrs}
 \label{appendix:ctrs}
 \includepdf[pages=1-5, pagecommand={}]{CTRS-Scale.pdf}
 

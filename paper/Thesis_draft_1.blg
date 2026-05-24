@@ -3,47 +3,46 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: Thesis_draft_1.aux
 The style file: acm.bst
 Database file #1: references.bib
-Warning--I didn't find a database entry for "todo"
 Warning--empty journal in hull2025mentalhealth
-You've used 55 entries,
+You've used 56 entries,
             2253 wiz_defined-function locations,
-            801 strings with 16190 characters,
-and the built_in function-call counts, 19095 in all, are:
-= -- 1651
-> -- 1363
+            818 strings with 16081 characters,
+and the built_in function-call counts, 18725 in all, are:
+= -- 1675
+> -- 1170
 < -- 0
-+ -- 564
-- -- 500
-* -- 1530
-:= -- 3329
-add.period$ -- 175
-call.type$ -- 55
-change.case$ -- 413
++ -- 487
+- -- 422
+* -- 1432
+:= -- 3191
+add.period$ -- 180
+call.type$ -- 56
+change.case$ -- 376
 chr.to.int$ -- 0
-cite$ -- 56
-duplicate$ -- 612
-empty$ -- 1297
-format.name$ -- 500
-if$ -- 3758
+cite$ -- 57
+duplicate$ -- 662
+empty$ -- 1379
+format.name$ -- 422
+if$ -- 3771
 int.to.chr$ -- 0
-int.to.str$ -- 55
-missing$ -- 41
-newline$ -- 286
-num.names$ -- 112
-pop$ -- 487
+int.to.str$ -- 56
+missing$ -- 44
+newline$ -- 293
+num.names$ -- 114
+pop$ -- 451
 preamble$ -- 1
-purify$ -- 359
+purify$ -- 321
 quote$ -- 0
-skip$ -- 352
+skip$ -- 390
 stack$ -- 0
-substring$ -- 510
-swap$ -- 123
+substring$ -- 628
+swap$ -- 147
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 214
+type$ -- 216
 warning$ -- 1
-while$ -- 133
-width$ -- 57
-write$ -- 561
-(There were 2 warnings)
+while$ -- 143
+width$ -- 58
+write$ -- 582
+(There was 1 warning)

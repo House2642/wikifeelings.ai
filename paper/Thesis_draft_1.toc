@@ -4,8 +4,8 @@
 \contentsline {section}{\numberline {2.2}Cognitive Behavioral Therapy}{7}{}%
 \contentsline {section}{\numberline {2.3}Agents}{9}{}%
 \contentsline {subsection}{\numberline {2.3.1}Overview}{9}{}%
-\contentsline {chapter}{\numberline {3}Related work}{11}{}%
-\contentsline {section}{\numberline {3.1}Eliza}{11}{}%
+\contentsline {chapter}{\numberline {3}Related Work}{11}{}%
+\contentsline {section}{\numberline {3.1}ELIZA}{11}{}%
 \contentsline {section}{\numberline {3.2}Woebot}{11}{}%
 \contentsline {section}{\numberline {3.3}Therapeutic Chatbots}{12}{}%
 \contentsline {section}{\numberline {3.4}World Models}{12}{}%
@@ -51,32 +51,32 @@
 \contentsline {paragraph}{Output}{47}{}%
 \contentsline {subsection}{\numberline {6.6.3}Lang Graph Functions}{47}{}%
 \contentsline {paragraph}{Interventions and Customizations}{49}{}%
-\contentsline {paragraph}{Cognitive Distortion Monitor Agent}{49}{}%
-\contentsline {chapter}{\numberline {7}Constitutional AI}{50}{}%
-\contentsline {section}{\numberline {7.1}Introduction}{50}{}%
-\contentsline {section}{\numberline {7.2}System Architecture}{51}{}%
-\contentsline {chapter}{\numberline {8}Evaluations}{56}{}%
-\contentsline {section}{\numberline {8.1}Baseline Therapist}{56}{}%
-\contentsline {subsection}{\numberline {8.1.1}Fidelity}{57}{}%
-\contentsline {subsection}{\numberline {8.1.2}Crisis Handling}{58}{}%
-\contentsline {subsection}{\numberline {8.1.3}Cognitive Conceptualization}{58}{}%
-\contentsline {section}{\numberline {8.2}Bad Therapist}{59}{}%
-\contentsline {subsection}{\numberline {8.2.1}Fidelity}{59}{}%
-\contentsline {subsection}{\numberline {8.2.2}Crisis Handling}{60}{}%
-\contentsline {subsection}{\numberline {8.2.3}Cognitive Conceptualization}{61}{}%
-\contentsline {section}{\numberline {8.3}TheraEph}{61}{}%
-\contentsline {subsection}{\numberline {8.3.1}Treatment Fidelity}{61}{}%
-\contentsline {subsection}{\numberline {8.3.2}Crisis Handling}{63}{}%
-\contentsline {subsection}{\numberline {8.3.3}Cognitive Conceptualization}{63}{}%
-\contentsline {section}{\numberline {8.4}Constitutional AI}{64}{}%
-\contentsline {subsection}{\numberline {8.4.1}Fidelity}{64}{}%
-\contentsline {subsection}{\numberline {8.4.2}Crisis Handling}{66}{}%
-\contentsline {subsection}{\numberline {8.4.3}Cognitive Conceptualization}{67}{}%
-\contentsline {chapter}{\numberline {9}Discussion}{68}{}%
-\contentsline {section}{\numberline {9.1}Agent Fidelity}{68}{}%
-\contentsline {section}{\numberline {9.2}Crisis Handling}{69}{}%
-\contentsline {section}{\numberline {9.3}Cognitive Conceptualization}{70}{}%
-\contentsline {chapter}{\numberline {10}Conclusion}{71}{}%
-\contentsline {chapter}{\numberline {11}Acknowledgements}{72}{}%
-\contentsline {chapter}{\numberline {12}Appendix}{73}{}%
-\contentsline {section}{\numberline {12.1}Cognitive Therapy Rating Scale (CTRS)}{73}{}%
+\contentsline {paragraph}{Cognitive Distortion Monitor Agent}{50}{}%
+\contentsline {chapter}{\numberline {7}Constitutional AI}{51}{}%
+\contentsline {section}{\numberline {7.1}Introduction}{51}{}%
+\contentsline {section}{\numberline {7.2}System Architecture}{52}{}%
+\contentsline {chapter}{\numberline {8}Evaluation}{57}{}%
+\contentsline {section}{\numberline {8.1}Baseline Therapist}{57}{}%
+\contentsline {subsection}{\numberline {8.1.1}Fidelity}{58}{}%
+\contentsline {subsection}{\numberline {8.1.2}Crisis Handling}{59}{}%
+\contentsline {subsection}{\numberline {8.1.3}Cognitive Conceptualization}{59}{}%
+\contentsline {section}{\numberline {8.2}Bad Therapist}{60}{}%
+\contentsline {subsection}{\numberline {8.2.1}Fidelity}{60}{}%
+\contentsline {subsection}{\numberline {8.2.2}Crisis Handling}{61}{}%
+\contentsline {subsection}{\numberline {8.2.3}Cognitive Conceptualization}{62}{}%
+\contentsline {section}{\numberline {8.3}TheraEph}{62}{}%
+\contentsline {subsection}{\numberline {8.3.1}Treatment Fidelity}{62}{}%
+\contentsline {subsection}{\numberline {8.3.2}Crisis Handling}{64}{}%
+\contentsline {subsection}{\numberline {8.3.3}Cognitive Conceptualization}{64}{}%
+\contentsline {section}{\numberline {8.4}Constitutional AI}{65}{}%
+\contentsline {subsection}{\numberline {8.4.1}Fidelity}{65}{}%
+\contentsline {subsection}{\numberline {8.4.2}Crisis Handling}{67}{}%
+\contentsline {subsection}{\numberline {8.4.3}Cognitive Conceptualization}{68}{}%
+\contentsline {chapter}{\numberline {9}Discussion}{69}{}%
+\contentsline {section}{\numberline {9.1}Agent Fidelity}{69}{}%
+\contentsline {section}{\numberline {9.2}Crisis Handling}{70}{}%
+\contentsline {section}{\numberline {9.3}Cognitive Conceptualization}{71}{}%
+\contentsline {chapter}{\numberline {10}Conclusion}{72}{}%
+\contentsline {chapter}{\numberline {11}Acknowledgements}{73}{}%
+\contentsline {chapter}{\numberline {12}Appendix}{74}{}%
+\contentsline {section}{\numberline {12.1}Cognitive Therapy Rating Scale (CTRS)}{74}{}%

@@ -4,7 +4,7 @@
 {\sc Aguilar, M.}
 \newblock Is {Slingshot}'s mental health chatbot safe? {Its} first study raises
   questions about evaluating {AI}.
-\newblock {\em STAT News\/} (Nov. 2025).
+\newblock {\em {STAT} News\/} (Nov. 2025).
 \newblock Retrieved December 7, 2025.
 
 \bibitem{aly2025evaluation}
@@ -13,17 +13,16 @@
   using prompt engineering techniques.
 \newblock {\em arXiv preprint arXiv:2507.05123\/} (2025).
 
+\bibitem{apa2000dsm}
+{\sc {American Psychiatric Association}}.
+\newblock {\em Diagnostic and Statistical Manual of Mental Disorders}, 4th~ed.
+\newblock American Psychiatric Association, Washington, DC, 2000.
+
 \bibitem{bai2022constitutional}
-{\sc Bai, Y., Kadavath, S., Kundu, S., Askell, A., Kernion, J., Jones, A.,
-  Chen, A., Goldie, A., Mirhoseini, A., McKinnon, C., Chen, C., Olsson, C.,
-  Olah, C., Hernandez, D., Drain, D., Ganguli, D., Li, D., Tran-Johnson, E.,
-  Perez, E., Kerr, J., Mueller, J., Ladish, J., Landau, J., Ndousse, K.,
-  Lukosuite, K., Lovitt, L., Sellitto, M., Elhage, N., Schiefer, N., Mercado,
-  N., DasSarma, N., Lasenby, R., Larson, R., Ringer, S., Johnston, S., Kravec,
-  S., El~Showk, S., Fort, S., Lanham, T., Telleen-Lawton, T., Conerly, T.,
-  Henighan, T., Hume, T., Bowman, S.~R., Hatfield-Dodds, Z., Mann, B., Amodei,
-  D., Joseph, N., McCandlish, S., Brown, T., and Kaplan, J.}
+{\sc Bai, Y., Kadavath, S., Kundu, S., Askell, A., et~al.}
 \newblock Constitutional {AI}: Harmlessness from {AI} feedback, 2022.
+\newblock Presented at the {NeurIPS} 2022 Workshop on Efficient Natural
+  Language and Speech Processing.
 
 \bibitem{beckinstitute2018ccd}
 {\sc {Beck Institute for Cognitive Behavior Therapy}}.
@@ -63,11 +62,6 @@
 \newblock Structure of a {CBT} session.
 \newblock YouTube, Beck Institute for Cognitive Behavior Therapy, 2019.
 \newblock Accessed: April 21, 2026.
-
-\bibitem{brown2024cbtbench}
-{\sc Brown, K., Davis, S., and Wilson, T.}
-\newblock {CBT-Bench}: Evaluating cognitive behavioral therapy capabilities in
-  large language models, 2024.
 
 \bibitem{cohen1996learning}
 {\sc Cohen, W.~W.}
@@ -111,8 +105,8 @@
 {\sc Fitzpatrick, K.~K., Darcy, A., and Vierhile, M.}
 \newblock Delivering cognitive behavior therapy to young adults with symptoms
   of depression and anxiety using a fully automated conversational agent
-  (woebot): A randomized controlled trial.
-\newblock {\em JMIR Mental Health 4}, 2 (2017), e19.
+  ({Woebot}): A randomized controlled trial.
+\newblock {\em {JMIR} Mental Health 4}, 2 (2017), e19.
 
 \bibitem{fluckiger2018alliance}
 {\sc Fl{\"u}ckiger, C., Del~Re, A.~C., Wampold, B.~E., and Horvath, A.~O.}
@@ -125,7 +119,7 @@
   N.~C.}
 \newblock Randomized trial of a generative {AI} chatbot for mental health
   treatment.
-\newblock {\em NEJM AI 2}, 4 (March 2025).
+\newblock {\em {NEJM} {AI} 2}, 4 (March 2025).
 
 \bibitem{hopcroft2006automata}
 {\sc Hopcroft, J.~E., Motwani, R., and Ullman, J.~D.}
@@ -145,7 +139,7 @@
   reduces depression and anxiety: Real world evidence from a naturalistic
   cohort.
 \newblock Preprint. Corresponding author: Matteo Malgaroli, Department of
-  Psychiatry, NYU School of Medicine.
+  Psychiatry, {NYU} School of Medicine.
 
 \bibitem{inan2023llamaguard}
 {\sc Inan, H., Upasani, K., Chi, J., Rungta, R., Iyer, K., Mao, Y., Tontchev,
@@ -188,7 +182,7 @@
 {\sc Kuznia, R., Gordon, A., and Lavandera, E.}
 \newblock `{Y}ou're not rushing. {Y}ou're just ready:' parents say {ChatGPT}
   encouraged son to kill himself.
-\newblock {\em CNN\/} (Nov. 2025).
+\newblock {\em {CNN}\/} (Nov. 2025).
 \newblock Updated November 20, 2025.
 
 \bibitem{lee2022socially}
@@ -197,11 +191,12 @@
   phenomenological analysis.
 \newblock {\em The Qualitative Report 27}, 4 (2022), 897--919.
 
-\bibitem{liu2023lost}
+\bibitem{liu2024lost}
 {\sc Liu, N.~F., Lin, K., Hewitt, J., Paranjape, A., Bevilacqua, M., Petroni,
   F., and Liang, P.}
 \newblock Lost in the middle: How language models use long contexts.
-\newblock {\em arXiv preprint arXiv:2307.03172\/} (2023).
+\newblock {\em Transactions of the Association for Computational Linguistics
+  12\/} (2024), 157--173.
 
 \bibitem{liu2024automatic}
 {\sc Liu, X., Yu, Z., Zhang, Y., Zhang, N., and Xiao, C.}
@@ -217,9 +212,10 @@
 \bibitem{moore2025stigma}
 {\sc Moore, J., Grabb, D., Agnew, W., Klyman, K., Chancellor, S., Ong, D.~C.,
   and Haber, N.}
-\newblock Expressing stigma and inappropriate responses prevents {LLMs} from
+\newblock Expressing stigma and inappropriate responses prevents {LLM}s from
   safely replacing mental health providers.
-\newblock {\em arXiv preprint arXiv:2504.18412\/} (2025).
+\newblock In {\em Proceedings of the 2025 {ACM} Conference on Fairness,
+  Accountability, and Transparency\/} (2025), {FAccT} '25.
 
 \bibitem{nielsen1993usability}
 {\sc Nielsen, J.}
@@ -277,7 +273,7 @@
 {\sc Steenstra, I., and Bickmore, T.}
 \newblock A risk ontology for evaluating {AI}-powered psychotherapy virtual
   agents.
-\newblock In {\em Proceedings of the ACM Conference\/} (2025).
+\newblock In {\em Proceedings of the {ACM} Conference\/} (2025).
 \newblock Northeastern University, Boston, MA.
 
 \bibitem{SAMHSA2016SocialPhobia}
@@ -287,7 +283,7 @@
 \newblock In {\em {DSM-5} Changes: Implications for Child Serious Emotional
   Disturbance}. Substance Abuse and Mental Health Services Administration
   ({US}), Rockville, MD, June 2016.
-\newblock NCBI Bookshelf.
+\newblock {NCBI} Bookshelf.
 
 \bibitem{samhsa2024nsduh}
 {\sc {Substance Abuse and Mental Health Services Administration}}.
@@ -317,7 +313,7 @@
 \newblock Chain-of-thought prompting elicits reasoning in large language
   models.
 \newblock In {\em Advances in Neural Information Processing Systems\/} (2022),
-  vol.~35.
+  vol.~35, Curran Associates, Inc., pp.~24824--24837.
 
 \bibitem{weizenbaum1966eliza}
 {\sc Weizenbaum, J.}
@@ -333,7 +329,7 @@
 
 \bibitem{wu2024llms}
 {\sc Wu, D., Wang, S., Liu, Y., and Liu, N.}
-\newblock {LLMs} can defend themselves against jailbreaking in a practical
+\newblock {LLM}s can defend themselves against jailbreaking in a practical
   manner: A vision paper.
 \newblock In {\em arXiv preprint arXiv:2402.15727\/} (2024).
 
@@ -351,7 +347,7 @@
 \bibitem{yuehhan2025decomposition}
 {\sc Yueh-Han, C., Joshi, N., Chen, Y., Andriushchenko, M., Angell, R., and He,
   H.}
-\newblock Monitoring decomposition attacks in {LLMs} with lightweight
+\newblock Monitoring decomposition attacks in {LLM}s with lightweight
   sequential monitors.
 \newblock {\em arXiv preprint arXiv:2506.10949\/} (2025).
 
@@ -360,5 +356,15 @@
   Van~Durme, B., Khashabi, D., and Jackson, K.}
 \newblock Jailbreak distillation: Renewable safety benchmarking.
 \newblock In {\em arXiv preprint arXiv:2505.22037\/} (2025).
+
+\bibitem{zhang2025cbtbench}
+{\sc Zhang, M., Yang, X., Zhang, X., Labrum, T., Chiu, J.~C., Eack, S.~M.,
+  Fang, F., Wang, W.~Y., and Chen, Z.}
+\newblock {CBT}-bench: Evaluating large language models on assisting cognitive
+  behavior therapy.
+\newblock In {\em Proceedings of the 2025 Conference of the Nations of the
+  {Americas} Chapter of the Association for Computational Linguistics: Human
+  Language Technologies (Volume 1: Long Papers)\/} (Albuquerque, New Mexico,
+  Apr. 2025), Association for Computational Linguistics, pp.~3864--3900.
 
 \end{thebibliography}
